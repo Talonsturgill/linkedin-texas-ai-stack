@@ -1,0 +1,33 @@
+rubric:
+  ship_threshold: 8.0
+  max_editor_cycles: 3
+  max_score_cycles: 2
+  hard_fail_checks:
+    - name: "seven_point_gate"
+      rule: "Every anti-confabulation gate in stack_anatomy.json is true."
+    - name: "mechanism_and_trigger"
+      rule: "The first two lines name the selected mechanism and its verified recent trigger."
+    - name: "layer_fidelity"
+      rule: "The post contains three to five layer bullets. Every layer and controlling actor appears in the dossier."
+    - name: "specific_chokepoint"
+      rule: "The post names the dossier's exact chokepoint actor and binary decision."
+    - name: "fact_trace"
+      rule: "Every factual claim, quote, and numeral traces to the fetched dossier."
+    - name: "political_neutrality"
+      rule: "No electoral advocacy, candidate ranking, or preferred policy outcome. Public-policy analysis stays on authority, process, implementation, disclosure, and measurable effects."
+    - name: "linkedin_constraints"
+      rule: "Body is 350 to 475 words, the complete post is at most 3000 characters, and it ends with exactly three approved hashtags."
+    - name: "house_style"
+      rule: "No banned punctuation, curly quotes, emoji, first person, links, banned opener, or banned phrase."
+  criteria:
+    - {name: "Hook strength", weight: 0.10}
+    - {name: "Mechanism significance for Texas", weight: 0.18}
+    - {name: "Layer fidelity", weight: 0.14}
+    - {name: "Chokepoint clarity", weight: 0.13}
+    - {name: "Structural read", weight: 0.12}
+    - {name: "Forward implication", weight: 0.08}
+    - {name: "Primary-source quality", weight: 0.10}
+    - {name: "Texas AI Docket voice", weight: 0.08}
+    - {name: "LinkedIn readability", weight: 0.04}
+    - {name: "Chokepoint question", weight: 0.03}
+

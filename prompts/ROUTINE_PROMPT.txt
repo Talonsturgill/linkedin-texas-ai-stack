@@ -1,0 +1,7 @@
+Run The Texas Stack workflow in this repository.
+
+Read AGENTS.md and prompts/texas_stack_routine.md completely, then execute the versioned routine
+through a real terminal state. That file is the single source of truth. Create or update an
+unsent Gmail draft every cycle. Never send email, publish to LinkedIn, merge a pull request, or
+push to main.
+

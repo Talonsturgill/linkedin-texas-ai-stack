@@ -1,0 +1,69 @@
+source_policy:
+  primary_required_per_layer: true
+  fetched_pages_only: true
+  search_snippets_are_sources: false
+  independent_trigger_corroboration_preferred: true
+  syndicated_reprints_are_independent: false
+  access_rule: >
+    Respect robots rules, paywalls, and access controls. If a page cannot be read, record the gap
+    and drop the layer or candidate instead of inferring its contents.
+
+seed_sources:
+  texas_docket:
+    - {url: "https://texasaidocket.com/record/", outlet: "Texas AI Docket record", credibility: "curated-index"}
+    - {url: "https://texasaidocket.com/sources/", outlet: "Texas AI Docket source index", credibility: "curated-index"}
+  state_and_local_primary:
+    - {url: "https://capitol.texas.gov", outlet: "Texas Legislature Online", credibility: "primary"}
+    - {url: "https://www.sos.state.tx.us/texreg/", outlet: "Texas Register", credibility: "primary"}
+    - {url: "https://www.puc.texas.gov", outlet: "Public Utility Commission of Texas", credibility: "primary"}
+    - {url: "https://interchange.puc.texas.gov", outlet: "PUCT Interchange", credibility: "primary"}
+    - {url: "https://www.ercot.com", outlet: "ERCOT", credibility: "primary"}
+    - {url: "https://www.rrc.texas.gov", outlet: "Railroad Commission of Texas", credibility: "primary"}
+    - {url: "https://www.tceq.texas.gov", outlet: "Texas Commission on Environmental Quality", credibility: "primary"}
+    - {url: "https://www.twdb.texas.gov", outlet: "Texas Water Development Board", credibility: "primary"}
+    - {url: "https://comptroller.texas.gov", outlet: "Texas Comptroller", credibility: "primary"}
+    - {url: "https://dir.texas.gov", outlet: "Texas Department of Information Resources", credibility: "primary"}
+    - {url: "https://www.txsmartbuy.gov", outlet: "Texas SmartBuy", credibility: "primary"}
+    - {url: "https://www.cooperative.com", outlet: "Texas electric cooperative records via issuing entity", credibility: "primary"}
+  federal_primary:
+    - {url: "https://www.sec.gov/edgar/search/", outlet: "SEC EDGAR", credibility: "primary"}
+    - {url: "https://sam.gov", outlet: "SAM.gov", credibility: "primary"}
+    - {url: "https://www.usaspending.gov", outlet: "USAspending.gov", credibility: "primary"}
+    - {url: "https://www.energy.gov", outlet: "U.S. Department of Energy", credibility: "primary"}
+    - {url: "https://www.ferc.gov", outlet: "Federal Energy Regulatory Commission", credibility: "primary"}
+    - {url: "https://www.fcc.gov", outlet: "Federal Communications Commission", credibility: "primary"}
+    - {url: "https://www.ntia.gov", outlet: "National Telecommunications and Information Administration", credibility: "primary"}
+    - {url: "https://www.nsf.gov/awardsearch/", outlet: "National Science Foundation awards", credibility: "primary"}
+  universities:
+    - {url: "https://news.utexas.edu", outlet: "UT Austin News", credibility: "primary"}
+    - {url: "https://today.tamu.edu", outlet: "Texas A&M Today", credibility: "primary"}
+    - {url: "https://news.rice.edu", outlet: "Rice News", credibility: "primary"}
+    - {url: "https://stories.uh.edu", outlet: "University of Houston", credibility: "primary"}
+    - {url: "https://www.ttu.edu/now/", outlet: "Texas Tech Now", credibility: "primary"}
+    - {url: "https://www.utep.edu/newsfeed/", outlet: "UTEP Newsfeed", credibility: "primary"}
+  independent_reporting:
+    - {url: "https://www.texastribune.org", outlet: "The Texas Tribune", credibility: "high"}
+    - {url: "https://www.kut.org", outlet: "KUT", credibility: "high"}
+    - {url: "https://www.keranews.org", outlet: "KERA", credibility: "high"}
+    - {url: "https://www.houstonpublicmedia.org", outlet: "Houston Public Media", credibility: "high"}
+    - {url: "https://sanantonioreport.org", outlet: "San Antonio Report", credibility: "high"}
+    - {url: "https://www.dallasnews.com", outlet: "The Dallas Morning News", credibility: "high"}
+    - {url: "https://www.houstonchronicle.com", outlet: "Houston Chronicle", credibility: "high"}
+    - {url: "https://www.statesman.com", outlet: "Austin American-Statesman", credibility: "high"}
+    - {url: "https://communityimpact.com", outlet: "Community Impact", credibility: "medium"}
+    - {url: "https://www.reuters.com", outlet: "Reuters", credibility: "high"}
+    - {url: "https://apnews.com", outlet: "Associated Press", credibility: "high"}
+    - {url: "https://www.utilitydive.com", outlet: "Utility Dive", credibility: "high"}
+    - {url: "https://www.datacenterdynamics.com", outlet: "Data Center Dynamics", credibility: "high"}
+    - {url: "https://www.govtech.com", outlet: "Government Technology", credibility: "high"}
+
+discovery:
+  enabled: true
+  rule: >
+    Credible sources outside this list are allowed. Record who controls the source, whether it is
+    independent, why it is credible, and the exact claim it supports.
+  geography: >
+    Search statewide. Distinguish ERCOT, SPP, WECC, and MISO territory. Include North Texas,
+    Central Texas, Houston and the Gulf Coast, San Antonio, West Texas, the Panhandle, East Texas,
+    the Rio Grande Valley, and rural regions when the mechanism actually reaches them.
+

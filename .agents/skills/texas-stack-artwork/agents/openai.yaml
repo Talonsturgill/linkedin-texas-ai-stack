@@ -1,0 +1,4 @@
+interface:
+  display_name: "Texas Stack Artwork"
+  short_description: "Create ImageGen-first mechanism cover art"
+  default_prompt: "Create and rigorously evaluate the original cover for this The Texas Stack run."

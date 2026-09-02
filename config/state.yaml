@@ -1,0 +1,20 @@
+brand_name: "Texas AI Docket"
+column_name: "The Texas Stack"
+kicker: "THE TEXAS STACK"
+motto: "how the machinery actually works"
+byline: ""
+timezone: "America/Chicago"
+news_window_days: 14
+broadening_window_days: 21
+mechanism_history_issues: 6
+branch_prefix: "codex/texas-stack"
+repository: "Talonsturgill/linkedin-texas-ai-stack"
+draft_subject: "Texas AI Docket — The Texas Stack Draft — {date}"
+no_target_subject: "Texas AI Docket — The Texas Stack — No Target — {date}"
+recipient_source: "gmail_profile"
+artifact_size: [1080, 1080]
+schedule:
+  cadence: "weekly"
+  day: "Friday"
+  local_time: "08:00"
+

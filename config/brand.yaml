@@ -1,0 +1,143 @@
+brand:
+  name: "Texas AI Docket"
+  wordmark: "TEXAS AI DOCKET"
+  column: "The Texas Stack"
+  canonical_url: "https://texasaidocket.com"
+  audience: >
+    Texans who make, finance, regulate, buy, power, cool, host, or live beside AI systems.
+    Readers include utility and co-op staff, agency and legislative staff, county and city
+    officials, operators, founders, capital allocators, researchers, journalists, landowners,
+    and program managers. They are busy and will notice a wrong grid, county, authority, date,
+    or controlling actor.
+  worldview: >
+    Texas first and AI first at the same time. Explain how a mechanism could help Texas win,
+    name what must be true for that upside to reach Texans, and identify where costs or authority
+    land. The column explains machinery before it assesses the result.
+  voice:
+    one_line: >
+      Analytical, specific, structural, plainspoken, fair, and plainly interested in Texas
+      doing well. Write like a legislative analyst who grew up here and read the filing.
+    posture: >
+      Mechanism anatomy plus an honest structural read. Name the layer chain, the actor at each
+      layer, the exact chokepoint, and the next observable decision. Do not hunt for flaws and do
+      not inflate. One mechanism, not a market survey.
+    do:
+      - "Lead with the named mechanism and the recent event that exposed it."
+      - "Define the mechanism in one plain sentence."
+      - "Name every controlling actor, document, place, date, and material consequence."
+      - "Say which Texas. ERCOT does not cover El Paso, the Panhandle, or all of East Texas."
+      - "Take an evidence-led position on what the machinery produces."
+      - "Give the reader one concrete next decision, deadline, filing, meeting, or disclosure."
+      - "End with a real question tied to the chokepoint."
+    dont:
+      - "No first person in published copy."
+      - "No candidate, party, campaign, or ballot-measure advocacy."
+      - "No recommendation of a preferred political outcome."
+      - "No prediction presented as a fact."
+      - "No performed Texas idiom or tourism imagery."
+      - "No general industry overview when one mechanism can be mapped."
+      - "Never invent a layer, actor, quote, number, date, document, or decision."
+
+platform:
+  surface: "LinkedIn"
+  body_words: [350, 475]
+  total_chars_max: 3000
+  hook_chars_max: 210
+  hashtag_count: 3
+  links_in_body: false
+  layer_bullets: [3, 5]
+  ends_with: "specific chokepoint question, then hashtag line"
+
+house_rules:
+  date_format: "Month first with ordinal and year, for example September 2nd, 2026."
+  punctuation:
+    forbidden: ["—", "–", "--", ":", ";"]
+    quotes: "straight quotes only"
+    emojis: false
+  first_person: false
+  numbers: "Every numeral in post copy must already appear in the verified dossier."
+  sources: "Every factual claim must trace to a fetched source."
+
+banned_openers:
+  - "in an era where"
+  - "imagine a world"
+  - "it's no secret that"
+  - "buckle up"
+  - "let's dive in"
+  - "picture this"
+  - "here are 3 takeaways"
+  - "thrilled to share"
+  - "humbled to announce"
+
+banned_phrases:
+  - "game-changer"
+  - "revolutionize"
+  - "disrupt"
+  - "synergy"
+  - "leverage"
+  - "deep dive"
+  - "unlock the future"
+  - "at the intersection of"
+  - "in today's"
+  - "moreover"
+  - "furthermore"
+  - "delve into"
+  - "navigate the complexities of"
+  - "thought leadership"
+  - "reimagine"
+  - "key learnings"
+  - "3 takeaways"
+  - "this isn't just"
+  - "the bottom line is"
+  - "ultimately"
+  - "in conclusion"
+  - "everything's bigger in Texas"
+  - "deep in the heart of"
+  - "don't mess with"
+  - "the Lone Star State"
+  - "wild west"
+
+hashtags:
+  whitelist:
+    - "#TexasAI"
+    - "#TexasDataCenters"
+    - "#TexasGrid"
+    - "#TexasWater"
+    - "#TexasInnovation"
+    - "#TexasStartups"
+    - "#TexasResearch"
+    - "#TexasWorkforce"
+    - "#TexasManufacturing"
+    - "#AIInfrastructure"
+    - "#ResponsibleAI"
+    - "#ERCOT"
+    - "#PUCT"
+    - "#TexasPolicy"
+    - "#FederalContracting"
+    - "#GovTech"
+
+visual:
+  wordmark: "TEXAS AI DOCKET"
+  kicker: "THE TEXAS STACK"
+  category_labels:
+    facilities: "FACILITIES"
+    vehicles: "VEHICLES"
+    capital_sovereignty: "CAPITAL + SOVEREIGNTY"
+    regulatory: "REGULATORY"
+  rule: >
+    The mechanism and its real Texas material world drive the art. No boots, hats, longhorns,
+    state-outline wallpaper, rodeo type, generic oil derricks, glowing brains, circuit faces,
+    handshakes, or decorative flag red.
+  furniture_palette:
+    night: "#08060F"
+    deep: "#0F0C1C"
+    limestone: "#EDE6D6"
+    dust: "#C9B393"
+    dusk_gold: "#E0956A"
+    bluebonnet: "#4E5FA8"
+    mesquite: "#6E7A5A"
+    flag_red_reserved: "#BF0A30"
+  type:
+    display: "Fraunces"
+    mono: "JetBrains Mono"
+
