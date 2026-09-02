@@ -390,6 +390,7 @@ def validate_dossier(dossier: dict, errors: list[str]) -> tuple[bool, dict]:
 
 
 def validate_score(path: Path, errors: list[str]) -> dict:
+    error_count_at_entry = len(errors)
     score = load_json(path, "score report", errors)
     if not score:
         return {}
@@ -445,7 +446,8 @@ def validate_score(path: Path, errors: list[str]) -> dict:
         errors.append("score report contains a failed hard check")
     if score.get("hard_failures"):
         errors.append("score report contains hard_failures")
-    shippable = weighted >= float(rubric["ship_threshold"]) and not errors
+    score_is_valid = len(errors) == error_count_at_entry
+    shippable = weighted >= float(rubric["ship_threshold"]) and score_is_valid
     if score.get("ship") is not shippable:
         errors.append("score ship flag does not match the validated score")
     return score
@@ -506,4 +508,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

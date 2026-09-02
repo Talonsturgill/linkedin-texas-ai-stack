@@ -278,6 +278,38 @@ class DossierTests(unittest.TestCase):
         self.assertTrue(any("primary_source" in item for item in errors))
 
 
+class ScoreTests(unittest.TestCase):
+    def test_score_ship_flag_is_independent_of_prior_package_errors(self) -> None:
+        rubric = yaml.safe_load(
+            (ROOT / "config/rubric.yaml").read_text(encoding="utf-8")
+        )["rubric"]
+        criteria = [
+            {
+                "name": row["name"],
+                "weight": row["weight"],
+                "score": 9.0,
+            }
+            for row in rubric["criteria"]
+        ]
+        report = {
+            "criteria": criteria,
+            "weighted_total": 9.0,
+            "threshold": rubric["ship_threshold"],
+            "hard_fail_checks": [
+                {"name": row["name"], "passed": True}
+                for row in rubric["hard_fail_checks"]
+            ],
+            "hard_failures": [],
+            "ship": True,
+        }
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "score_report.json"
+            path.write_text(json.dumps(report), encoding="utf-8")
+            errors = ["an unrelated dossier error"]
+            validate_run.validate_score(path, errors)
+        self.assertEqual(errors, ["an unrelated dossier error"])
+
+
 class HistoryTests(unittest.TestCase):
     def test_history_builds_mechanism_and_art_cooldowns(self) -> None:
         records = [
@@ -348,4 +380,3 @@ class EmailTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
