@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "threshold": 8.0,
+  "weighted_total": 8.858,
+  "ship": true,
+  "hard_failures": [],
+  "hard_fail_checks": [
+    {
+      "name": "seven_point_gate",
+      "passed": true,
+      "notes": "All eight dossier gates are explicitly true, including political neutrality."
+    },
+    {
+      "name": "mechanism_and_trigger",
+      "passed": true,
+      "notes": "The first two lines name the cooperative agreement and the Center announced by NSF."
+    },
+    {
+      "name": "layer_fidelity",
+      "passed": true,
+      "notes": "Five bullets match the five sourced dossier layers and their controlling actors."
+    },
+    {
+      "name": "specific_chokepoint",
+      "passed": true,
+      "notes": "The continuation layer, principal investigator, annual report, and delayed increment processing are explicit."
+    },
+    {
+      "name": "fact_trace",
+      "passed": true,
+      "notes": "Every numeral and factual mechanism claim appears in the dossier and cited primary record."
+    },
+    {
+      "name": "political_neutrality",
+      "passed": true,
+      "notes": "The post covers a federal research funding instrument and contains no electoral or policy advocacy."
+    },
+    {
+      "name": "linkedin_constraints",
+      "passed": true,
+      "notes": "The deterministic gate reports 380 body words, 2,561 total characters, and three approved hashtags."
+    },
+    {
+      "name": "house_style",
+      "passed": true,
+      "notes": "The deterministic gate found no prohibited punctuation, link, emoji, first person, or banned phrase."
+    }
+  ],
+  "criteria": [
+    {
+      "name": "Hook strength",
+      "weight": 0.1,
+      "score": 9.0,
+      "notes": "The opening names both the Center announcement and the cooperative agreement in 167 characters."
+    },
+    {
+      "name": "Mechanism significance for Texas",
+      "weight": 0.18,
+      "score": 9.0,
+      "notes": "The vehicle determines how a UT Austin-led national AI research center receives and controls federal support."
+    },
+    {
+      "name": "Layer fidelity",
+      "weight": 0.14,
+      "score": 9.0,
+      "notes": "The post preserves the selection, award, lead institution, operations, and continuation chain."
+    },
+    {
+      "name": "Chokepoint clarity",
+      "weight": 0.13,
+      "score": 8.5,
+      "notes": "The annual report is a clear necessary input whose absence delays future increment processing."
+    },
+    {
+      "name": "Structural read",
+      "weight": 0.12,
+      "score": 8.7,
+      "notes": "The post distinguishes the announced total from staged obligations and explains the split between UT control and NSF oversight."
+    },
+    {
+      "name": "Forward implication",
+      "weight": 0.08,
+      "score": 8.5,
+      "notes": "The next award obligation and first annual indicators are concrete review points."
+    },
+    {
+      "name": "Primary-source quality",
+      "weight": 0.1,
+      "score": 9.3,
+      "notes": "The layer chain relies on the NSF solicitation, official award API, NSF announcement, and UT institutional record."
+    },
+    {
+      "name": "Texas AI Docket voice",
+      "weight": 0.08,
+      "score": 8.8,
+      "notes": "The prose is specific, structural, plainspoken, and focused on what Texas can measure."
+    },
+    {
+      "name": "LinkedIn readability",
+      "weight": 0.04,
+      "score": 9.0,
+      "notes": "Short paragraphs and one compact five-layer block stay within both platform limits."
+    },
+    {
+      "name": "Chokepoint question",
+      "weight": 0.03,
+      "score": 8.5,
+      "notes": "The closing question asks what should be visible before the next funding increment is processed."
+    }
+  ]
+}
+

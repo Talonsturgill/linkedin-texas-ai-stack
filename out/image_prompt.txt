@@ -1,0 +1,13 @@
+Use case: stylized-concept
+Asset type: square LinkedIn editorial cover background
+Primary request: Create an original museum-quality editorial illustration of a five-year research funding mechanism delivered one reviewed annual increment at a time.
+Scene/backdrop: A dark indigo exhibition space with a precise physical systems model built from translucent resin, limestone paper, and brushed brass. The material world should feel connected to a serious Austin research institution without depicting a real campus or seal.
+Subject: Five thick translucent resin wafers form an exploded vertical stack. The lowest wafer is warmly illuminated as the funded first year. Four higher wafers remain cool and dim. Between the first and second wafer, one small amber inspection aperture holds a blank folded report folio and visibly controls the path upward. Two restrained brass guide rails make the dependency physical.
+Style/medium: Translucent resin cross-section photographed as a handcrafted museum model, with editorial art direction, subtle optical caustics, tactile imperfections, and the clarity of an architectural exhibit.
+Composition/framing: One dominant vertical apparatus centered between x 230 and x 850. Put the amber report aperture near the visual center. Keep the top 18 percent calm and dark for later publication furniture. Keep the lower 30 percent calm and dark for a large headline. Full bleed one-to-one square.
+Lighting/mood: Controlled museum lighting, precise, consequential, quietly optimistic, no theatrical danger.
+Color palette: near-black plum #08060F, indigo #17132B, bluebonnet glass #4E5FA8, limestone #EDE6D6, dust brass #C9B393, restrained amber #E0956A.
+Materials/textures: Thick translucent cast resin with tiny bubbles and polished edges, brushed brass with subtle wear, blank fibrous limestone paper, matte painted plinth, soft glass reflections.
+Constraints: 1:1 square, no words, no letters, no numbers, no logos, no seals, no watermarks, no people, no portrait, no interface, no charts, no maps, no institutional insignia. The report folio must be completely blank. Show exactly five main wafers.
+Avoid: server rack literalism, glowing brains, circuit-board faces, robots, handshakes, corporate stock imagery, cyberpunk neon, boots, cowboy hats, longhorns, state outlines, flag washes, decorative oil derricks, rodeo type, fake documents, fake labels, random symbols, and decorative red urgency.
+
