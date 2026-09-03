@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "date": "SEPTEMBER 2ND, 2026",
+  "column": "The Texas Stack",
+  "kicker": "THE TEXAS STACK",
+  "category": "VEHICLES",
+  "headline": "FIVE YEARS. ONE ANNUAL GATE.",
+  "place": "AUSTIN",
+  "style_family": "translucent resin cross-section",
+  "palette": [
+    "#08060F",
+    "#17132B",
+    "#4E5FA8",
+    "#EDE6D6",
+    "#C9B393",
+    "#E0956A"
+  ],
+  "hue_family": "indigo-gold",
+  "composition": "exploded_vertical",
+  "motifs": [
+    "five suspended funding wafers",
+    "blank annual report folio",
+    "single amber review aperture",
+    "brass dependency rails"
+  ],
+  "technique_stack": [
+    "built-in imagegen",
+    "deterministic typography overlay"
+  ],
+  "source": "imagegen",
+  "seed": "imagegen-managed",
+  "base_sha256": "590bf66d4164bbe27b252f0faed54d93905338287f21e955f0072f2ed1437cf2",
+  "prompt_sha256": "9c6b6d70f198b766483b6e3b337c9e3a1664cb3535bfb8553157623954fc6396",
+  "plan_sha256": "0612ac94f4d42013be04b1318a8ba902c610af41fb0da0a65aeee13a452ea7ae",
+  "eval_sha256": "54fd04ef6e67f022ed4a6dab8c3b35ada1166c97af2e42b103c0c2bb2a4c5e1f",
+  "eval_history": [
+    {
+      "pass": 1,
+      "weighted": 9.054,
+      "scores": {
+        "concept": 9.3,
+        "focal_hierarchy": 9.2,
+        "composition": 8.8,
+        "color_value": 9.0,
+        "detail_richness": 8.9,
+        "craft_finish": 9.0,
+        "typography": 9.0,
+        "originality": 9.0,
+        "story_fidelity": 9.3
+      },
+      "weakest": "composition",
+      "observation": "The finished cover cleanly shows five physical layers, one funded gold layer, four dim future layers, and a blank report held in the only warm aperture. The two-line headline remains legible at thumbnail size without hiding the annual gate. No stray text, logos, people, false geography, or malformed focal objects are visible.",
+      "targeted_fix": "No further image pass needed. The deterministic furniture resolved the only pre-composition concern."
+    }
+  ],
+  "eval_final": {
+    "weighted": 9.054,
+    "scores": {
+      "concept": 9.3,
+      "focal_hierarchy": 9.2,
+      "composition": 8.8,
+      "color_value": 9.0,
+      "detail_richness": 8.9,
+      "craft_finish": 9.0,
+      "typography": 9.0,
+      "originality": 9.0,
+      "story_fidelity": 9.3
+    },
+    "passed": true
+  },
+  "shortfall_note": "",
+  "fallback_reason": "",
+  "rendered_at_utc": "2026-09-02T23:58:46.148746+00:00",
+  "canvas": [
+    1080,
+    1080
+  ]
+}
