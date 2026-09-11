@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-09-11",
+  "window_days": 14,
+  "no_target_this_cycle": false,
+  "selected_mechanism": {
+    "name": "Batch Zero Verification RFI process",
+    "category": "regulatory",
+    "category_label": "REGULATORY",
+    "definition": "The Batch Zero Verification RFI process is ERCOT's staged evidence review for conditionally classified Large Loads before it provides final Batch Zero eligibility.",
+    "texas_scope": "Large Loads seeking to interconnect in the ERCOT region of Texas through the transitional Batch Zero process.",
+    "news_trigger": {
+      "date": "2026-09-09",
+      "verbatim_span": "In accordance with this directive, ERCOT has begun issuing Batch Zero Verification Requests for Information (RFIs) to a majority of Interconnecting Large Load Entities (ILLEs) with a Large Load that has been conditionally included in Batch Zero.",
+      "post_anchor": "ERCOT began issuing Batch Zero Verification Requests for Information on September 9, 2026",
+      "source": {
+        "url": "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01",
+        "title": "M-A090926-01 Issuance of Batch Zero Verification Requests for Information",
+        "publisher": "Electric Reliability Council of Texas",
+        "source_type": "primary",
+        "published_at": "2026-09-09",
+        "fetched_at_utc": "2026-09-11T13:06:51Z"
+      }
+    },
+    "layers": [
+      {
+        "order": 1,
+        "name": "Pause authority layer",
+        "function": "Suspends the ordinary Batch Zero timetable so verification and audit can finish before the interconnection study continues.",
+        "controlling_actor": "Public Utility Commission of Texas",
+        "actor_authority": "The commission's August 20 order grants ERCOT good cause exceptions from Batch Zero deadlines and permits the verification and audit to precede continuation of the study.",
+        "post_phrase": "PUCT good cause order",
+        "primary_source": {
+          "url": "https://interchange.puc.texas.gov/Documents/59142_53_1675960.PDF",
+          "title": "Project No. 59142 Order Granting Good Cause Exceptions",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-11T13:06:51Z"
+        }
+      },
+      {
+        "order": 2,
+        "name": "Conditional classification layer",
+        "function": "Assigns each submitted Large Load a provisional status and identifies conditions it must satisfy before final inclusion.",
+        "controlling_actor": "Electric Reliability Council of Texas",
+        "actor_authority": "ERCOT administers the Batch Zero classification process under Planning Guide Section 9 and issued provisional classifications to transmission and distribution service providers.",
+        "post_phrase": "ERCOT provisional classification",
+        "primary_source": {
+          "url": "https://www.ercot.com/services/comm/mkt_notices/M-A080326-04",
+          "title": "M-A080326-04 Batch Zero Conditional Classification issued to Transmission and/or Distribution Service Providers",
+          "publisher": "Electric Reliability Council of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-11T13:06:51Z"
+        }
+      },
+      {
+        "order": 3,
+        "name": "Evidence and attestation layer",
+        "function": "Routes party-specific questions, supporting documents, exhibit lists, and notarized attestations through ERCOT's RIOO portal.",
+        "controlling_actor": "Interconnecting Transmission Service Provider",
+        "actor_authority": "ERCOT directs the interconnecting transmission provider to designate contacts and coordinate complete responses from the load entity and any distribution provider.",
+        "post_phrase": "Interconnecting TSP contact designation",
+        "primary_source": {
+          "url": "https://www.ercot.com/services/rq/large-load-integration",
+          "title": "Large Load Integration, Batch Zero Verification",
+          "publisher": "Electric Reliability Council of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-11T13:06:51Z"
+        }
+      },
+      {
+        "order": 4,
+        "name": "Eligibility determination layer",
+        "function": "Reviews the complete response, may request clarification, and determines whether the Large Load remains eligible for Batch Zero.",
+        "controlling_actor": "Electric Reliability Council of Texas",
+        "actor_authority": "ERCOT notifies the interconnecting transmission provider when it determines eligibility and excludes a load that does not timely provide a complete response or otherwise satisfy verification.",
+        "post_phrase": "ERCOT eligibility determination",
+        "primary_source": {
+          "url": "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01",
+          "title": "M-A090926-01 Issuance of Batch Zero Verification Requests for Information",
+          "publisher": "Electric Reliability Council of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-11T13:06:51Z"
+        }
+      }
+    ],
+    "chokepoint": {
+      "layer_order": 4,
+      "layer_name": "Eligibility determination layer",
+      "controlling_actor": "Electric Reliability Council of Texas",
+      "post_actor_phrase": "ERCOT",
+      "binary_decision": "Determine that a conditionally classified Large Load is eligible for inclusion in Batch Zero, or exclude it from the Batch Zero interconnection process.",
+      "post_decision_phrase": "determine eligibility for inclusion in Batch Zero",
+      "why_asymmetric": "The transmission provider, load entity, and any distribution provider assemble the record, but only ERCOT makes the eligibility determination that keeps the load in or excludes it from Batch Zero.",
+      "primary_source_url": "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01"
+    },
+    "texas_consequence": "A conditionally classified Large Load in the ERCOT region that fails the verification gate is excluded from Batch Zero and cannot rely on that transitional study path to advance its interconnection.",
+    "structural_read": "The process separates distributed evidence assembly from centralized gatekeeping. Several project-side actors must produce the record, while ERCOT alone controls the eligibility outcome. That makes response completeness and timing part of interconnection readiness rather than administrative cleanup after the study begins.",
+    "forward_implication": "The next useful accountability signal is whether ERCOT's September 15 Batch Zero update describes RFI issuance, completed responses, or eligibility outcomes, followed by the separate Market Notice promised for the community-impact RFI.",
+    "next_check": {
+      "what": "Batch Zero Update on the ERCOT Board agenda",
+      "actor": "ERCOT Board of Directors and ERCOT staff",
+      "date_or_window": "September 15, 2026"
+    },
+    "public_policy_context": {
+      "is_public_policy": true,
+      "editorial_mode": "neutral_accountability",
+      "assessment": "not_applicable"
+    },
+    "sources": [
+      {
+        "url": "https://interchange.puc.texas.gov/Documents/59142_53_1675960.PDF",
+        "title": "Project No. 59142 Order Granting Good Cause Exceptions",
+        "publisher": "Public Utility Commission of Texas",
+        "source_type": "primary",
+        "independent_of_subject": true,
+        "claims_supported": [
+          "PUCT granted ERCOT good cause exceptions so verification and audit could finish before Batch Zero continued."
+        ],
+        "fetched_at_utc": "2026-09-11T13:06:51Z"
+      },
+      {
+        "url": "https://www.ercot.com/services/comm/mkt_notices/M-A080326-04",
+        "title": "M-A080326-04 Batch Zero Conditional Classification issued to Transmission and/or Distribution Service Providers",
+        "publisher": "Electric Reliability Council of Texas",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "ERCOT issued provisional classifications on September 3, 2026.",
+          "Failure to satisfy a condition may disqualify a Large Load from Batch Zero."
+        ],
+        "fetched_at_utc": "2026-09-11T13:06:51Z"
+      },
+      {
+        "url": "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01",
+        "title": "M-A090926-01 Issuance of Batch Zero Verification Requests for Information",
+        "publisher": "Electric Reliability Council of Texas",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "ERCOT began issuing verification RFIs on September 9, 2026.",
+          "Complete responses and notarized attestations are due within 10 Business Days.",
+          "An ILLE may request an extension of no more than 5 Business Days.",
+          "ERCOT determines eligibility and excludes loads that fail the verification requirements.",
+          "ERCOT will announce a separate community-impact RFI by Market Notice."
+        ],
+        "fetched_at_utc": "2026-09-11T13:06:51Z"
+      },
+      {
+        "url": "https://www.ercot.com/services/rq/large-load-integration",
+        "title": "Large Load Integration, Batch Zero Verification",
+        "publisher": "Electric Reliability Council of Texas",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "The verification process is required before ERCOT provides final classifications.",
+          "The designated parties must submit sworn attestations and exhibit lists through the online RFI portal."
+        ],
+        "fetched_at_utc": "2026-09-11T13:06:51Z"
+      },
+      {
+        "url": "https://www.ercot.com/calendar/09142026-Board-of-Directors-Meeting",
+        "title": "ERCOT Board of Directors Meeting, September 14 and 15, 2026",
+        "publisher": "Electric Reliability Council of Texas",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "The September 15, 2026 board agenda includes a Batch Zero Update."
+        ],
+        "fetched_at_utc": "2026-09-11T13:06:51Z"
+      }
+    ],
+    "verbatim_quotes": []
+  },
+  "required_post_phrases": [
+    "Batch Zero Verification RFI process",
+    "ERCOT began issuing Batch Zero Verification Requests for Information on September 9, 2026",
+    "PUCT good cause order",
+    "ERCOT provisional classification",
+    "Interconnecting TSP contact designation",
+    "ERCOT eligibility determination",
+    "ERCOT",
+    "determine eligibility for inclusion in Batch Zero"
+  ],
+  "verified_facts": [
+    {
+      "claim": "PUCT granted a good cause exception that allows ERCOT to complete the verification and audit before continuing Batch Zero.",
+      "source_urls": [
+        "https://interchange.puc.texas.gov/Documents/59142_53_1675960.PDF"
+      ]
+    },
+    {
+      "claim": "ERCOT issued provisional classifications to interconnecting transmission and distribution providers on September 3, 2026, and identified conditions that may disqualify a load.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-A080326-04"
+      ]
+    },
+    {
+      "claim": "ERCOT began issuing Batch Zero verification RFIs on September 9, 2026.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01"
+      ]
+    },
+    {
+      "claim": "The interconnecting TSP receives the RFI, designates contacts, and coordinates responses from the ILLE and any interconnecting DSP through RIOO.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01"
+      ]
+    },
+    {
+      "claim": "Complete responses, supporting documents, and notarized attestations are due within 10 Business Days, with an ILLE extension request limited to 5 Business Days.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01",
+        "https://www.ercot.com/services/rq/large-load-integration"
+      ]
+    },
+    {
+      "claim": "ERCOT may request clarification and determines whether a Large Load is eligible for Batch Zero; failure to provide a timely complete response or satisfy verification results in exclusion.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01"
+      ]
+    },
+    {
+      "claim": "ERCOT says it will announce a separate RFI for state and community impacts by Market Notice.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01"
+      ]
+    },
+    {
+      "claim": "The ERCOT Board agenda schedules a Batch Zero Update for September 15, 2026.",
+      "source_urls": [
+        "https://www.ercot.com/calendar/09142026-Board-of-Directors-Meeting"
+      ]
+    }
+  ],
+  "gate_results": {
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": true,
+    "chokepoint_asymmetry": true,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
+    "political_neutrality": true
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "SB 6 Large Load curtailment operations framework",
+      "category": "regulatory",
+      "news_trigger": "ERCOT announced a September 2, 2026 workshop notice for proposed deployment mechanics, registration, and draft revision requests.",
+      "drop_reason": "The implementing revision requests and key design choices are not yet filed, so the current record does not support a final layer chain or exact binary chokepoint.",
+      "sources": [
+        {
+          "url": "https://www.ercot.com/services/comm/mkt_notices/M-A090226-01",
+          "title": "M-A090226-01 Workshop to share proposed operational framework for implementing SB6-related Large Load curtailments",
+          "publisher": "Electric Reliability Council of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-11T13:06:51Z"
+        }
+      ]
+    },
+    {
+      "name": "Rockdale fee-simple powered-land acquisition",
+      "category": "capital_sovereignty",
+      "news_trigger": "Bitdeer disclosed a September 1, 2026 acquisition of 200 acres near its Rockdale facility.",
+      "drop_reason": "The land purchase is complete, while the claimed future power allocation and AI infrastructure path remains forward-looking and does not identify a current binary controlling decision.",
+      "sources": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1899123/000121390026096425/ea030402101ex99-1.htm",
+          "title": "Bitdeer Announces Acquisition of 200 Acres Near Rockdale Facility in Milam County, Texas",
+          "publisher": "U.S. Securities and Exchange Commission EDGAR",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-11T13:06:51Z"
+        }
+      ]
+    },
+    {
+      "name": "Texas Space Commission grant supporting Rice CSTx",
+      "category": "vehicles",
+      "news_trigger": "Rice University announced the grant-supported Center for Space Technologies on September 9, 2026.",
+      "drop_reason": "Selecting another public research grant vehicle would repeat the same mechanism family mapped in the September 2 issue, despite the different recipient and program.",
+      "sources": [
+        {
+          "url": "https://news.rice.edu/news/2026/rices-new-center-space-technologies-aims-accelerate-texas-space-innovation",
+          "title": "Rice's new Center for Space Technologies aims to accelerate Texas space innovation",
+          "publisher": "Rice University",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-11T13:06:51Z"
+        }
+      ]
+    },
+    {
+      "name": "UT Austin enterprise AI access partnerships",
+      "category": "vehicles",
+      "news_trigger": "UT Austin announced campus access to Claude EDU and ChatGPT EDU on September 9, 2026.",
+      "drop_reason": "The announcement does not disclose the contracting authority, procurement terms, or enforceable data-governance controls needed to verify three connected mechanism layers.",
+      "sources": [
+        {
+          "url": "https://tech.utexas.edu/news/advancing-ai-ut-austin",
+          "title": "Advancing AI at UT Austin",
+          "publisher": "The University of Texas at Austin Enterprise Technology",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-11T13:06:51Z"
+        }
+      ]
+    }
+  ]
+}
