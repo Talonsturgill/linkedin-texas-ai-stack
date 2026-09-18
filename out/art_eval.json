@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "source": "imagegen",
+  "concepts": [
+    {
+      "name": "Registration frame",
+      "metaphor": "Physical equipment and a line model meet in one inspection frame"
+    },
+    {
+      "name": "Twin impressions",
+      "metaphor": "Two embossed forms approach registration"
+    },
+    {
+      "name": "Unclosed lens",
+      "metaphor": "An inspection lens brings evidence into a common plane"
+    }
+  ],
+  "selected_concept": "Registration frame",
+  "style_family": "screenprinted technical plate",
+  "hue_family": "petrol-mint-chalk",
+  "palette": [
+    "#082C34",
+    "#21606A",
+    "#B6E4CD",
+    "#F0EFDE"
+  ],
+  "composition": "frame_within_frame",
+  "motifs": [
+    "paired machine-and-model registration frame",
+    "engraved computing-and-cooling assembly",
+    "mint wireframe counterpart"
+  ],
+  "eval_history": [
+    {
+      "pass_number": 1,
+      "scores": {
+        "concept": 9.1,
+        "focal_hierarchy": 8.2,
+        "composition": 8.1,
+        "color_value": 9.1,
+        "detail_richness": 9.2,
+        "craft_finish": 8.9,
+        "typography": 8.5,
+        "originality": 8.7,
+        "story_fidelity": 9.0
+      },
+      "weighted": 8.755,
+      "passed": true,
+      "inspection_status": "inspected base and composed cover at full size and 300 pixels",
+      "observations": [
+        "Two coherent equipment representations read as physical and modeled, with detailed fans, panels and pipes.",
+        "Dark petrol field and mint/chalk contrast are controlled; no words or logos visible.",
+        "Thin central outline is weaker than the equipment and the pair nearly fills the frame width.",
+        "Publication type is readable at 300 pixels, but the first headline line overlays the base plinth and frame bottom. This is the specific composition defect to repair."
+      ],
+      "correction": "Uniformly scale the complete paired apparatus and inspection frame down and move it upward to clear the lower typography band. Preserve all other content and invariants.",
+      "edit_prompt_for_next_pass": "Edit this exact artwork with one composition change only. Preserve its screenprinted engraved medium, petrol-mint-chalk palette, paired equipment-and-line-model concept, matching mechanical detail and thin comparison frame. Uniformly reduce the entire apparatus including its frame to about 82 percent of its current size and move it upward, keeping the whole group centered horizontally. On the 1080-normalized square, the complete group must fit within x100 to x980 and y245 to y615, leaving a clean dark textured gap below until the lower headline band. Keep the top 18 percent and lower 30 percent empty of subject, with only the same petrol grain. No new objects. No words, letters, numbers, labels, logos, seals, watermarks, maps, people, approval signs or status lights. One-to-one square. Do not add typography.",
+      "base_sha256": "d845ec4228a5f96ad27315950303245bc969840e184c449bf4901eafbb468880"
+    },
+    {
+      "pass_number": 2,
+      "scores": {
+        "concept": 9.1,
+        "focal_hierarchy": 8.8,
+        "composition": 9.3,
+        "color_value": 9.1,
+        "detail_richness": 9.1,
+        "craft_finish": 9.0,
+        "typography": 9.3,
+        "originality": 8.7,
+        "story_fidelity": 9.0
+      },
+      "weighted": 9.059,
+      "passed": true,
+      "inspection_status": "inspected base and composed cover at full size and 300 pixels",
+      "observations": [
+        "The paired equipment and model retain coherent fan, cabinet and pipe correspondence.",
+        "Group is smaller and higher, giving the inspection frame clean outer margins and separating the plinth from the headline region.",
+        "No generated text, labels, seals, logos, map, energization status or real-site claim.",
+        "At 1080 pixels the apparatus is fully separate from all three headline lines, and the masthead and footer have clear margins.",
+        "At 300 pixels the solid machine versus pale line model remains readable; exact headline and wordmark are legible, while fine type is appropriately secondary.",
+        "No text clipping or malformed major hardware is visible. The inspection outline is deliberately quiet and remains the weakest, but acceptable, focal element."
+      ],
+      "correction": "Selected pass two. Layout collision is resolved. No further material improvement identified without changing the selected concept.",
+      "base_sha256": "e7c4bbe47280245c357bff3984214401b8139a554c7dc87bf4bf473face96282"
+    }
+  ],
+  "eval_final": {
+    "pass_number": 2,
+    "scores": {
+      "concept": 9.1,
+      "focal_hierarchy": 8.8,
+      "composition": 9.3,
+      "color_value": 9.1,
+      "detail_richness": 9.1,
+      "craft_finish": 9.0,
+      "typography": 9.3,
+      "originality": 8.7,
+      "story_fidelity": 9.0
+    },
+    "weighted": 9.059,
+    "passed": true,
+    "inspection_status": "inspected base and composed cover at full size and 300 pixels",
+    "observations": [
+      "The paired equipment and model retain coherent fan, cabinet and pipe correspondence.",
+      "Group is smaller and higher, giving the inspection frame clean outer margins and separating the plinth from the headline region.",
+      "No generated text, labels, seals, logos, map, energization status or real-site claim.",
+      "At 1080 pixels the apparatus is fully separate from all three headline lines, and the masthead and footer have clear margins.",
+      "At 300 pixels the solid machine versus pale line model remains readable; exact headline and wordmark are legible, while fine type is appropriately secondary.",
+      "No text clipping or malformed major hardware is visible. The inspection outline is deliberately quiet and remains the weakest, but acceptable, focal element."
+    ],
+    "correction": "Selected pass two. Layout collision is resolved. No further material improvement identified without changing the selected concept.",
+    "base_sha256": "e7c4bbe47280245c357bff3984214401b8139a554c7dc87bf4bf473face96282"
+  },
+  "deduplication_checks": {
+    "style_family": true,
+    "hue_family": true,
+    "composition": true,
+    "primary_motif": true
+  }
+}

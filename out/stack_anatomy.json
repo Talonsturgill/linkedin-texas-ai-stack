@@ -1,0 +1,425 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-09-18",
+  "window_days": 14,
+  "no_target_this_cycle": false,
+  "selected_mechanism": {
+    "name": "PGRR144 as-built model review",
+    "category": "regulatory",
+    "category_label": "REGULATORY",
+    "definition": "A proposed check comparing a large computational load facility as built with the electrical model used in stability studies before initial energization.",
+    "texas_scope": "Large computational load facilities in the ERCOT region, including AI computing facilities; no county or specific project is implied.",
+    "news_trigger": {
+      "date": "2026-09-15",
+      "verbatim_span": "On 9/15/26, the ERCOT Board voted unanimously to recommend approval of PGRR144 as recommended by TAC in the 8/26/26 TAC Report.",
+      "post_anchor": "The ERCOT Board recommended approval on September 15th, 2026.",
+      "source": {
+        "url": "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx",
+        "title": "PGRR144 Board Report, September 15, 2026",
+        "publisher": "ERCOT",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-09-18T17:03:55.468242+00:00",
+        "independent_of_subject": false,
+        "published_at": "2026-09-15",
+        "fetch_evidence": {
+          "http_status": 200,
+          "sha256": "a98a432cacdeccffcffcd890c6b05654d6436ca5e1d07a35a7a7ddadaf3ea92b",
+          "bytes": 62543,
+          "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+        }
+      }
+    },
+    "layers": [
+      {
+        "order": 1,
+        "name": "Rule activation",
+        "function": "The revision would take effect on the first of the month after PUCT approval. It remains pending.",
+        "controlling_actor": "Public Utility Commission of Texas",
+        "actor_authority": "Board report proposed effective date, subject to PUCT approval",
+        "post_phrase": "PUCT",
+        "primary_source": {
+          "url": "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx",
+          "title": "PGRR144 Board Report, September 15, 2026",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-18T17:03:55.468242+00:00",
+          "independent_of_subject": false,
+          "published_at": "2026-09-15",
+          "fetch_evidence": {
+            "http_status": 200,
+            "sha256": "a98a432cacdeccffcffcd890c6b05654d6436ca5e1d07a35a7a7ddadaf3ea92b",
+            "bytes": 62543,
+            "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+          }
+        }
+      },
+      {
+        "order": 2,
+        "name": "Dynamic model evidence",
+        "function": "Models and supporting tests represent the whole facility including cooling, computing equipment, protection and controls; LCL converter models are benchmarked against hardware tests. Facility owners update models when design or field information changes.",
+        "controlling_actor": "Large Load facility owner",
+        "actor_authority": "Proposed Planning Guide Section 6.2(6)-(8)",
+        "post_phrase": "The facility owner",
+        "primary_source": {
+          "url": "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx",
+          "title": "PGRR144 Board Report, September 15, 2026",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-18T17:03:55.468242+00:00",
+          "independent_of_subject": false,
+          "published_at": "2026-09-15",
+          "fetch_evidence": {
+            "http_status": 200,
+            "sha256": "a98a432cacdeccffcffcd890c6b05654d6436ca5e1d07a35a7a7ddadaf3ea92b",
+            "bytes": 62543,
+            "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+          }
+        }
+      },
+      {
+        "order": 3,
+        "name": "As-built submission",
+        "function": "Before initial energization, the LCL entity submits as-built and prior study models, difference documentation, overlaid test results, simulation files and field-setting attestation to ERCOT and the interconnecting TSP.",
+        "controlling_actor": "Interconnecting Large Load Entity",
+        "actor_authority": "Proposed Planning Guide Section 9.6(1)(f), read with the Board Report revision description",
+        "post_phrase": "The interconnecting load entity",
+        "primary_source": {
+          "url": "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx",
+          "title": "PGRR144 Board Report, September 15, 2026",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-18T17:03:55.468242+00:00",
+          "independent_of_subject": false,
+          "published_at": "2026-09-15",
+          "fetch_evidence": {
+            "http_status": 200,
+            "sha256": "a98a432cacdeccffcffcd890c6b05654d6436ca5e1d07a35a7a7ddadaf3ea92b",
+            "bytes": 62543,
+            "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+          }
+        }
+      },
+      {
+        "order": 4,
+        "name": "As-built review",
+        "function": "ERCOT with the TSP checks effects on the previous stability study and responds with approval or a request for additional information within ten Business Days, extendable by twenty Business Days.",
+        "controlling_actor": "ERCOT",
+        "actor_authority": "Proposed Planning Guide Section 9.6(1)(f)",
+        "post_phrase": "ERCOT",
+        "primary_source": {
+          "url": "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx",
+          "title": "PGRR144 Board Report, September 15, 2026",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-18T17:03:55.468242+00:00",
+          "independent_of_subject": false,
+          "published_at": "2026-09-15",
+          "fetch_evidence": {
+            "http_status": 200,
+            "sha256": "a98a432cacdeccffcffcd890c6b05654d6436ca5e1d07a35a7a7ddadaf3ea92b",
+            "bytes": 62543,
+            "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+          }
+        }
+      }
+    ],
+    "chokepoint": {
+      "layer_order": 4,
+      "layer_name": "As-built review",
+      "controlling_actor": "ERCOT",
+      "post_actor_phrase": "ERCOT",
+      "binary_decision": "Approve the as-built submission or request additional information; the latter leaves the model review unresolved. This is a document-review gate, not all-condition energization approval.",
+      "post_decision_phrase": "approve the submission or request more information",
+      "why_asymmetric": "The applicant supplies evidence and the TSP participates, but proposed Section 9.6(1)(f) assigns the approval-or-information response to ERCOT.",
+      "primary_source_url": "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+    },
+    "texas_consequence": "An ERCOT-region AI computing site would need to reconcile its installed-equipment model and field settings with the prior study data before energization. No pending revision is described as currently effective.",
+    "structural_read": "The proposed review makes the study-to-hardware comparison explicit, at the cost of modeling and review work. ERCOT reliability rationale and TIEC scope objections are attributed separately; no preferred policy result is urged.",
+    "forward_implication": "Check PUCT action and effective date first, then as-built review outcome if adopted; avoid treating an attestation or isolated model approval as full permission to energize.",
+    "next_check": {
+      "what": "PUCT decision on PGRR144 and effective-date language",
+      "actor": "Public Utility Commission of Texas",
+      "date_or_window": "Pending as fetched September 18, 2026; no PUCT vote date established in fetched sources."
+    },
+    "public_policy_context": {
+      "is_public_policy": true,
+      "editorial_mode": "neutral_accountability",
+      "assessment": "not_applicable"
+    },
+    "sources": [
+      {
+        "url": "https://www.ercot.com/mktrules/issues/PGRR144",
+        "title": "PGRR144 status and decision history",
+        "publisher": "ERCOT",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-09-18T17:03:55.168793+00:00",
+        "independent_of_subject": false,
+        "fetch_evidence": {
+          "http_status": 200,
+          "sha256": "220121642298b0975b35fd7d43491c2291a9ecd44a0e67340afc62c99157bb0a",
+          "bytes": 76649,
+          "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+        }
+      },
+      {
+        "url": "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx",
+        "title": "PGRR144 Board Report, September 15, 2026",
+        "publisher": "ERCOT",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-09-18T17:03:55.468242+00:00",
+        "independent_of_subject": false,
+        "published_at": "2026-09-15",
+        "fetch_evidence": {
+          "http_status": 200,
+          "sha256": "a98a432cacdeccffcffcd890c6b05654d6436ca5e1d07a35a7a7ddadaf3ea92b",
+          "bytes": 62543,
+          "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+        }
+      },
+      {
+        "url": "https://www.ercot.com/files/docs/2026/07/22/144PGRR-14-Revised-Impact-Analysis-072226.docx",
+        "title": "PGRR144 Revised Impact Analysis, July 22, 2026",
+        "publisher": "ERCOT",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-09-18T17:03:55.725696+00:00",
+        "independent_of_subject": false,
+        "published_at": "2026-07-22",
+        "fetch_evidence": {
+          "http_status": 200,
+          "sha256": "fa6d05a93a3c7a67fcbd35a32b8cbe9d36c32221c49cc1292e61541cc03d1ba1",
+          "bytes": 33534,
+          "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+        }
+      },
+      {
+        "url": "https://www.ercot.com/files/docs/2026/08/03/144PGRR-15-TIEC-Comments-080326.docx",
+        "title": "TIEC comments on PGRR144, August 3, 2026",
+        "publisher": "Texas Industrial Energy Consumers",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-09-18T17:03:55.991697+00:00",
+        "independent_of_subject": false,
+        "published_at": "2026-08-03",
+        "fetch_evidence": {
+          "http_status": 200,
+          "sha256": "1909d196324d2e9456e5a6663f948827df83243ecf3c56af13b1220f346c5900",
+          "bytes": 44922,
+          "method": "direct HTTPS refetch; DOCX main body extracted with deletions excluded"
+        }
+      }
+    ]
+  },
+  "required_post_phrases": [
+    "PGRR144 as-built model review",
+    "The ERCOT Board recommended approval on September 15th, 2026.",
+    "ERCOT",
+    "approve the submission or request more information"
+  ],
+  "verified_facts": [
+    {
+      "claim": "On September 15th, 2026 the ERCOT Board recommended PGRR144 approval. Its status remained pending before PUCT when fetched.",
+      "source_urls": [
+        "https://www.ercot.com/mktrules/issues/PGRR144",
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "Proposed effective date is the first day of the month after PUCT approval. No date for a PUCT vote appears in the fetched status page or Board Report.",
+      "source_urls": [
+        "https://www.ercot.com/mktrules/issues/PGRR144",
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "The proposal covers dynamic electrical behavior, including cooling and controls. Large computational load converter models require hardware benchmark validation.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "The as-built submission would compare installed settings and model test results with data used in the quarterly stability assessment. ERCOT and the TSP review the effect on the previous stability study.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "ERCOT would approve the submission or request more information, with ten Business Days for a response and up to twenty additional Business Days if needed.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "Other initial energization conditions include network model inclusion, telemetry, applicable stability and subsynchronous studies and a load commissioning plan. Approval of the model package alone would not authorize energization.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "ERCOT describes earlier detection of reliability issues as a benefit. This is ERCOT rationale, not proof of a safety outcome at any named site.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "ERCOT forecasts additional review staffing and annual recurring operations and maintenance costs. This supports the post claim about added staff, not a site-specific cost estimate.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/07/22/144PGRR-14-Revised-Impact-Analysis-072226.docx"
+      ]
+    },
+    {
+      "claim": "TIEC argues that traditional manufacturers often need outside modeling consultants and face additional costs. This is an attributed stakeholder objection to scope beyond computing loads.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/08/03/144PGRR-15-TIEC-Comments-080326.docx"
+      ]
+    },
+    {
+      "claim": "The model review applies within the ERCOT system, not every Texas utility territory.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "The Board Report records ERCOT staff explaining that PGRR144 addresses a separate issue from Batch Zero. Prior coverage concerned September 9 eligibility RFIs, not as-built electrical model review.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "Editorial inference: aligning study and installed-equipment models creates a concrete evidence comparison before energization; a signed attestation enters the review but does not replace ERCOT approval.",
+      "source_urls": [
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    },
+    {
+      "claim": "Editorial next check: follow the PUCT decision and effective date, then the outcome of as-built review if adopted. No project-level result or public release of protected models is asserted.",
+      "source_urls": [
+        "https://www.ercot.com/mktrules/issues/PGRR144",
+        "https://www.ercot.com/files/docs/2026/09/15/144PGRR-20-Board-Report-091526.docx"
+      ]
+    }
+  ],
+  "gate_results": {
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": true,
+    "chokepoint_asymmetry": true,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
+    "political_neutrality": true
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "AIB linked Texas site acquisition and deferred utility payment",
+      "category": "facilities",
+      "news_trigger": "September 11, 2026 acquisition completion disclosed in Form 8-K",
+      "drop_reason": "The filing identifies the utility and local sellers only by generic redacted labels. The payment gate depends on the unnamed Utility Company placing facilities in service. Drop chokepoint specificity; do not infer the utility or county.",
+      "provisional_layers": [
+        "Linked land purchase",
+        "LLC interest transfer",
+        "Standby letter-of-credit security",
+        "Utility in-service milestone"
+      ],
+      "layer_chain_status": "Primary summary fetched; full named utility authority chain not established.",
+      "sources": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2070542/000121390026099305/ea0305122-8k_aib.htm",
+          "title": "AIB Form 8-K, September 11, 2026",
+          "publisher": "AIB Data Centers / SEC",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-18T17:03:54.280806+00:00",
+          "independent_of_subject": false,
+          "published_at": "2026-09-11"
+        }
+      ]
+    },
+    {
+      "name": "NAIRR Operations Center award",
+      "category": "vehicles",
+      "news_trigger": "TACC described the award on September 1, 2026.",
+      "drop_reason": "Fetched trigger is seventeen days old, outside the default fourteen-day window. A stronger current candidate survived, so broadening is unnecessary. Do not reconstruct award continuation or allocation authority from a launch release.",
+      "provisional_layers": [
+        "NSF award",
+        "SDSC lead operations",
+        "TACC collaboration",
+        "User access coordination"
+      ],
+      "layer_chain_status": "Launch page fetched; authority beyond announced collaboration not validated because freshness fails.",
+      "sources": [
+        {
+          "url": "https://tacc.utexas.edu/news/latest-news/2026/09/01/strengthening-americas-ai-ecosystem-with-the-launch-of-the-nsf-nairr-operations-center/",
+          "title": "NSF NAIRR Operations Center launch",
+          "publisher": "TACC",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-18T17:03:54.280806+00:00",
+          "independent_of_subject": false,
+          "published_at": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "name": "Nscale Ward County delayed draw term loan",
+      "category": "capital_sovereignty",
+      "news_trigger": "Nscale announced financing on August 31, 2026.",
+      "drop_reason": "Fetched trigger is eighteen days old, outside the default window. No current trigger found in this lane. Do not infer lender draw conditions from the release.",
+      "provisional_layers": [
+        "Loan commitment",
+        "Delayed draw",
+        "GPU and infrastructure deployment"
+      ],
+      "layer_chain_status": "Company release fetched; draw-decision authority not established.",
+      "sources": [
+        {
+          "url": "https://www.nscale.com/press-releases/nscale-3-billion-delayed-draw-term-loans",
+          "title": "Nscale delayed draw term loan financing",
+          "publisher": "Nscale",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-18T17:03:54.280806+00:00",
+          "independent_of_subject": false,
+          "published_at": "2026-08-31"
+        }
+      ]
+    },
+    {
+      "name": "ERCOT data-center community impact RFI",
+      "category": "regulatory",
+      "news_trigger": "September 14, 2026 water-question authorization and RFI documents.",
+      "drop_reason": "Readable source establishes survey, attestation and report flow, but this discovery did not establish a binary acceptance or enforcement decision. PGRR144 has a clearer express approve-or-request-information decision.",
+      "provisional_layers": [
+        "Governor direction",
+        "TWDB water-question authorization",
+        "ERCOT intake",
+        "PUCT and ERCOT report"
+      ],
+      "layer_chain_status": "Primary intake page fetched; no binary decision claimed.",
+      "sources": [
+        {
+          "url": "https://www.ercot.com/about/legal/data-center-impact-rfi",
+          "title": "ERCOT Data Center Impact RFI",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-18T17:03:54.280806+00:00",
+          "independent_of_subject": false
+        }
+      ]
+    }
+  ],
+  "discovery": {
+    "window_start": "2026-09-04",
+    "window_end": "2026-09-18",
+    "timezone": "America/Chicago",
+    "lanes_searched": [
+      "facilities",
+      "vehicles",
+      "capital_sovereignty",
+      "regulatory"
+    ],
+    "broadened": false,
+    "context": "September ERCOT board action and current financing and research-award releases guided discovery.",
+    "prior_work_comparison": "Neither prior NSF cooperative-agreement continuation nor Batch Zero eligibility RFI is repeated. PGRR144 concerns model evidence and as-built review.",
+    "source_limitations": [
+      "No independent trigger corroboration used; controlling board record and status page agree.",
+      "No PUCT meeting date inferred.",
+      "No claim that protected model submissions will be publicly available."
+    ]
+  }
+}
