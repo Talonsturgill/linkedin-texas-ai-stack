@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "source": "imagegen",
+  "concepts": [
+    "The held permit ribbon",
+    "The suspended approval leaf",
+    "The unfinished audit bridge"
+  ],
+  "selected_concept": "The held permit ribbon",
+  "style_family": "layered paper relief",
+  "palette": [
+    "#302A3D",
+    "#E9DDC7",
+    "#90ACCB",
+    "#CBB576",
+    "#766287"
+  ],
+  "hue_family": "aubergine-ivory-ice-ochre",
+  "composition": "diagonal_flow",
+  "motifs": [
+    "folded permit ribbon stopped by pleated shutter"
+  ],
+  "eval_history": [
+    {
+      "pass_number": 1,
+      "scores": {
+        "concept": 9.0,
+        "focal_hierarchy": 8.7,
+        "composition": 7.1,
+        "color_value": 8.6,
+        "detail_richness": 8.5,
+        "craft_finish": 7.2,
+        "typography": 8.2,
+        "originality": 8.8,
+        "story_fidelity": 9.1
+      },
+      "weighted": 8.338,
+      "passed": false,
+      "inspected": [
+        "base full size 1254 square",
+        "base 300 pixels",
+        "composed 1080 square",
+        "composed 300 pixels"
+      ],
+      "observations": "Ivory ribbon clearly terminates at a closed pleated violet shutter. Paper fiber and folds are convincing. Blue/ochre input paths remain distinct. However the main ribbon intrudes under the headline and paths clip frame edges. Irregular black voids interrupt the paper ground at top, left and bottom. No generated text, geography, portraits or logos.",
+      "weakest_dimension": "composition",
+      "targeted_correction": "Contain the entire paper assembly inside the central illustration zone with continuous opaque paper ground; preserve subject construction and palette.",
+      "selected": false
+    },
+    {
+      "pass_number": 2,
+      "scores": {
+        "concept": 9.0,
+        "focal_hierarchy": 8.9,
+        "composition": 8.0,
+        "color_value": 9.0,
+        "detail_richness": 9.0,
+        "craft_finish": 9.0,
+        "typography": 8.0,
+        "originality": 8.7,
+        "story_fidelity": 9.1
+      },
+      "weighted": 8.747,
+      "passed": true,
+      "inspected": [
+        "base full size 1254 square",
+        "base 300 pixels",
+        "composed 1080 square",
+        "composed 300 pixels"
+      ],
+      "edit_prompt": "Edit this editorial paper-relief cover background. Make one focused composition correction: contain the COMPLETE existing paper assembly within the central illustration zone, and extend a continuous opaque aubergine paper ground behind it over the entire square canvas. Preserve the existing closed violet pleated shutter, broad ivory folded ribbon terminating against it, thin ice-blue and ochre input strips, their relative arrangement, paper fibers, palette, lighting, and sophisticated paper craft. Shrink and reframe the assembly so every object and endpoint is fully inside x=140..940 and y=250..640 on a 1080 square; no strip exits the frame. The top 20 percent and bottom 32 percent must contain ONLY subtle aubergine paper texture. Remove every irregular black cutout and void by continuing the same opaque paper ground. The shutter remains CLOSED and the ivory ribbon must NOT pass through. One-to-one square. No text, letters, numbers, logos, seals, watermarks, portraits, maps, arrows or extra objects. This is a no-text background; publication typography will be added separately.",
+      "observations": "Continuous violet paper ground replaces all black voids and all three paths now end inside the frame. Closed shutter and textured card remain crisp. Ivory foreground endpoint still overlaps the first headline line, reducing contrast behind THE. The cover clears the numeric floor but has an obvious typography clearance repair available.",
+      "weakest_dimension": "composition",
+      "targeted_correction": "Shorten only the foreground ivory ribbon so its lower-left endpoint ends above the headline band; keep the gate and upper paths unchanged.",
+      "selected": false
+    },
+    {
+      "pass_number": 3,
+      "scores": {
+        "concept": 9.1,
+        "focal_hierarchy": 9.1,
+        "composition": 9.2,
+        "color_value": 9.1,
+        "detail_richness": 8.9,
+        "craft_finish": 9.0,
+        "typography": 9.2,
+        "originality": 8.7,
+        "story_fidelity": 9.1
+      },
+      "weighted": 9.056,
+      "passed": true,
+      "inspected": [
+        "base full size 1254 square",
+        "base 300 pixels",
+        "composed 1080 square",
+        "composed 300 pixels"
+      ],
+      "edit_prompt": "Make ONE surgical composition edit to this no-text paper-relief image: shorten only the broad ivory ribbon at lower left by removing its long foreground tail and the lowest fold. Its new starting tip should be much closer to the violet shutter, around x=360 y=590 on a 1080-square canvas. Keep the short remaining ivory ribbon visibly terminating AGAINST the closed shutter. The entire ivory object must be ABOVE y=640, leaving at least the bottom 40 percent of the canvas as uninterrupted violet paper ground. Preserve the shutter exact size and location, both blue and ochre upper paths, all colors, lighting, material texture, camera, and continuous opaque aubergine background. Do not move or resize the shutter. No words, letters, numbers, labels, logos, seals, watermarks, portraits, maps, arrows or extra objects. Square opaque image. Publication type will be added separately.",
+      "observations": "Shortened ivory path now ends above the headline, leaving a clean gap. One closed violet shutter remains the focal constraint; blue and ochre paths are distinguishable. Continuous paper ground, clean contained endpoints, visible folds and fibers. Publication title, masthead, date, kicker and footer are exact. The title and gate remain legible at 300 pixels. No stray text, fake map, seal, logo, person or facility. Colored paths are abstract evidence, not literal pipes or a technical schematic.",
+      "weakest_dimension": "originality",
+      "remaining_limit": "The gate metaphor is intentionally direct; detailed paper construction supplies its distinctive craft. Further novelty would weaken the immediate permit-hold read.",
+      "selected": true
+    }
+  ],
+  "eval_final": {
+    "pass_number": 3,
+    "scores": {
+      "concept": 9.1,
+      "focal_hierarchy": 9.1,
+      "composition": 9.2,
+      "color_value": 9.1,
+      "detail_richness": 8.9,
+      "craft_finish": 9.0,
+      "typography": 9.2,
+      "originality": 8.7,
+      "story_fidelity": 9.1
+    },
+    "weighted": 9.056,
+    "passed": true,
+    "inspected": [
+      "base full size 1254 square",
+      "base 300 pixels",
+      "composed 1080 square",
+      "composed 300 pixels"
+    ],
+    "edit_prompt": "Make ONE surgical composition edit to this no-text paper-relief image: shorten only the broad ivory ribbon at lower left by removing its long foreground tail and the lowest fold. Its new starting tip should be much closer to the violet shutter, around x=360 y=590 on a 1080-square canvas. Keep the short remaining ivory ribbon visibly terminating AGAINST the closed shutter. The entire ivory object must be ABOVE y=640, leaving at least the bottom 40 percent of the canvas as uninterrupted violet paper ground. Preserve the shutter exact size and location, both blue and ochre upper paths, all colors, lighting, material texture, camera, and continuous opaque aubergine background. Do not move or resize the shutter. No words, letters, numbers, labels, logos, seals, watermarks, portraits, maps, arrows or extra objects. Square opaque image. Publication type will be added separately.",
+    "observations": "Shortened ivory path now ends above the headline, leaving a clean gap. One closed violet shutter remains the focal constraint; blue and ochre paths are distinguishable. Continuous paper ground, clean contained endpoints, visible folds and fibers. Publication title, masthead, date, kicker and footer are exact. The title and gate remain legible at 300 pixels. No stray text, fake map, seal, logo, person or facility. Colored paths are abstract evidence, not literal pipes or a technical schematic.",
+    "weakest_dimension": "originality",
+    "remaining_limit": "The gate metaphor is intentionally direct; detailed paper construction supplies its distinctive craft. Further novelty would weaken the immediate permit-hold read.",
+    "selected": true
+  },
+  "deduplication_checks": {
+    "style_family": true,
+    "hue_family": true,
+    "composition": true,
+    "primary_motif": true
+  },
+  "selected_base_sha256": "2534f06f0d4bc4604091a7798d1162e46ca9d6e1a0685bfedabd0a53f656c666",
+  "tool_path": "built-in ImageGen; one generation and two targeted edits; no fallback"
+}

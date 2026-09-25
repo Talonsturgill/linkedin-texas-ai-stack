@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-09-25",
+  "timezone": "America/Chicago",
+  "window_days": 14,
+  "no_target_this_cycle": false,
+  "selected_mechanism": {
+    "name": "TCEQ data-center permit pause",
+    "category": "regulatory",
+    "category_label": "REGULATORY",
+    "definition": "A hold on data-center environmental permit issuance that links TCEQ decisions to completion of ERCOT review and audit evidence.",
+    "texas_scope": "TCEQ data-center permitting in Texas. The directive is broader than the specific ERCOT RFI respondent classes; ERCOT is not all Texas.",
+    "news_trigger": {
+      "date": "2026-09-21",
+      "verbatim_span": "to pause the issuance of all permits related to data center projects until ERCOT completes its review.",
+      "post_anchor": "September 21st directive",
+      "source": {
+        "url": "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf",
+        "title": "September 21 letter to TCEQ Executive Director Kelly Keel",
+        "publisher": "Office of the Texas Governor",
+        "source_type": "primary",
+        "published_at": "2026-09-21",
+        "fetched_at_utc": "2026-09-25T13:04:09.027058+00:00",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "Direction to pause data-center permit issuance until ERCOT completes review.",
+          "TCEQ must align permitting decisions with the directive and use audit information.",
+          "TCEQ compliance update to Governor due October 19, 2026.",
+          "The letter does not specify a reopening date or promise approval after review."
+        ],
+        "fetch_sha256": "8423ff4cfbab77f3f0466a10c90a96d6454cbcba3fc3a95060588169004c54a5"
+      }
+    },
+    "layers": [
+      {
+        "order": 1,
+        "name": "Direction",
+        "controlling_actor": "The Governor's office",
+        "actor_authority": "The Governor of Texas issues the September 21 directive to TCEQ.",
+        "function": "Links permit issuance to completion of ERCOT review and requires a compliance update.",
+        "post_phrase": "The Governor's office",
+        "primary_source": {
+          "url": "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf",
+          "title": "September 21 letter to TCEQ Executive Director Kelly Keel",
+          "publisher": "Office of the Texas Governor",
+          "source_type": "primary",
+          "published_at": "2026-09-21",
+          "fetched_at_utc": "2026-09-25T13:04:09.027058+00:00",
+          "independent_of_subject": false,
+          "claims_supported": [
+            "Direction to pause data-center permit issuance until ERCOT completes review.",
+            "TCEQ must align permitting decisions with the directive and use audit information.",
+            "TCEQ compliance update to Governor due October 19, 2026.",
+            "The letter does not specify a reopening date or promise approval after review."
+          ],
+          "fetch_sha256": "8423ff4cfbab77f3f0466a10c90a96d6454cbcba3fc3a95060588169004c54a5"
+        }
+      },
+      {
+        "order": 2,
+        "name": "Impact review",
+        "controlling_actor": "ERCOT",
+        "actor_authority": "ERCOT implements the Governor-directed review through its State and Community Impact RFI.",
+        "function": "Collects project information through utility submission of developer responses in RIOO.",
+        "post_phrase": "ERCOT",
+        "primary_source": {
+          "url": "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01",
+          "title": "M-B091426-01 State and Community Impact RFI",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "published_at": "2026-09-14",
+          "fetched_at_utc": "2026-09-25T13:04:09.813340+00:00",
+          "independent_of_subject": false,
+          "claims_supported": [
+            "ERCOT collects information about power, water, ownership, incentives and community effects.",
+            "Utility submits developer response through RIOO with a notarized attestation by 5 p.m. Central Prevailing Time October 12, 2026.",
+            "TWDB Executive Administrator authorized ERCOT to issue Section C water questions and forward the answers to TWDB; no separate TWDB response is required.",
+            "ERCOT may request follow-up information and expects an impact report by December 10, 2026.",
+            "The RFI covers specified not-yet-energized Batch Zero projects and substantiated medium loads; it is separate from the September 9 eligibility RFI."
+          ],
+          "fetch_sha256": "a6c95bf8e1bcc18e7020d9f8a9df613109181c7e0c04956cce6f26abced476f9"
+        }
+      },
+      {
+        "order": 3,
+        "name": "Water evidence",
+        "controlling_actor": "TWDB",
+        "actor_authority": "TWDB Executive Administrator authorizes ERCOT to issue the water questions on its behalf.",
+        "function": "Receives water responses from ERCOT without requiring a second developer submission.",
+        "post_phrase": "TWDB",
+        "primary_source": {
+          "url": "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01",
+          "title": "M-B091426-01 State and Community Impact RFI",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "published_at": "2026-09-14",
+          "fetched_at_utc": "2026-09-25T13:04:09.813340+00:00",
+          "independent_of_subject": false,
+          "claims_supported": [
+            "ERCOT collects information about power, water, ownership, incentives and community effects.",
+            "Utility submits developer response through RIOO with a notarized attestation by 5 p.m. Central Prevailing Time October 12, 2026.",
+            "TWDB Executive Administrator authorized ERCOT to issue Section C water questions and forward the answers to TWDB; no separate TWDB response is required.",
+            "ERCOT may request follow-up information and expects an impact report by December 10, 2026.",
+            "The RFI covers specified not-yet-energized Batch Zero projects and substantiated medium loads; it is separate from the September 9 eligibility RFI."
+          ],
+          "fetch_sha256": "a6c95bf8e1bcc18e7020d9f8a9df613109181c7e0c04956cce6f26abced476f9"
+        }
+      },
+      {
+        "order": 4,
+        "name": "Permit decision",
+        "controlling_actor": "TCEQ",
+        "actor_authority": "TCEQ is the permitting agency addressed by the directive through Executive Director Kelly Keel.",
+        "function": "Withholds issuance during the review and uses audit information in permitting decisions.",
+        "post_phrase": "TCEQ",
+        "primary_source": {
+          "url": "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf",
+          "title": "September 21 letter to TCEQ Executive Director Kelly Keel",
+          "publisher": "Office of the Texas Governor",
+          "source_type": "primary",
+          "published_at": "2026-09-21",
+          "fetched_at_utc": "2026-09-25T13:04:09.027058+00:00",
+          "independent_of_subject": false,
+          "claims_supported": [
+            "Direction to pause data-center permit issuance until ERCOT completes review.",
+            "TCEQ must align permitting decisions with the directive and use audit information.",
+            "TCEQ compliance update to Governor due October 19, 2026.",
+            "The letter does not specify a reopening date or promise approval after review."
+          ],
+          "fetch_sha256": "8423ff4cfbab77f3f0466a10c90a96d6454cbcba3fc3a95060588169004c54a5"
+        }
+      }
+    ],
+    "chokepoint": {
+      "layer_order": 4,
+      "layer_name": "Permit decision",
+      "controlling_actor": "Texas Commission on Environmental Quality",
+      "post_actor_phrase": "TCEQ",
+      "binary_decision": "Issue a permit or withhold it; the directive requires withholding issuance until ERCOT completes review. This is not a claim of unrestricted agency discretion or automatic approval after review.",
+      "post_decision_phrase": "issue a permit or withhold it",
+      "why_asymmetric": "Developers and audit respondents can supply information but cannot substitute for the permitting agency issuing a permit.",
+      "primary_source_url": "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf"
+    },
+    "texas_consequence": "Texas AI data-center campuses needing TCEQ permits face an environmental approval dependency tied to the grid review. Not every data center is assumed to run AI.",
+    "structural_read": "The issuing office seeks a fuller power, water and community-impact record. Editorial inference: linking permit issuance to another review creates timing dependence without a fixed reopening date in the directive. This evaluates process legibility rather than a preferred policy outcome.",
+    "forward_implication": "Inspect the October 19 compliance update for implementation of the hold and use of audit evidence. Do not treat it or the separate RFI/report dates as automatic reopening.",
+    "next_check": {
+      "what": "TCEQ compliance update on the September 21 directive",
+      "actor": "TCEQ Executive Director office",
+      "date_or_window": "2026-10-19; delivery to Governor required, public release date not established"
+    },
+    "public_policy_context": {
+      "is_public_policy": true,
+      "editorial_mode": "neutral_accountability",
+      "assessment": "not_applicable",
+      "competing_effects": "More information before decisions is the stated benefit; dependence on an unfinished review with no calendar reopening promise is the procedural tradeoff. Neither is a project-specific impact finding."
+    },
+    "sources": [
+      {
+        "url": "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf",
+        "title": "September 21 letter to TCEQ Executive Director Kelly Keel",
+        "publisher": "Office of the Texas Governor",
+        "source_type": "primary",
+        "published_at": "2026-09-21",
+        "fetched_at_utc": "2026-09-25T13:04:09.027058+00:00",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "Direction to pause data-center permit issuance until ERCOT completes review.",
+          "TCEQ must align permitting decisions with the directive and use audit information.",
+          "TCEQ compliance update to Governor due October 19, 2026.",
+          "The letter does not specify a reopening date or promise approval after review."
+        ],
+        "fetch_sha256": "8423ff4cfbab77f3f0466a10c90a96d6454cbcba3fc3a95060588169004c54a5"
+      },
+      {
+        "url": "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01",
+        "title": "M-B091426-01 State and Community Impact RFI",
+        "publisher": "ERCOT",
+        "source_type": "primary",
+        "published_at": "2026-09-14",
+        "fetched_at_utc": "2026-09-25T13:04:09.813340+00:00",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "ERCOT collects information about power, water, ownership, incentives and community effects.",
+          "Utility submits developer response through RIOO with a notarized attestation by 5 p.m. Central Prevailing Time October 12, 2026.",
+          "TWDB Executive Administrator authorized ERCOT to issue Section C water questions and forward the answers to TWDB; no separate TWDB response is required.",
+          "ERCOT may request follow-up information and expects an impact report by December 10, 2026.",
+          "The RFI covers specified not-yet-energized Batch Zero projects and substantiated medium loads; it is separate from the September 9 eligibility RFI."
+        ],
+        "fetch_sha256": "a6c95bf8e1bcc18e7020d9f8a9df613109181c7e0c04956cce6f26abced476f9"
+      },
+      {
+        "url": "https://gov.texas.gov/uploads/files/press/TWDB_Letter.pdf",
+        "title": "September 14 letter to TWDB leadership",
+        "publisher": "Office of the Texas Governor",
+        "source_type": "primary",
+        "published_at": "2026-09-14",
+        "fetched_at_utc": "2026-09-25T13:04:09.408549+00:00",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "TWDB directed to work with ERCOT on water information collection.",
+          "The letter invokes existing Water Code reporting duties and distinguishes them from the new audit."
+        ],
+        "fetch_sha256": "334f49eae13605a06f36b255a23c81e7da421e005a9eeba060f9129ffcf9dc8f"
+      },
+      {
+        "url": "https://www.ercot.com/files/docs/2026/09/18/State-and-Community-Impact-RFI_Question-Reference-9.18.26.pdf",
+        "title": "State and Community Impact RFI question reference, September 18",
+        "publisher": "ERCOT",
+        "source_type": "primary",
+        "published_at": "2026-09-18",
+        "fetched_at_utc": "2026-09-25T13:04:10.292283+00:00",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "Reference copy of questions and response instructions; actual RIOO form controls."
+        ],
+        "fetch_sha256": "f27d5ac979833248faf3504e9707e191c49312e637083c9f086abb4b18c42998"
+      },
+      {
+        "url": "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits",
+        "title": "Governor directs TCEQ to halt data center permits",
+        "publisher": "Office of the Texas Governor",
+        "source_type": "primary",
+        "published_at": "2026-09-21",
+        "fetched_at_utc": "2026-09-25T13:04:12.324223+00:00",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "Independent publication of the directive by its issuing office; confirms trigger date and October 19 compliance update."
+        ],
+        "fetch_sha256": "a086fd9cd21098cc15f31c24a22c833abab53bc46bc7057cc778c6f3147c3473"
+      },
+      {
+        "url": "https://www.texastribune.org/2026/09/21/texas-data-center-moratorium-water-energy/",
+        "title": "Texas broadens data center approval pause to environmental permits",
+        "publisher": "The Texas Tribune",
+        "source_type": "independent_reporting",
+        "published_at": "2026-09-21",
+        "fetched_at_utc": "2026-09-25T13:04:12.562623+00:00",
+        "independent_of_subject": true,
+        "claims_supported": [
+          "Independently reports the environmental permit extension, audit dependency, and role of water information."
+        ],
+        "fetch_sha256": "5321d7145fea581187fe63a485bc0c507fa0feb98234d3a9d1749be4f6fe2d0e"
+      }
+    ],
+    "evidence_gaps": [
+      "No TCEQ implementation bulletin or delivered October 19 update was established in this run. The post describes the signed directive, not completed agency implementation.",
+      "No universal release test, public-release schedule for the TCEQ update, reopening date, or guaranteed permit approval is established.",
+      "The RFI scope must not be substituted for the broader directive scope.",
+      "The directive is not a court ruling on executive authority, and this analysis makes no legal enforceability finding."
+    ],
+    "prior_coverage_comparison": "September 11 covered Batch Zero eligibility; September 18 covered PGRR144 as-built models. This September 21 trigger adds a new TCEQ environmental permit layer and a different controlling decision."
+  },
+  "required_post_phrases": [
+    "TCEQ data-center permit pause",
+    "September 21st directive",
+    "TCEQ",
+    "issue a permit or withhold it"
+  ],
+  "verified_facts": [
+    {
+      "claim": "September 21, 2026 directive pauses TCEQ issuance until ERCOT completes its review; post uses September 21st.",
+      "source_urls": [
+        "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf"
+      ]
+    },
+    {
+      "claim": "Governor seeks information on grid reliability, water and community effects before agency decisions.",
+      "source_urls": [
+        "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf",
+        "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01"
+      ]
+    },
+    {
+      "claim": "TCEQ letter addresses Executive Director Kelly Keel and requires October 19, 2026 compliance update; post uses October 19th.",
+      "source_urls": [
+        "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf"
+      ]
+    },
+    {
+      "claim": "No fixed permit reopening date or automatic approval after review appears in the letter. Editorial inference: a developer response alone does not complete ERCOT review.",
+      "source_urls": [
+        "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf",
+        "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01"
+      ]
+    },
+    {
+      "claim": "Utility submission through RIOO and TWDB water-response routing operate as described in the layers.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01"
+      ]
+    },
+    {
+      "claim": "Covered RFI responses due October 12, 2026 and impact report expected no later than December 10, 2026; post uses October 12th and December 10th.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01"
+      ]
+    },
+    {
+      "claim": "RFI covers specified Batch Zero data-center projects and substantiated proposed loads at least 25 MW and less than 75 MW, with energization conditions; directive addresses all data-center permits sought from TCEQ.",
+      "source_urls": [
+        "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01",
+        "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf"
+      ]
+    },
+    {
+      "claim": "Conditional Texas AI relevance: an AI campus that needs a covered data-center permit faces the same permit dependency. No claim that all data centers run AI.",
+      "source_urls": [
+        "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf"
+      ]
+    },
+    {
+      "claim": "Procedural inference: a hold pending another review couples approval timing to that review; stated information benefit is distinct from proof of a specific campus impact.",
+      "source_urls": [
+        "https://gov.texas.gov/uploads/files/press/TCEQ_Data_Center.pdf"
+      ]
+    }
+  ],
+  "gate_results": {
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": true,
+    "chokepoint_asymmetry": true,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
+    "political_neutrality": true
+  },
+  "gate_notes": {
+    "news_tie": "Signed September 21 letter refetched on September 25, four days old.",
+    "anatomizable_depth": "Four connected functions with named institutional controllers.",
+    "primary_source_each_layer": "Signed letter and ERCOT issued notice re-fetched successfully; full sources retained locally with hashes.",
+    "texas_consequence": "Environmental permit issuance for Texas AI campuses requiring covered permits.",
+    "chokepoint_asymmetry": "TCEQ controls issuing versus withholding permits; audit respondents cannot issue permits.",
+    "mechanism_not_actor": "The selected object is the conditional permit hold, not an officeholder profile.",
+    "not_recent_repeat": "September 11 covered Batch Zero eligibility; September 18 covered PGRR144 as-built models. This September 21 trigger adds a new TCEQ environmental permit layer and a different controlling decision.",
+    "political_neutrality": "No electoral motives, candidate comparisons, party preferences or preferred policy outcomes. Score concerns evidence and writing only."
+  },
+  "discovery_context": "Four lanes searched in September 11-25 window. Grid review, water-reporting follow-up, state environmental permitting and procurement calendars guided discovery only. No broadening required.",
+  "selection_reason": "Signed primary directive, operational primary data-flow notice, independent trigger corroboration, named permit controller and near-term compliance check make this the strongest evidence package.",
+  "dropped_mechanisms": [
+    {
+      "name": "Fluidstack Cameron County worksite permit",
+      "category": "facilities",
+      "news_trigger": "September 10 county worksite permit; September 21 corporate page repeats construction start.",
+      "disposition": "dropped",
+      "drop_reason": "Decisive permit event predates default window. Corporate refresh does not establish a new permit decision. No primary utility agreement or interconnection approval was fetched for a complete chain.",
+      "provisional_layers": [
+        "County worksite permit authorizes site preparation.",
+        "Future building permits remain required.",
+        "Company describes utility supply but an executed service agreement was not fetched."
+      ],
+      "prior_coverage_comparison": "No recent Stack repeat.",
+      "political_screen": "No electoral advocacy.",
+      "sources": [
+        {
+          "url": "https://www.cameroncountytx.gov/worksite-permit-issued-for-fluidstack-data-center-project/",
+          "title": "Worksite Permit Issued for Fluidstack Data Center Project",
+          "publisher": "Cameron County",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-25T13:04:00Z",
+          "fetch_note": "Fetched and read by read-only lane scout during this run."
+        },
+        {
+          "url": "https://fluidstack.com/community/building-compute-in-cameron-county",
+          "title": "Building Compute in Cameron County",
+          "publisher": "Fluidstack",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-25T13:04:00Z",
+          "fetch_note": "Fetched and read by read-only lane scout during this run."
+        }
+      ]
+    },
+    {
+      "name": "TxDOT TopoDOT procurement and work-change approval",
+      "category": "vehicles",
+      "news_trigger": "Solicitation opened September 17, 2026.",
+      "disposition": "qualified_alternate_not_selected",
+      "drop_reason": "Qualified alternate, not a failed gate. TCEQ has stronger current execution evidence and independent trigger corroboration. TxDOT award, accepted AI disclosure and operational deployment remain unproven.",
+      "provisional_layers": [
+        "TxDOT procurement controls solicitation and evaluation.",
+        "Vendor discloses AI functions and data use.",
+        "Vendor installs licenses subject to TxDOT acceptance.",
+        "Contract manager monitors performance and payment.",
+        "Authorized purchasing agent approves or withholds written work changes."
+      ],
+      "provisional_chokepoint": "Authorized TxDOT purchasing agent signs or does not sign Purchase Order Change Notice.",
+      "prior_coverage_comparison": "No recent Stack repeat.",
+      "political_screen": "Operational procurement, no electoral advocacy.",
+      "sources": [
+        {
+          "url": "https://www.txsmartbuy.gov/esbd/601440000054497",
+          "title": "TopoDOT software solicitation 601440000054497",
+          "publisher": "Texas SmartBuy / TxDOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-25T13:04:00Z",
+          "fetch_note": "Fetched and read by read-only lane scout during this run."
+        },
+        {
+          "url": "https://www.txsmartbuy.gov/core/media/media.nl?id=33751265&c=852252&h=feVPYApfM5KCf8WIMJ-h4VbhY0Jlw_zHruYR0x_0CgSNjd-e&_xt=.pdf",
+          "title": "TopoDOT Request for Offer",
+          "publisher": "TxDOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-25T13:04:00Z",
+          "fetch_note": "Fetched and read by read-only lane scout during this run."
+        },
+        {
+          "url": "https://www.txsmartbuy.gov/core/media/media.nl?id=33751267&c=852252&h=CC4xbwcsn2GSdteymc2H4kbMFqazCaPM2xz8pDC7zbKf6tq9&_xt=.pdf",
+          "title": "TopoDOT statement of work and AI attachment",
+          "publisher": "TxDOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-25T13:04:00Z",
+          "fetch_note": "Fetched and read by read-only lane scout during this run."
+        }
+      ]
+    },
+    {
+      "name": "New Era Odessa power-to-equity contract",
+      "category": "capital_sovereignty",
+      "news_trigger": "September 18 agreements disclosed September 21, 2026.",
+      "disposition": "qualified_alternate_not_selected",
+      "drop_reason": "Promising alternate but full PPA and development agreement were not yet filed. Disclosure supports conditional delivery, not unrestricted Luminant discretion or energized power. TCEQ has the more complete controlling primary record.",
+      "provisional_layers": [
+        "New Era supplies letter of credit and security.",
+        "Substation transaction and construction reimbursement condition delivery.",
+        "Luminant supplies contracted power subject to conditions.",
+        "Vistra receives nonvoting project equity after commencement and expansion rights."
+      ],
+      "provisional_chokepoint": "Luminant delivery obligations activate only after contractual conditions are satisfied; all conditions are not disclosed.",
+      "prior_coverage_comparison": "No recent Stack repeat.",
+      "political_screen": "Private contractual structure; no political advocacy.",
+      "sources": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+          "title": "September 21 Form 8-K describing PPA and development framework",
+          "publisher": "New Era Energy & Digital / SEC",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-25T13:04:00Z",
+          "fetch_note": "Fetched and read by read-only lane scout during this run."
+        },
+        {
+          "url": "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx",
+          "title": "New Era announces power agreement with Vistra",
+          "publisher": "New Era Energy & Digital",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-25T13:04:00Z",
+          "fetch_note": "Fetched and read by read-only lane scout during this run."
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026102859/ea0306502-8k_newera.htm",
+          "title": "September 24 Form 8-K with tenant and permitting limitations",
+          "publisher": "New Era Energy & Digital / SEC",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-25T13:04:00Z",
+          "fetch_note": "Fetched and read by read-only lane scout during this run."
+        }
+      ]
+    }
+  ],
+  "discovery_lanes_completed": [
+    "facilities",
+    "vehicles",
+    "capital_sovereignty",
+    "regulatory"
+  ]
+}

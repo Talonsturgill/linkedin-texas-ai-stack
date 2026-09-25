@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "editorial_passes": 1,
+  "score_revision_passes": 0,
+  "scoring_scope": "Writing and evidence only; no policy or actor ranking.",
+  "criteria": [
+    {
+      "name": "Hook strength",
+      "weight": 0.1,
+      "score": 9.0,
+      "notes": "Two short lines name the permit hold and dated directive."
+    },
+    {
+      "name": "Mechanism significance for Texas",
+      "weight": 0.18,
+      "score": 9.1,
+      "notes": "Direct approval consequence for AI campuses needing covered permits; no quantified economic impact asserted."
+    },
+    {
+      "name": "Layer fidelity",
+      "weight": 0.14,
+      "score": 9.2,
+      "notes": "Four layers match the signed letter and issued RFI, including separate water routing."
+    },
+    {
+      "name": "Chokepoint clarity",
+      "weight": 0.13,
+      "score": 8.9,
+      "notes": "Names TCEQ and issue-versus-withhold decision without claiming automatic release."
+    },
+    {
+      "name": "Structural read",
+      "weight": 0.12,
+      "score": 8.8,
+      "notes": "Explains information benefit and timing dependency; no policy endorsement."
+    },
+    {
+      "name": "Forward implication",
+      "weight": 0.08,
+      "score": 9.2,
+      "notes": "Names October 19 compliance update and separates it from RFI and report dates."
+    },
+    {
+      "name": "Primary-source quality",
+      "weight": 0.1,
+      "score": 9.2,
+      "notes": "Signed directive and current operational notice refetched; independent trigger corroboration. TCEQ implementation still unverified."
+    },
+    {
+      "name": "Texas AI Docket voice",
+      "weight": 0.08,
+      "score": 8.9,
+      "notes": "Plain institutional analysis; no partisan framing or inflated outcomes."
+    },
+    {
+      "name": "LinkedIn readability",
+      "weight": 0.04,
+      "score": 9.0,
+      "notes": "357 body words and 2358 characters with one four-bullet block."
+    },
+    {
+      "name": "Chokepoint question",
+      "weight": 0.03,
+      "score": 8.7,
+      "notes": "Invites debate about the evidence standard and transparency at the permit gate."
+    }
+  ],
+  "hard_fail_checks": [
+    {
+      "name": "seven_point_gate",
+      "passed": true,
+      "notes": "Checked against final dossier, fetched primary record, and passing deterministic post report."
+    },
+    {
+      "name": "mechanism_and_trigger",
+      "passed": true,
+      "notes": "Checked against final dossier, fetched primary record, and passing deterministic post report."
+    },
+    {
+      "name": "layer_fidelity",
+      "passed": true,
+      "notes": "Checked against final dossier, fetched primary record, and passing deterministic post report."
+    },
+    {
+      "name": "specific_chokepoint",
+      "passed": true,
+      "notes": "Checked against final dossier, fetched primary record, and passing deterministic post report."
+    },
+    {
+      "name": "fact_trace",
+      "passed": true,
+      "notes": "Checked against final dossier, fetched primary record, and passing deterministic post report."
+    },
+    {
+      "name": "political_neutrality",
+      "passed": true,
+      "notes": "Checked against final dossier, fetched primary record, and passing deterministic post report."
+    },
+    {
+      "name": "linkedin_constraints",
+      "passed": true,
+      "notes": "Checked against final dossier, fetched primary record, and passing deterministic post report."
+    },
+    {
+      "name": "house_style",
+      "passed": true,
+      "notes": "Checked against final dossier, fetched primary record, and passing deterministic post report."
+    }
+  ],
+  "hard_failures": [],
+  "threshold": 8.0,
+  "ship": true,
+  "weighted_total": 9.028
+}

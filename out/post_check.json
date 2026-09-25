@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "errors": [],
+  "metrics": {
+    "body_words": 357,
+    "total_chars": 2358,
+    "hook_chars": 126,
+    "layer_bullets": 4,
+    "hashtags": [
+      "#TexasAI",
+      "#TexasWater",
+      "#AIInfrastructure"
+    ],
+    "tag_line": "#TexasAI #TexasWater #AIInfrastructure"
+  }
+}
