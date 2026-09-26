@@ -199,6 +199,15 @@ def validate_art(out_dir: Path, errors: list[str]) -> dict:
             errors.append("artwork metadata source must be imagegen or fallback")
         if art_eval and meta.get("eval_final") != art_eval.get("eval_final"):
             errors.append("artwork metadata eval_final must match art_eval.json")
+    if meta.get("engine_version") == 2 or art_eval.get("evaluation_protocol") == 2:
+        art_scripts = ROOT / ".agents/skills/texas-stack-artwork/scripts"
+        if str(art_scripts) not in sys.path:
+            sys.path.insert(0, str(art_scripts))
+        import qa_check
+        errors.extend(qa_check.validate(
+            final_path, base_path, out_dir / "image_prompt.txt", out_dir / "art_plan.md",
+            out_dir / "art_eval.json", str(meta.get("date", "")), "THE TEXAS STACK",
+        ))
     return art_eval
 
 

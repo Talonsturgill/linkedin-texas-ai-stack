@@ -12,7 +12,8 @@ import urllib.request
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageOps
+from art_layout import headline_layout, validate_subject_box
 
 SIZE = 1080
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -124,48 +125,16 @@ def star_points(cx: float, cy: float, radius: float) -> list[tuple[float, float]
     return points
 
 
-def wrap_headline(
-    draw: ImageDraw.ImageDraw,
-    text: str,
-    font_path: str,
-    max_width: int,
-    max_lines: int = 3,
-) -> tuple[list[str], ImageFont.FreeTypeFont]:
-    words = " ".join(text.replace("\\n", "\n").splitlines()).split()
-    if not 4 <= len(words) <= 9:
-        raise ValueError("headline must contain four to nine words")
-    for size in range(96, 49, -2):
-        font = ImageFont.truetype(font_path, size)
-        lines: list[str] = []
-        current = ""
-        for word in words:
-            candidate = f"{current} {word}".strip()
-            if draw.textlength(candidate, font=font) <= max_width:
-                current = candidate
-            else:
-                if current:
-                    lines.append(current)
-                current = word
-        if current:
-            lines.append(current)
-        if len(lines) <= max_lines and all(
-            draw.textlength(line, font=font) <= max_width for line in lines
-        ):
-            return lines, font
-    raise ValueError("headline cannot fit the cover; shorten it")
-
-
-def dark_overlay() -> Image.Image:
+def dark_overlay(headline_top: int) -> Image.Image:
+    # Protect type locally without flattening the illustration's contrast and color.
     y = np.arange(SIZE, dtype=float)
-    top = np.where(y < 300, 215 * (1 - y / 300), 0)
-    bottom = np.where(y > 575, 238 * ((y - 575) / (SIZE - 575)), 0)
-    alpha = np.maximum(top, bottom).clip(0, 238).astype(np.uint8)
-    array = np.zeros((SIZE, SIZE, 4), dtype=np.uint8)
-    array[:, :, 0] = 8
-    array[:, :, 1] = 6
-    array[:, :, 2] = 15
-    array[:, :, 3] = alpha[:, None]
-    return Image.fromarray(array, "RGBA")
+    top = np.clip((210-y)/110, 0, 1)*175
+    bottom = np.clip((y-(headline_top-48))/48, 0, 1)*220
+    alpha = np.maximum(top,bottom).astype(np.uint8)
+    array = np.zeros((SIZE,SIZE,4), dtype=np.uint8)
+    array[:,:,:3] = (8,6,15)
+    array[:,:,3] = alpha[:,None]
+    return Image.fromarray(array)
 
 
 def compose(
@@ -179,6 +148,8 @@ def compose(
     plan_file: Path,
     eval_file: Path,
     out_path: Path,
+    subject_box: list[int] | None = None,
+    layout_path: Path | None = None,
 ) -> Path:
     category = category.upper().strip()
     if category not in CATEGORIES:
@@ -189,10 +160,21 @@ def compose(
         raise ValueError("art evaluation source must be imagegen or fallback")
 
     serif_path, mono_path = font_pair()
-    base = Image.open(base_path).convert("RGB")
+    layout = headline_layout(headline, serif_path)
+    if layout_path is not None:
+        planned = json.loads(layout_path.read_text())
+        if planned != layout:
+            raise ValueError("layout differs from current headline/font geometry; re-plan before rendering")
+    if subject_box is not None:
+        validate_subject_box(subject_box, layout)
+    with Image.open(base_path) as opened:
+        if opened.width != opened.height or opened.width < 768:
+            raise ValueError("art base must be square and at least 768 pixels; do not silently crop")
+        if opened.convert("RGBA").getchannel("A").getextrema()[0] < 255:
+            raise ValueError("art base contains transparency; request a complete opaque scene from ImageGen")
+        base = opened.convert("RGB")
     canvas = ImageOps.fit(base, (SIZE, SIZE), method=Image.Resampling.LANCZOS)
-    canvas = ImageEnhance.Contrast(canvas).enhance(1.035)
-    canvas = Image.alpha_composite(canvas.convert("RGBA"), dark_overlay())
+    canvas = Image.alpha_composite(canvas.convert("RGBA"), dark_overlay(layout["headline_top"]))
     draw = ImageDraw.Draw(canvas)
 
     wordmark_font = ImageFont.truetype(serif_path, 42)
@@ -221,21 +203,9 @@ def compose(
     draw_tracked(draw, (64, 111), kicker, kicker_font, gold, kicker_tracking)
     draw.line((64, 157, SIZE - 64, 157), fill=gold, width=2)
 
-    lines, headline_font = wrap_headline(
-        draw, headline.upper(), serif_path, SIZE - 128
-    )
-    line_height = int(headline_font.size * 0.98)
-    total_height = len(lines) * line_height
-    headline_y = max(665, 946 - total_height)
-    for index, line in enumerate(lines):
-        draw.text(
-            (64, headline_y + index * line_height),
-            line,
-            font=headline_font,
-            fill=ink,
-            stroke_width=1,
-            stroke_fill="#08060F",
-        )
+    headline_font = ImageFont.truetype(serif_path, layout["font_size"])
+    for line, position in zip(layout["lines"], layout["positions"]):
+        draw.text(tuple(position), line, font=headline_font, fill=ink, anchor="lt")
 
     draw.line((64, 968, SIZE - 64, 968), fill=dust, width=1)
     place_text = place.upper().strip() or "TEXAS"
@@ -255,6 +225,11 @@ def compose(
     canvas.convert("RGB").save(out_path, "PNG", optimize=True)
     meta = {
         "schema_version": 1,
+        "engine_version": 2,
+        "layout": layout,
+        "subject_box": subject_box,
+        "font_sha256": sha256(Path(serif_path)),
+        "image_sha256": sha256(out_path),
         "date": date.upper(),
         "column": "The Texas Stack",
         "kicker": "THE TEXAS STACK",
@@ -301,6 +276,8 @@ def main() -> None:
     parser.add_argument("--plan-file", required=True)
     parser.add_argument("--eval-file", required=True)
     parser.add_argument("--out", required=True)
+    parser.add_argument("--layout", help="Geometry produced by prepare_art.py")
+    parser.add_argument("--subject-box", type=int, nargs=4, metavar=("LEFT","TOP","RIGHT","BOTTOM"))
     args = parser.parse_args()
     result = compose(
         base_path=Path(args.base),
@@ -312,6 +289,8 @@ def main() -> None:
         plan_file=Path(args.plan_file),
         eval_file=Path(args.eval_file),
         out_path=Path(args.out),
+        subject_box=args.subject_box,
+        layout_path=Path(args.layout) if args.layout else None,
     )
     print(f"Saved {result}")
 
