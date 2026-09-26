@@ -51,10 +51,10 @@ deterministic publication furniture is enough.
 
 ## Composition
 
-The compositor reserves the top 18 percent for the wordmark and kicker and the lower 30 percent
-for the headline and footer. Keep those regions calm but not blank. Put the mechanism's main
-focal point between roughly y 260 and y 690. A focal element may cross those guides if it remains
-legible under the dark overlay.
+Plan the real headline with scripts/prepare_art.py first. Its subject_zone defines the
+illustration area and keeps a forty-pixel gap above measured type. Inspect the actual image
+bounds after generation; a planned empty region is not evidence that ImageGen preserved it.
+The compositor preserves the illustration and limits its dark scrim to publication type.
 
 Use one named pattern:
 

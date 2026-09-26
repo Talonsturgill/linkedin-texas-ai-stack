@@ -12,6 +12,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from art_layout import validate_subject_box
 
 WEIGHTS = {
     "concept": 0.18,
@@ -86,6 +87,8 @@ def validate(
     scores = final.get("scores") or {}
     if set(scores) != set(WEIGHTS):
         errors.append("art evaluation has the wrong scoring dimensions")
+    elif any(type(v) not in (int, float) or not math.isfinite(v) or not 0 <= v <= 10 for v in scores.values()):
+        errors.append("art scores must be finite numbers from zero to ten")
     else:
         weighted = sum(float(scores[name]) * weight for name, weight in WEIGHTS.items())
         if not math.isclose(float(final.get("weighted", -1)), weighted, abs_tol=0.011):
@@ -121,6 +124,28 @@ def validate(
         errors.append("metadata source does not match art evaluation")
     if meta.get("eval_final") != final:
         errors.append("metadata final evaluation does not match art_eval.json")
+    if meta.get("engine_version") == 2:
+        if meta.get("image_sha256") != sha256(image_path):
+            errors.append("composed image no longer matches its metadata")
+        if art_eval.get("source") == "imagegen":
+            try:
+                validate_subject_box(meta.get("subject_box") or [], meta["layout"])
+            except (ValueError, KeyError, TypeError):
+                errors.append("missing or colliding observed subject box")
+            if art_eval.get("evaluation_protocol") != 2:
+                errors.append("engine v2 requires an image-bound visual review")
+    if art_eval.get("evaluation_protocol") == 2:
+        if final not in history:
+            errors.append("selected evaluation is not an actual history entry")
+        if final.get("base_sha256") != sha256(base_path) or final.get("cover_sha256") != sha256(image_path):
+            errors.append("selected visual review belongs to different image bytes")
+        if final.get("blockers") != []:
+            errors.append("selected artwork has unresolved visual blockers")
+        if set(final.get("inspected_scales") or []) != {"full", "300"}:
+            errors.append("selected artwork lacks full-size and thumbnail review")
+        notes = final.get("notes") or {}
+        if set(notes) != set(WEIGHTS) or any(not isinstance(n,str) or not n.strip() for n in notes.values()):
+            errors.append("selected artwork lacks dimension-specific visual evidence")
     for key, path in (
         ("base_sha256", base_path),
         ("prompt_sha256", prompt_path),

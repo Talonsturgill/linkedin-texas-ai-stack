@@ -8,10 +8,9 @@ never sends mail.
 ## Start here
 
 1. Read prompts/ROUTINE_PROMPT.txt and prompts/texas_stack_routine.md in full.
-2. Read config/brand.yaml, config/sources.yaml, config/state.yaml, config/rubric.yaml, and
-   references/anatomy_schema.md.
-3. Read examples/voice_anchor.md for voice only.
-4. Use the texas-stack-artwork skill after the mechanism dossier is final.
+2. Load the phase-specific contracts named by that routine once, when needed.
+3. Use examples/voice_anchor.md for voice only.
+4. Load texas-stack-artwork only after the mechanism dossier is final.
 
 The versioned routine is authoritative. Keep the scheduler prompt thin.
 

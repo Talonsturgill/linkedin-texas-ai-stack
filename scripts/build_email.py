@@ -143,10 +143,10 @@ def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
 <div class="wrap"><div class="mast"><h1>TEXAS AI DOCKET · THE TEXAS STACK</h1>
 <p>{safe(date)} · branch {safe(branch)}</p></div><div class="body">
 {content}
-<h2>Artwork evaluation</h2><p>{art_summary(art_eval)}</p>
-<div class="{note_class}"><b>Editor note</b><br>{safe(editor_note).replace(chr(10), '<br>')}</div>
 <h2>Sources</h2><ul>{''.join(source_items)}</ul>
 {score_table}
+<h2>Artwork evaluation</h2><p>{art_summary(art_eval)}</p>
+<div class="{note_class}"><b>Editor note</b><br>{safe(editor_note).replace(chr(10), '<br>')}</div>
 <div class="foot">Generated {safe(dt.datetime.now(dt.timezone.utc).isoformat())} ·
 commit {safe(commit)} · draft only, never sent.</div>
 </div></div></body></html>"""
