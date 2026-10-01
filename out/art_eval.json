@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "source": "imagegen",
+  "concepts": [
+    {
+      "name": "Five-year stack, one live gate",
+      "metaphor": "Five suspended funding wafers with only the first illuminated and a blank annual report controlling the path upward.",
+      "half_second_read": "One funded layer is real and the later layers sit behind review."
+    },
+    {
+      "name": "Budget manifold",
+      "metaphor": "One federal inlet divides into annual channels feeding a multi-institution research network.",
+      "half_second_read": "Funding travels through a controlled annual valve."
+    },
+    {
+      "name": "Center mobile",
+      "metaphor": "Six research rooms hang from one budget block while evidence returns through a review lens.",
+      "half_second_read": "The lead institution controls the network and reports back through one gate."
+    }
+  ],
+  "selected_concept": "Five-year stack, one live gate",
+  "style_family": "translucent resin cross-section",
+  "palette": [
+    "#08060F",
+    "#17132B",
+    "#4E5FA8",
+    "#EDE6D6",
+    "#C9B393",
+    "#E0956A"
+  ],
+  "hue_family": "indigo-gold",
+  "composition": "exploded_vertical",
+  "motifs": [
+    "five suspended funding wafers",
+    "blank annual report folio",
+    "single amber review aperture",
+    "brass dependency rails"
+  ],
+  "eval_history": [
+    {
+      "pass": 1,
+      "weighted": 9.054,
+      "scores": {
+        "concept": 9.3,
+        "focal_hierarchy": 9.2,
+        "composition": 8.8,
+        "color_value": 9.0,
+        "detail_richness": 8.9,
+        "craft_finish": 9.0,
+        "typography": 9.0,
+        "originality": 9.0,
+        "story_fidelity": 9.3
+      },
+      "weakest": "composition",
+      "observation": "The finished cover cleanly shows five physical layers, one funded gold layer, four dim future layers, and a blank report held in the only warm aperture. The two-line headline remains legible at thumbnail size without hiding the annual gate. No stray text, logos, people, false geography, or malformed focal objects are visible.",
+      "targeted_fix": "No further image pass needed. The deterministic furniture resolved the only pre-composition concern."
+    }
+  ],
+  "eval_final": {
+    "weighted": 9.054,
+    "scores": {
+      "concept": 9.3,
+      "focal_hierarchy": 9.2,
+      "composition": 8.8,
+      "color_value": 9.0,
+      "detail_richness": 8.9,
+      "craft_finish": 9.0,
+      "typography": 9.0,
+      "originality": 9.0,
+      "story_fidelity": 9.3
+    },
+    "passed": true
+  }
+}

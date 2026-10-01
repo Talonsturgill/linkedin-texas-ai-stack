@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-09-02",
+  "window_days": 14,
+  "no_target_this_cycle": false,
+  "selected_mechanism": {
+    "name": "NSF Science and Technology Center cooperative agreement",
+    "category": "vehicles",
+    "category_label": "VEHICLES",
+    "definition": "A Science and Technology Center cooperative agreement funds a lead university in annual, reviewed increments while preserving active NSF oversight of a multi-institution research center.",
+    "texas_scope": "Austin and the University of Texas at Austin as the lead institution for the Center for Human and Robot Co-Adaptation",
+    "news_trigger": {
+      "date": "2026-08-26",
+      "verbatim_span": "The Center for Human and Robot Co-Adaptation, led by The University of Texas at Austin, will study how people and robots can securely and effectively adapt to one another as service and assistive robots become more common in homes, hospitals, workplaces, and public spaces.",
+      "post_anchor": "Center for Human and Robot Co-Adaptation",
+      "source": {
+        "url": "https://www.nsf.gov/news/nsf-launches-three-new-science-technology-centers-90m",
+        "title": "NSF launches three new Science and Technology Centers with $90M investment in transformative research",
+        "publisher": "U.S. National Science Foundation",
+        "source_type": "primary",
+        "published_at": "2026-08-26",
+        "fetched_at_utc": "2026-09-02T23:50:30Z"
+      }
+    },
+    "layers": [
+      {
+        "order": 1,
+        "name": "Selection layer",
+        "function": "Turns peer review, panel review, and site-visit evidence into an institutional award decision.",
+        "controlling_actor": "NSF Division Director",
+        "actor_authority": "The assigned NSF Program Officer formulates a recommendation and the cognizant Division Director acts on it.",
+        "post_phrase": "NSF Division Director",
+        "primary_source": {
+          "url": "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation",
+          "title": "NSF 24-594 Science and Technology Centers Integrative Partnerships",
+          "publisher": "U.S. National Science Foundation",
+          "source_type": "primary",
+          "published_at": "2024-08-08",
+          "fetched_at_utc": "2026-09-02T23:50:30Z"
+        }
+      },
+      {
+        "order": 2,
+        "name": "Award authority layer",
+        "function": "Creates the cooperative agreement and authorizes the expenditure of federal funds.",
+        "controlling_actor": "NSF Grants and Agreements Officer",
+        "actor_authority": "The solicitation says only a Grants and Agreements Officer may make commitments, obligations, or awards for NSF.",
+        "post_phrase": "NSF Grants and Agreements Officer",
+        "primary_source": {
+          "url": "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation",
+          "title": "NSF 24-594 Science and Technology Centers Integrative Partnerships",
+          "publisher": "U.S. National Science Foundation",
+          "source_type": "primary",
+          "published_at": "2024-08-08",
+          "fetched_at_utc": "2026-09-02T23:50:30Z"
+        }
+      },
+      {
+        "order": 3,
+        "name": "Lead institution layer",
+        "function": "Concentrates management, budget, and partner subaward responsibility in the lead university.",
+        "controlling_actor": "University of Texas at Austin",
+        "actor_authority": "NSF requires one lead institution to accept overall management and budgetary responsibility and oversee subawards.",
+        "post_phrase": "University of Texas at Austin",
+        "primary_source": {
+          "url": "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation",
+          "title": "NSF 24-594 Science and Technology Centers Integrative Partnerships",
+          "publisher": "U.S. National Science Foundation",
+          "source_type": "primary",
+          "published_at": "2024-08-08",
+          "fetched_at_utc": "2026-09-02T23:50:30Z"
+        }
+      },
+      {
+        "order": 4,
+        "name": "Center operations layer",
+        "function": "Allocates center staff and resources across the research network and maintains communication with NSF.",
+        "controlling_actor": "Center Director Joydeep Biswas",
+        "actor_authority": "NSF assigns the Center Director responsibility for management, staffing, resource allocation, and the NSF liaison role. UT identifies Joydeep Biswas as the center director.",
+        "post_phrase": "Center Director Joydeep Biswas",
+        "primary_source": {
+          "url": "https://news.utexas.edu/2026/08/27/ut-to-lead-nsf-center-that-will-study-how-robots-and-people-learn-to-live-and-work-together/",
+          "title": "UT To Lead NSF Center That Will Study How Robots and People Learn To Live and Work Together",
+          "publisher": "University of Texas at Austin",
+          "source_type": "primary",
+          "published_at": "2026-08-27",
+          "fetched_at_utc": "2026-09-02T23:50:30Z"
+        }
+      },
+      {
+        "order": 5,
+        "name": "Continuation layer",
+        "function": "Supplies the annual performance evidence NSF uses to review progress and determine continued funding levels.",
+        "controlling_actor": "Principal Investigator Joydeep Biswas",
+        "actor_authority": "The principal investigator must submit the annual project report through Research.gov no later than 90 days before the current budget period ends.",
+        "post_phrase": "principal investigator",
+        "primary_source": {
+          "url": "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation",
+          "title": "NSF 24-594 Science and Technology Centers Integrative Partnerships",
+          "publisher": "U.S. National Science Foundation",
+          "source_type": "primary",
+          "published_at": "2024-08-08",
+          "fetched_at_utc": "2026-09-02T23:50:30Z"
+        }
+      }
+    ],
+    "chokepoint": {
+      "layer_order": 5,
+      "layer_name": "Continuation layer",
+      "controlling_actor": "Principal Investigator Joydeep Biswas",
+      "post_actor_phrase": "principal investigator",
+      "binary_decision": "Submit the annual project report on time so NSF can review and process future funding increments, or fail to submit it and delay that processing.",
+      "post_decision_phrase": "submit the annual project report",
+      "why_asymmetric": "The public headline presents a five-year award, but the award record shows one fiscal-year obligation. NSF makes each year contingent on satisfactory annual review, and its rules make the principal investigator's report a necessary input. Without that filing, future increment processing is delayed before any public account of center results can matter.",
+      "primary_source_url": "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation"
+    },
+    "texas_consequence": "UT Austin receives the federal cooperative agreement as the lead institution, controls the center budget and partner subawards, and hosts part of the real-world HERO Facility Network. The official award record lists $29,999,998 as the estimated total and $5,999,999 as obligated for fiscal year 2026.",
+    "structural_read": "The vehicle gives Austin meaningful control over a national AI and robotics network while keeping future federal increments tied to annual evidence. That is a stronger structure than an unrestricted five-year transfer, but it means the useful public measure is obligations and performance review, not the headline total.",
+    "forward_implication": "The next useful public check is an amendment to the NSF award record showing another funding increment, paired with whatever management indicators UT makes available from the first annual review.",
+    "next_check": {
+      "what": "The next funding increment in NSF award 2535195 and the center's first annual performance indicators",
+      "actor": "Principal Investigator Joydeep Biswas and the NSF STC program",
+      "date_or_window": "Before the end of the first budget period, after the annual report due 90 days earlier"
+    },
+    "public_policy_context": {
+      "is_public_policy": false,
+      "editorial_mode": "structural_analysis",
+      "assessment": "not_applicable"
+    },
+    "sources": [
+      {
+        "url": "https://www.nsf.gov/news/nsf-launches-three-new-science-technology-centers-90m",
+        "title": "NSF launches three new Science and Technology Centers with $90M investment in transformative research",
+        "publisher": "U.S. National Science Foundation",
+        "source_type": "primary",
+        "independent_of_subject": true,
+        "claims_supported": [
+          "announcement date",
+          "approximately $6 million annually for an initial five-year period",
+          "UT Austin leads the Center for Human and Robot Co-Adaptation"
+        ],
+        "fetched_at_utc": "2026-09-02T23:50:30Z"
+      },
+      {
+        "url": "https://api.nsf.gov/services/v1/awards/2535195.json",
+        "title": "NSF Award 2535195",
+        "publisher": "U.S. National Science Foundation",
+        "source_type": "primary",
+        "independent_of_subject": true,
+        "claims_supported": [
+          "cooperative agreement instrument",
+          "UT Austin awardee",
+          "Joydeep Biswas principal investigator",
+          "$29,999,998 estimated total",
+          "$5,999,999 fiscal year 2026 obligation",
+          "September 1st, 2026 start date"
+        ],
+        "fetched_at_utc": "2026-09-02T23:50:30Z"
+      },
+      {
+        "url": "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation",
+        "title": "NSF 24-594 Science and Technology Centers Integrative Partnerships",
+        "publisher": "U.S. National Science Foundation",
+        "source_type": "primary",
+        "independent_of_subject": true,
+        "claims_supported": [
+          "selection and award authority",
+          "lead institution responsibilities",
+          "center director responsibilities",
+          "cooperative agreement conditions",
+          "annual reporting deadline",
+          "continued funding review"
+        ],
+        "fetched_at_utc": "2026-09-02T23:50:30Z"
+      },
+      {
+        "url": "https://news.utexas.edu/2026/08/27/ut-to-lead-nsf-center-that-will-study-how-robots-and-people-learn-to-live-and-work-together/",
+        "title": "UT To Lead NSF Center That Will Study How Robots and People Learn To Live and Work Together",
+        "publisher": "University of Texas at Austin",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "Joydeep Biswas is center director",
+          "six participating universities",
+          "HERO Facility Network",
+          "Texas Advanced Computing Center role",
+          "internal ethics board and consent procedures"
+        ],
+        "fetched_at_utc": "2026-09-02T23:50:30Z"
+      }
+    ],
+    "verbatim_quotes": []
+  },
+  "required_post_phrases": [
+    "NSF Science and Technology Center cooperative agreement",
+    "Center for Human and Robot Co-Adaptation",
+    "principal investigator",
+    "submit the annual project report"
+  ],
+  "verified_facts": [
+    {
+      "claim": "NSF announced the Center for Human and Robot Co-Adaptation on August 26th, 2026, with UT Austin as lead.",
+      "source_urls": [
+        "https://www.nsf.gov/news/nsf-launches-three-new-science-technology-centers-90m"
+      ]
+    },
+    {
+      "claim": "NSF award 2535195 is a cooperative agreement with an estimated total of $29,999,998 and $5,999,999 obligated for fiscal year 2026.",
+      "source_urls": [
+        "https://api.nsf.gov/services/v1/awards/2535195.json"
+      ]
+    },
+    {
+      "claim": "The solicitation makes the lead institution responsible for overall management, the budget, and oversight of partner subawards.",
+      "source_urls": [
+        "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation"
+      ]
+    },
+    {
+      "claim": "The Center Director manages staffing and resource allocation and serves as liaison with NSF.",
+      "source_urls": [
+        "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation",
+        "https://news.utexas.edu/2026/08/27/ut-to-lead-nsf-center-that-will-study-how-robots-and-people-learn-to-live-and-work-together/"
+      ]
+    },
+    {
+      "claim": "The principal investigator must submit an annual project report no later than 90 days before the end of the current budget period. Missing reports delay review and processing of future funding increments.",
+      "source_urls": [
+        "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation"
+      ]
+    },
+    {
+      "claim": "Each year of STC support is contingent on satisfactory annual review, and NSF uses reports, site visits, and management indicators to determine continued funding level.",
+      "source_urls": [
+        "https://www.nsf.gov/funding/opportunities/science-technology-centers-integrative-partnerships/nsf24-594/solicitation"
+      ]
+    }
+  ],
+  "gate_results": {
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": true,
+    "chokepoint_asymmetry": true,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
+    "political_neutrality": true
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "ERCOT Batch Zero pause and verification process",
+      "category": "regulatory",
+      "news_trigger": "Recent reporting described the paused large-load classification process.",
+      "drop_reason": "The newest implementation record did not expose one complete public layer chain with a single current chokepoint as cleanly as the selected cooperative agreement.",
+      "sources": [
+        {
+          "url": "https://www.ercot.com/services/comm/mkt_notices/M-B062326-04",
+          "title": "ERCOT Market Notice M-B062326-04",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-09-02T23:50:30Z"
+        }
+      ]
+    }
+  ]
+}
+

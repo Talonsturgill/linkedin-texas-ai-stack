@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "errors": [],
+  "metrics": {
+    "body_words": 380,
+    "total_chars": 2561,
+    "hook_chars": 167,
+    "layer_bullets": 5,
+    "hashtags": [
+      "#TexasAI",
+      "#TexasResearch",
+      "#FederalContracting"
+    ],
+    "tag_line": "#TexasAI #TexasResearch #FederalContracting"
+  }
+}
