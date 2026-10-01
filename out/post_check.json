@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "errors": [],
+  "metrics": {
+    "body_words": 373,
+    "total_chars": 2615,
+    "hook_chars": 207,
+    "layer_bullets": 4,
+    "hashtags": [
+      "#TexasAI",
+      "#ERCOT",
+      "#TexasGrid"
+    ],
+    "tag_line": "#TexasAI #ERCOT #TexasGrid"
+  }
+}

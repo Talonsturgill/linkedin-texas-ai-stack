@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "source": "imagegen",
+  "concepts": [
+    {
+      "name": "The verification manifold",
+      "half_second_read": "Many inputs, one eligibility gate",
+      "metaphor": "Four evidence channels converge on one inspection chamber and gate arm."
+    },
+    {
+      "name": "The provisional socket",
+      "half_second_read": "Connected on paper, not yet cleared",
+      "metaphor": "An industrial connector stops one deliberate step short of the bus rail."
+    },
+    {
+      "name": "The attestation press",
+      "half_second_read": "A distributed record becomes one binary outcome",
+      "metaphor": "Four blank submission sheets enter one mechanical eligibility press."
+    }
+  ],
+  "selected_concept": "The verification manifold",
+  "style_family": "museum-quality physical miniature photography",
+  "palette": [
+    "#0F0C1C",
+    "#EDE6D6",
+    "#8C6A4A",
+    "#6E7A5A",
+    "#55606F"
+  ],
+  "hue_family": "graphite-limestone-copper-mesquite",
+  "composition": "offset_chokepoint",
+  "motifs": [
+    "four evidence channels",
+    "single copper inspection chamber",
+    "pivoting eligibility gate arm",
+    "short cleared exit rail"
+  ],
+  "eval_history": [
+    {
+      "pass": 1,
+      "source_file": "out/art_base.png",
+      "observation": "The actual render shows four visibly separate limestone channels carrying blank paper and envelope forms into a single, sharply built copper chamber. One physical lever controls the short green exit rail. There is no writing, logo, map, seal, watermark, portrait, or generic glowing technology. The composed cover keeps the wordmark and date readable over the calm top band, gives the five-word headline strong hierarchy without covering the mechanism, and remains fully legible at 300 pixels.",
+      "weakest_dimension": "color_value",
+      "targeted_correction": "No further ImageGen pass. The restrained palette supports the procedural tone, and additional contrast would push the neutral inspection metaphor toward warning imagery.",
+      "scores": {
+        "concept": 9.5,
+        "focal_hierarchy": 9.3,
+        "composition": 9.2,
+        "color_value": 9.1,
+        "detail_richness": 9.3,
+        "craft_finish": 9.3,
+        "typography": 9.4,
+        "originality": 9.2,
+        "story_fidelity": 9.6
+      },
+      "weighted": 9.31,
+      "passed": true
+    }
+  ],
+  "eval_final": {
+    "scores": {
+      "concept": 9.5,
+      "focal_hierarchy": 9.3,
+      "composition": 9.2,
+      "color_value": 9.1,
+      "detail_richness": 9.3,
+      "craft_finish": 9.3,
+      "typography": 9.4,
+      "originality": 9.2,
+      "story_fidelity": 9.6
+    },
+    "weighted": 9.31,
+    "passed": true
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "date": "SEPTEMBER 11TH, 2026",
+  "column": "The Texas Stack",
+  "kicker": "THE TEXAS STACK",
+  "category": "REGULATORY",
+  "headline": "THE ELIGIBILITY GATE IS LIVE",
+  "place": "TEXAS",
+  "style_family": "museum-quality physical miniature photography",
+  "palette": [
+    "#0F0C1C",
+    "#EDE6D6",
+    "#8C6A4A",
+    "#6E7A5A",
+    "#55606F"
+  ],
+  "hue_family": "graphite-limestone-copper-mesquite",
+  "composition": "offset_chokepoint",
+  "motifs": [
+    "four evidence channels",
+    "single copper inspection chamber",
+    "pivoting eligibility gate arm",
+    "short cleared exit rail"
+  ],
+  "technique_stack": [
+    "built-in imagegen",
+    "deterministic typography overlay"
+  ],
+  "source": "imagegen",
+  "seed": "imagegen-managed",
+  "base_sha256": "0341a30f0b88c223fab41de3f5e7c9c920f87615120e52433123a8db6ca27d52",
+  "prompt_sha256": "ff504dad2c23ff7d1fd4c377f6917cfe8f8e7afb135a4504d849e0681a1798e9",
+  "plan_sha256": "8cf2ebc6927af29ab0d638a169ade9611cb533ced532b9e1c242db408733df38",
+  "eval_sha256": "ff4c78a6ff8bd1d8c7ce927129efe0f7c73dad9408cd67b1a04f24acdd9c00d9",
+  "eval_history": [
+    {
+      "pass": 1,
+      "source_file": "out/art_base.png",
+      "observation": "The actual render shows four visibly separate limestone channels carrying blank paper and envelope forms into a single, sharply built copper chamber. One physical lever controls the short green exit rail. There is no writing, logo, map, seal, watermark, portrait, or generic glowing technology. The composed cover keeps the wordmark and date readable over the calm top band, gives the five-word headline strong hierarchy without covering the mechanism, and remains fully legible at 300 pixels.",
+      "weakest_dimension": "color_value",
+      "targeted_correction": "No further ImageGen pass. The restrained palette supports the procedural tone, and additional contrast would push the neutral inspection metaphor toward warning imagery.",
+      "scores": {
+        "concept": 9.5,
+        "focal_hierarchy": 9.3,
+        "composition": 9.2,
+        "color_value": 9.1,
+        "detail_richness": 9.3,
+        "craft_finish": 9.3,
+        "typography": 9.4,
+        "originality": 9.2,
+        "story_fidelity": 9.6
+      },
+      "weighted": 9.31,
+      "passed": true
+    }
+  ],
+  "eval_final": {
+    "scores": {
+      "concept": 9.5,
+      "focal_hierarchy": 9.3,
+      "composition": 9.2,
+      "color_value": 9.1,
+      "detail_richness": 9.3,
+      "craft_finish": 9.3,
+      "typography": 9.4,
+      "originality": 9.2,
+      "story_fidelity": 9.6
+    },
+    "weighted": 9.31,
+    "passed": true
+  },
+  "shortfall_note": "",
+  "fallback_reason": "",
+  "rendered_at_utc": "2026-09-11T13:13:25.799299+00:00",
+  "canvas": [
+    1080,
+    1080
+  ]
+}
