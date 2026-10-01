@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "errors": [],
+  "metrics": {
+    "body_words": 378,
+    "total_chars": 2350,
+    "hook_chars": 158,
+    "layer_bullets": 4,
+    "hashtags": [
+      "#TexasAI",
+      "#TexasGrid",
+      "#AIInfrastructure"
+    ],
+    "tag_line": "#TexasAI #TexasGrid #AIInfrastructure"
+  }
+}
