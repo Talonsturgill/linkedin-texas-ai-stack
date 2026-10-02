@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "headline": "POWER COMES WITH FIRST REFUSAL",
+  "font_size": 80,
+  "lines": [
+    "POWER COMES WITH",
+    "FIRST REFUSAL"
+  ],
+  "positions": [
+    [
+      64,
+      802
+    ],
+    [
+      64,
+      878
+    ]
+  ],
+  "text_boxes": [
+    [
+      64,
+      802,
+      1003,
+      862
+    ],
+    [
+      64,
+      878,
+      757,
+      938
+    ]
+  ],
+  "headline_top": 802,
+  "subject_zone": [
+    64,
+    196,
+    1016,
+    762
+  ],
+  "canvas": [
+    1080,
+    1080
+  ]
+}

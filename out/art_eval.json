@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "source": "imagegen",
+  "concepts": [
+    "Cable bookmark",
+    "Split ceramic socket",
+    "First chair at the empty drafting table"
+  ],
+  "selected_concept": "Cable bookmark",
+  "style_family": "editorial woodcut",
+  "palette": [
+    "#D5A52F",
+    "#24211B",
+    "#F5EDCF",
+    "#9A7940"
+  ],
+  "hue_family": "ochre-carbon-cream",
+  "composition": "thirds_focal",
+  "motifs": [
+    "power cable bookmarking a blank contract book",
+    "loose first-page reservation"
+  ],
+  "eval_history": [
+    {
+      "pass_number": 1,
+      "scores": {
+        "concept": 8.8,
+        "focal_hierarchy": 8.9,
+        "composition": 6.4,
+        "color_value": 9.0,
+        "detail_richness": 9.2,
+        "craft_finish": 9.0,
+        "typography": 7.0,
+        "originality": 9.0,
+        "story_fidelity": 9.0
+      },
+      "notes": {
+        "concept": "The plug and blank book express power paired with reserved contract space; the first-refusal concept still needs the headline.",
+        "focal_hierarchy": "Cable curve leads from plug into book, though the large book crowds the lower field.",
+        "composition": "Observed subject bounds [42,224,1035,826] cross the headline clearance; compositor rejects them.",
+        "color_value": "Cream pages and charcoal cable separate clearly from ochre at thumbnail.",
+        "detail_richness": "Carved paper hatching, page stack and cable ribs remain coherent at full size.",
+        "craft_finish": "Clean printed contours and plausible page fan; no pseudo-text observed.",
+        "typography": "Headline is readable but directly touches and covers the book corner and plug region in the diagnostic preview.",
+        "originality": "Woodcut cable bookmark differs from recent frames, manifolds and folded permit art.",
+        "story_fidelity": "Loose bookmark offers a place rather than depicting a locked gate or board seat; clearly metaphorical."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "Subject overlaps headline clearance and furniture."
+      ],
+      "base_sha256": "770e9e973fc45046fd838ea57028e6cffd21d5e9f018013226f4b062dfb1f5db",
+      "cover_sha256": "5bb67a87aa441f77db035e9687676234bfea707bc8f7b635a445d0330f086bfc",
+      "weighted": 8.457,
+      "passed": false,
+      "observations": "Base and diagnostic cover inspected. Guard rejected measured box. Preview made without a subject box only to visualize the rejection; it is not eligible for delivery.",
+      "edit_prompt": "Edit only the scale and placement of the existing woodcut illustration. Preserve the book, loose power-cable bookmark, blank pages, plug geometry, woodcut carving, ochre palette and opaque full-square background. Shrink the complete book-and-cable group uniformly to 78 percent of its current size and center that group around x540,y465 on a 1080-square canvas. The entire subject including every plug pin and book corner must lie between x130 and x950 and between y235 and y715. Leave all pixels below y740 as empty ochre textured background, with no objects or their outlines. Keep the top 196 pixels quiet ochre as before. Do not introduce text, writing, numbers, logos, new objects or change the metaphor. This is a framing repair only for clear headline space."
+    },
+    {
+      "pass_number": 2,
+      "scores": {
+        "concept": 8.8,
+        "focal_hierarchy": 9.1,
+        "composition": 9.1,
+        "color_value": 9.2,
+        "detail_richness": 9.2,
+        "craft_finish": 9.0,
+        "typography": 9.1,
+        "originality": 9.1,
+        "story_fidelity": 9.0
+      },
+      "notes": {
+        "concept": "The power cable visibly bookmarks a blank agreement, tying supply to a place in the next deal. The exact legal right requires the headline rather than being self-explanatory.",
+        "focal_hierarchy": "Black cable leads from the distinct plug to the page opening; cream page fan remains secondary.",
+        "composition": "Observed bounds [154,268,915,731] fit the measured subject zone and leave a visible gap above the two-line headline.",
+        "color_value": "Warm ochre, cream paper and charcoal separate at 300 pixels with no crushed story detail.",
+        "detail_richness": "Page edges, carved contour, cable ribs and uneven ink pressure carry macro, meso and micro detail.",
+        "craft_finish": "Continuous cable and clean book contours survive full-resolution inspection; no pseudo-text or malformed joint.",
+        "typography": "Measured two-line headline is clear at 300 pixels with no subject collision; all publication furniture is correct.",
+        "originality": "Woodcut cable bookmark is a new physical interaction and medium relative to all scanned cooldowns.",
+        "story_fidelity": "The unbound blank book and loose cable show an option and unknown full terms, not a padlock, voting seat or operating campus."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "06ec6fb5d022ea163607878c8781e4a185edf2745dd607cfd835af63feb619fd",
+      "cover_sha256": "bdfbac0e250e0935475d65f2e9fa9c60a2f779b901bcb06396294924ce477f2f",
+      "weighted": 9.057,
+      "passed": true,
+      "observations": "Actual second ImageGen generation inspected at full size, composed at 1080 and both images compared at 300 pixels. Empty ochre below the subject preserves headline clearance. No concrete high-value defect remains.",
+      "edit_prompt": ""
+    }
+  ],
+  "eval_final": {
+    "pass_number": 2,
+    "scores": {
+      "concept": 8.8,
+      "focal_hierarchy": 9.1,
+      "composition": 9.1,
+      "color_value": 9.2,
+      "detail_richness": 9.2,
+      "craft_finish": 9.0,
+      "typography": 9.1,
+      "originality": 9.1,
+      "story_fidelity": 9.0
+    },
+    "notes": {
+      "concept": "The power cable visibly bookmarks a blank agreement, tying supply to a place in the next deal. The exact legal right requires the headline rather than being self-explanatory.",
+      "focal_hierarchy": "Black cable leads from the distinct plug to the page opening; cream page fan remains secondary.",
+      "composition": "Observed bounds [154,268,915,731] fit the measured subject zone and leave a visible gap above the two-line headline.",
+      "color_value": "Warm ochre, cream paper and charcoal separate at 300 pixels with no crushed story detail.",
+      "detail_richness": "Page edges, carved contour, cable ribs and uneven ink pressure carry macro, meso and micro detail.",
+      "craft_finish": "Continuous cable and clean book contours survive full-resolution inspection; no pseudo-text or malformed joint.",
+      "typography": "Measured two-line headline is clear at 300 pixels with no subject collision; all publication furniture is correct.",
+      "originality": "Woodcut cable bookmark is a new physical interaction and medium relative to all scanned cooldowns.",
+      "story_fidelity": "The unbound blank book and loose cable show an option and unknown full terms, not a padlock, voting seat or operating campus."
+    },
+    "inspected_scales": [
+      "full",
+      "300"
+    ],
+    "blockers": [],
+    "base_sha256": "06ec6fb5d022ea163607878c8781e4a185edf2745dd607cfd835af63feb619fd",
+    "cover_sha256": "bdfbac0e250e0935475d65f2e9fa9c60a2f779b901bcb06396294924ce477f2f",
+    "weighted": 9.057,
+    "passed": true,
+    "observations": "Actual second ImageGen generation inspected at full size, composed at 1080 and both images compared at 300 pixels. Empty ochre below the subject preserves headline clearance. No concrete high-value defect remains.",
+    "edit_prompt": ""
+  },
+  "evaluation_protocol": 2,
+  "selected_base_sha256": "06ec6fb5d022ea163607878c8781e4a185edf2745dd607cfd835af63feb619fd"
+}

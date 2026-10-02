@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "criteria": [
+    {
+      "name": "Hook strength",
+      "weight": 0.1,
+      "score": 8.9,
+      "notes": "Two-line hook names the framework and fresh announcement."
+    },
+    {
+      "name": "Mechanism significance for Texas",
+      "weight": 0.18,
+      "score": 9.0,
+      "notes": "Connects Ector County AI power procurement with prospective ownership and future rights."
+    },
+    {
+      "name": "Layer fidelity",
+      "weight": 0.14,
+      "score": 9.4,
+      "notes": "Four exact layers and controllers map to the SEC filing."
+    },
+    {
+      "name": "Chokepoint clarity",
+      "weight": 0.13,
+      "score": 9.0,
+      "notes": "One named rights holder and exercise-or-decline decision; no general veto claim."
+    },
+    {
+      "name": "Structural read",
+      "weight": 0.12,
+      "score": 9.1,
+      "notes": "Separates economic stake from contract rights and distinguishes signing from delivery."
+    },
+    {
+      "name": "Forward implication",
+      "weight": 0.08,
+      "score": 8.8,
+      "notes": "Identifies promised contract exhibits; exact filing date is not yet known."
+    },
+    {
+      "name": "Primary-source quality",
+      "weight": 0.1,
+      "score": 8.7,
+      "notes": "All layers backed by current primary text; full contracts not yet fetched, clearly disclosed."
+    },
+    {
+      "name": "Texas AI Docket voice",
+      "weight": 0.08,
+      "score": 9.2,
+      "notes": "Plain structural analysis without promotion or investment advice."
+    },
+    {
+      "name": "LinkedIn readability",
+      "weight": 0.04,
+      "score": 9.2,
+      "notes": "368 words, four bullets, 2204 characters, checker passes."
+    },
+    {
+      "name": "Chokepoint question",
+      "weight": 0.03,
+      "score": 8.8,
+      "notes": "Question tests room for another supplier within disclosed contract limits."
+    }
+  ],
+  "weighted_total": 9.03,
+  "threshold": 8.0,
+  "ship": true,
+  "hard_fail_checks": [
+    {
+      "name": "seven_point_gate",
+      "passed": true,
+      "note": "Verified against dossier, current source text and passing post check."
+    },
+    {
+      "name": "mechanism_and_trigger",
+      "passed": true,
+      "note": "Verified against dossier, current source text and passing post check."
+    },
+    {
+      "name": "layer_fidelity",
+      "passed": true,
+      "note": "Verified against dossier, current source text and passing post check."
+    },
+    {
+      "name": "specific_chokepoint",
+      "passed": true,
+      "note": "Verified against dossier, current source text and passing post check."
+    },
+    {
+      "name": "fact_trace",
+      "passed": true,
+      "note": "Verified against dossier, current source text and passing post check."
+    },
+    {
+      "name": "political_neutrality",
+      "passed": true,
+      "note": "Verified against dossier, current source text and passing post check."
+    },
+    {
+      "name": "linkedin_constraints",
+      "passed": true,
+      "note": "Verified against dossier, current source text and passing post check."
+    },
+    {
+      "name": "house_style",
+      "passed": true,
+      "note": "Verified against dossier, current source text and passing post check."
+    }
+  ],
+  "hard_failures": [],
+  "editorial_passes": 1,
+  "score_revisions": 0
+}

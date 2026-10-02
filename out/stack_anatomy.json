@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-10-02",
+  "window_days": 14,
+  "no_target_this_cycle": false,
+  "selected_mechanism": {
+    "name": "TCDC power-to-equity framework",
+    "category": "capital_sovereignty",
+    "category_label": "CAPITAL + SOVEREIGNTY",
+    "definition": "A power purchase agreement paired with a development framework links planned electricity supply to collateral, project equity and rights over later power opportunities.",
+    "texas_scope": "Texas Critical Data Center near Odessa in Ector County, Texas, for AI infrastructure.",
+    "news_trigger": {
+      "date": "2026-09-21",
+      "verbatim_span": "On September 21, 2026, the Company issued a press release announcing the PPA and DFA.",
+      "post_anchor": "September 21st, 2026",
+      "source": {
+        "url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+        "title": "New Era Form 8-K, September 21, 2026",
+        "publisher": "New Era Energy & Digital via SEC",
+        "source_type": "primary",
+        "published_at": "2026-09-21",
+        "fetched_at_utc": "2026-10-02T13:05:03.238067+00:00",
+        "body_sha256": "c78cf0a68898fd24acd68ad1a760e0c277532bc6fdc9b33bde8f0089490f0a0c",
+        "fetch_method": "web reader",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "PPA obligations and credit support",
+          "DFA equity and future power rights",
+          "Contract exhibits planned for September quarter Form 10-Q"
+        ]
+      }
+    },
+    "layers": [
+      {
+        "order": 1,
+        "name": "Supply",
+        "controlling_actor": "Luminant ET Services Company LLC",
+        "actor_authority": "Seller obligations in executed PPA",
+        "post_phrase": "Luminant",
+        "function": "Contracts for 200 to 207 MW for TCDC near Odessa; delivery may be sourced from the Odessa plant, other sources or the ERCOT grid.",
+        "primary_source": {
+          "url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+          "title": "New Era Form 8-K, September 21, 2026",
+          "publisher": "New Era Energy & Digital via SEC",
+          "source_type": "primary",
+          "published_at": "2026-09-21",
+          "fetched_at_utc": "2026-10-02T13:05:03.238067+00:00",
+          "body_sha256": "c78cf0a68898fd24acd68ad1a760e0c277532bc6fdc9b33bde8f0089490f0a0c",
+          "fetch_method": "web reader",
+          "independent_of_subject": false,
+          "claims_supported": [
+            "PPA obligations and credit support",
+            "DFA equity and future power rights",
+            "Contract exhibits planned for September quarter Form 10-Q"
+          ],
+          "evidence_pointer": "Item 1.01, Power Purchase Agreement, first paragraph"
+        }
+      },
+      {
+        "order": 2,
+        "name": "Security",
+        "controlling_actor": "TCDC PowerCo LLC",
+        "actor_authority": "Buyer credit-support obligations in PPA",
+        "post_phrase": "TCDC PowerCo",
+        "function": "Must post a $116 million letter of credit within 15 business days of September 18 and additional mutually acceptable security up to $82.8 million by delivery. Posting is not verified.",
+        "primary_source": {
+          "url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+          "title": "New Era Form 8-K, September 21, 2026",
+          "publisher": "New Era Energy & Digital via SEC",
+          "source_type": "primary",
+          "published_at": "2026-09-21",
+          "fetched_at_utc": "2026-10-02T13:05:03.238067+00:00",
+          "body_sha256": "c78cf0a68898fd24acd68ad1a760e0c277532bc6fdc9b33bde8f0089490f0a0c",
+          "fetch_method": "web reader",
+          "independent_of_subject": false,
+          "claims_supported": [
+            "PPA obligations and credit support",
+            "DFA equity and future power rights",
+            "Contract exhibits planned for September quarter Form 10-Q"
+          ],
+          "evidence_pointer": "Item 1.01, Power Purchase Agreement, credit-support paragraph"
+        }
+      },
+      {
+        "order": 3,
+        "name": "Equity",
+        "controlling_actor": "New Era Energy & Digital, Inc.",
+        "actor_authority": "DFA obligation to cause Project Company issuance",
+        "post_phrase": "New Era",
+        "function": "After Luminant supplies power, cause issuance to Vistra or designated affiliate of 5% non-voting fully diluted equity in the Project Company holding the powered portion. Not the entire corporate parent.",
+        "primary_source": {
+          "url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+          "title": "New Era Form 8-K, September 21, 2026",
+          "publisher": "New Era Energy & Digital via SEC",
+          "source_type": "primary",
+          "published_at": "2026-09-21",
+          "fetched_at_utc": "2026-10-02T13:05:03.238067+00:00",
+          "body_sha256": "c78cf0a68898fd24acd68ad1a760e0c277532bc6fdc9b33bde8f0089490f0a0c",
+          "fetch_method": "web reader",
+          "independent_of_subject": false,
+          "claims_supported": [
+            "PPA obligations and credit support",
+            "DFA equity and future power rights",
+            "Contract exhibits planned for September quarter Form 10-Q"
+          ],
+          "evidence_pointer": "Item 1.01, Development Framework Agreement, equity paragraph"
+        }
+      },
+      {
+        "order": 4,
+        "name": "Expansion rights",
+        "controlling_actor": "Vistra Operations Company LLC",
+        "actor_authority": "Express right of first refusal in DFA",
+        "post_phrase": "Vistra",
+        "function": "From April 2028 holds a right of first refusal for future onsite generation or power build-out opportunities at the Ector County site; separate five-year first-offer right on certain proposed generation and battery projects.",
+        "primary_source": {
+          "url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+          "title": "New Era Form 8-K, September 21, 2026",
+          "publisher": "New Era Energy & Digital via SEC",
+          "source_type": "primary",
+          "published_at": "2026-09-21",
+          "fetched_at_utc": "2026-10-02T13:05:03.238067+00:00",
+          "body_sha256": "c78cf0a68898fd24acd68ad1a760e0c277532bc6fdc9b33bde8f0089490f0a0c",
+          "fetch_method": "web reader",
+          "independent_of_subject": false,
+          "claims_supported": [
+            "PPA obligations and credit support",
+            "DFA equity and future power rights",
+            "Contract exhibits planned for September quarter Form 10-Q"
+          ],
+          "evidence_pointer": "Item 1.01, Development Framework Agreement, first rights paragraph"
+        }
+      }
+    ],
+    "chokepoint": {
+      "layer_order": 4,
+      "layer_name": "Expansion rights",
+      "controlling_actor": "Vistra Operations Company LLC",
+      "post_actor_phrase": "Vistra",
+      "binary_decision": "Exercise or decline the contractual right of first refusal for a covered future onsite generation or power build-out opportunity, beginning April 2028.",
+      "post_decision_phrase": "exercise or decline its right of first refusal",
+      "why_asymmetric": "The power supplier also receives a contractually specified choice on covered future power opportunities. Non-voting equity alone does not create that choice. Full exercise procedure and exceptions are not established by the public summary.",
+      "primary_source_url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm"
+    },
+    "texas_consequence": "The Ector County AI campus links future power procurement to rights granted to the original supplier, while upfront credit support and delivery conditions remain separate.",
+    "structural_read": "The supplier is positioned as a future project owner and holder of expansion rights. The rights come from the DFA, not voting control. The announcement does not prove collateral posting, power delivery, or universal control of the site.",
+    "forward_implication": "Inspect the promised full contract exhibits for the scope and exercise procedure of the future power rights and for evidence of collateral posting.",
+    "next_check": {
+      "what": "September-quarter Form 10-Q and promised PPA/DFA exhibits; later disclosure of collateral performance",
+      "actor": "New Era Energy & Digital",
+      "date_or_window": "Quarter ending September 30, 2026; no filing date inferred"
+    },
+    "public_policy_context": {
+      "is_public_policy": false,
+      "editorial_mode": "structural_analysis",
+      "assessment": "not_applicable"
+    },
+    "sources": [
+      {
+        "url": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+        "title": "New Era Form 8-K, September 21, 2026",
+        "publisher": "New Era Energy & Digital via SEC",
+        "source_type": "primary",
+        "published_at": "2026-09-21",
+        "fetched_at_utc": "2026-10-02T13:05:03.238067+00:00",
+        "body_sha256": "c78cf0a68898fd24acd68ad1a760e0c277532bc6fdc9b33bde8f0089490f0a0c",
+        "fetch_method": "web reader",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "PPA obligations and credit support",
+          "DFA equity and future power rights",
+          "Contract exhibits planned for September quarter Form 10-Q"
+        ]
+      },
+      {
+        "url": "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx",
+        "title": "New Era Energy & Digital Secures 20-Year, 207 MW PPA with Vistra",
+        "publisher": "New Era Energy & Digital",
+        "source_type": "primary",
+        "published_at": "2026-09-21",
+        "fetched_at_utc": "2026-10-02T13:04:35.826322+00:00",
+        "body_sha256": "188f35835aef72b15b74d875d8aed407e4e91c958a8af955b861cce4962d9f77",
+        "fetch_method": "direct HTTPS",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "September 21 announcement",
+          "Texas AI training and inference infrastructure",
+          "Power delivery expectation and non-voting project equity"
+        ]
+      },
+      {
+        "url": "https://www.rttnews.com/3692578/new-era-energy-s-tcdc-powerco-signs-20-year-ppa-with-vistra-s-luminant-et-services.aspx",
+        "title": "New Era TCDC PowerCo signs PPA with Vistra affiliate",
+        "publisher": "RTTNews",
+        "source_type": "independent_reporting",
+        "published_at": "2026-09-21",
+        "fetched_at_utc": "2026-10-02T13:04:35.598874+00:00",
+        "body_sha256": "332641133750ddedbb1e3980f52b56dcc0b299f0ef8dee6b21b197d00e3335bd",
+        "fetch_method": "direct HTTPS",
+        "independent_of_subject": true,
+        "claims_supported": [
+          "Independent newsroom corroboration of announced PPA and DFA; not independent verification of performance"
+        ]
+      }
+    ]
+  },
+  "required_post_phrases": [
+    "TCDC power-to-equity framework",
+    "September 21st, 2026",
+    "Vistra",
+    "exercise or decline its right of first refusal"
+  ],
+  "verified_facts": [
+    {
+      "claim": "September 21st, 2026 announcement followed September 18, 2026 execution of the PPA and concurrent DFA.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+        "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx"
+      ]
+    },
+    {
+      "claim": "TCDC near Odessa, Ector County, is New Era AI infrastructure; company describes AI training and inference workloads.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+        "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx"
+      ]
+    },
+    {
+      "claim": "Luminant has agreed to supply 200 to 207 MW; supply can come from the Odessa plant, other available sources or ERCOT grid.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm"
+      ]
+    },
+    {
+      "claim": "TCDC PowerCo must provide a $116 million letter of credit within 15 business days of PPA execution, and additional mutually acceptable security up to $82.8 million by delivery.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm"
+      ]
+    },
+    {
+      "claim": "After delivery begins New Era must cause issuance of 5% non-voting fully diluted equity in the Project Company for the powered portion to Vistra or its designated affiliate.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+        "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx"
+      ]
+    },
+    {
+      "claim": "Starting April 2028, Vistra has a right of first refusal on future onsite generation or power build-out opportunities at the Ector County site.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm"
+      ]
+    },
+    {
+      "claim": "A separate right of first offer lasts five years from DFA execution for certain proposed power generation and battery storage projects.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm"
+      ]
+    },
+    {
+      "claim": "The first-refusal right gives Vistra the choice to exercise or decline it for covered opportunities; specific notices, matching periods and exceptions are not supplied in the 8-K summary.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm"
+      ]
+    },
+    {
+      "claim": "Luminant obligations depend on conditions precedent by December 31, 2027, including execution of Phase 1 substation/equipment purchase agreement.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm"
+      ]
+    },
+    {
+      "claim": "Company expects power in Q3 2027; expectation is not completed delivery.",
+      "source_urls": [
+        "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx"
+      ]
+    },
+    {
+      "claim": "The 8-K says full PPA and DFA texts will be filed with the Form 10-Q for the quarter ending September 30, 2026.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm"
+      ]
+    },
+    {
+      "claim": "These sources do not establish that collateral has been posted or that power has begun flowing; equity is prospective and non-voting, and rights are limited to covered opportunities.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+        "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx"
+      ]
+    },
+    {
+      "claim": "The four-layer structure connects seller supply, buyer security, prospective project equity and future power rights; interpretation does not imply a veto over all site decisions.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+        "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx"
+      ]
+    }
+  ],
+  "gate_results": {
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": true,
+    "chokepoint_asymmetry": true,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
+    "political_neutrality": true
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "Harris County AI permitting cooperative contract",
+      "category": "vehicles",
+      "news_trigger": "Search surfaced an AI permitting award.",
+      "drop_reason": "Fetched primary record shows August 6, 2026 final action, outside the fourteen-day window. No new trigger verified.",
+      "sources": [
+        {
+          "url": "https://harriscountytx.legistar.com/LegislationDetail.aspx?FullText=1&GUID=3D7C2187-17E0-4879-BEC5-13C9335523D1&ID=8158177",
+          "title": "Harris County file 26-5337",
+          "publisher": "Harris County",
+          "source_type": "primary",
+          "published_at": "2026-08-06",
+          "fetched_at_utc": "2026-10-02T13:04:36.002697+00:00",
+          "body_sha256": "377f4ee52fa506928a8d109c025a30b4fbb74b00e94a890e3025ea6e96de7d7b",
+          "fetch_method": "direct HTTPS",
+          "independent_of_subject": false,
+          "claims_supported": []
+        }
+      ]
+    },
+    {
+      "name": "TCEQ data-center permit pause",
+      "category": "regulatory",
+      "news_trigger": "September 21 directive",
+      "drop_reason": "Same mechanism and permit decision as September 25 issue; no different verified chain in this discovery.",
+      "sources": [
+        {
+          "url": "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits",
+          "title": "Governor directs TCEQ to halt data center permits",
+          "publisher": "Office of the Texas Governor",
+          "source_type": "primary",
+          "published_at": "2026-09-21",
+          "fetched_at_utc": "2026-10-02T13:04:37.405522+00:00",
+          "body_sha256": "a086fd9cd21098cc15f31c24a22c833abab53bc46bc7057cc778c6f3147c3473",
+          "fetch_method": "direct HTTPS",
+          "independent_of_subject": false,
+          "claims_supported": []
+        }
+      ]
+    },
+    {
+      "name": "AIB Texas site acquisition",
+      "category": "facilities",
+      "news_trigger": "September 4 agreement surfaced in discovery.",
+      "drop_reason": "Stale trigger lead; direct SEC fetch returned 403. Not advanced or treated as verified primary evidence.",
+      "sources": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2070542/000121390026099305/ea0305122-8k_aib.htm",
+          "title": "AIB acquisition Form 8-K lead",
+          "publisher": "AIB via SEC",
+          "fetched_at_utc": "2026-10-02T13:07:41.175593+00:00",
+          "fetch_status": "blocked"
+        }
+      ]
+    }
+  ],
+  "discovery": {
+    "lanes_checked": [
+      "facilities",
+      "vehicles",
+      "capital_sovereignty",
+      "regulatory"
+    ],
+    "broadened": false,
+    "selection_reason": "Fresh executed agreement with four primary-backed layers and one named rights holder; no recent mechanism repeat.",
+    "history_comparison": "Prior issues covered NSF continuation, Batch Zero eligibility, model review and permit pause. This issue covers private power contracting and expansion rights."
+  },
+  "evidence_gaps": [
+    "Only the public 8-K summary and issuer announcement were available; full PPA/DFA terms are promised with the September-quarter Form 10-Q. Exercise procedures, exceptions and notice periods are unverified.",
+    "Collateral posting, power delivery and equity issuance are not verified as completed.",
+    "RTTNews independently reports the announcement; it does not independently verify contract performance.",
+    "Direct SEC download returned 403; selected 8-K was readable through the web reader and archived with its hash. Separate September 24 filing was inaccessible and excluded."
+  ],
+  "neutrality_screen": "Private commercial mechanism described without investment advice, actor advocacy, electoral advocacy or preferred policy outcome.",
+  "final_verification": {
+    "primary_urls_refetched": [
+      "https://www.sec.gov/Archives/edgar/data/2028336/000121390026101642/ea0305716-8k_newera.htm",
+      "https://investors.newerainfra.ai/news/news-details/2026/New-Era-Energy--Digital-Secures-20-Year-207-MW-PPA-with-Vistra/default.aspx"
+    ],
+    "archived_under": ".local/sources",
+    "unique_url_deduplication": true
+  }
+}
