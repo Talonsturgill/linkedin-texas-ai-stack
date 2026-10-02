@@ -5,61 +5,61 @@
       "name": "Hook strength",
       "weight": 0.1,
       "score": 8.9,
-      "note": "Two-line hook names the framework and fresh announcement."
+      "notes": "Two-line hook names the framework and fresh announcement."
     },
     {
       "name": "Mechanism significance for Texas",
       "weight": 0.18,
       "score": 9.0,
-      "note": "Connects Ector County AI power procurement with prospective ownership and future rights."
+      "notes": "Connects Ector County AI power procurement with prospective ownership and future rights."
     },
     {
       "name": "Layer fidelity",
       "weight": 0.14,
       "score": 9.4,
-      "note": "Four exact layers and controllers map to the SEC filing."
+      "notes": "Four exact layers and controllers map to the SEC filing."
     },
     {
       "name": "Chokepoint clarity",
       "weight": 0.13,
       "score": 9.0,
-      "note": "One named rights holder and exercise-or-decline decision; no general veto claim."
+      "notes": "One named rights holder and exercise-or-decline decision; no general veto claim."
     },
     {
       "name": "Structural read",
       "weight": 0.12,
       "score": 9.1,
-      "note": "Separates economic stake from contract rights and distinguishes signing from delivery."
+      "notes": "Separates economic stake from contract rights and distinguishes signing from delivery."
     },
     {
       "name": "Forward implication",
       "weight": 0.08,
       "score": 8.8,
-      "note": "Identifies promised contract exhibits; exact filing date is not yet known."
+      "notes": "Identifies promised contract exhibits; exact filing date is not yet known."
     },
     {
       "name": "Primary-source quality",
       "weight": 0.1,
       "score": 8.7,
-      "note": "All layers backed by current primary text; full contracts not yet fetched, clearly disclosed."
+      "notes": "All layers backed by current primary text; full contracts not yet fetched, clearly disclosed."
     },
     {
       "name": "Texas AI Docket voice",
       "weight": 0.08,
       "score": 9.2,
-      "note": "Plain structural analysis without promotion or investment advice."
+      "notes": "Plain structural analysis without promotion or investment advice."
     },
     {
       "name": "LinkedIn readability",
       "weight": 0.04,
       "score": 9.2,
-      "note": "368 words, four bullets, 2204 characters, checker passes."
+      "notes": "368 words, four bullets, 2204 characters, checker passes."
     },
     {
       "name": "Chokepoint question",
       "weight": 0.03,
       "score": 8.8,
-      "note": "Question tests room for another supplier within disclosed contract limits."
+      "notes": "Question tests room for another supplier within disclosed contract limits."
     }
   ],
   "weighted_total": 9.03,
