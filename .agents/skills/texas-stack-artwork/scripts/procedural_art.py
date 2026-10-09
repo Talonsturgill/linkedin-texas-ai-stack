@@ -226,6 +226,30 @@ def contours(p):
 
 
 def glass(p):
+    if not p.spec['story_binding']['no_target'] and 'water' in p.spec['story_binding']['decision'].lower():
+        # A faceted drop is an editorial water cue, not an invented pipe or site layout.
+        boundary=[]
+        segments=[[(.5,.03),(.46,.24),(.12,.37),(.13,.65)],
+                  [(.13,.65),(.12,.95),(.43,.99),(.5,.95)],
+                  [(.5,.95),(.65,1.00),(.90,.88),(.87,.65)],
+                  [(.87,.65),(.86,.37),(.55,.24),(.5,.03)]]
+        for points in segments:
+            a,b,c,d=np.array(points)
+            for t in np.linspace(0,1,9,endpoint=False):
+                boundary.append(tuple((1-t)**3*a+3*(1-t)**2*t*b+3*(1-t)*t*t*c+t**3*d))
+        center=(.5,.58)
+        for i,u in enumerate(boundary):
+            v=boundary[(i+1)%len(boundary)]
+            mid=((u[0]+v[0])/2*.60+center[0]*.40,(u[1]+v[1])/2*.60+center[1]*.40)
+            p.poly([u,v,mid],(p.main,p.light,p.main,p.accent)[i%4],p.dark,3)
+            p.poly([u,mid,center],p.main if i%3 else p.light,p.dark,2)
+        p.curve([(.48,.10),(.44,.34),(.20,.43),(.19,.68)],p.light,7)
+        p.curve([(.22,.72),(.25,.87),(.39,.91),(.47,.90)],p.light,3)
+        # Four visible joining pins refer to the bound stages; no technical geometry is claimed.
+        for i in range(p.n):
+            x=.20+i*.20
+            p.ellipse((x-.015,.82,x+.015,.86),p.accent if i==p.gate else p.dark,p.light,1)
+        return
     center=(.5,.49)
     for i in range(30):
         a=math.tau*i/30;b=math.tau*(i+1)/30
@@ -380,11 +404,18 @@ def gate_mark(p):
         p.poly([(x+.16,y-.13),(x,y-.07),(x,y+.14),(x+.16,y+.07)],p.accent,p.dark,2)
         p.line([(x,y-.07),(x,y+.14)],p.dark,4)
     elif m == 'release buckle':
-        p.rect((x-.20,y-.04,x-.065,y+.04),p.main,p.light,2)
-        p.rect((x+.075,y-.04,x+.21,y+.04),p.main,p.light,2)
-        p.poly([(x-.10,y-.11),(x+.07,y-.11),(x+.12,y-.04),(x+.12,y+.04),(x+.07,y+.11),(x-.10,y+.11)],p.accent,p.light,3)
-        p.rect((x-.05,y-.05,x+.045,y+.05),p.dark,p.light,2)
-        p.line([(x+.15,y-.07),(x+.15,y+.07)],p.light,3)
+        # Two recognisable coupling halves and a pronged tongue, not a seal-shaped tag.
+        p.rect((x-.24,y-.043,x-.11,y+.043),p.main,p.light,2)
+        p.rect((x+.13,y-.043,x+.25,y+.043),p.main,p.light,2)
+        p.rect((x-.02,y-.115,x+.16,y+.115),p.dark,p.light,3)
+        p.rect((x+.01,y-.072,x+.12,y+.072),p.main,p.dark,2)
+        p.rect((x+.035,y-.047,x+.098,y+.047),p.dark)
+        p.rect((x-.135,y-.10,x-.06,y+.10),p.accent,p.dark,3)
+        for offset in (-.067,0,.067):
+            p.rect((x-.06,y+offset-.019,x+.064,y+offset+.019),p.light,p.dark,1)
+            p.line([(x-.05,y+offset-.010),(x+.054,y+offset-.010)],p.main,1)
+        p.line([(x-.12,y-.095),(x-.066,y-.095)],p.light,3)
+        p.line([(x+.153,y-.10),(x+.153,y+.10)],p.accent,3)
     if p.spec['story_binding']['no_target']:
         p.line([(x-.14,y-.19),(x+.14,y+.19)],p.light,4)
 
