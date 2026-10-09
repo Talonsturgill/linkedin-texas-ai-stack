@@ -42,10 +42,12 @@ is unmerged. Record that revision in .local/run_state.json and use it as the iss
 Start a unique codex/texas-stack-YYYY-MM-DD[-NN] from the deployment revision;
 never overwrite a prior run. Create ignored .local and out. Run:
 
-    python3 scripts/history_scan.py --date "$TODAY" --out .local/history.json
+    python3 scripts/history_scan.py --fetch --date "$TODAY" --out .local/history.json
 
 Read that ledger. Exclude the last six mechanisms unless a new trigger exposes a different chain
-or chokepoint. Retrieve the authenticated Gmail profile once; keep the address only in connector
+or chokepoint. The --fetch option refreshes every dated issue ref, including in a fresh cloud
+clone; never accept a partial local branch list as the complete artwork history. Retrieve the
+authenticated Gmail profile once; keep the address only in connector
 arguments and .local/gmail_payload.json. Never log it, credentials, message contents or draft
 identifiers. A draft listing proves mailbox access, not the authenticated account address.
 If the connector has no profile endpoint, use only an independently verified connected-account

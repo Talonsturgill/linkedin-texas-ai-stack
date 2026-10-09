@@ -158,9 +158,18 @@ def main() -> int:
     parser.add_argument("--repo", default=".")
     parser.add_argument("--date", required=True)
     parser.add_argument("--out", required=True)
+    parser.add_argument("--fetch", action="store_true", help="Refresh every dated issue ref before comparing artwork")
     parser.add_argument("--sibling-art-repo", default="../LinkedInTexasAIDesk")
     args = parser.parse_args()
     repo = Path(args.repo).resolve()
+    if args.fetch:
+        fetched = subprocess.run(
+            ['git', '-C', str(repo), 'fetch', 'origin',
+             '+refs/heads/codex/texas-stack-*:refs/remotes/origin/codex/texas-stack-*'],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=60,
+        )
+        if fetched.returncode:
+            raise RuntimeError('Could not refresh the complete dated issue history; do not render against partial history')
     sibling = Path(args.sibling_art_repo)
     if not sibling.is_absolute():
         sibling = (repo / sibling).resolve()

@@ -21,7 +21,8 @@ fit the meaning of the decision; a mathematically novel but irrelevant scene can
     python3 .agents/skills/texas-stack-artwork/scripts/procedural_art.py render --spec out/art_spec.json --layout out/art_layout.json --dossier out/stack_anatomy.json --out out/art_base.png --receipt out/art_render.json
     python3 .agents/skills/texas-stack-artwork/scripts/variety_check.py --spec out/art_spec.json --history .local/history.json --image out/art_base.png --out out/art_variety.json
 
-The history scanner fingerprints the actual last eight committed bases, including old ImageGen
+Use scripts/history_scan.py --fetch during preflight to refresh all dated issue refs. The history
+scanner fingerprints the actual last eight committed bases, including old ImageGen
 issues. It records the public comparison snapshot in art_variety.json. Structure distance must
 be at least 0.18 against each; color distance against the immediate predecessor must be at least
 0.22. These are operational rejection thresholds, not a human-perception guarantee. Visual
