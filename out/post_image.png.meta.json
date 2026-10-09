@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "engine_version": 2,
+  "layout": {
+    "schema_version": 1,
+    "headline": "THE EMERGENCY WATER DECISION",
+    "font_size": 96,
+    "lines": [
+      "THE EMERGENCY",
+      "WATER DECISION"
+    ],
+    "positions": [
+      [
+        64,
+        778
+      ],
+      [
+        64,
+        866
+      ]
+    ],
+    "text_boxes": [
+      [
+        64,
+        778,
+        967,
+        850
+      ],
+      [
+        64,
+        866,
+        1002,
+        938
+      ]
+    ],
+    "headline_top": 778,
+    "subject_zone": [
+      64,
+      196,
+      1016,
+      738
+    ],
+    "canvas": [
+      1080,
+      1080
+    ]
+  },
+  "subject_box": [
+    256,
+    244,
+    825,
+    738
+  ],
+  "font_sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+  "image_sha256": "28dfec37573bffcd6b354265def224f488b21b1dfb06478ef6da1d3f853a8673",
+  "date": "OCTOBER 9TH, 2026",
+  "column": "The Texas Stack",
+  "kicker": "THE TEXAS STACK",
+  "category": "REGULATORY",
+  "headline": "THE EMERGENCY WATER DECISION",
+  "place": "TAYLOR",
+  "style_family": "clay or plaster systems model",
+  "palette": [
+    "#254EDB",
+    "#F0F1E8",
+    "#101D4C",
+    "#DCE9A4",
+    "#A8B4CB"
+  ],
+  "hue_family": "cobalt-porcelain-lime",
+  "composition": "central_apparatus",
+  "motifs": [
+    "fountain-pen nib operating a ceramic water valve"
+  ],
+  "technique_stack": [
+    "built-in imagegen",
+    "deterministic typography overlay"
+  ],
+  "source": "imagegen",
+  "seed": "imagegen-managed",
+  "base_sha256": "2fc3ad2029ce288ca709307dca8ac34c7c40ea38dbfe57c7581b44d440bb9695",
+  "prompt_sha256": "1f74975197e053ce761f8128f4d40d63e85080475a084fd1a37ec02b88a2276b",
+  "plan_sha256": "3f5c0108dc9f572b7b0bbb4f849e6135e3825a5d96f42283a00b08f024c55a5c",
+  "eval_sha256": "46bf41d231acdf88eae5ec00c74f496f5a361a6321a71a1c9ea5f2b7f0640149",
+  "eval_history": [
+    {
+      "pass_number": 1,
+      "scores": {
+        "concept": 9.0,
+        "focal_hierarchy": 8.5,
+        "composition": 6.4,
+        "color_value": 9.1,
+        "detail_richness": 9.0,
+        "craft_finish": 9.0,
+        "typography": 6.6,
+        "originality": 9.1,
+        "story_fidelity": 9.0
+      },
+      "notes": {
+        "concept": "Nib replaces the water-valve control, making written permission tangible.",
+        "focal_hierarchy": "Nib reads first, but the enormous pipe mass competes after composition.",
+        "composition": "Strong centered silhouette, but observed bounds about [92,124,967,880] cross both reserved bands.",
+        "color_value": "Porcelain and cobalt separate clearly at 300 pixels.",
+        "detail_richness": "Flange bolts, nib slit and pooled ceramic glaze remain coherent.",
+        "craft_finish": "Clean porcelain joins and consistent highlights, with no stray marks.",
+        "typography": "Words are legible, but headline masks the water drop and the masthead rule crosses the nib.",
+        "originality": "Pen as water-control spindle is distinct from all recent motifs.",
+        "story_fidelity": "Single metaphorical water route supports the emergency-only editorial scope."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "Nib intersects masthead rule",
+        "Water drop is hidden behind headline"
+      ],
+      "base_sha256": "6da41bcbb61e2e1f268c2411e0752e7fc9d5428db24d8a5a0ae0ffbfb8a14cb0",
+      "cover_sha256": "97c61efbb3c460ddc71f4b66bf908ea91b4aa61d0db9d0b3639fd5a9ade1105f",
+      "weighted": 8.402,
+      "passed": false,
+      "observations": "Native generated base and diagnostic cover inspected, then both at 300px. Diagnostic cover intentionally omitted subject-box enforcement solely to document the visible collision; it is rejected and cannot be selected.",
+      "edit_prompt": "Preserve the same sculpture and colors; uniformly shrink the complete assembly to 60 percent of its current extent, reposition all objects within x235..845,y245..700 on a 1080 square. Keep top and bottom entirely empty."
+    },
+    {
+      "pass_number": 2,
+      "scores": {
+        "concept": 9.0,
+        "focal_hierarchy": 8.7,
+        "composition": 8.0,
+        "color_value": 9.1,
+        "detail_richness": 8.8,
+        "craft_finish": 9.0,
+        "typography": 8.6,
+        "originality": 9.1,
+        "story_fidelity": 9.0
+      },
+      "notes": {
+        "concept": "Nib replaces the water-valve control, making written permission tangible.",
+        "focal_hierarchy": "Nib and drop remain clear, but the assembly sits too low in the central field.",
+        "composition": "No type intersection, but observed lower bound about 743 exceeds reserved 738 and the top gap is excessive.",
+        "color_value": "Porcelain and cobalt separate clearly at 300 pixels.",
+        "detail_richness": "Glaze and coherent bolts remain visible full size; shrink reduces small-detail presence at 300px.",
+        "craft_finish": "Clean porcelain joins and consistent highlights, with no stray marks.",
+        "typography": "All words read at 300px, but water drop touches the start of the type-region gradient and fails the required clearance.",
+        "originality": "Pen as water-control spindle is distinct from all recent motifs.",
+        "story_fidelity": "Single metaphorical water route supports the emergency-only editorial scope."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "Observed drop extends below the measured subject-zone clearance."
+      ],
+      "base_sha256": "6eb1052ddd0a7d0229965456247a5e13e3df3e2e25c1f038cdfd5106a316a29f",
+      "cover_sha256": "cb7b909bd2d210a17ebce705e17b9ce82c3d7a41e30fad642300029dbfb60fa6",
+      "weighted": 8.792,
+      "passed": true,
+      "observations": "Native base and full diagnostic cover inspected, then 300px comparison. Subject estimated [290,310,790,743]; guard correctly rejected it. Alternative longer headline worsened available image area and was not adopted.",
+      "edit_prompt": "Keep the assembly, enlarge it only ten percent and shift upward so every story object fits within x240..840 and y220..695 on a 1080 canvas."
+    },
+    {
+      "pass_number": 3,
+      "scores": {
+        "concept": 9.0,
+        "focal_hierarchy": 9.0,
+        "composition": 8.3,
+        "color_value": 9.1,
+        "detail_richness": 9.0,
+        "craft_finish": 9.0,
+        "typography": 8.8,
+        "originality": 9.1,
+        "story_fidelity": 9.0
+      },
+      "notes": {
+        "concept": "Nib replaces the water-valve control, making written permission tangible.",
+        "focal_hierarchy": "Nib leads cleanly to valve and then the drop at both scales.",
+        "composition": "Better balanced scale and lower clearance, but nib tip at about y184 breaches the top subject-zone boundary of 196.",
+        "color_value": "Porcelain and cobalt separate clearly at 300 pixels.",
+        "detail_richness": "Clay flange seams and nib slit read clearly with the modest enlargement.",
+        "craft_finish": "Clean porcelain joins and consistent highlights, with no stray marks.",
+        "typography": "Headline is clear and the drop is separated; upper nib remains too close to masthead rule.",
+        "originality": "Pen as water-control spindle is distinct from all recent motifs.",
+        "story_fidelity": "Single metaphorical water route supports the emergency-only editorial scope."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "Nib crosses the measured top subject-zone boundary."
+      ],
+      "base_sha256": "dba40573471ea9c68640132a0ee5c3e849df2f37576794da46dc33a82e1d6276",
+      "cover_sha256": "7db640d336a6cec6ad9fea90718950e0873ee26e814967ba75b2076136468a55",
+      "weighted": 8.912,
+      "passed": true,
+      "observations": "Inspected native base, full diagnostic cover and both 300px renders. Observed bounds [255,182,825,675] fail the top clearance gate. No content or material defect is present.",
+      "edit_prompt": "Move the entire sculpture straight down 40 pixels on a 1080-square canvas. Preserve exact size and all details."
+    },
+    {
+      "pass_number": 4,
+      "scores": {
+        "concept": 9.0,
+        "focal_hierarchy": 9.0,
+        "composition": 8.9,
+        "color_value": 9.2,
+        "detail_richness": 9.0,
+        "craft_finish": 9.1,
+        "typography": 9.2,
+        "originality": 9.1,
+        "story_fidelity": 9.0
+      },
+      "notes": {
+        "concept": "The nib directly replaces the water-valve control, expressing written emergency permission with a single sculptural idea.",
+        "focal_hierarchy": "Nib leads to the valve collar and then the single water drop at native and thumbnail size.",
+        "composition": "Every object fits the measured image zone; broad side space is calm but slightly generous for the compact assembly.",
+        "color_value": "Ivory ceramic separates strongly from cobalt at 300px, with visible form in the dark nib.",
+        "detail_richness": "Glaze pooling, flange bolts, nib slit and ceramic seams remain coherent at full size.",
+        "craft_finish": "Clean silhouette and joined collar; consistent soft light gives the impossible pen-valve a deliberate sculptural finish.",
+        "typography": "Exact brand, date and two-line headline read clearly; no overlap with nib or drop.",
+        "originality": "Clay pen-valve treatment differs in medium, hue, composition and motif from recent covers.",
+        "story_fidelity": "Single stylized permission route and emergency-specific headline avoid presenting the image as a campus schematic or a rule for every exception."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "2fc3ad2029ce288ca709307dca8ac34c7c40ea38dbfe57c7581b44d440bb9695",
+      "cover_sha256": "28dfec37573bffcd6b354265def224f488b21b1dfb06478ef6da1d3f853a8673",
+      "weighted": 9.049,
+      "passed": true,
+      "observations": "Fourth actual generation. Native 1254-square base, full 1080 cover and both 300px versions inspected. Observed conservative bounds [256,244,825,738] fit subject zone [64,196,1016,738]. Drop remains visible with 40px clearance before type. No stray text, false map, alpha or malformed join.",
+      "edit_prompt": ""
+    }
+  ],
+  "eval_final": {
+    "pass_number": 4,
+    "scores": {
+      "concept": 9.0,
+      "focal_hierarchy": 9.0,
+      "composition": 8.9,
+      "color_value": 9.2,
+      "detail_richness": 9.0,
+      "craft_finish": 9.1,
+      "typography": 9.2,
+      "originality": 9.1,
+      "story_fidelity": 9.0
+    },
+    "notes": {
+      "concept": "The nib directly replaces the water-valve control, expressing written emergency permission with a single sculptural idea.",
+      "focal_hierarchy": "Nib leads to the valve collar and then the single water drop at native and thumbnail size.",
+      "composition": "Every object fits the measured image zone; broad side space is calm but slightly generous for the compact assembly.",
+      "color_value": "Ivory ceramic separates strongly from cobalt at 300px, with visible form in the dark nib.",
+      "detail_richness": "Glaze pooling, flange bolts, nib slit and ceramic seams remain coherent at full size.",
+      "craft_finish": "Clean silhouette and joined collar; consistent soft light gives the impossible pen-valve a deliberate sculptural finish.",
+      "typography": "Exact brand, date and two-line headline read clearly; no overlap with nib or drop.",
+      "originality": "Clay pen-valve treatment differs in medium, hue, composition and motif from recent covers.",
+      "story_fidelity": "Single stylized permission route and emergency-specific headline avoid presenting the image as a campus schematic or a rule for every exception."
+    },
+    "inspected_scales": [
+      "full",
+      "300"
+    ],
+    "blockers": [],
+    "base_sha256": "2fc3ad2029ce288ca709307dca8ac34c7c40ea38dbfe57c7581b44d440bb9695",
+    "cover_sha256": "28dfec37573bffcd6b354265def224f488b21b1dfb06478ef6da1d3f853a8673",
+    "weighted": 9.049,
+    "passed": true,
+    "observations": "Fourth actual generation. Native 1254-square base, full 1080 cover and both 300px versions inspected. Observed conservative bounds [256,244,825,738] fit subject zone [64,196,1016,738]. Drop remains visible with 40px clearance before type. No stray text, false map, alpha or malformed join.",
+    "edit_prompt": ""
+  },
+  "shortfall_note": "",
+  "fallback_reason": "",
+  "rendered_at_utc": "2026-10-09T13:12:08.163806+00:00",
+  "canvas": [
+    1080,
+    1080
+  ]
+}
