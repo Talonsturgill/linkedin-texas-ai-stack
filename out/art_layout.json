@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "headline": "THE EMERGENCY WATER DECISION",
+  "font_size": 96,
+  "lines": [
+    "THE EMERGENCY",
+    "WATER DECISION"
+  ],
+  "positions": [
+    [
+      64,
+      778
+    ],
+    [
+      64,
+      866
+    ]
+  ],
+  "text_boxes": [
+    [
+      64,
+      778,
+      967,
+      850
+    ],
+    [
+      64,
+      866,
+      1002,
+      938
+    ]
+  ],
+  "headline_top": 778,
+  "subject_zone": [
+    64,
+    196,
+    1016,
+    738
+  ],
+  "canvas": [
+    1080,
+    1080
+  ]
+}

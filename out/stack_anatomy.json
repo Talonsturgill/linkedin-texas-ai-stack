@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-10-09",
+  "window_days": 14,
+  "no_target_this_cycle": false,
+  "selected_mechanism": {
+    "name": "Taylor cooling-water exception framework",
+    "name_status": "Editorial descriptive name for the published mechanism, not an official agreement title.",
+    "category": "regulatory",
+    "category_label": "REGULATORY",
+    "definition": "The published terms pair reclaimed-water cooling with specified routes to potable water for the proposed Taylor Technology Campus.",
+    "texas_scope": "Taylor Technology Campus east of Taylor, Williamson County, Texas.",
+    "news_trigger": {
+      "date": "2026-10-02",
+      "verbatim_span": "News Posted on October 02, 2026",
+      "post_anchor": "October 2nd, 2026",
+      "source": {
+        "url": "https://www.taylortx.gov/m/newsflash/home/detail/2113",
+        "title": "Proposed Taylor Technology Campus development agreement",
+        "publisher": "City of Taylor",
+        "source_type": "primary",
+        "published_at": "2026-10-02",
+        "fetched_at_utc": "2026-10-09T13:03:46.265845+00:00",
+        "source_body_sha256": "bb80e7ce8b537404c6b8fd92d5e5dde20bf4bf9606f8bfe813ba24494c863057",
+        "fetch_method": "web_reader_after_direct_tls_failure",
+        "independent_of_subject": false
+      }
+    },
+    "layers": [
+      {
+        "order": 1,
+        "name": "Agreement",
+        "function": "Places the proposed cooling terms inside an annexation and development agreement.",
+        "controlling_actor": "Taylor City Council",
+        "actor_authority": "Council vote on the agreement, as identified by the city release.",
+        "post_phrase": "Taylor City Council",
+        "primary_source": {
+          "url": "https://www.taylortx.gov/m/newsflash/home/detail/2113",
+          "title": "Proposed Taylor Technology Campus development agreement",
+          "publisher": "City of Taylor",
+          "source_type": "primary",
+          "published_at": "2026-10-02",
+          "fetched_at_utc": "2026-10-09T13:03:46.265845+00:00",
+          "source_body_sha256": "bb80e7ce8b537404c6b8fd92d5e5dde20bf4bf9606f8bfe813ba24494c863057",
+          "fetch_method": "web_reader_after_direct_tls_failure",
+          "independent_of_subject": false,
+          "evidence_pointer": "Opening paragraphs and regulations introduction"
+        }
+      },
+      {
+        "order": 2,
+        "name": "Cooling design",
+        "function": "Requires developer-built closed-loop cooling using reclaimed water and developer-paid utility connections.",
+        "controlling_actor": "Big Watt Digital and PowerHouse Data Centers",
+        "actor_authority": "Developer obligations described in the proposed city terms.",
+        "post_phrase": "Big Watt Digital and PowerHouse",
+        "primary_source": {
+          "url": "https://www.taylortx.gov/1416/Taylor-Technology-Campus",
+          "title": "Taylor Technology Campus project terms",
+          "publisher": "City of Taylor",
+          "source_type": "primary",
+          "published_at": null,
+          "fetched_at_utc": "2026-10-09T13:03:45.478785+00:00",
+          "source_body_sha256": "3608226be41d3f0cd0d094f10f9c95c97bbbb4c8b1b68f9c5bddfebbcc76713c",
+          "fetch_method": "web_reader_after_direct_tls_failure",
+          "independent_of_subject": false,
+          "evidence_pointer": "Regulations, Water Consumption and following cooling/utility bullets"
+        }
+      },
+      {
+        "order": 3,
+        "name": "Water service",
+        "function": "City delivery of reclaimed-water improvements and continuing supply determines whether separate delay or service-disruption exceptions can arise.",
+        "controlling_actor": "City of Taylor",
+        "actor_authority": "City responsibility for reclaimed-water improvements described in the exception text.",
+        "post_phrase": "City of Taylor",
+        "primary_source": {
+          "url": "https://www.taylortx.gov/1416/Taylor-Technology-Campus",
+          "title": "Taylor Technology Campus project terms",
+          "publisher": "City of Taylor",
+          "source_type": "primary",
+          "published_at": null,
+          "fetched_at_utc": "2026-10-09T13:03:45.478785+00:00",
+          "source_body_sha256": "3608226be41d3f0cd0d094f10f9c95c97bbbb4c8b1b68f9c5bddfebbcc76713c",
+          "fetch_method": "web_reader_after_direct_tls_failure",
+          "independent_of_subject": false,
+          "evidence_pointer": "Regulations, potable-water exceptions second and third bullets"
+        }
+      },
+      {
+        "order": 4,
+        "name": "Emergency permission",
+        "function": "Requires written approval for the temporary-emergency route to potable cooling water.",
+        "controlling_actor": "Taylor City Manager",
+        "actor_authority": "Express written-approval role in the published temporary-emergency exception.",
+        "post_phrase": "City Manager",
+        "primary_source": {
+          "url": "https://www.taylortx.gov/m/newsflash/home/detail/2113",
+          "title": "Proposed Taylor Technology Campus development agreement",
+          "publisher": "City of Taylor",
+          "source_type": "primary",
+          "published_at": "2026-10-02",
+          "fetched_at_utc": "2026-10-09T13:03:46.265845+00:00",
+          "source_body_sha256": "bb80e7ce8b537404c6b8fd92d5e5dde20bf4bf9606f8bfe813ba24494c863057",
+          "fetch_method": "web_reader_after_direct_tls_failure",
+          "independent_of_subject": false,
+          "evidence_pointer": "Regulations, potable-water exceptions first bullet"
+        }
+      }
+    ],
+    "chokepoint": {
+      "layer_order": 4,
+      "layer_name": "Emergency permission",
+      "controlling_actor": "Taylor City Manager",
+      "post_actor_phrase": "City Manager",
+      "binary_decision": "Grant or withhold written approval for temporary emergency potable-water use under the published terms.",
+      "post_decision_phrase": "grant or withhold written approval",
+      "why_asymmetric": "The temporary-emergency route explicitly requires this office to approve in writing. The other listed exceptions are separate and are not described as requiring that approval.",
+      "primary_source_url": "https://www.taylortx.gov/m/newsflash/home/detail/2113"
+    },
+    "texas_consequence": "The proposed campus cooling plan links use of potable city water to local reclaimed-water infrastructure and narrowly specified exceptions.",
+    "structural_read": "The published framework is conditional. Closed-loop cooling describes system design, while the exception language determines when potable water can enter the cooling system. Written permission creates an identifiable local decision record, but does not govern every exception.",
+    "forward_implication": "Compare the executed text with the published summary, then verify water-delivery deadlines and any emergency approval records before claiming measured water savings or an absolute ban.",
+    "next_check": {
+      "what": "Executed agreement and adopted amendments, followed by the reclaimed-water construction deadline and any written emergency approval.",
+      "actor": "City of Taylor",
+      "date_or_window": "When the adopted text is released; no release date verified."
+    },
+    "public_policy_context": {
+      "is_public_policy": true,
+      "editorial_mode": "neutral_accountability",
+      "assessment": "not_applicable",
+      "neutrality_screen": "No preferred approval outcome, electoral advocacy or actor ranking. Scope is authority, exceptions, implementation and inspectable records."
+    },
+    "sources": [
+      {
+        "url": "https://www.taylortx.gov/m/newsflash/home/detail/2113",
+        "title": "Proposed Taylor Technology Campus development agreement",
+        "publisher": "City of Taylor",
+        "source_type": "primary",
+        "published_at": "2026-10-02",
+        "fetched_at_utc": "2026-10-09T13:03:46.265845+00:00",
+        "source_body_sha256": "bb80e7ce8b537404c6b8fd92d5e5dde20bf4bf9606f8bfe813ba24494c863057",
+        "fetch_method": "web_reader_after_direct_tls_failure",
+        "independent_of_subject": false
+      },
+      {
+        "url": "https://www.taylortx.gov/1416/Taylor-Technology-Campus",
+        "title": "Taylor Technology Campus project terms",
+        "publisher": "City of Taylor",
+        "source_type": "primary",
+        "published_at": null,
+        "fetched_at_utc": "2026-10-09T13:03:45.478785+00:00",
+        "source_body_sha256": "3608226be41d3f0cd0d094f10f9c95c97bbbb4c8b1b68f9c5bddfebbcc76713c",
+        "fetch_method": "web_reader_after_direct_tls_failure",
+        "independent_of_subject": false
+      },
+      {
+        "url": "https://www.kut.org/energy-environment/2026-10-09/taylor-tx-annex-data-center-power-plant",
+        "title": "Taylor council approves campus annexation agreement",
+        "publisher": "KUT",
+        "source_type": "independent_reporting",
+        "published_at": "2026-10-09",
+        "fetched_at_utc": "2026-10-09T13:03:06.035191+00:00",
+        "source_body_sha256": "306102934f77b5620a662fc7882e69c2a1c9f9175deb9debc06f4cf6814cbbeb",
+        "fetch_method": "direct_http",
+        "independent_of_subject": true
+      }
+    ],
+    "evidence_gaps": [
+      "Executed agreement, adopted amendments and completed annexation were not verified. Analysis is explicitly of the October 2 published terms; KUT separately reports the October 8 approval.",
+      "The public summary does not specify the reclaimed-water construction deadline, emergency duration, potable-water volume cap, approval publication process or remedies.",
+      "Written City Manager approval is explicit only for the temporary-emergency exception. It must not be inferred for delayed construction or later supply interruption, suspension or shortfall.",
+      "No operating water demand, delivered reclaimed-water service, tenant AI workload or completed construction is established. Data-center infrastructure relevance does not identify a tenant.",
+      "Direct requests to the two city pages failed TLS negotiation; the web reader recovered the complete readable pages and each was refetched and hashed for final verification."
+    ],
+    "status": "October 2 proposed terms verified; October 8 council approval reported by KUT; executed text unverified.",
+    "independent_trigger_corroboration": "KUT independently reports approval after the scheduled October 8 council meeting and describes the water terms. Its fetched full article was inspected.",
+    "history_comparison": "No match among five recent mechanisms. This municipal cooling-water permission is distinct from the earlier statewide TCEQ permit pause."
+  },
+  "required_post_phrases": [
+    "Taylor cooling-water exception framework",
+    "October 2nd, 2026",
+    "City Manager",
+    "grant or withhold written approval"
+  ],
+  "verified_facts": [
+    {
+      "claim": "The City published proposed campus agreement terms on October 2nd, 2026.",
+      "source_urls": [
+        "https://www.taylortx.gov/m/newsflash/home/detail/2113"
+      ]
+    },
+    {
+      "claim": "Big Watt Digital and PowerHouse Data Centers are the developers of Taylor Technology Campus east of Taylor.",
+      "source_urls": [
+        "https://www.taylortx.gov/m/newsflash/home/detail/2113"
+      ]
+    },
+    {
+      "claim": "The agreement was scheduled for a Taylor City Council vote on October 8th, 2026.",
+      "source_urls": [
+        "https://www.taylortx.gov/m/newsflash/home/detail/2113"
+      ]
+    },
+    {
+      "claim": "KUT reports that Taylor council approved the agreement on October 8th, 2026; the report was published October 9th, 2026.",
+      "source_urls": [
+        "https://www.kut.org/energy-environment/2026-10-09/taylor-tx-annex-data-center-power-plant"
+      ]
+    },
+    {
+      "claim": "The site would use closed-loop reclaimed-water cooling, with developers funding utility connections.",
+      "source_urls": [
+        "https://www.taylortx.gov/1416/Taylor-Technology-Campus"
+      ]
+    },
+    {
+      "claim": "The published framework identifies a temporary emergency requiring written City Manager approval.",
+      "source_urls": [
+        "https://www.taylortx.gov/m/newsflash/home/detail/2113"
+      ]
+    },
+    {
+      "claim": "A missed City reclaimed-water construction deadline is a separate exception.",
+      "source_urls": [
+        "https://www.taylortx.gov/1416/Taylor-Technology-Campus"
+      ]
+    },
+    {
+      "claim": "After reclaimed-water service begins, interruption, suspension or reduction below operational requirements is a separate exception.",
+      "source_urls": [
+        "https://www.taylortx.gov/1416/Taylor-Technology-Campus"
+      ]
+    },
+    {
+      "claim": "The city summary describes annexation as bringing the property under city terms; actual annexation completion was not verified.",
+      "source_urls": [
+        "https://www.taylortx.gov/m/newsflash/home/detail/2113"
+      ]
+    },
+    {
+      "claim": "KUT reports objections from residents regarding the process and describes officials citing increased city oversight.",
+      "source_urls": [
+        "https://www.kut.org/energy-environment/2026-10-09/taylor-tx-annex-data-center-power-plant"
+      ]
+    },
+    {
+      "claim": "The primary summary does not supply the construction deadline, potable-water cap or emergency duration. This is a bounded evidence gap, not proof those provisions are absent from the executed agreement.",
+      "source_urls": [
+        "https://www.taylortx.gov/1416/Taylor-Technology-Campus"
+      ]
+    }
+  ],
+  "gate_results": {
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": true,
+    "chokepoint_asymmetry": true,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
+    "political_neutrality": true
+  },
+  "gate_evidence": {
+    "news_tie": "Dated October 2 city publication inside 14 days.",
+    "anatomizable_depth": "Four documented roles, with conditional paths rather than an invented linear approval chain.",
+    "primary_source_each_layer": "Both city pages refetched, archived and hashed; evidence pointers supplied for all layers.",
+    "texas_consequence": "Taylor campus cooling source and local water-service conditions.",
+    "chokepoint_asymmetry": "City Manager written approval explicitly controls only temporary emergencies.",
+    "mechanism_not_actor": "Anatomy of the agreement conditions, not a company or official profile.",
+    "not_recent_repeat": "Five available prior mechanisms checked; none uses this municipal exception.",
+    "political_neutrality": "Accounts for implementation and records without endorsing approval or rejection."
+  },
+  "discovery": {
+    "lanes_checked": [
+      "facilities",
+      "vehicles",
+      "capital_sovereignty",
+      "regulatory"
+    ],
+    "initial_window_start": "2026-09-25",
+    "broadened": false,
+    "selection_reason": "Taylor offers a dated primary record, four documented roles and an explicit single-office written permission gate. Further alternate-layer work stopped after qualification.",
+    "dispositions": [
+      {
+        "lane": "facilities",
+        "candidate": "Zone Frontier Potter County ground lease",
+        "status": "not_deepened",
+        "reason": "Current September 29 issuer announcement fetched via web reader. A land purchase option is stated but its conditions and landowner control remain unspecified; Taylor has a clearer primary-backed public decision.",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026105332/ea030695301ex99-1.htm"
+      },
+      {
+        "lane": "capital_sovereignty",
+        "candidate": "Zone Frontier financing sequence",
+        "status": "dropped",
+        "reason": "The current announcement says financing will be evaluated. It does not establish an executed financing mechanism or named financing controller.",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026105332/ea030695301ex99-1.htm"
+      },
+      {
+        "lane": "vehicles",
+        "candidate": "DIR procurement and university award scan",
+        "status": "no_finalist",
+        "reason": "Fourteen-day searches and fetched DIR contract registry did not identify a current Texas AI award with a verified trigger and complete layer chain. Registry is discovery only.",
+        "source_url": "https://dir.texas.gov/internal-dir-contracts-sow"
+      },
+      {
+        "lane": "regulatory",
+        "candidate": "Taylor cooling-water exception framework",
+        "status": "selected",
+        "reason": "October 2 published conditions plus independent October 8 vote report."
+      }
+    ]
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "Zone Frontier financing sequence",
+      "category": "capital_sovereignty",
+      "news_trigger": "September 29 ground-lease announcement",
+      "drop_reason": "Financing only contemplated; no executed financing chain or named financing controller established.",
+      "sources": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1956741/000121390026105332/ea030695301ex99-1.htm",
+          "title": "Zone Frontier ground lease announcement",
+          "publisher": "Zone Frontier via SEC",
+          "source_type": "primary"
+        }
+      ]
+    }
+  ]
+}
