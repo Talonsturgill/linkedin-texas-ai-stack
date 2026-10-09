@@ -52,6 +52,7 @@ def validate() -> list[str]:
         "branch_prefix": "codex/texas-stack",
         "repository": "Talonsturgill/linkedin-texas-ai-stack",
         "artifact_size": [1080, 1080],
+        "artwork_source": "procedural",
     }
     for key, expected in expected_state.items():
         if state.get(key) != expected:

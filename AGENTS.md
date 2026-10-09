@@ -32,8 +32,9 @@ repository root on any host; never assume a macOS path or a Codex installation.
   reporting about authority, procedure, implementation, disclosure, and measurable effects.
 - A no-target week is honest output. It still gets original artwork, a pushed branch, and a Gmail
   draft explaining what was checked.
-- Actual built-in ImageGen is the primary art path. A deterministic fallback is a disclosed fire
-  exit for tool failure, not an aesthetic shortcut.
+- Story-bound code-generated artwork is the primary path. Use the procedural renderer and variety
+  engine in texas-stack-artwork. ImageGen is optional only when explicitly requested; its absence
+  does not block a run. Never label procedural art ImageGen or use the old generic fallback.
 
 ## Verification
 

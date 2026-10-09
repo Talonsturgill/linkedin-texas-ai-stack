@@ -8,7 +8,7 @@ check.
 The routine produces a review package rather than publishing:
 
 - source-grounded LinkedIn copy, or an honest no-target report
-- original 1080 by 1080 editorial artwork created with built-in ImageGen
+- original 1080 by 1080 editorial artwork drawn in code with a history-aware variety engine
 - an immutable commit-pinned image URL
 - a pushed dated branch and optional draft pull request
 - an unsent Gmail draft with copy, image, sources, score, and editor notes
@@ -42,7 +42,13 @@ For a bounded migration replay, fetch an existing issue commit, install the requ
     python3 scripts/smoke_test.py --artifact-ref FULL_COMMIT_SHA --work-dir .local/smoke-UNIQUE --verify-image
 
 This tests the package and its immutable image without generating a new issue or writing Gmail.
-Cloud routines also need actual image generation, a verified connected-account recipient and
+Cloud routines need Python/Pillow/NumPy rendering, a verified connected-account recipient and
 Gmail HTML/label readback. Missing capabilities must remain explicit; a green replay alone does
 not prove the complete weekly workflow. The saved scheduler owns the execution time; the
 repository uses America/Chicago for issue dates.
+
+The code-art engine has twelve distinct drawing families. It excludes the last eight styles,
+four hue families, two compositions and ten primary motifs, then checks low-frequency image
+structure and actual colors against recent covers. The immediately preceding cover must differ
+on all four semantic axes. Originality still receives a full-size and 300-pixel visual review;
+the same 8.5 score floor applies. See the artwork skill for the production commands.

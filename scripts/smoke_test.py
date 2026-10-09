@@ -40,6 +40,9 @@ def replay(ref, work, verify_image=False):
     before = git('status', '--porcelain')
     dossier = git('show', commit + ':out/stack_anatomy.json')
     names = COMMON + (() if json.loads(dossier).get('no_target_this_cycle') else TARGET)
+    evaluation = json.loads(git('show', commit + ':out/art_eval.json'))
+    if evaluation.get('source') == 'procedural':
+        names += ('art_spec.json', 'art_render.json', 'art_variety.json')
     # Read the complete allowlist first so missing artifacts cannot leave a partial fixture.
     files = {name: git('show', commit + ':out/' + name) for name in names}
     out = work / 'out'

@@ -35,8 +35,11 @@ strongest fully verified candidate is selected.
 ## 0. Preflight
 
 Use America/Chicago dates. Check clean repository, origin, GitHub authentication without printing
-credentials, web, Gmail draft and built-in ImageGen capability. Fetch origin/main and remote
-codex/texas-stack-* branches. Start a unique codex/texas-stack-YYYY-MM-DD[-NN] from origin/main;
+credentials, web, Gmail draft and Python/Pillow/NumPy rendering capability. No image API is needed.
+Fetch origin/main and remote codex/texas-stack-* branches. The default deployment revision is
+origin/main; a saved routine may point to an exact validated review-branch commit while its PR
+is unmerged. Record that revision in .local/run_state.json and use it as the issue branch base.
+Start a unique codex/texas-stack-YYYY-MM-DD[-NN] from the deployment revision;
 never overwrite a prior run. Create ignored .local and out. Run:
 
     python3 scripts/history_scan.py --date "$TODAY" --out .local/history.json
@@ -49,11 +52,11 @@ If the connector has no profile endpoint, use only an independently verified con
 binding supplied privately by the environment; never infer identity from a draft recipient or
 message sender. Without that binding, record gmail_recipient_unverified and do not write a draft.
 
-Record capabilities before research: fetched web evidence, GitHub access, image generation,
+Record capabilities before research: fetched web evidence, GitHub access, procedural rendering,
 verified self-recipient, Gmail draft create/update and full HTML/label readback. If the active
-request requires ImageGen and the tool is absent, stop with needs_attention before research.
-If fallback is explicitly permitted by the active request, apply the existing artwork fallback
-contract and disclose it. Missing infrastructure is not a no-target research result. A missing
+request explicitly requires built-in ImageGen and the tool is absent, report that boundary.
+The normal Claude routine uses code-generated artwork and never searches for ImageGen.
+Missing infrastructure is not a no-target research result. A missing
 profile or readback capability is a delivery limitation, never a passed gate. Report such a
 limitation before expensive work; do not invent a replacement connector or request credentials.
 
@@ -125,13 +128,15 @@ score-driven revisions; rerun the post check after edits. If factual support fai
 ## 4. Art
 
 Follow .agents/skills/texas-stack-artwork/SKILL.md. Required: three distinct concepts, blueprint
-before rendering, cooldown checks, exact prompt, actual built-in ImageGen, measured typography,
-full-size and 300-pixel inspection, image-bound evaluations and technical QA. The 8.5 weighted
-floor and minimum dimension of 7 remain fixed. Use targeted repairs up to six actual generations;
+before rendering, semantic cooldowns and actual raster variety checks, exact code-art brief and
+render specification, measured typography, full-size and 300-pixel inspection, image-bound
+evaluations and technical QA. Use the procedural primary path; built-in ImageGen is optional
+only when explicitly requested. The 8.5 weighted floor and minimum dimension of 7 remain fixed.
+Use targeted repairs up to six actual renderings;
 do not create extra passes just to exhaust a budget. Known visual blockers cannot pass on score.
-The existing six-pass aesthetic-shortfall exception requires explicit disclosure and never excuses
-invented evidence, stray labels or unreadable typography. Fallback is only for tool unavailability
-or two consecutive unusable tool results, not aesthetic disappointment.
+Procedural artwork has no below-floor exception. Repair or report needs_attention if six attempts
+cannot pass. A changed seed, palette label or grain layer cannot substitute for a new visual
+treatment. Do not use the generic emergency fallback as production artwork.
 
 ## 5. Validate and publish artifacts
 
@@ -144,7 +149,8 @@ repeat its passing component checks unless an input or implementation changed.
 
 Review diff, prose/privacy scan and status. Explicitly force-add only these ignored run artifacts:
 stack_anatomy.json, art_plan.md, art_layout.json, image_prompt.txt, art_base.png, art_eval.json,
-post_image.png and post_image.png.meta.json under out/. Target runs also include final_post.md,
+post_image.png and post_image.png.meta.json under out/. Procedural runs also include art_spec.json,
+art_render.json and art_variety.json. Target runs also include final_post.md,
 post_check.json and score_report.json. Keep rejected renders, review sheets and private receipts
 in .local. Commit with The Texas Stack and ISO date, push the dated branch with bounded retries,
 and open a draft PR into main when gh is available. Add codex and codex-automation labels only
@@ -172,7 +178,7 @@ Never call send. Read back subject, connected recipient privately, full HTML/pos
 visible clickable immutable URL, all sources, scores, note, branch/commit, DRAFT and absence of
 SENT. Inspect the rendered email if markup/layout changed or loading is uncertain. Store private
 receipts under .local. Report mechanism/no-target, category, branch, exact commit, draft PR,
-ImageGen/fallback source, art score, verified URL, validation and draft state. Do not expose the
+procedural/ImageGen/legacy-fallback source, art score, verified URL, validation and draft state. Do not expose the
 address or draft identifier. State that nothing was sent, posted or merged.
 
 ## Maintenance replay

@@ -134,7 +134,7 @@ def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
         )
 
     warning = (
-        art_eval.get("source") != "imagegen"
+        art_eval.get("source") not in {"imagegen", "procedural"}
         or not (art_eval.get("eval_final") or {}).get("passed")
         or (not no_target and not score.get("ship"))
     )
@@ -228,4 +228,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

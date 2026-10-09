@@ -144,6 +144,10 @@ def summarize(records: list[dict], sibling_art: list[dict], today: dt.date) -> d
             "compositions_last_2": nonempty(all_art, "composition", 2),
             "primary_motifs_last_10": primary_motifs(all_art, 10),
         },
+        "recent_artwork": [dict(branch=row['branch'], **{
+            key: (row.get('art') or {}).get(key) for key in
+            ('style_family', 'hue_family', 'composition', 'motifs', 'base_sha256', 'visual_fingerprint')
+        }) for row in [r for r in records if r.get('art')][:8]],
         "stack_branches_scanned": len(records),
         "sibling_art_ledgers_scanned": len(sibling_art),
     }
@@ -161,8 +165,26 @@ def main() -> int:
     if not sibling.is_absolute():
         sibling = (repo / sibling).resolve()
     today = dt.date.fromisoformat(args.date)
+    records = stack_records(repo)
+    # Existing ImageGen issues also participate in raster comparison. Cache committed bases
+    # privately; never require a fresh external fetch just to build the variety ledger.
+    art_scripts = repo / '.agents/skills/texas-stack-artwork/scripts'
+    sys.path.insert(0, str(art_scripts))
+    from variety_check import fingerprint
+    cache = repo / '.local/art-history'
+    for record in [row for row in records if row.get('art')][:8]:
+        if (record['art'].get('visual_fingerprint') or {}).get('version') == 2:
+            continue
+        response = subprocess.run(['git', '-C', str(repo), 'show', record['branch'] + ':out/art_base.png'],
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        if response.returncode:
+            continue
+        cache.mkdir(parents=True, exist_ok=True)
+        path = cache / (record['branch'].replace('/', '_') + '.png')
+        path.write_bytes(response.stdout)
+        record['art']['visual_fingerprint'] = fingerprint(path)
     result = summarize(
-        stack_records(repo),
+        records,
         sibling_art_records(sibling),
         today,
     )
@@ -182,4 +204,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

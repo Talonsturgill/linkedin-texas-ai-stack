@@ -96,6 +96,8 @@ def validate(
         passed = weighted >= 8.5 and min(float(value) for value in scores.values()) >= 7
         if final.get("passed") is not passed:
             errors.append("art evaluation passed flag is inconsistent")
+        if art_eval.get("source") == "procedural" and not passed:
+            errors.append("procedural art must pass the 8.5 weighted and minimum-seven floors")
         if art_eval.get("source") == "imagegen" and not passed:
             if len(history) < 6 or not art_eval.get("shortfall_note"):
                 errors.append(
@@ -127,13 +129,46 @@ def validate(
     if meta.get("engine_version") == 2:
         if meta.get("image_sha256") != sha256(image_path):
             errors.append("composed image no longer matches its metadata")
-        if art_eval.get("source") == "imagegen":
+        if art_eval.get("source") in {"imagegen", "procedural"}:
             try:
                 validate_subject_box(meta.get("subject_box") or [], meta["layout"])
             except (ValueError, KeyError, TypeError):
                 errors.append("missing or colliding observed subject box")
             if art_eval.get("evaluation_protocol") != 2:
                 errors.append("engine v2 requires an image-bound visual review")
+    if art_eval.get('source') == 'procedural':
+        from procedural_art import story
+        from variety_check import fingerprint, validate as check_variety
+        root=image_path.parent
+        try:
+            spec=json.loads((root/'art_spec.json').read_text())
+            variety=json.loads((root/'art_variety.json').read_text())
+            receipt=json.loads((root/'art_render.json').read_text())
+            dossier=json.loads((root/'stack_anatomy.json').read_text())
+            if spec.get('dossier_sha256') != sha256(root/'stack_anatomy.json') or spec.get('story_binding') != story(dossier):
+                errors.append('procedural scene is not bound to the exact dossier')
+            for field, filename in (('spec_sha256','art_spec.json'),('variety_sha256','art_variety.json')):
+                if art_eval.get(field) != sha256(root/filename) or meta.get(field) != art_eval.get(field):
+                    errors.append('procedural '+field+' is stale')
+            if receipt.get('base_sha256') != sha256(base_path) or receipt.get('spec_sha256') != sha256(root/'art_spec.json'):
+                errors.append('procedural renderer receipt is stale')
+            if receipt.get('subject_box') != meta.get('subject_box'):
+                errors.append('subject bounds differ from the rendered alpha mask')
+            for field in ('render_family','style_family','hue_family','palette','composition','motifs','seed'):
+                if art_eval.get(field) != spec.get(field) or meta.get(field) != spec.get(field):
+                    errors.append('procedural '+field+' differs from actual render specification')
+            if not variety.get('ok') or variety.get('base_sha256') != sha256(base_path) or variety.get('spec_sha256') != sha256(root/'art_spec.json'):
+                errors.append('procedural artwork has no current passing variety gate')
+            if variety.get('visual_fingerprint') != fingerprint(base_path) or meta.get('visual_fingerprint') != variety.get('visual_fingerprint'):
+                errors.append('procedural fingerprint does not match actual pixels')
+            recomputed = check_variety(spec, variety.get('history_snapshot') or {}, base_path)
+            if not recomputed['ok'] or any(variety.get(k) != recomputed[k] for k in
+                    ('thresholds','comparisons','spec_values','history_snapshot')):
+                errors.append('procedural variety report does not reproduce its claimed pass')
+            if art_eval.get('renderer_sha256') != receipt.get('renderer_sha256') or meta.get('renderer_sha256') != receipt.get('renderer_sha256'):
+                errors.append('renderer provenance is inconsistent')
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            errors.append('invalid procedural provenance: '+str(exc))
     if art_eval.get("evaluation_protocol") == 2:
         if final not in history:
             errors.append("selected evaluation is not an actual history entry")
@@ -190,4 +225,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
