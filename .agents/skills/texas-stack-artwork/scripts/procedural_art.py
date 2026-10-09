@@ -12,7 +12,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
 SIZE = 1080
-VERSION = 1
+VERSION = 2
 STYLES = {
     'paper_relief': ('cut-paper relief', ['folded_fan', 'diagonal_traverse', 'vertical_cascade']),
     'engraving': ('copperplate engraving', ['frame_window', 'diagonal_traverse', 'horizon_clamp']),
@@ -82,6 +82,13 @@ def canonical_style(value):
     return value
 
 
+def story_treatment(binding):
+    decision = binding['decision'].lower()
+    if not binding['no_target'] and 'written' in decision and any(word in decision for word in ('approval', 'permission', 'authorization')):
+        return 'written_authorization'
+    return 'incomplete_evidence' if binding['no_target'] else 'binary_gate'
+
+
 def plans(dossier, history, count=3, salt=''):
     binding = story(dossier)
     cooldown = history.get('artwork_cooldowns') or {}
@@ -107,6 +114,7 @@ def plans(dossier, history, count=3, salt=''):
                        'palette': PALETTES[hue], 'composition': str(rng.choice(choices)),
                        'motifs': [motifs[i % len(motifs)]], 'seed': int(rng.integers(1, 2**31)),
                        'story_binding': binding, 'metaphor_limit': 'Editorial metaphor, not an engineering drawing',
+                       'story_treatment': story_treatment(binding),
                        'concept': label + ' showing ' + binding['controller'] + ' controlling ' + binding['decision']})
         if len(result) == count: break
     if len(result) < count:
@@ -310,6 +318,27 @@ def charcoal(p):
 RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal)))
 
 
+def written_artifact(p):
+    """A blank folded sheet through the gate makes a written decision visible without fake text."""
+    if story_treatment(p.spec['story_binding']) != 'written_authorization':
+        return
+    points=[(.36,.24),(.61,.24),(.68,.34),(.68,.78),(.36,.78)]
+    p.poly([(x+.014,y+.020) for x,y in points],p.dark)
+    p.poly(points,p.light,p.dark,3)
+    p.poly([(.61,.24),(.61,.34),(.68,.34)],p.main,p.dark,2)
+    # Rules are abstract ink marks, never a copied signature, seal, status or invented wording.
+    for y,right in ((.64,.59),(.685,.62),(.73,.55)):
+        p.line([(.405,y),(right,y)],p.dark,3)
+    family=p.spec['render_family']
+    if family=='glass':
+        p.poly([(.36,.24),(.48,.24),(.36,.42)],p.main,p.dark,2)
+        p.poly([(.68,.60),(.68,.78),(.58,.78)],p.accent,p.dark,2)
+    elif family=='weave':
+        for x in np.arange(.37,.67,.017):p.line([(x,.38),(x,.60)],p.main,1)
+    elif family in ('engraving','charcoal','cyanotype'):
+        for x in np.arange(.38,.67,.013):p.line([(x,.765),(min(x+.035,.67),.74)],p.main,1)
+
+
 def gate_mark(p):
     """The chosen primary motif changes the focal silhouette, rather than just its label."""
     m=p.spec['motifs'][0]; x=.5;y=.5
@@ -366,7 +395,9 @@ def render(spec, layout, destination):
         raise ValueError('Render family and style label disagree')
     if spec['motifs'][0] not in MOTIFS or spec['palette'] != PALETTES[spec['hue_family']]:
         raise ValueError('Unknown motif or altered palette')
-    p=Painter(spec,layout['subject_zone']); RENDERERS[family](p);gate_mark(p)
+    if spec.get('story_treatment') != story_treatment(spec['story_binding']):
+        raise ValueError('Story treatment must follow the verified decision')
+    p=Painter(spec,layout['subject_zone']); RENDERERS[family](p);written_artifact(p);gate_mark(p)
     subject=p.layer.resize((SIZE,SIZE),Image.Resampling.LANCZOS)
     # Exact alpha-mask bounds are measured from drawn pixels, including anti-aliasing.
     bbox=subject.getchannel('A').getbbox()

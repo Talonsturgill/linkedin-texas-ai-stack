@@ -32,6 +32,10 @@ def generate(fixture, history, work, headline, date):
         plan+='; '.join(s['concept'] for s in candidates)
         plan+=f"\n\nThe primary motif is {spec['motifs'][0]}. Palette {spec['hue_family']}; composition {spec['composition']}. "
         plan+='The dossier supplies each layer and the binary decision. Code must preserve those bindings. '
+        plan+=f"The verified treatment is {spec['story_treatment']}. "
+        if spec['story_treatment']=='written_authorization':
+            plan+='A blank folded sheet intersects the controlling gate to make the written condition visible; it does not claim approval was issued. '
+        plan+='Eye path: primary gate, surrounding connected layers, headline. At full size inspect edges and the gate interaction; at 300 pixels require the primary silhouette and headline to survive. '
         plan+='Measured glyph clearance and the rendered alpha mask protect typography. No maps, seals, labels or claimed engineering geometry. '
         plan+='Risks: generic gate depiction, fine lines disappearing at 300 pixels, and visual similarity to recent covers. '
         plan+='Inspect the real pixels, retain rejected passes, and require 8.5 plus minimum seven and no visual blockers.\n'

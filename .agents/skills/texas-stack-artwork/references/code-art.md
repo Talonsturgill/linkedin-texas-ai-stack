@@ -17,6 +17,10 @@ composition, motifs, seed, dossier_sha256 and story_binding. Bindings carry the 
 functions, controllers, primary URLs, gate order and binary decision. Preserve those exact facts.
 No-target uses the explicit incomplete-evidence binding instead. Choose a medium and motif that
 fit the meaning of the decision; a mathematically novel but irrelevant scene cannot pass.
+Read the actual chokepoint before reviewing a cover. A verified written-approval decision uses
+story_treatment written_authorization: a blank folded sheet physically intersects the selected
+gate. Its abstract ink rules imply writing without fabricating a signature, wording or seal.
+Other decisions must not acquire that paper cue just because a headline sounds like permission.
 
     python3 .agents/skills/texas-stack-artwork/scripts/procedural_art.py render --spec out/art_spec.json --layout out/art_layout.json --dossier out/stack_anatomy.json --out out/art_base.png --receipt out/art_render.json
     python3 .agents/skills/texas-stack-artwork/scripts/variety_check.py --spec out/art_spec.json --history .local/history.json --image out/art_base.png --out out/art_variety.json

@@ -8,7 +8,7 @@ from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'.agents/skills/texas-stack-artwork/scripts'))
-from procedural_art import STYLES, PALETTES, MOTIFS, plans, render, story, digest
+from procedural_art import STYLES, PALETTES, MOTIFS, plans, render, story, story_treatment, digest
 from variety_check import fingerprint, distances, validate
 from test_pipeline import dossier
 
@@ -46,6 +46,13 @@ class ProceduralTests(unittest.TestCase):
         with self.assertRaises(ValueError):story(value)
         binding=story(dossier(no_target=True))
         self.assertTrue(binding['no_target']);self.assertEqual(binding['layers'],[])
+
+    def test_written_artifact_requires_a_verified_written_decision(self):
+        binding=story(dossier())
+        self.assertEqual(story_treatment(binding),'binary_gate')
+        binding['decision']='Grant or withhold written approval for temporary emergency potable-water use'
+        self.assertEqual(story_treatment(binding),'written_authorization')
+        self.assertEqual(story_treatment(story(dossier(no_target=True))),'incomplete_evidence')
 
     def test_render_is_reproducible_and_respects_type_clearance(self):
         spec=plans(dossier(),{})[0];layout={'subject_zone':[64,196,1016,700]}

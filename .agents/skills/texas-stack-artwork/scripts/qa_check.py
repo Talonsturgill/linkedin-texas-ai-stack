@@ -137,7 +137,7 @@ def validate(
             if art_eval.get("evaluation_protocol") != 2:
                 errors.append("engine v2 requires an image-bound visual review")
     if art_eval.get('source') == 'procedural':
-        from procedural_art import story
+        from procedural_art import story, story_treatment
         from variety_check import fingerprint, validate as check_variety
         root=image_path.parent
         try:
@@ -147,6 +147,8 @@ def validate(
             dossier=json.loads((root/'stack_anatomy.json').read_text())
             if spec.get('dossier_sha256') != sha256(root/'stack_anatomy.json') or spec.get('story_binding') != story(dossier):
                 errors.append('procedural scene is not bound to the exact dossier')
+            if spec.get('story_treatment') != story_treatment(story(dossier)):
+                errors.append('procedural treatment does not follow the actual verified decision')
             for field, filename in (('spec_sha256','art_spec.json'),('variety_sha256','art_variety.json')):
                 if art_eval.get(field) != sha256(root/filename) or meta.get(field) != art_eval.get(field):
                     errors.append('procedural '+field+' is stale')
