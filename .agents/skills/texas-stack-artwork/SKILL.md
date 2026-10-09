@@ -8,7 +8,10 @@ description: Draw and visually verify original Texas Stack covers in code, with 
 Use procedural code art as the primary path. Python, Pillow and NumPy are sufficient; no image
 API or ImageGen lookup is needed. Read the final dossier, post if present, brand and current
 history once. Read [code art](references/code-art.md) for production commands and the specification.
-Use [art direction](references/art-direction.md) for score anchors. ImageGen is optional only
+Read [art direction](references/art-direction.md) once before scoring; its anchors are required.
+Judge composition on the finished cover. The text-free base intentionally reserves quiet space
+for measured headline/footer furniture; do not penalize that required space as a missing scene.
+ImageGen is optional only
 when explicitly requested; then read [ImageGen mode](references/imagegen-mode.md).
 
 ## Blueprint and variety

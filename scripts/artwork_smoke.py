@@ -16,12 +16,14 @@ from review_art import contact_sheet
 from smoke_test import destination
 
 
-def generate(fixture, history, work, headline, date):
+def generate(fixture, history, work, headline, date, selected_candidate=None):
     dossier=json.loads((fixture/'stack_anatomy.json').read_text())
     candidates=plans(dossier,history)
     layout=headline_layout(headline,font_pair()[0]); reports=[]
     work.mkdir(parents=True)
     for i,spec in enumerate(candidates,1):
+        if selected_candidate is not None and i != selected_candidate:
+            continue
         out=work/f'candidate-{i}';out.mkdir()
         for name in ('stack_anatomy.json','final_post.md','score_report.json','post_check.json'):
             if (fixture/name).is_file():shutil.copy2(fixture/name,out/name)
@@ -63,8 +65,9 @@ def generate(fixture, history, work, headline, date):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--fixture-dir',required=True,type=Path);p.add_argument('--history',required=True,type=Path);p.add_argument('--work-dir',required=True);p.add_argument('--headline',required=True);p.add_argument('--date',required=True)
+    p.add_argument('--selected-candidate',type=int,choices=(1,2,3),help='Plan three concepts but render only the chosen one, as in production')
     a=p.parse_args();work=destination(ROOT,a.work_dir)
-    print(json.dumps({'candidates':generate(a.fixture_dir,json.loads(a.history.read_text()),work,a.headline,a.date),'scored':False},indent=2))
+    print(json.dumps({'candidates':generate(a.fixture_dir,json.loads(a.history.read_text()),work,a.headline,a.date,a.selected_candidate),'scored':False},indent=2))
 
 
 if __name__=='__main__':main()

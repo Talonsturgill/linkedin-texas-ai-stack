@@ -54,3 +54,4 @@ Changing typography uses --replace-pass on the same base. No automatic score inf
 For a read-only migration or renderer test, scripts/artwork_smoke.py renders three candidates
 in a fresh ignored directory and creates review sheets. It deliberately does not score or
 publish them. Production normally renders one chosen concept first to avoid redundant work.
+Use --selected-candidate 1, 2 or 3 to test that same production behavior in a fresh context.
