@@ -64,3 +64,6 @@ and still fail concept/originality. Known visual blockers override the weighted 
 Use side-by-side review sheets to compare contenders at equal scale. Keep the stronger earlier
 pass if a later edit regresses it. An unchanged render must not receive a better score without a
 new, documented reason; never generate extra passes solely to satisfy an exception counter.
+If concept or story fidelity is below 8, the next repair must change the visible relationship,
+not just polish a surface. After two failed renders of that concept, replace it with one of the
+other unused directions. Preserve the rejection evidence and the six-render total across concepts.

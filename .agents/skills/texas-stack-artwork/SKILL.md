@@ -22,6 +22,11 @@ binary decision without inventing an engineering design. Write out/art_plan.md b
 selection rationale, literal dossier bindings, metaphor limits, medium, palette roles, focal point,
 eye path, detail at three scales and visual risks. Record the three concepts in art_eval.json.
 
+The engine supplies drawing methods; it does not choose the story's visual idea. A catalog
+pattern with a document pasted onto it is insufficient when the decision needs a different
+physical interaction. Use the blueprint to design that interaction, extending actual geometry
+or adding a genuinely distinct renderer when the toolkit cannot express it.
+
 The engine has thirteen different drawing methods, not thirteen names for one template. Exclude
 styles used in the last eight covers, hue families in four, compositions in two and primary
 motifs in ten. Do not rename a used style. The immediately preceding cover must differ on all
