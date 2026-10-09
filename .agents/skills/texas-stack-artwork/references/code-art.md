@@ -8,6 +8,13 @@ and [image resampling](https://pillow.readthedocs.io/en/stable/reference/Image.h
 The design separates deterministic geometry from surface variation; a seed identifies a render,
 and changing it alone is insufficient evidence of variety.
 
+Choose a story-fitting eligible direction with --preferred-family, --preferred-hue and
+--preferred-motif on the planning command; those options cannot override a cooldown. The volume
+family computes surface normals, rim light and reflected highlights instead of drawing a flat
+stained-glass pattern. Water decisions get a rounded drop; other records get a neutral volume.
+The written artifact is offset so the main object remains visible. These are declared editorial
+metaphors, not photographs or claims about actual equipment or an issued approval.
+
     python3 .agents/skills/texas-stack-artwork/scripts/procedural_art.py plan --dossier out/stack_anatomy.json --history .local/history.json --out .local/art-concepts.json
     python3 .agents/skills/texas-stack-artwork/scripts/prepare_art.py --headline "EXACT SHORT HEADLINE HERE" --out out/art_layout.json
 

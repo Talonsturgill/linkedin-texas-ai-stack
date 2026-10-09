@@ -22,7 +22,7 @@ binary decision without inventing an engineering design. Write out/art_plan.md b
 selection rationale, literal dossier bindings, metaphor limits, medium, palette roles, focal point,
 eye path, detail at three scales and visual risks. Record the three concepts in art_eval.json.
 
-The engine has twelve different drawing methods, not twelve names for one template. Exclude
+The engine has thirteen different drawing methods, not thirteen names for one template. Exclude
 styles used in the last eight covers, hue families in four, compositions in two and primary
 motifs in ten. Do not rename a used style. The immediately preceding cover must differ on all
 four axes. Run variety_check.py against actual recent raster fingerprints. It rejects similar

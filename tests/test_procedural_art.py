@@ -19,6 +19,14 @@ def prior(spec, image):
 
 
 class ProceduralTests(unittest.TestCase):
+    def test_story_direction_preferences_cannot_override_cooldowns(self):
+        candidates=plans(dossier(),{},preferred_family='volume',preferred_hue='glacier_tangerine',preferred_motif='sliding pin')
+        self.assertEqual(candidates[0]['render_family'],'volume')
+        self.assertEqual(candidates[0]['hue_family'],'glacier_tangerine')
+        with self.assertRaises(ValueError):
+            plans(dossier(),{'artwork_cooldowns':{'style_families_last_8':['illuminated volume study']}},preferred_family='volume')
+        with self.assertRaises(ValueError):
+            plans(dossier(),{'artwork_cooldowns':{'hue_families_last_4':['glacier_tangerine']}},preferred_hue='glacier_tangerine')
     def test_long_run_preserves_every_cooldown(self):
         records=[]
         for week in range(60):

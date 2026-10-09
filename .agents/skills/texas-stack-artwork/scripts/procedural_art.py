@@ -26,6 +26,7 @@ STYLES = {
     'ribbons': ('kinetic ribbon sculpture', ['diagonal_traverse', 'folded_fan', 'off_axis_orbit']),
     'tiles': ('glazed ceramic tilework', ['orthogonal_weave', 'fractured_quilt', 'ascending_terraces']),
     'charcoal': ('charcoal chiaroscuro', ['horizon_clamp', 'frame_window', 'split_field']),
+    'volume': ('illuminated volume study', ['diagonal_traverse', 'off_axis_orbit', 'ascending_terraces']),
 }
 PALETTES = {
     'cobalt_amber': ['#10182A','#07101F','#E8E5DA','#356EF1','#F3AD34'],
@@ -89,7 +90,7 @@ def story_treatment(binding):
     return 'incomplete_evidence' if binding['no_target'] else 'binary_gate'
 
 
-def plans(dossier, history, count=3, salt=''):
+def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_hue=None, preferred_motif=None):
     binding = story(dossier)
     cooldown = history.get('artwork_cooldowns') or {}
     banned_styles = {canonical_style(x) for x in cooldown.get('style_families_last_8', [])}
@@ -103,6 +104,14 @@ def plans(dossier, history, count=3, salt=''):
     hues = [k for k in PALETTES if k not in banned_hues]
     motifs = [k for k in MOTIFS if k not in banned_motifs]
     rng.shuffle(hues); rng.shuffle(motifs)
+    if preferred_family is not None:
+        if preferred_family not in {key for key,_ in available}:
+            raise ValueError('Preferred drawing family is unavailable or in cooldown')
+        available.sort(key=lambda item:item[0]!=preferred_family)
+    for values,preferred in ((hues,preferred_hue),(motifs,preferred_motif)):
+        if preferred is not None:
+            if preferred not in values:raise ValueError('Preferred hue or motif is unavailable or in cooldown')
+            values.remove(preferred);values.insert(0,preferred)
     result = []
     for key, (label, comps) in available:
         chosen_compositions = {s['composition'] for s in result}
@@ -339,13 +348,51 @@ def charcoal(p):
     p.line([(.04,.18),(.94,.77)],p.accent,9)
 
 
-RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal)))
+def volume(p):
+    """An implicit glass surface with computed normals, Fresnel rim and studio reflections."""
+    is_water='water' in p.spec['story_binding']['decision'].lower() and not p.spec['story_binding']['no_target']
+    cx,cy=p.xy((.29,.52));zone=p.zone
+    rx=int((zone[2]-zone[0])*.245*2);ry=int((zone[3]-zone[1])*.405*2)
+    yy,xx=np.mgrid[-ry:ry+1,-rx:rx+1].astype(np.float32);t=(yy/ry+1)/2
+    if is_water:
+        # Narrow upper cusp, rounded lower bowl: a drop rather than a leaf or medallion.
+        upper=np.sin(np.clip(t/.61,0,1)*np.pi/2)**2.2
+        lower=np.sqrt(np.clip(1-((t-.61)/.39)**2,0,1))
+        radius=np.where(t<.61,upper,lower)
+    else:radius=np.sqrt(np.clip(1-(yy/ry)**2,0,1))
+    nx=xx/rx/np.maximum(radius,.001);ny=(t-.61)*1.1
+    mask=(np.abs(nx)<1)&(radius>.001)
+    nz=np.sqrt(np.clip(1-nx*nx-ny*ny,0,1))
+    diffuse=np.clip(-nx*.42-ny*.40+nz*.72,0,1)
+    rim=np.clip(1-nz,0,1)**3
+    highlight=np.exp(-((nx+.44)**2/.008+(t-.35)**2/.027))
+    reflection=np.exp(-((nx-.80)**2/.004))*np.exp(-((t-.65)**2/.14))
+    color=np.array([int(p.main[i:i+2],16) for i in (1,3,5)],np.float32)
+    light=np.array([int(p.light[i:i+2],16) for i in (1,3,5)],np.float32)
+    rgb=color[None,None,:]*(.34+.66*diffuse[...,None])
+    rgb+=light[None,None,:]*(rim[...,None]*.43+highlight[...,None]*.70+reflection[...,None]*.50)
+    # Subtle medium-specific refraction bands; no generic grain is counted as new geometry.
+    rgb+=np.sin(t[...,None]*22+nx[...,None]*3)*3
+    rgba=np.dstack((np.clip(rgb,0,255).astype('uint8'),mask.astype('uint8')*255))
+    object_layer=Image.fromarray(rgba,'RGBA')
+    shadow=Image.new('RGBA',object_layer.size,(0,0,0,0));shadow.putalpha(object_layer.getchannel('A').filter(ImageFilter.GaussianBlur(14)))
+    p.layer.alpha_composite(shadow,(cx-rx+18,cy-ry+17));p.layer.alpha_composite(object_layer,(cx-rx,cy-ry))
+    # Bound stage pins sit along the base of the still life; the final office is accented.
+    for i in range(p.n):
+        x=.10+i*.115
+        p.ellipse((x-.008,.93,x+.008,.95),p.accent if i==p.gate else p.light)
+
+
+RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume)))
 
 
 def written_artifact(p):
     """A blank folded sheet through the gate makes a written decision visible without fake text."""
     if story_treatment(p.spec['story_binding']) != 'written_authorization':
         return
+    original_xy=p.xy
+    if p.spec['render_family']=='volume':
+        p.xy=lambda point:original_xy((point[0]+.22,point[1]))
     points=[(.36,.24),(.61,.24),(.68,.34),(.68,.78),(.36,.78)]
     p.poly([(x+.014,y+.020) for x,y in points],p.dark)
     p.poly(points,p.light,p.dark,3)
@@ -361,11 +408,12 @@ def written_artifact(p):
         for x in np.arange(.37,.67,.017):p.line([(x,.38),(x,.60)],p.main,1)
     elif family in ('engraving','charcoal','cyanotype'):
         for x in np.arange(.38,.67,.013):p.line([(x,.765),(min(x+.035,.67),.74)],p.main,1)
+    p.xy=original_xy
 
 
 def gate_mark(p):
     """The chosen primary motif changes the focal silhouette, rather than just its label."""
-    m=p.spec['motifs'][0]; x=.5;y=.5
+    m=p.spec['motifs'][0]; x=.72 if p.spec['render_family']=='volume' else .5;y=.5
     if m in ('iris shutter','locking collar','lens mask'):
         p.ellipse((x-.095,y-.16,x+.095,y+.16),p.dark)
     if m in ('split key','sliding pin','pivot lever','counterweight'):
@@ -415,7 +463,6 @@ def gate_mark(p):
             p.rect((x-.06,y+offset-.019,x+.064,y+offset+.019),p.light,p.dark,1)
             p.line([(x-.05,y+offset-.010),(x+.054,y+offset-.010)],p.main,1)
         p.line([(x-.12,y-.095),(x-.066,y-.095)],p.light,3)
-        p.line([(x+.153,y-.10),(x+.153,y+.10)],p.accent,3)
     if p.spec['story_binding']['no_target']:
         p.line([(x-.14,y-.19),(x+.14,y+.19)],p.light,4)
 
@@ -454,10 +501,11 @@ def render(spec, layout, destination):
 def main():
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='command',required=True)
     choose=sub.add_parser('plan');choose.add_argument('--dossier',required=True,type=Path);choose.add_argument('--history',required=True,type=Path);choose.add_argument('--out',required=True,type=Path);choose.add_argument('--salt',default='')
+    choose.add_argument('--preferred-family',choices=tuple(STYLES));choose.add_argument('--preferred-hue',choices=tuple(PALETTES));choose.add_argument('--preferred-motif',choices=MOTIFS)
     draw=sub.add_parser('render');draw.add_argument('--spec',required=True,type=Path);draw.add_argument('--layout',required=True,type=Path);draw.add_argument('--dossier',required=True,type=Path);draw.add_argument('--out',required=True,type=Path);draw.add_argument('--receipt',required=True,type=Path)
     a=p.parse_args()
     if a.command=='plan':
-        candidates=plans(json.loads(a.dossier.read_text()),json.loads(a.history.read_text()),salt=a.salt)
+        candidates=plans(json.loads(a.dossier.read_text()),json.loads(a.history.read_text()),salt=a.salt,preferred_family=a.preferred_family,preferred_hue=a.preferred_hue,preferred_motif=a.preferred_motif)
         for spec in candidates:spec['dossier_sha256']=digest(a.dossier)
         a.out.parent.mkdir(parents=True,exist_ok=True);a.out.write_text(json.dumps({'concepts':candidates},indent=2)+'\n')
         print(json.dumps({'plans':str(a.out),'concepts':[{'style':s['style_family'],'composition':s['composition'],'motif':s['motifs'][0]} for s in candidates]}))
