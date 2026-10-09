@@ -16,5 +16,4 @@ artifact_size: [1080, 1080]
 schedule:
   cadence: "weekly"
   day: "Friday"
-  local_time: "08:00"
-
+  local_time: "06:22"

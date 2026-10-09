@@ -7,6 +7,11 @@ invoke this routine's publication authorization.
 
 ## Context and spend discipline
 
+Use the cloned repository root, not a workstation-specific path. Keep the saved scheduler prompt
+as the pointer in prompts/ROUTINE_PROMPT.txt. Load only tools needed for the current phase;
+discover an unavailable capability once, with at most one corrected query after a syntax error.
+Do not load whole connector catalogs, unrelated documentation connectors or widget tools.
+
 Read each contract once per run, when needed. Research: config/state.yaml, config/sources.yaml
 and references/anatomy_schema.md. Writing: config/brand.yaml, config/rubric.yaml and
 examples/voice_anchor.md. Artwork: .agents/skills/texas-stack-artwork/SKILL.md only after the
@@ -37,8 +42,20 @@ never overwrite a prior run. Create ignored .local and out. Run:
     python3 scripts/history_scan.py --date "$TODAY" --out .local/history.json
 
 Read that ledger. Exclude the last six mechanisms unless a new trigger exposes a different chain
-or chokepoint. Retrieve the Gmail profile once; keep the address only in the connector arguments
-and .local/gmail_payload.json. Never log it, credentials, message contents or draft identifiers.
+or chokepoint. Retrieve the authenticated Gmail profile once; keep the address only in connector
+arguments and .local/gmail_payload.json. Never log it, credentials, message contents or draft
+identifiers. A draft listing proves mailbox access, not the authenticated account address.
+If the connector has no profile endpoint, use only an independently verified connected-account
+binding supplied privately by the environment; never infer identity from a draft recipient or
+message sender. Without that binding, record gmail_recipient_unverified and do not write a draft.
+
+Record capabilities before research: fetched web evidence, GitHub access, image generation,
+verified self-recipient, Gmail draft create/update and full HTML/label readback. If the active
+request requires ImageGen and the tool is absent, stop with needs_attention before research.
+If fallback is explicitly permitted by the active request, apply the existing artwork fallback
+contract and disclose it. Missing infrastructure is not a no-target research result. A missing
+profile or readback capability is a delivery limitation, never a passed gate. Report such a
+limitation before expensive work; do not invent a replacement connector or request credentials.
 
 If web/GitHub fails, preserve local evidence and make a candid needs-attention draft when Gmail
 is available. If Gmail alone fails, finish the branch and report that boundary. Never claim an
@@ -122,7 +139,8 @@ or two consecutive unusable tool results, not aesthetic disappointment.
 
 This runs post, complete-run, unit, configuration, skill and artwork checks, retaining detailed
 logs in .local/checks. Read failed logs only; never label a missing/skipped check passed. After an
-edit, run its affected narrow check; run the complete command once on the final package.
+edit, run its affected narrow check; run the complete command once on the final package. Do not
+repeat its passing component checks unless an input or implementation changed.
 
 Review diff, prose/privacy scan and status. Explicitly force-add only these ignored run artifacts:
 stack_anatomy.json, art_plan.md, art_layout.json, image_prompt.txt, art_base.png, art_eval.json,
@@ -156,3 +174,17 @@ SENT. Inspect the rendered email if markup/layout changed or loading is uncertai
 receipts under .local. Report mechanism/no-target, category, branch, exact commit, draft PR,
 ImageGen/fallback source, art score, verified URL, validation and draft state. Do not expose the
 address or draft identifier. State that nothing was sent, posted or merged.
+
+## Maintenance replay
+
+A migration test is not a new weekly issue. Fetch the requested existing issue ref and use:
+
+    python3 scripts/smoke_test.py --artifact-ref FULL_COMMIT_SHA --work-dir .local/smoke-UNIQUE --verify-image
+
+Install requirements once in an ignored venv if needed. This extracts only the allowlisted issue
+artifacts into a fresh ignored directory, runs all checks once and verifies immutable image bytes.
+It does not switch branches, research a story, generate artwork, publish or contact Gmail.
+Read its summary and failed logs only. Test connectors separately with a bounded, explicit scope.
+Passing a replay does not prove fresh artwork generation or Gmail draft writes. Record those
+untested boundaries. Context occupancy and remaining budget are not billable token counters;
+report measured cost only when usage or billing evidence actually exposes it.

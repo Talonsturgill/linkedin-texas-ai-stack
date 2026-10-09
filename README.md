@@ -25,7 +25,7 @@ The unit is one mechanism, never a general market survey:
 - capital and sovereignty
 - regulatory
 
-Every selected mechanism must clear the seven-point accuracy gate documented in the routine.
+Every selected mechanism must clear the eight-point accuracy gate documented in the routine.
 Quiet weeks ship as no-target drafts rather than forcing a weak anatomy.
 
 ## Local checks
@@ -33,6 +33,16 @@ Quiet weeks ship as no-target drafts rather than forcing a weak anatomy.
     python3 -m pip install -r requirements.txt
     python3 -m unittest discover -s tests -v
     python3 scripts/check_config.py
+    python3 scripts/check_skill.py .agents/skills/texas-stack-artwork
 
 Run artifacts are ignored on main and committed explicitly on dated branches.
 
+For a bounded migration replay, fetch an existing issue commit, install the requirements and run:
+
+    python3 scripts/smoke_test.py --artifact-ref FULL_COMMIT_SHA --work-dir .local/smoke-UNIQUE --verify-image
+
+This tests the package and its immutable image without generating a new issue or writing Gmail.
+Cloud routines also need actual image generation, a verified connected-account recipient and
+Gmail HTML/label readback. Missing capabilities must remain explicit; a green replay alone does
+not prove the complete weekly workflow. The saved scheduler owns the execution time; the
+repository uses America/Chicago for issue dates.

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import math
+import re
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
@@ -59,8 +60,8 @@ def validate() -> list[str]:
     schedule = state.get("schedule") or {}
     if schedule.get("cadence") != "weekly" or schedule.get("day") != "Friday":
         errors.append("schedule must be weekly on Friday")
-    if schedule.get("local_time") != "08:00":
-        errors.append("schedule local_time must be 08:00")
+    if not re.fullmatch(r"(?:[01][0-9]|2[0-3]):[0-5][0-9]", str(schedule.get("local_time", ""))):
+        errors.append("schedule local_time must be a valid 24-hour HH:MM time")
 
     brand_block = brand.get("brand") or {}
     if brand_block.get("name") != "Texas AI Docket":
@@ -152,4 +153,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
