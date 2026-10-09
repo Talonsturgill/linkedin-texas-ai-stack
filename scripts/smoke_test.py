@@ -53,6 +53,15 @@ def replay(ref, work, verify_image=False):
     report = {'artifact_commit': commit, 'artifact_count': len(files),
               'checks_passed': result.returncode == 0, 'logs': str(work / 'logs'),
               'image_verified': False, 'image_verification_requested': verify_image}
+    summary_path = work / 'logs/summary.json'
+    if summary_path.is_file():
+        summary = json.loads(summary_path.read_text())
+        report['checks'] = [{'check': row['check'], 'passed': row['passed']}
+                           for row in summary['checks']]
+    test_log = work / 'logs/tests.log'
+    if test_log.is_file():
+        count = re.search(r'^Ran (\d+) tests? in ', test_log.read_text(), re.M)
+        report['unit_test_count'] = int(count[1]) if count else None
     if verify_image:
         url = ('https://raw.githubusercontent.com/Talonsturgill/linkedin-texas-ai-stack/'
                + commit + '/out/post_image.png')
