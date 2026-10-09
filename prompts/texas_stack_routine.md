@@ -134,6 +134,9 @@ before rendering, semantic cooldowns and actual raster variety checks, exact cod
 render specification, measured typography, full-size and 300-pixel inspection, image-bound
 evaluations and technical QA. Use the procedural primary path; built-in ImageGen is optional
 only when explicitly requested. The 8.5 weighted floor and minimum dimension of 7 remain fixed.
+If the cover headline cannot fit, shorten it within the skill's word limit while preserving
+the verified meaning, then retry layout. This routine authorizes ordinary headline fitting;
+do not ask for approval or count a layout-only failure as a rendering.
 Use targeted repairs up to six actual renderings;
 do not create extra passes just to exhaust a budget. Known visual blockers cannot pass on score.
 Procedural artwork has no below-floor exception. Repair or report needs_attention if six attempts

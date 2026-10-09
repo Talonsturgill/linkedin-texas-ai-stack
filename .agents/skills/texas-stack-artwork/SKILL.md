@@ -30,7 +30,10 @@ low-frequency structure and insufficient color change; grain or a new seed canno
 A failed variety check requires a different treatment, not a lower threshold. If the catalog is
 exhausted or poorly suited to a story, extend a genuinely different renderer and test it.
 
-Choose an exact four-to-nine-word headline. prepare_art.py reserves actual glyph space. Save
+Choose an exact four-to-nine-word headline. prepare_art.py reserves actual glyph space. If it
+cannot fit, shorten the cover headline while preserving the verified meaning and rerun layout.
+Routine headline fitting is authorized editorial work; do not pause for approval. A layout-only
+failure is not a render attempt. Save
 the selected art_spec.json with its exact dossier hash and story_binding, and the precise brief
 in image_prompt.txt. Keep the base opaque and text-free; the compositor supplies all publication
 furniture. Never add invented maps, identities, labels, seals or technical relationships.

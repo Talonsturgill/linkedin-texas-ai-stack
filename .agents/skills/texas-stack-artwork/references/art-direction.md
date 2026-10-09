@@ -56,8 +56,8 @@ and still fail concept/originality. Known visual blockers override the weighted 
 ## Recovery choice
 
 - Wrong mechanism or generic idea: replace the concept, keep the verified evidence boundary.
-- Good idea, poor framing: targeted ImageGen edit with exact quiet-zone bounds.
-- Correct art, awkward line break: adjust headline and compositor before spending on ImageGen.
+- Good idea, poor framing: adjust geometry with exact quiet-zone bounds and rerender.
+- Correct art, awkward line break: adjust headline and compositor before rerendering the base.
 - Broken surface, extra pseudo-text or malformed joint: edit that defect only.
 - Good image at the floor with an obvious defect: repair; do not stop because metadata is green.
 
