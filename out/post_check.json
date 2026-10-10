@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "errors": [],
+  "metrics": {
+    "body_words": 425,
+    "total_chars": 2610,
+    "hook_chars": 196,
+    "layer_bullets": 5,
+    "hashtags": [
+      "#ERCOT",
+      "#PUCT",
+      "#TexasGrid"
+    ],
+    "tag_line": "#ERCOT #PUCT #TexasGrid"
+  }
+}

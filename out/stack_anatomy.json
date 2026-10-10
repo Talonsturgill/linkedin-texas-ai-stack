@@ -2,139 +2,332 @@
   "schema_version": 1,
   "run_date": "2026-10-09",
   "window_days": 21,
-  "no_target_this_cycle": true,
-  "_validation_note": "No candidate cleared the gates in this run. Discovery ran across all four lanes over the 14-day window (2026-09-25 to 2026-10-09) and the broadened 21-day window (2026-09-18 onward). Every primary Texas agency host tried (www.puc.texas.gov, capitol.texas.gov, interchange.puc.texas.gov) was refused by the egress gateway with 403 policy denial or failed DNS, so no primary source body could be fetched. Search snippets were used only as discovery leads and are not evidence. Because primary_source_each_layer cannot be established for any candidate, no mechanism was selected. The 'fetched_at_utc' fields record the attempt time; fetch_status states the actual outcome. Gates not evaluated are recorded as false.",
-  "selected_mechanism": null,
-  "required_post_phrases": [],
-  "verified_facts": [],
+  "no_target_this_cycle": false,
+  "research_capabilities": {
+    "primary_source_fetch": true,
+    "primary_source_fetch_evidence": "preflight bodies from capitol.texas.gov and www.puc.texas.gov, see .local/primary_fetch_preflight.json"
+  },
+  "selected_mechanism": {
+    "name": "Large-load financial security before study inclusion",
+    "category": "regulatory",
+    "category_label": "REGULATORY",
+    "definition": "A PUCT rule requires a large load customer to post financial security of $50,000 per megawatt before it can be included in an ERCOT interconnection study.",
+    "texas_scope": "ERCOT interconnection of large loads under PURA §37.0561 as enacted by SB 6 (89th Legislature)",
+    "news_trigger": {
+      "date": "2026-09-18",
+      "verbatim_span": "post financial security in the amount $50,000 per megawatt (MW)",
+      "post_anchor": "16 TAC §25.194",
+      "source": {
+        "url": "https://interchange.puc.texas.gov/search/documents/?controlNumber=58481&itemNumber=218",
+        "title": "Interchange filing detail, Case 58481-218",
+        "publisher": "Public Utility Commission of Texas",
+        "source_type": "primary",
+        "published_at": "2026-09-18",
+        "fetched_at_utc": "2026-10-10T00:51:45Z",
+        "body_sha256": "13288b9559df73326185ea4d6d625bbe7e47aa5a2768b240f71d8650011d6371"
+      }
+    },
+    "layers": [
+      {
+        "order": 1,
+        "name": "Statutory mandate",
+        "function": "Directs standards for large load interconnection to the grid",
+        "controlling_actor": "Texas Legislature",
+        "actor_authority": "SB 6 enacted PURA §37.0561 in the 89th Regular Legislative Session",
+        "post_phrase": "Texas Legislature",
+        "primary_source": {
+          "url": "https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm",
+          "title": "SB 6, 89th Legislature (enrolled text)",
+          "publisher": "Texas Legislature Online",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T00:52:40Z"
+        }
+      },
+      {
+        "order": 2,
+        "name": "Commission rule adoption",
+        "function": "Adopts new 16 TAC §25.194 under Project No. 58481",
+        "controlling_actor": "Public Utility Commission of Texas",
+        "actor_authority": "PURA §37.0561 directs the commission to adopt the standards; the order adopts the rule",
+        "post_phrase": "Public Utility Commission of Texas",
+        "primary_source": {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T00:51:51Z"
+        }
+      },
+      {
+        "order": 3,
+        "name": "Financial security gate",
+        "function": "Requires a large load customer to post financial security before inclusion in an ERCOT interconnection study",
+        "controlling_actor": "Public Utility Commission of Texas",
+        "actor_authority": "The adopted rule sets the posting requirement that applies before study inclusion",
+        "post_phrase": "Public Utility Commission of Texas",
+        "primary_source": {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T00:51:51Z"
+        }
+      },
+      {
+        "order": 4,
+        "name": "ERCOT study inclusion",
+        "function": "Places an eligible large load into an ERCOT interconnection study once the prerequisites are met",
+        "controlling_actor": "ERCOT",
+        "actor_authority": "ERCOT runs the interconnection study under the commission rule and its protocols",
+        "post_phrase": "ERCOT",
+        "primary_source": {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T00:51:51Z"
+        }
+      },
+      {
+        "order": 5,
+        "name": "Security return on energization",
+        "function": "Returns posted security in steps as the customer energizes and meets milestones",
+        "controlling_actor": "interconnecting DSP or TSP",
+        "actor_authority": "The adopted rule requires the interconnecting DSP or TSP to return financial security",
+        "post_phrase": "interconnecting DSP or TSP",
+        "primary_source": {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T00:51:51Z"
+        }
+      }
+    ],
+    "chokepoint": {
+      "layer_order": 3,
+      "layer_name": "Financial security gate",
+      "controlling_actor": "Public Utility Commission of Texas",
+      "post_actor_phrase": "Public Utility Commission of Texas",
+      "binary_decision": "Whether a large load customer posts $50,000 per MW of financial security before it is included in an ERCOT interconnection study",
+      "post_decision_phrase": "post financial security before study inclusion",
+      "why_asymmetric": "The commission adopts the rule that sets the posting condition for every covered large load customer in ERCOT; no other office sets that condition",
+      "primary_source_url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
+    },
+    "texas_consequence": "Large load customers seeking ERCOT interconnection must post $50,000 per MW of financial security before inclusion in an ERCOT interconnection study, under a rule adopted by the Public Utility Commission of Texas",
+    "structural_read": "The rule makes financial security a precondition for study inclusion and sets a return schedule tied to energization and milestones. Its measurable terms are the per-megawatt amount and the return steps the order records.",
+    "forward_implication": "The order states the rule will be republished; its effect on study inclusion can be checked against later ERCOT study records",
+    "next_check": {
+      "what": "Republication of 16 TAC §25.194 in the Texas Register, as the order states",
+      "actor": "Public Utility Commission of Texas",
+      "date_or_window": "Not verified in this run; the order states the rule will be republished"
+    },
+    "public_policy_context": {
+      "is_public_policy": true,
+      "editorial_mode": "neutral_accountability",
+      "assessment": "not_applicable"
+    },
+    "sources": [
+      {
+        "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+        "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
+        "publisher": "Public Utility Commission of Texas",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "Adopted 16 TAC §25.194 under Project No. 58481",
+          "Requires $50,000 per MW financial security before inclusion in an ERCOT interconnection study",
+          "Return of security: 20% on energization, remainder in 20% increments as milestones are met",
+          "Rule was published in the March 27, 2026 Texas Register and adopted with changes"
+        ],
+        "fetched_at_utc": "2026-10-10T00:51:51Z",
+        "body_sha256": "65f81513cb1a8506a3bd42ccdcc73f2f7523863f4e6f1dfe434102dddbe14063"
+      },
+      {
+        "url": "https://interchange.puc.texas.gov/search/documents/?controlNumber=58481&itemNumber=218",
+        "title": "Interchange filing detail, Case 58481-218",
+        "publisher": "Public Utility Commission of Texas",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "Order filed 9/18/2026 by PUC OPDM, Case 58481-218, titled ORDER ADOPTING NEW 16 TAC §25.194"
+        ],
+        "fetched_at_utc": "2026-10-10T00:51:45Z",
+        "body_sha256": "13288b9559df73326185ea4d6d625bbe7e47aa5a2768b240f71d8650011d6371"
+      },
+      {
+        "url": "https://interchange.puc.texas.gov/Search/Filings?ControlNumber=58481",
+        "title": "Interchange filing index, Project 58481",
+        "publisher": "Public Utility Commission of Texas",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "Filing index lists item 218 and item 219 dated 9/18/2026 for Project 58481"
+        ],
+        "fetched_at_utc": "2026-10-10T00:51:18Z",
+        "body_sha256": "e4e681f038e62a6371626073340ef458a83ae0189607d5ddd67e30746bb3b53d"
+      },
+      {
+        "url": "https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm",
+        "title": "SB 6, 89th Legislature (enrolled text)",
+        "publisher": "Texas Legislature Online",
+        "source_type": "primary",
+        "independent_of_subject": false,
+        "claims_supported": [
+          "PURA §37.0561 is in the enrolled SB 6 text of the 89th Legislature"
+        ],
+        "fetched_at_utc": "2026-10-10T00:52:40Z",
+        "body_sha256": "1ef38096867ebc62b555037c0ab364ad002b96cd43e322f2d92686ef55f73885"
+      }
+    ]
+  },
+  "required_post_phrases": [
+    "Large-load financial security before study inclusion",
+    "16 TAC §25.194",
+    "Texas Legislature",
+    "Public Utility Commission of Texas",
+    "post financial security before study inclusion"
+  ],
+  "verified_facts": [
+    {
+      "claim": "The Public Utility Commission of Texas issued an Order Adopting New 16 TAC §25.194 in Project No. 58481, filed 9/18/2026.",
+      "source_urls": [
+        "https://interchange.puc.texas.gov/search/documents/?controlNumber=58481&itemNumber=218",
+        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
+      ]
+    },
+    {
+      "claim": "The order requires a large load customer to post financial security in the amount $50,000 per megawatt (MW) before it can be included in an ERCOT interconnection study.",
+      "source_urls": [
+        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
+      ]
+    },
+    {
+      "claim": "The order says the rule was adopted under PURA §37.0561 as enacted by Senate Bill 6 in the 89th Regular Legislative Session.",
+      "source_urls": [
+        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+        "https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm"
+      ]
+    },
+    {
+      "claim": "The order says the rule was proposed in the March 27, 2026 Texas Register and adopted with changes.",
+      "source_urls": [
+        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
+      ]
+    },
+    {
+      "claim": "The order says the interconnecting DSP or TSP must return 20% of financial security when the large load customer energizes, and the remainder ratably in 20% increments as milestones are met.",
+      "source_urls": [
+        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
+      ]
+    },
+    {
+      "claim": "The order refers to the batch zero interconnection study and to a commission action on June 18, 2026 that addresses batch zero eligibility and study requirements.",
+      "source_urls": [
+        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
+      ]
+    }
+  ],
   "gate_results": {
-    "news_tie": false,
-    "anatomizable_depth": false,
-    "primary_source_each_layer": false,
-    "texas_consequence": false,
-    "chokepoint_asymmetry": false,
-    "mechanism_not_actor": false,
-    "not_recent_repeat": false,
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": true,
+    "chokepoint_asymmetry": true,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
     "political_neutrality": true
   },
   "dropped_mechanisms": [
     {
-      "name": "PUCT SB 6 large-load interconnection final rule (Project 58481)",
+      "name": "Governor's Sept 21 directive extending the data-center permit pause to TCEQ",
       "category": "regulatory",
-      "news_trigger": "Secondary reporting of a PUCT final large-load rule under 16 TAC 25.194; adoption date reported inconsistently (Sept 18 vs Sept 20, 2026)",
-      "drop_reason": "primary_source_each_layer failed: PUCT Interchange unreachable (DNS failure) and the adopted terms appear only in one secondary article with a flagged date error; the $50,000/MW figure conflicts across sources",
-      "sources": [
-        {
-          "url": "https://interchange.puc.texas.gov/Search/Filings?ControlNumber=58481",
-          "title": "PUCT Interchange, Project 58481 (attempted)",
-          "publisher": "Public Utility Commission of Texas",
-          "source_type": "primary",
-          "fetch_status": "blocked_dns_failure",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
-        },
-        {
-          "url": "https://www.whitecase.com/insight-alert/puct-sets-financial-commitments-data-center-interconnection-governor-pauses-permit",
-          "title": "PUCT sets financial commitments for data center interconnection",
-          "publisher": "White & Case",
-          "source_type": "independent_reporting",
-          "fetch_status": "search_snippet_only",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
-        },
-        {
-          "url": "https://www.texaspowercost.com/news/puct-large-load-interconnection-rules-adopted-2026.php",
-          "title": "Texas PUC Softens Its Data-Center Grid Rules",
-          "publisher": "Texas Power Cost",
-          "source_type": "independent_reporting",
-          "fetch_status": "search_snippet_only",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
-        }
-      ]
-    },
-    {
-      "name": "Governor's Sept 21 directive pausing data-center permits at TCEQ",
-      "category": "regulatory",
-      "news_trigger": "Sept 21, 2026 gubernatorial letter to TCEQ reported by Texas Tribune and law-firm alerts; compliance update due Oct 19, 2026",
-      "drop_reason": "not_recent_repeat failed: matches history ledger entry 'TCEQ data-center permit pause' (run 2026-09-25, chokepoint 'Permit decision'); trigger also falls before the 14-day window start",
+      "news_trigger": "Texas Tribune, Sept. 21, 2026, reports the governor broadens the moratorium on data center approvals to include environmental permits",
+      "drop_reason": "not_recent_repeat failed: matches history ledger entry 'TCEQ data-center permit pause' (run 2026-09-25, chokepoint 'Permit decision')",
       "sources": [
         {
           "url": "https://www.texastribune.org/2026/09/21/texas-data-center-moratorium-water-energy/",
-          "title": "Texas data center moratorium water energy",
+          "title": "Gov. Greg Abbott broadens moratorium on data center approvals to include environmental permits",
           "publisher": "The Texas Tribune",
           "source_type": "independent_reporting",
-          "fetch_status": "search_snippet_only",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
-        },
-        {
-          "url": "https://www.bdlaw.com/publications/texas-pauses-all-environmental-permitting-for-data-centers/",
-          "title": "Texas Pauses All Environmental Permitting for Data Centers",
-          "publisher": "Barnes & Thornburg (law-firm alert)",
-          "source_type": "independent_reporting",
-          "fetch_status": "search_snippet_only",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
+          "fetch_status": "fetched_200",
+          "body_sha256": "ae87a191d3d3628efd3866f13fb12f2ab500ca6311129b0eaf88f01f5481d55a",
+          "fetched_at_utc": "2026-10-10T00:51:22Z"
         }
       ]
     },
     {
       "name": "ERCOT Batch Zero large-load study process",
       "category": "regulatory",
-      "news_trigger": "PUCT approval of ERCOT Batch Zero framework (June 18, 2026) and ERCOT classification timing reported in later coverage",
-      "drop_reason": "not_recent_repeat failed: matches history ledger entry 'Batch Zero Verification RFI process' (run 2026-09-11, chokepoint 'Eligibility determination layer'); no in-window trigger found",
+      "news_trigger": "PUCT approval of ERCOT Batch Zero framework on June 18, 2026",
+      "drop_reason": "not_recent_repeat failed: matches history ledger entry 'Batch Zero Verification RFI process' (run 2026-09-11, chokepoint 'Eligibility determination layer'); the cited ERCOT release was refused by the gateway (403), so the primary order is the source used",
       "sources": [
         {
-          "url": "https://www.mondaq.com/unitedstates/oil-gas-electricity/1807826/puct-approves-batch-zero-framework-that-will-provide-a-pathway-for-large-load-to-connect-to-the-grid-and-receive-electricity",
-          "title": "PUCT approves Batch Zero framework",
-          "publisher": "Mondaq (law-firm alert)",
-          "source_type": "independent_reporting",
-          "fetch_status": "search_snippet_only",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
+          "url": "https://www.ercot.com/news/release/06182026-puct-approves-ercots",
+          "title": "PUCT approves ERCOT batch zero release",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "fetch_status": "blocked_403",
+          "fetched_at_utc": "2026-10-10T00:51:21Z"
+        },
+        {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "65f81513cb1a8506a3bd42ccdcc73f2f7523863f4e6f1dfe434102dddbe14063",
+          "fetched_at_utc": "2026-10-10T00:51:51Z"
         }
       ]
     },
     {
       "name": "Texas Energy Fund Rayburn 570 MW gas plant loan",
       "category": "capital_sovereignty",
-      "news_trigger": "Governor's announcement of a $411M Texas Energy Fund loan to Rayburn Electric Cooperative, dated June 4, 2026",
-      "drop_reason": "news_tie failed: the trigger date falls well outside both the 14-day and 21-day windows; no in-window milestone was verified",
+      "news_trigger": "Governor's press release dated June 4, 2026 announcing a TxEF loan of up to $411 million to Rayburn Electric Cooperative",
+      "drop_reason": "news_tie failed: trigger date June 4, 2026 is outside the 21-day window (starts 2026-09-18)",
       "sources": [
         {
           "url": "https://gov.texas.gov/news/post/governor-abbott-announces-texas-energy-fund-loan-for-570-mw-north-texas-natural-gas-power-plant",
           "title": "Governor Abbott Announces Texas Energy Fund Loan For 570 MW North Texas Natural Gas Power Plant",
-          "publisher": "Office of the Governor of Texas",
+          "publisher": "Office of the Texas Governor",
           "source_type": "primary",
-          "fetch_status": "search_snippet_only",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
+          "fetch_status": "fetched_200",
+          "body_sha256": "ea4ec8adcbf71642e7606680e3aedc16ec5420f66916a8485886f6d9cfa31494",
+          "fetched_at_utc": "2026-10-10T00:51:21Z"
         }
       ]
     },
     {
       "name": "DIR Carahsoft AI bulk purchase agreement BP2026-0015",
       "category": "vehicles",
-      "news_trigger": "DIR bulk purchase agreement PDF for AI software under DIR-CPO-5687, with purchase orders permitted through Oct 31, 2026",
-      "drop_reason": "texas_consequence and chokepoint_asymmetry not established: the agreement terms are known only from a search snippet of the PDF, and the primary PDF could not be fetched (dir.texas.gov refused by gateway); the decision controller and its binary choice were not verified",
+      "news_trigger": "DIR bulk purchase agreement for FY 2026 AI software; agencies may issue purchase orders through Oct 31, 2026",
+      "drop_reason": "chokepoint_asymmetry failed: each customer agency decides whether to issue its purchase order, and DIR sets only the contract terms; no single office holds the yes/no decision. Consequence is limited to supplemental discounts.",
       "sources": [
         {
           "url": "https://dir.texas.gov/sites/default/files/2026-09/Carahsoft%20Bulk%20Purchase%20Agreement%20BP2026-0015..%20%282%29.pdf",
-          "title": "Carahsoft Bulk Purchase Agreement BP2026-0015",
+          "title": "Bulk Purchase Agreement, FY 2026 AI Software, BP2026-0015",
           "publisher": "Texas Department of Information Resources",
           "source_type": "primary",
-          "fetch_status": "blocked_403_policy_denial",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
+          "fetch_status": "fetched_200",
+          "body_sha256": "e760ef0ef1cb4dd8c2dc1c180c3f2a4a387fce3c3c16a879423deb579b1ce550",
+          "fetched_at_utc": "2026-10-10T00:51:18Z"
         }
       ]
     },
     {
       "name": "Governor's proposed repeal of data-center sales-tax exemption",
       "category": "vehicles",
-      "news_trigger": "Abbott's June 2026 legislative recommendations including repeal of the data-center sales tax exemption, for the 2027 session",
-      "drop_reason": "news_tie failed: the proposal dates to June 2026 and no bill had been filed as of the reviewed September coverage; the decision belongs to the 2027 Legislature, so no in-window controlling decision exists",
+      "news_trigger": "Abbott's June 2026 legislative recommendations, including repeal of the data-center sales tax exemption, for the 2027 session",
+      "drop_reason": "news_tie failed: the recommendation is dated June 2026, outside the 21-day window; the controlling decision belongs to the 2027 Legislature. The news outlet was refused at CONNECT (403) and no primary page was fetched.",
       "sources": [
         {
           "url": "https://www.click2houston.com/news/texas/2026/06/10/abbott-recommends-sweeping-data-center-regulation-including-eliminating-sales-tax-exemption/",
           "title": "Abbott recommends sweeping data center regulation including eliminating sales tax exemption",
           "publisher": "KHOU/Click2Houston",
           "source_type": "independent_reporting",
-          "fetch_status": "search_snippet_only",
-          "fetched_at_utc": "2026-10-10T00:29:31Z"
+          "fetch_status": "blocked_403_connect",
+          "fetched_at_utc": "2026-10-10T00:51:22Z"
         }
       ]
     }
