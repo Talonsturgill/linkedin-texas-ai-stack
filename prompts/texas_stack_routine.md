@@ -36,6 +36,12 @@ strongest fully verified candidate is selected.
 
 Use America/Chicago dates. Check clean repository, origin, GitHub authentication without printing
 credentials, web, Gmail draft and Python/Pillow/NumPy rendering capability. No image API is needed.
+Before discovery, fetch two representative configured primary hosts from different issuers and
+record HTTP status, actual body byte count and timestamp privately. A coordinated proxy policy
+denial is a missing network capability. Report needs_attention and repair that capability before
+research; do not turn blocked infrastructure into a completed no-target result. Claude's Custom
+network allowlist uses config/cloud_network_domains.txt plus the default package-host list.
+Keep additional access limited to public issuer/source hosts required for this routine.
 Fetch origin/main and remote codex/texas-stack-* branches. The default deployment revision is
 origin/main; a saved routine may point to an exact validated review-branch commit while its PR
 is unmerged. Record that revision in .local/run_state.json and use it as the issue branch base.
@@ -153,6 +159,13 @@ do not create extra passes just to exhaust a budget. Known visual blockers canno
 Procedural artwork has no below-floor exception. Repair or report needs_attention if six attempts
 cannot pass. A changed seed, palette label or grain layer cannot substitute for a new visual
 treatment. Do not use the generic emergency fallback as production artwork.
+Choose the visual idea before selecting a catalog row. The planner's random ordering is not a
+quality ranking. An incomplete-evidence bridge or written-document barrier can use the eligible
+editorial_scene family. If two pattern-based concepts fail, replace the visible interaction with
+an unused coherent scene or extend an actual renderer. A third generic pattern is insufficient.
+Do not stop after two failures while an eligible scene and repair budget remain. For a failed
+render boundary, preserve the rejected base before rerendering; never run variety against a stale
+base. Inspect the complete cover at full size and 300 pixels before recording its final scores.
 
 ## 5. Validate and publish artifacts
 
