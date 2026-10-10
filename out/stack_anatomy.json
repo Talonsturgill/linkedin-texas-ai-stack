@@ -115,13 +115,13 @@
    "why_asymmetric": "The statute makes the agency answer within 60 days with only two lawful outcomes, and the Commission order is the signed act that picks one. Staff recommend, petitioners and commenters argue, but neither controls the decision.",
    "primary_source_url": "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF"
   },
-  "texas_consequence": "A petition asking the Commission to meter computing inside large data centers, described in the staff memo as particularly those running high-intensity AI workloads, did not become a rulemaking. Metering and cost allocation for large loads continue under the Commission's Senate Bill 6 implementation projects in Project No. 58317.",
-  "structural_read": "The gate converts an open ended public request into a dated binary answer with written reasons. Here the written reasons were procedural and about capacity. The order cited the Commission's existing Senate Bill 6 rulemaking slate and staff resources, and the staff memo added that the petition lacked usable rule text under Section 22.281. The record shows the gate worked as a legible deadline and left the underlying metering question to other Commission projects.",
-  "forward_implication": "A narrower petition with complete proposed rule text, or a topic placed on the Commission rulemaking calendar, would be the observable route back to a rulemaking.",
+  "texas_consequence": "A petition asking the Commission to adopt a measurement standard for computing inside large data centers, described in the staff memo as particularly those running high-intensity AI workloads, did not become a rulemaking. The order says the Commission's Senate Bill 6 rulemaking slate in Project No. 58317 is already full and contains no express or implied requirement to meter transport-layer consumption or computational efficiency. This record does not show the internal metering proposal proceeding in any other project.",
+  "structural_read": "The gate converts an open ended public request into a dated binary answer with written reasons. Here the order rested on existing Senate Bill 6 rulemaking workload and staff resources, and the staff memo added that the petition lacked usable rule text under Section 22.281 and that nothing in Senate Bill 6 requires metering inside individual data centers. The record shows the gate worked as a legible deadline. It does not show the internal metering proposal proceeding in any other Commission project, and it does not assess the merits of metering.",
+  "forward_implication": "A narrower petition with complete proposed rule text would be an observable route to a formal answer. The fetched record does not identify another project where this proposal proceeds.",
   "next_check": {
-   "what": "Project No. 59212 CY 2026 Rulemaking Calendar, item 33 on the open meeting agenda, for which large load projects hold staff capacity",
-   "actor": "Public Utility Commission of Texas",
-   "date_or_window": "October 15th, 2026 open meeting"
+   "what": "Staff presentation of a proposal for publication of a standard large load interconnection agreement, which the September 2026 Senate Bill 6 roadmap in Project No. 58317 says staff anticipates in October 2026. The roadmap does not mention this petition.",
+   "actor": "Public Utility Commission of Texas staff and Commission",
+   "date_or_window": "October 2026 per the roadmap"
   },
   "public_policy_context": {
    "is_public_policy": true,
@@ -210,15 +210,17 @@
     ]
    },
    {
-    "url": "https://ftp.puc.texas.gov/public/puct-info/agency/om/101526Final.pdf",
-    "title": "Open Meeting Agenda, October 15, 2026",
+    "url": "https://interchange.puc.texas.gov/Documents/58317_69_1685516.PDF",
+    "title": "SB6 Implementation Roadmap Updated September 2026, Project No. 58317, Item 69",
     "publisher": "Public Utility Commission of Texas",
     "source_type": "primary",
-    "fetched_at_utc": "2026-10-10T01:57:13Z",
-    "body_sha256": "e0e3681d7b9842cf80413040c1507a0f148d95aacd211aff565d75d86af780f4",
+    "fetched_at_utc": "2026-10-10T02:20:41Z",
+    "body_sha256": "6ae5ff4e4f95dc4f0639564ce6183687b9b17f2fdc1983a07524f4d8fc6a4ea3",
     "independent_of_subject": true,
     "claims_supported": [
-     "October 15th, 2026 agenda lists Project No. 59212 CY 2026 Rulemaking Calendar"
+     "Roadmap lists Senate Bill 6 rulemakings and remaining milestones",
+     "Staff anticipates presenting a standard large load interconnection agreement proposal for publication in October 2026",
+     "Roadmap text does not mention Project No. 60084 or measuring computational load"
     ]
    }
   ],
@@ -226,7 +228,8 @@
    "No independent news corroboration of the October 1st order was found in two searches, so the trigger rests on the Commission's own filing.",
    "Section 22.281 text was verified through the Texas Register adoption preamble, not the codified rule page, which was not reachable.",
    "Staff memos give different dates for the project reassignment, so the post omits that date.",
-   "Signature block legibility limits confirming how many commissioners signed, so the post says the Commission without a vote count."
+   "Signature block legibility limits confirming how many commissioners signed, so the post says the Commission without a vote count.",
+   "The record does not show the internal metering proposal proceeding in any other Commission project. An earlier draft inferred that Project No. 58317 now carries it. The order says the opposite, that the slate contains no requirement to meter transport-layer consumption or computational efficiency, so that inference was removed."
   ],
   "history_comparison": "Not one of the prior six mechanisms (Taylor cooling-water exception framework, TCDC power-to-equity framework, TCEQ data-center permit pause, PGRR144 as-built model review, Batch Zero Verification RFI process, NSF Science and Technology Center cooperative agreement). It is an agency procedure gate, not a grid study or permit.",
   "neutrality_screen": "Covers authority, deadline, procedure and stated reasons only. The petition and supportive comments contain advocacy language, which is not adopted. No position is taken on metering, data centers or the petitioner."
@@ -301,21 +304,34 @@
    ]
   },
   {
-   "claim": "The order dated October 1st, 2026 denied the petition, the revised petition and any other requested relief, citing the Commission's full slate of Senate Bill 6 rulemaking projects in Project No. 58317 and the need not to redirect staff resources.",
+   "claim": "The order dated October 1st, 2026 denied the petition, the revised petition and any other requested relief. It states the Commission already has a full slate of Senate Bill 6 rulemaking projects, per the SB6 Implementation Roadmap filed in Project No. 58317, that do not include an express or implied requirement to meter and regulate transport-layer consumption or computational efficiency of large load customers, and that initiating the requested rulemaking would require redirecting staff resources.",
    "source_urls": [
     "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF"
-   ]
-  },
-  {
-   "claim": "The Commission open meeting agenda for October 15th, 2026 lists item 33, Project No. 59212, CY 2026 Rulemaking Calendar, for discussion and possible action.",
-   "source_urls": [
-    "https://ftp.puc.texas.gov/public/puct-info/agency/om/101526Final.pdf"
    ]
   },
   {
    "claim": "The petition and supporting comments were filed in Project No. 60084 and the staff memo is addressed to the Commission chairman and commissioners from the Rules and Projects Division Director.",
    "source_urls": [
     "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF"
+   ]
+  },
+  {
+   "claim": "Neither the fetched order nor the fetched staff memo identifies another project in which the internal metering proposal proceeds.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF",
+    "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF"
+   ]
+  },
+  {
+   "claim": "The September 22nd, 2026 SB6 Implementation Roadmap in Project No. 58317 says staff anticipates presenting a proposal for publication of a standard large load interconnection agreement for Commission consideration in October 2026.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/58317_69_1685516.PDF"
+   ]
+  },
+  {
+   "claim": "The fetched roadmap text does not mention Project No. 60084 or a project to measure computing inside data centers.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/58317_69_1685516.PDF"
    ]
   }
  ],

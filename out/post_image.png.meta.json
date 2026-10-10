@@ -91,8 +91,8 @@
   "seed": 2028699251,
   "base_sha256": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
   "prompt_sha256": "e67dec454c50ab2a07db8495f3cceebb6f9f6e7c3e37f86d139deb1284afeadc",
-  "plan_sha256": "1f436fb901f4b868e036460d046747ef4a2748ac8f7739152882c41f5b80b4fa",
-  "eval_sha256": "b97fe6efe136fc5143d6fb15131d419e685796e113e0b83fda47855558b1d079",
+  "plan_sha256": "9f2e2e6787fb96c5372ae575e60a6f6348a4f567d242c804ee297cb7222d613c",
+  "eval_sha256": "610b7bff47ce3f45d5378d508501b0a0705a45eb8c6ec5e41b1a2b35cf64043a",
   "eval_history": [
     {
       "pass_number": 1,
@@ -355,15 +355,15 @@
   },
   "shortfall_note": "",
   "fallback_reason": "",
-  "rendered_at_utc": "2026-10-10T02:10:38.340574+00:00",
+  "rendered_at_utc": "2026-10-10T02:21:36.167192+00:00",
   "canvas": [
     1080,
     1080
   ],
   "render_family": "bay_wall",
   "renderer_sha256": "03e9563813839d5fa7994c4e915da86a3a620730c2bd1c13de2d4d7fb621c239",
-  "spec_sha256": "d84da3bd44cab9fdad7ad4d9fb8b9a436ed9f182fbdf6868509b6227bd7466f5",
-  "variety_sha256": "2ee3f62fdae202910b457ff8e8df153c79dfbf309e89fd95467e98793259f840",
+  "spec_sha256": "269f4cd254ab31bb8b88ffb9fad296d250ee0e2802f5322700c1766d97d4ecf5",
+  "variety_sha256": "f0b7c977c5bea85f1d73133f3fee346bfcb623e9a632cffd39be62a6fb7def3d",
   "visual_fingerprint": {
     "version": 2,
     "phash": "4f1d11f0ee6f1190",

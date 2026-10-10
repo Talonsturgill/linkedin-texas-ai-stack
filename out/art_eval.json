@@ -292,8 +292,15 @@
     "edit_prompt": "If a further pass existed: round the crop into a deliberate plate and trim the right lintel shadow. Budget of six renders is spent."
   },
   "renderer_sha256": "03e9563813839d5fa7994c4e915da86a3a620730c2bd1c13de2d4d7fb621c239",
-  "spec_sha256": "d84da3bd44cab9fdad7ad4d9fb8b9a436ed9f182fbdf6868509b6227bd7466f5",
-  "variety_sha256": "2ee3f62fdae202910b457ff8e8df153c79dfbf309e89fd95467e98793259f840",
+  "spec_sha256": "269f4cd254ab31bb8b88ffb9fad296d250ee0e2802f5322700c1766d97d4ecf5",
+  "variety_sha256": "f0b7c977c5bea85f1d73133f3fee346bfcb623e9a632cffd39be62a6fb7def3d",
   "evaluation_protocol": 2,
-  "selected_base_sha256": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c"
+  "selected_base_sha256": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
+  "dossier_rebind": {
+    "old_dossier_sha256": "e4e8df42e4c9fe912f43f7ef35fac7cf496f875a135bed47ed288f76f8fa3e32",
+    "new_dossier_sha256": "5e254f4cd8cc521f8fab1c1ec4e7b7e4f3a41c51f79dbf6949daef779dc73232",
+    "reason": "Copy correction, see art_plan.md",
+    "base_sha256_unchanged": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
+    "visual_candidate": false
+  }
 }

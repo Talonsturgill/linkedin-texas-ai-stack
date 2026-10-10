@@ -42,4 +42,14 @@ Palette roles. Teal wall and slab, chalk pages, tangerine only on the strap and 
 
 ## Render accounting
 
-Six pipeline renders were recorded in eval_history (scores 7.415, 7.51, 8.085, 8.435, 8.495, 8.545). Before render 1 and before render 3, the new renderers were built with quick debug previews of the layer alone, without typography or a review. Those previews are development of the renderer code, were not scored, and are disclosed here rather than counted. Render 6 passes the floor with the soft crop smear and a faint lintel shadow line noted as limits. The points_switch renderer for the rejected concept remains in the engine source with its test.
+Reviewed pipeline renders. Six, recorded in eval_history with scores 7.415, 7.51, 8.085, 8.435, 8.495 and 8.545. These are the only candidates that were composed, inspected at full size and 300 pixels and scored.
+
+Development previews, reported separately. While building and repairing the two new renderers, 11 full story-scene layer previews were drawn with a debug harness that renders the scene layer only, with no headline, no review and no score. Railway points concept, 7 previews before render 1, 1 before render 2. Paired bay wall concept, 1 before render 3, 1 before render 4 and 1 before render 6, none before render 5. In addition, 2 pipeline render calls before render 1 raised the typography clearance error and saved no image. The previews are kept only in ignored local files, were not reviewed as candidates, and are not part of the six. The cost of the previews was not measured, so no total render or token cost is claimed.
+
+An earlier version of this note said previews happened before renders 1 and 3 only. That was incomplete and is corrected here.
+
+Limits of the selected render 6. Soft crop smear and a faint lintel shadow line. The points_switch renderer for the rejected concept remains in the engine source with its test.
+
+## Metadata rebind after a copy correction
+
+After final acceptance review, the post, texas_consequence, structural_read, forward_implication and next_check in the dossier were corrected, because the record does not show the internal metering proposal proceeding in another project. The dossier hash changed from e4e8df42e4c9fe912f43f7ef35fac7cf496f875a135bed47ed288f76f8fa3e32 to 5e254f4cd8cc521f8fab1c1ec4e7b7e4f3a41c51f79dbf6949daef779dc73232. The art spec, receipt, variety record and evaluation were rebound to it. The base image was re-rendered from the same spec and renderer and came out byte identical, base SHA-256 e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c. That is a reproducibility check, not a seventh visual candidate. No art score changed.

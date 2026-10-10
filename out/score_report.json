@@ -1,5 +1,5 @@
 {
- "weighted_total": 8.045,
+ "weighted_total": 8.065,
  "threshold": 8.0,
  "criteria": [
   {
@@ -12,7 +12,7 @@
    "name": "Mechanism significance for Texas",
    "weight": 0.18,
    "score": 7.0,
-   "note": "Narrow procedural gate on one denied petition, but tied to data center metering and Senate Bill 6 implementation; limited breadth."
+   "note": "Narrow procedural gate on one denied petition about metering in large data centers; limited breadth, and the correction removes any claim that the question moved elsewhere."
   },
   {
    "name": "Layer fidelity",
@@ -24,37 +24,37 @@
    "name": "Chokepoint clarity",
    "weight": 0.13,
    "score": 8.5,
-   "note": "One named Commission and the statutory deny or initiate decision, with order text as controlling passage."
+   "note": "One named Commission and the statutory deny or initiate decision, now with the order's actual written reasons."
   },
   {
    "name": "Structural read",
    "weight": 0.12,
    "score": 8.0,
-   "note": "Separates what the gate does from the merits and notes a single case cannot show a pattern."
+   "note": "States the order's reasons and the memo's added reasons separately and says plainly that the record does not show the proposal proceeding elsewhere; no merits verdict."
   },
   {
    "name": "Forward implication",
    "weight": 0.08,
-   "score": 7.0,
-   "note": "Next check is the October 15th rulemaking calendar item, a loose rather than direct follow-up."
+   "score": 7.5,
+   "note": "Next check is a dated roadmap milestone in October 2026, stated with the limit that the roadmap does not mention this petition, so it is context rather than a direct follow-up."
   },
   {
    "name": "Primary-source quality",
    "weight": 0.1,
    "score": 8.5,
-   "note": "Statute, rule preamble, staff memos, comments and order all fetched; no independent corroboration found and rule read through the Texas Register preamble."
+   "note": "Statute, rule preamble, memos, comments, order and roadmap all fetched; no independent corroboration found and rule read through the Texas Register preamble."
   },
   {
    "name": "Texas AI Docket voice",
    "weight": 0.08,
    "score": 8.0,
-   "note": "Plain, sourced, neutral on metering and the petitioner."
+   "note": "Plain, sourced and neutral on metering and the petitioner."
   },
   {
    "name": "LinkedIn readability",
    "weight": 0.04,
-   "score": 8.0,
-   "note": "465 body words, short bullets, one question."
+   "score": 7.5,
+   "note": "475 body words sits at the 475 cap with dense sentences."
   },
   {
    "name": "Chokepoint question",
@@ -107,6 +107,7 @@
  ],
  "hard_failures": [],
  "ship": true,
- "editorial_passes": 1,
- "score_revisions": 0
+ "editorial_passes": 2,
+ "score_revisions": 1,
+ "revision_note": "Factual correction. An unsupported inference that Project No. 58317 now carries the internal metering question was removed after the order and staff memo were re-read. The copy was rescored on its changed text; the earlier 8.045 no longer applies."
 }
