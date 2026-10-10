@@ -440,20 +440,29 @@ def editorial_scene(p):
     if treatment=='incomplete_evidence':
         # Two grounded arch halves expose a missing keystone. This is a sculptural
         # evidence metaphor, not a fictional project or a count of factual layers.
+        # Each arm is five voussoir blocks separated by mortar gaps, so the stone reads as masonry
+        # rather than a gauge; the crown gap below is the absent keystone.
         for left in (True,False):
-            angles=np.linspace(math.pi,math.pi/2+.25,90) if left else np.linspace(math.pi/2-.25,0,90)
-            outer=[(.5+.38*math.cos(a),.90-.65*math.sin(a)) for a in angles]
-            inner=[(.5+.245*math.cos(a),.90-.43*math.sin(a)) for a in angles]
-            shape=outer+inner[::-1]
-            shaded([(x+.022,y+.035) for x,y in shape],p.dark)
-            shaded(shape,p.light if left else p.main)
-            p.poly([outer[-1 if left else 0],inner[-1 if left else 0],
-                    (inner[-1 if left else 0][0]+.022,inner[-1 if left else 0][1]+.035),
-                    (outer[-1 if left else 0][0]+.022,outer[-1 if left else 0][1]+.035)],p.accent)
-            p.line(outer,p.light,3)
-            for a in ((2.72,2.35,1.97) if left else (1.17,.79,.42)):
-                p.line([(.5+.38*math.cos(a),.90-.65*math.sin(a)),
-                        (.5+.245*math.cos(a),.90-.43*math.sin(a))],p.dark,2)
+            start,end=(math.pi,math.pi/2+.25) if left else (math.pi/2-.25,0)
+            edges=np.linspace(start,end,6);direction=1 if end>start else -1
+            for i in range(5):
+                a0=edges[i]+(direction*.035 if i else 0);a1=edges[i+1]-(direction*.035 if i<4 else 0)
+                angles=np.linspace(a0,a1,14)
+                outer=[(.5+.38*math.cos(a),.90-.65*math.sin(a)) for a in angles]
+                inner=[(.5+.245*math.cos(a),.90-.43*math.sin(a)) for a in angles]
+                block=outer+inner[::-1]
+                shaded([(x+.016,y+.028) for x,y in block],p.dark)
+                shaded(block,p.light if left else p.main,.008)
+                p.line(outer,p.light,2)
+        # The absent keystone is only its dashed outline, filling the crown gap between the cut arm
+        # ends. Its sides follow the arm cuts, so the missing stone reads as a gap, not as a dial.
+        outer_ends=[(.5+.38*math.cos(a),.90-.65*math.sin(a)) for a in (math.pi/2+.25,math.pi/2-.25)]
+        inner_ends=[(.5+.245*math.cos(a),.90-.43*math.sin(a)) for a in (math.pi/2+.25,math.pi/2-.25)]
+        ring=[outer_ends[0],outer_ends[1],inner_ends[1],inner_ends[0],outer_ends[0]]
+        for (x0,y0),(x1,y1) in zip(ring,ring[1:]):
+            for step in range(0,8,2):
+                t0,t1=step/8,(step+1)/8
+                p.line([(x0+(x1-x0)*t0,y0+(y1-y0)*t0),(x0+(x1-x0)*t1,y0+(y1-y0)*t1)],p.light,3)
         # Solid plinths meet the arch feet, grounding the image in one physical space.
         for x in (.08,.74):
             shaded([(x,.90),(x+.18,.90),(x+.20,.945),(x+.02,.945)],p.accent,.015)

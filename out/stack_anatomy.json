@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-10-10",
+  "run_kind": "automation_test",
+  "window_days": 21,
+  "no_target_this_cycle": true,
+  "_validation_note": "Fourteen-day window (2026-09-26 to 2026-10-10) searched across facilities, vehicles, capital_sovereignty and regulatory lanes; no candidate survived. Broadened once to 21 days (2026-09-19 to 2026-10-10) and re-screened. In-window candidates were a same-chain repeat of the 2026-09-25 TCEQ permit pause or the 2026-10-09 Taylor cooling-water framework, a withdrawn PUCT large-load target without new primary evidence, outside AI or Texas data-center scope, or unreadable at the primary source. Gate results are not scored for a no-target run.",
+  "selected_mechanism": null,
+  "required_post_phrases": [],
+  "verified_facts": [
+    {
+      "claim": "The DIR page for DIR-CPO-5148 states that DIR will expire the contract and that the term ends on 9/3/2026.",
+      "source_urls": [
+        "https://dir.texas.gov/contracts/dir-cpo-5148"
+      ]
+    },
+    {
+      "claim": "The Comptroller's September 30, 2026 release states that the executive order directs the agency to publish a proposed amendment to Rule 3.330 to remove marketplace and platform fees from the definition of taxable data processing services.",
+      "source_urls": [
+        "https://comptroller.texas.gov/about/media-center/news/20260930-comptroller-don-huffines-ends-hidden-double-tax-on-texas-families-and-small-businesses-1790708719803"
+      ]
+    },
+    {
+      "claim": "The Texas Water Development Board's September 10, 2026 board agenda memo covers the 2026-27 Flood Infrastructure Fund Intended Use Plan.",
+      "source_urls": [
+        "https://www.twdb.texas.gov/board/2026/09/Board/Brd03.pdf"
+      ]
+    },
+    {
+      "claim": "The Governor's release dated June 24, 2026 announces the eighth Texas Energy Fund loan, for 860 MW of new power in Ward County, under the In-ERCOT Generation Loan Program.",
+      "source_urls": [
+        "https://gov.texas.gov/news/post/governor-abbott-announces-texas-energy-fund-loan-for-860-mw-of-new-power-in-west-texas"
+      ]
+    },
+    {
+      "claim": "The PUC Texas Energy Fund page states that In-ERCOT Generation Loan Program loans are 20-year loans at a fixed 3% interest rate.",
+      "source_urls": [
+        "https://www.puc.texas.gov/industry/electric/business/texas-energy-fund/default.aspx"
+      ]
+    }
+  ],
+  "gate_results": {},
+  "research_capabilities": {
+    "primary_source_fetch": true
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "Texas Energy Fund eighth loan, Vistra Ward County 860 MW",
+      "category": "capital_sovereignty",
+      "news_trigger": "Governor's release dated June 24, 2026 on an 860 MW In-ERCOT loan.",
+      "drop_reason": "Outside the 21-day window (dated June 24, 2026). A generation-loan agreement with no in-window AI, data-center or grid-interconnection decision.",
+      "sources": [
+        {
+          "url": "https://gov.texas.gov/news/post/governor-abbott-announces-texas-energy-fund-loan-for-860-mw-of-new-power-in-west-texas",
+          "title": "Governor Abbott Announces Texas Energy Fund Loan For 860 MW Of New Power In West Texas",
+          "publisher": "Office of the Texas Governor",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T01:28:34Z",
+          "body_sha256": "05008acaea64522f9337dc2b5f4fd6d282f72532cce5696564867a2e0de3de89",
+          "fetch_status": "fetched_200"
+        },
+        {
+          "url": "https://www.puc.texas.gov/industry/electric/business/texas-energy-fund/default.aspx",
+          "title": "The Texas Energy Fund",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T01:28:32Z",
+          "body_sha256": "d4df20e3584ca6d171378459d61a7ad095c4fcc8ca46b7ceed036746edff17da",
+          "fetch_status": "fetched_200"
+        }
+      ]
+    },
+    {
+      "name": "Comptroller Rule 3.330 marketplace-fee executive order",
+      "category": "vehicles",
+      "news_trigger": "Comptroller executive order announced September 30, 2026 directing a proposed Rule 3.330 amendment.",
+      "drop_reason": "AI scope fails. The primary release concerns sales-tax treatment of marketplace and platform fees under the data-processing tax (seller fees on retail platforms, delivery apps, rideshare). It contains no AI infrastructure, compute, data-center or grid decision. The proposed amendment is not yet published in the Texas Register.",
+      "sources": [
+        {
+          "url": "https://comptroller.texas.gov/about/media-center/news/20260930-comptroller-don-huffines-ends-hidden-double-tax-on-texas-families-and-small-businesses-1790708719803",
+          "title": "Comptroller Don Huffines Ends Hidden Double Tax on Texas Families and Small Businesses",
+          "publisher": "Texas Comptroller of Public Accounts",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T01:28:08Z",
+          "body_sha256": "52ab1ae0dc33d713430033190c31d1f28098a2d25b67f1ff393406c3bd56a997",
+          "fetch_status": "fetched_200"
+        }
+      ]
+    },
+    {
+      "name": "DIR-CPO-5148 AI products and services contract renewal",
+      "category": "vehicles",
+      "news_trigger": "Search lead on a DIR AI products contract whose base term ended at the start of the window.",
+      "drop_reason": "The primary DIR page states the term ends 9/3/2026. The fetched text shows no in-window renewal, award or amendment notice, so the news tie fails.",
+      "sources": [
+        {
+          "url": "https://dir.texas.gov/contracts/dir-cpo-5148",
+          "title": "DIR-CPO-5148 | Texas Department of Information Resources",
+          "publisher": "Texas Department of Information Resources",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T01:28:31Z",
+          "body_sha256": "2ee62c9dc5b7ece1376cdb3924aed25506a7a5e5fb30fe31427bc5d34370b183",
+          "fetch_status": "fetched_200"
+        }
+      ]
+    },
+    {
+      "name": "TWDB September 10, 2026 board packet",
+      "category": "facilities",
+      "news_trigger": "Board packet for the September 10, 2026 meeting; its public-comment section mentions data-center water use.",
+      "drop_reason": "The fetched agenda memo is a flood-fund Intended Use Plan. Data-center references are public comments, not a board decision on a data-center facility, so there is no controller of a facility decision in the window.",
+      "sources": [
+        {
+          "url": "https://www.twdb.texas.gov/board/2026/09/Board/Brd03.pdf",
+          "title": "TWDB Board Meeting Packet, September 10, 2026 (Brd03)",
+          "publisher": "Texas Water Development Board",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T01:28:30Z",
+          "body_sha256": "6c73fb51fcf7f403dd6d7af253945bb10c56e07b40c14c1b013d1a9034823ef2",
+          "fetch_status": "fetched_200"
+        }
+      ]
+    },
+    {
+      "name": "PUCT large-load interconnection final rule (Project 58481)",
+      "category": "regulatory",
+      "news_trigger": "Secondary law-firm alert reporting a September 18, 2026 PUCT large-load interconnection rule.",
+      "drop_reason": "Previously withdrawn for unsupported controller and AI scope. Its date (September 18) also falls before the 21-day window. No new primary evidence was retrieved this run; the Project 58481 record was not reached from the attempted root page.",
+      "sources": [
+        {
+          "url": "https://www.puc.texas.gov/",
+          "title": "Public Utility Commission of Texas",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T01:26:08Z",
+          "body_sha256": "982f2e5288efc5b5fee39283dcbf4becd3153fd23aa09c5ade9352a9a655fe67",
+          "fetch_status": "fetched_200"
+        }
+      ]
+    },
+    {
+      "name": "Attorney General data-center water-survey investigation",
+      "category": "regulatory",
+      "news_trigger": "Attorney General investigation of data-center developments that did not answer the TWDB water-use survey, reported in late September 2026.",
+      "drop_reason": "The primary press-release host was not reachable (egress policy denied the connection), so the actor's authority and the exact passage could not be audited. It is also a same-chain follow-on to the excluded TCEQ permit pause, and secondary coverage ties it to a campaign, a neutrality risk.",
+      "sources": [
+        {
+          "url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-paxton-launches-landmark-investigation-hundreds-data-center-developments-texas",
+          "title": "Attorney General Paxton Launches Landmark Investigation Into Hundreds of Data Center Developments in Texas",
+          "publisher": "Office of the Texas Attorney General",
+          "source_type": "attempted",
+          "fetched_at_utc": "2026-10-10T01:27:00Z",
+          "fetch_status": "blocked_by_egress_policy"
+        }
+      ]
+    },
+    {
+      "name": "Governor's September 2026 TCEQ data-center permit pause",
+      "category": "regulatory",
+      "news_trigger": "Governor's September 21, 2026 directive halting data-center permits pending ERCOT and TWDB audits.",
+      "drop_reason": "Same chain as the 2026-09-25 mechanism, which already cleared the gate with the TCEQ permit decision as its chokepoint. No new controller or chokepoint appears in the window; the next compliance update is due October 19, 2026, after the window.",
+      "sources": [
+        {
+          "url": "https://github.com/Talonsturgill/linkedin-texas-ai-stack/tree/origin/codex/texas-stack-2026-09-25",
+          "title": "Prior run branch codex/texas-stack-2026-09-25 (excluded mechanism record)",
+          "publisher": "linkedin-texas-ai-stack repository",
+          "source_type": "attempted",
+          "fetched_at_utc": "2026-10-10T01:27:00Z",
+          "fetch_status": "repository_record"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Technology Campus development agreement",
+      "category": "facilities",
+      "news_trigger": "City council vote on a 664-acre campus development agreement, reported as scheduled for October 8, 2026.",
+      "drop_reason": "Same chain as the 2026-10-09 Taylor cooling-water exception framework, already used. The October 8 vote outcome was not in any fetched primary text, so no new layer or controller is verified.",
+      "sources": [
+        {
+          "url": "https://github.com/Talonsturgill/linkedin-texas-ai-stack/tree/origin/codex/texas-stack-2026-10-09",
+          "title": "Prior run branch codex/texas-stack-2026-10-09 (excluded mechanism record)",
+          "publisher": "linkedin-texas-ai-stack repository",
+          "source_type": "attempted",
+          "fetched_at_utc": "2026-10-10T01:27:00Z",
+          "fetch_status": "repository_record"
+        }
+      ]
+    }
+  ]
+}
