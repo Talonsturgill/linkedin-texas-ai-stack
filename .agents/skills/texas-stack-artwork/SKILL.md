@@ -27,7 +27,7 @@ pattern with a document pasted onto it is insufficient when the decision needs a
 physical interaction. Use the blueprint to design that interaction, extending actual geometry
 or adding a genuinely distinct renderer when the toolkit cannot express it.
 
-The engine has thirteen different drawing methods, not thirteen names for one template. Exclude
+The engine has fourteen different drawing methods with different geometry. Exclude
 styles used in the last eight covers, hue families in four, compositions in two and primary
 motifs in ten. Do not rename a used style. The immediately preceding cover must differ on all
 four axes. Run variety_check.py against actual recent raster fingerprints. It rejects similar
@@ -71,6 +71,9 @@ the evaluation, metadata and email. It is a normal supported path, not a failure
 
 Run scripts/run_checks.py once on the final package. Commit the routine's allowed public art
 files, including art_spec.json, art_render.json and art_variety.json for procedural output.
+When a story required a renderer extension, include the changed renderer source and its relevant
+test in the issue commit so the recorded renderer hash can be reproduced from that exact SHA.
+Keep quality thresholds and validation code unchanged during a production art repair.
 Keep rejected images, review sheets and private receipts ignored. Preserve the immutable URL
 and draft-only delivery contract. A successful rendering alone does not prove publication or
 Gmail delivery.

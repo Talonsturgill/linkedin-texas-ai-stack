@@ -168,7 +168,10 @@ stack_anatomy.json, art_plan.md, art_layout.json, image_prompt.txt, art_base.png
 post_image.png and post_image.png.meta.json under out/. Procedural runs also include art_spec.json,
 art_render.json and art_variety.json. Target runs also include final_post.md,
 post_check.json and score_report.json. Keep rejected renders, review sheets and private receipts
-in .local. Commit with The Texas Stack and ISO date, push the dated branch with bounded retries,
+in .local. If a story required an actual renderer extension, also commit only that renderer
+source and its relevant test, after the complete package checks pass. This preserves the exact
+renderer hash in the public reproduction chain. Do not alter quality thresholds or validators
+to make an art repair pass. Commit with The Texas Stack and ISO date, push the dated branch with bounded retries,
 and open a draft PR into main when gh is available. Add codex and codex-automation labels only
 when available. Never merge. Unconfigured checks/labels are unavailable, not successful.
 
