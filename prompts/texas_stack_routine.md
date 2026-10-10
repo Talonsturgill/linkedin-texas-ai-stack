@@ -36,6 +36,9 @@ strongest fully verified candidate is selected.
 
 Use America/Chicago dates. Check clean repository, origin, GitHub authentication without printing
 credentials, web, Gmail draft and Python/Pillow/NumPy rendering capability. No image API is needed.
+Run scripts/run_date.py once for the ISO run_date and exact cover_date; use its output for the
+branch, dossier, history window and cover. The cloud host's date, UTC day and conversation date
+are not the editorial date. Preserve that checked instant in .local/run_state.json.
 Before discovery, fetch two representative configured primary hosts from different issuers and
 record HTTP status, actual body byte count and timestamp privately. A coordinated proxy policy
 denial is a missing network capability. Report needs_attention and repair that capability before
@@ -165,9 +168,10 @@ cannot pass. A changed seed, palette label or grain layer cannot substitute for 
 treatment. Do not use the generic emergency fallback as production artwork.
 Choose the visual idea before selecting a catalog row. The planner's random ordering is not a
 quality ranking. An incomplete-evidence bridge or written-document barrier can use the eligible
-editorial_scene family. If two pattern-based concepts fail, replace the visible interaction with
-an unused coherent scene or extend an actual renderer. A third generic pattern is insufficient.
-Do not stop after two failures while an eligible scene and repair budget remain. For a failed
+editorial_scene family. After two failed renderings of the same concept, replace the visible
+interaction with an unused coherent scene or extend an actual renderer; cosmetic polishing of
+the same concept is insufficient. A new story-bound concept is explicitly authorized within the
+same six-render budget. Do not stop while an eligible repair and budget remain. For a failed
 render boundary, preserve the rejected base before rerendering; never run variety against a stale
 base. Inspect the complete cover at full size and 300 pixels before recording its final scores.
 
