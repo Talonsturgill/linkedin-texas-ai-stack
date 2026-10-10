@@ -1,3 +1,9 @@
+# Superseded by 2026-10-09 audit
+
+The target this plan described (large-load security before study inclusion) was withdrawn on audit: the named chokepoint does not survive the controlling text, and AI or data-center scope is not primary-established. This run is a no-target. No cover has been rendered or scored for the no-target shape, and no art score was changed by this audit. The earlier renderings and reviews are retained privately under .local/rejected.
+
+---
+
 # Art plan: large-load financial security before study inclusion
 
 Status: needs_attention. No cover is accepted for this run.

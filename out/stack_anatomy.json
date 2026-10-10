@@ -2,243 +2,84 @@
   "schema_version": 1,
   "run_date": "2026-10-09",
   "window_days": 21,
-  "no_target_this_cycle": false,
+  "no_target_this_cycle": true,
   "research_capabilities": {
     "primary_source_fetch": true,
     "primary_source_fetch_evidence": "preflight bodies from capitol.texas.gov and www.puc.texas.gov, see .local/primary_fetch_preflight.json"
   },
-  "selected_mechanism": {
-    "name": "Large-load financial security before study inclusion",
-    "category": "regulatory",
-    "category_label": "REGULATORY",
-    "definition": "A PUCT rule requires a large load customer to post financial security of $50,000 per megawatt before it can be included in an ERCOT interconnection study.",
-    "texas_scope": "ERCOT interconnection of large loads under PURA §37.0561 as enacted by SB 6 (89th Legislature)",
-    "news_trigger": {
-      "date": "2026-09-18",
-      "verbatim_span": "post financial security in the amount $50,000 per megawatt (MW)",
-      "post_anchor": "16 TAC §25.194",
-      "source": {
-        "url": "https://interchange.puc.texas.gov/search/documents/?controlNumber=58481&itemNumber=218",
-        "title": "Interchange filing detail, Case 58481-218",
-        "publisher": "Public Utility Commission of Texas",
-        "source_type": "primary",
-        "published_at": "2026-09-18",
-        "fetched_at_utc": "2026-10-10T00:51:45Z",
-        "body_sha256": "13288b9559df73326185ea4d6d625bbe7e47aa5a2768b240f71d8650011d6371"
-      }
-    },
-    "layers": [
-      {
-        "order": 1,
-        "name": "Statutory mandate",
-        "function": "Directs standards for large load interconnection to the grid",
-        "controlling_actor": "Texas Legislature",
-        "actor_authority": "SB 6 enacted PURA §37.0561 in the 89th Regular Legislative Session",
-        "post_phrase": "Texas Legislature",
-        "primary_source": {
-          "url": "https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm",
-          "title": "SB 6, 89th Legislature (enrolled text)",
-          "publisher": "Texas Legislature Online",
-          "source_type": "primary",
-          "fetched_at_utc": "2026-10-10T00:52:40Z"
-        }
-      },
-      {
-        "order": 2,
-        "name": "Commission rule adoption",
-        "function": "Adopts new 16 TAC §25.194 under Project No. 58481",
-        "controlling_actor": "Public Utility Commission of Texas",
-        "actor_authority": "PURA §37.0561 directs the commission to adopt the standards; the order adopts the rule",
-        "post_phrase": "Public Utility Commission of Texas",
-        "primary_source": {
-          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
-          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
-          "publisher": "Public Utility Commission of Texas",
-          "source_type": "primary",
-          "fetched_at_utc": "2026-10-10T00:51:51Z"
-        }
-      },
-      {
-        "order": 3,
-        "name": "Financial security gate",
-        "function": "Requires a large load customer to post financial security before inclusion in an ERCOT interconnection study",
-        "controlling_actor": "Public Utility Commission of Texas",
-        "actor_authority": "The adopted rule sets the posting requirement that applies before study inclusion",
-        "post_phrase": "Public Utility Commission of Texas",
-        "primary_source": {
-          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
-          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
-          "publisher": "Public Utility Commission of Texas",
-          "source_type": "primary",
-          "fetched_at_utc": "2026-10-10T00:51:51Z"
-        }
-      },
-      {
-        "order": 4,
-        "name": "ERCOT study inclusion",
-        "function": "Places an eligible large load into an ERCOT interconnection study once the prerequisites are met",
-        "controlling_actor": "ERCOT",
-        "actor_authority": "ERCOT runs the interconnection study under the commission rule and its protocols",
-        "post_phrase": "ERCOT",
-        "primary_source": {
-          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
-          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
-          "publisher": "Public Utility Commission of Texas",
-          "source_type": "primary",
-          "fetched_at_utc": "2026-10-10T00:51:51Z"
-        }
-      },
-      {
-        "order": 5,
-        "name": "Security return on energization",
-        "function": "Returns posted security in steps as the customer energizes and meets milestones",
-        "controlling_actor": "interconnecting DSP or TSP",
-        "actor_authority": "The adopted rule requires the interconnecting DSP or TSP to return financial security",
-        "post_phrase": "interconnecting DSP or TSP",
-        "primary_source": {
-          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
-          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
-          "publisher": "Public Utility Commission of Texas",
-          "source_type": "primary",
-          "fetched_at_utc": "2026-10-10T00:51:51Z"
-        }
-      }
-    ],
-    "chokepoint": {
-      "layer_order": 3,
-      "layer_name": "Financial security gate",
-      "controlling_actor": "Public Utility Commission of Texas",
-      "post_actor_phrase": "Public Utility Commission of Texas",
-      "binary_decision": "Whether a large load customer posts $50,000 per MW of financial security before it is included in an ERCOT interconnection study",
-      "post_decision_phrase": "post financial security before study inclusion",
-      "why_asymmetric": "The commission adopts the rule that sets the posting condition for every covered large load customer in ERCOT; no other office sets that condition",
-      "primary_source_url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
-    },
-    "texas_consequence": "Large load customers seeking ERCOT interconnection must post $50,000 per MW of financial security before inclusion in an ERCOT interconnection study, under a rule adopted by the Public Utility Commission of Texas",
-    "structural_read": "The rule makes financial security a precondition for study inclusion and sets a return schedule tied to energization and milestones. Its measurable terms are the per-megawatt amount and the return steps the order records.",
-    "forward_implication": "The order states the rule will be republished; its effect on study inclusion can be checked against later ERCOT study records",
-    "next_check": {
-      "what": "Republication of 16 TAC §25.194 in the Texas Register, as the order states",
-      "actor": "Public Utility Commission of Texas",
-      "date_or_window": "Not verified in this run; the order states the rule will be republished"
-    },
-    "public_policy_context": {
-      "is_public_policy": true,
-      "editorial_mode": "neutral_accountability",
-      "assessment": "not_applicable"
-    },
-    "sources": [
-      {
-        "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
-        "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
-        "publisher": "Public Utility Commission of Texas",
-        "source_type": "primary",
-        "independent_of_subject": false,
-        "claims_supported": [
-          "Adopted 16 TAC §25.194 under Project No. 58481",
-          "Requires $50,000 per MW financial security before inclusion in an ERCOT interconnection study",
-          "Return of security: 20% on energization, remainder in 20% increments as milestones are met",
-          "Rule was published in the March 27, 2026 Texas Register and adopted with changes"
-        ],
-        "fetched_at_utc": "2026-10-10T00:51:51Z",
-        "body_sha256": "65f81513cb1a8506a3bd42ccdcc73f2f7523863f4e6f1dfe434102dddbe14063"
-      },
-      {
-        "url": "https://interchange.puc.texas.gov/search/documents/?controlNumber=58481&itemNumber=218",
-        "title": "Interchange filing detail, Case 58481-218",
-        "publisher": "Public Utility Commission of Texas",
-        "source_type": "primary",
-        "independent_of_subject": false,
-        "claims_supported": [
-          "Order filed 9/18/2026 by PUC OPDM, Case 58481-218, titled ORDER ADOPTING NEW 16 TAC §25.194"
-        ],
-        "fetched_at_utc": "2026-10-10T00:51:45Z",
-        "body_sha256": "13288b9559df73326185ea4d6d625bbe7e47aa5a2768b240f71d8650011d6371"
-      },
-      {
-        "url": "https://interchange.puc.texas.gov/Search/Filings?ControlNumber=58481",
-        "title": "Interchange filing index, Project 58481",
-        "publisher": "Public Utility Commission of Texas",
-        "source_type": "primary",
-        "independent_of_subject": false,
-        "claims_supported": [
-          "Filing index lists item 218 and item 219 dated 9/18/2026 for Project 58481"
-        ],
-        "fetched_at_utc": "2026-10-10T00:51:18Z",
-        "body_sha256": "e4e681f038e62a6371626073340ef458a83ae0189607d5ddd67e30746bb3b53d"
-      },
-      {
-        "url": "https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm",
-        "title": "SB 6, 89th Legislature (enrolled text)",
-        "publisher": "Texas Legislature Online",
-        "source_type": "primary",
-        "independent_of_subject": false,
-        "claims_supported": [
-          "PURA §37.0561 is in the enrolled SB 6 text of the 89th Legislature"
-        ],
-        "fetched_at_utc": "2026-10-10T00:52:40Z",
-        "body_sha256": "1ef38096867ebc62b555037c0ab364ad002b96cd43e322f2d92686ef55f73885"
-      }
-    ]
-  },
-  "required_post_phrases": [
-    "Large-load financial security before study inclusion",
-    "16 TAC §25.194",
-    "Texas Legislature",
-    "Public Utility Commission of Texas",
-    "post financial security before study inclusion"
-  ],
-  "verified_facts": [
-    {
-      "claim": "The Public Utility Commission of Texas issued an Order Adopting New 16 TAC §25.194 in Project No. 58481, filed 9/18/2026.",
-      "source_urls": [
-        "https://interchange.puc.texas.gov/search/documents/?controlNumber=58481&itemNumber=218",
-        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
-      ]
-    },
-    {
-      "claim": "The order requires a large load customer to post financial security in the amount $50,000 per megawatt (MW) before it can be included in an ERCOT interconnection study.",
-      "source_urls": [
-        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
-      ]
-    },
-    {
-      "claim": "The order says the rule was adopted under PURA §37.0561 as enacted by Senate Bill 6 in the 89th Regular Legislative Session.",
-      "source_urls": [
-        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
-        "https://capitol.texas.gov/tlodocs/89R/billtext/html/SB00006F.htm"
-      ]
-    },
-    {
-      "claim": "The order says the rule was proposed in the March 27, 2026 Texas Register and adopted with changes.",
-      "source_urls": [
-        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
-      ]
-    },
-    {
-      "claim": "The order says the interconnecting DSP or TSP must return 20% of financial security when the large load customer energizes, and the remainder ratably in 20% increments as milestones are met.",
-      "source_urls": [
-        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
-      ]
-    },
-    {
-      "claim": "The order refers to the batch zero interconnection study and to a commission action on June 18, 2026 that addresses batch zero eligibility and study requirements.",
-      "source_urls": [
-        "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF"
-      ]
-    }
-  ],
+  "_validation_note": "Audit of the v1 target (withdrawn). The PUCT-controls-posting chokepoint did not survive the controlling text: posting is a customer obligation to the interconnecting DSP or TSP under an intermediate agreement, study initiation is a DSP or TSP action directed by ERCOT protocols, and the commission's named roles are audit and enforcement. The AI or data-center scope was not established by primary text. No candidate survives all eight gates in this 21-day window, so this is an honest no-target. Earlier v1 target evidence is retained privately under .local/superseded.",
+  "selected_mechanism": null,
+  "required_post_phrases": [],
+  "verified_facts": [],
   "gate_results": {
     "news_tie": true,
     "anatomizable_depth": true,
     "primary_source_each_layer": true,
-    "texas_consequence": true,
-    "chokepoint_asymmetry": true,
+    "texas_consequence": false,
+    "chokepoint_asymmetry": false,
     "mechanism_not_actor": true,
     "not_recent_repeat": true,
     "political_neutrality": true
   },
   "dropped_mechanisms": [
+    {
+      "name": "Large-load financial security before study inclusion (v1 target, withdrawn on audit)",
+      "category": "regulatory",
+      "news_trigger": "PUCT order adopting 16 TAC §25.194, Project 58481, Item 218, filed 9/18/2026",
+      "drop_reason": "Audit failed two gates. (1) chokepoint_asymmetry: the v1 chokepoint named the Public Utility Commission of Texas as controlling whether a customer posts security. The adopted text does not support that. §25.194(d) makes the customer's execution and funding of an intermediate agreement with the interconnecting DSP or TSP a precondition to study inclusion, and that agreement names which entity accepts the security. §25.194(e)(1) makes the interconnecting DSP or TSP contact ERCOT within 60 days, as prescribed by ERCOT protocols. The commission's named roles in (d) and (e) are audit, staff verification and enforcement, and publishing adjusted values. No single institution holds the yes/no admission decision. (2) texas_consequence (AI/data-center scope): §25.194(b) applies to any large load of 75 MW or more at a single site and does not mention artificial intelligence or data centers. The only 'AI' term in the order is a commenter's company name. The data-center link comes from commenters and independent reporting, not from primary text. No fetched independent source corroborates the rule's adoption terms.",
+      "sources": [
+        {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+          "title": "Order Adopting New 16 TAC §25.194, Project 58481, pages 1 to 99 of 270",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "65f81513cb1a8506a3bd42ccdcc73f2f7523863f4e6f1dfe434102dddbe14063",
+          "body_bytes": 2784834,
+          "fetched_at_utc": "2026-10-10T00:51:51Z"
+        },
+        {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684655.PDF",
+          "title": "Order Adopting New 16 TAC §25.194, pages 100 to 199 of 270",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "3113c8cd75f7306910eb70b663c6db713cf241101b5a77c3fc283df6ab31df37",
+          "body_bytes": 2691699,
+          "fetched_at_utc": "2026-10-10T01:16:43Z"
+        },
+        {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684656.PDF",
+          "title": "Order Adopting New 16 TAC §25.194, pages 200 to 270 of 270 (rule text §25.194 at page 229 onward)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "268cc4b68ca9cf7db9302533b7f76c96d7866a8007b54e0cc3bf7379233469c3",
+          "body_bytes": 1679891,
+          "fetched_at_utc": "2026-10-10T01:16:46Z"
+        },
+        {
+          "url": "https://interchange.puc.texas.gov/search/documents/?controlNumber=58481&itemNumber=218",
+          "title": "Interchange filing detail, Case 58481-218",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "13288b9559df73326185ea4d6d625bbe7e47aa5a2768b240f71d8650011d6371",
+          "body_bytes": 12948,
+          "fetched_at_utc": "2026-10-10T00:51:45Z"
+        },
+        {
+          "url": "https://www.texastribune.org/2026/09/21/texas-data-center-moratorium-water-energy/",
+          "title": "Gov. Greg Abbott broadens moratorium on data center approvals to include environmental permits",
+          "publisher": "The Texas Tribune",
+          "source_type": "independent_reporting",
+          "fetch_status": "fetched_200",
+          "body_sha256": "ae87a191d3d3628efd3866f13fb12f2ab500ca6311129b0eaf88f01f5481d55a",
+          "fetched_at_utc": "2026-10-10T00:51:22Z",
+          "note": "Mentions data center approvals and ERCOT; does not mention 16 TAC §25.194, Project 58481 or the $50,000 per MW posting"
+        }
+      ]
+    },
     {
       "name": "Governor's Sept 21 directive extending the data-center permit pause to TCEQ",
       "category": "regulatory",
