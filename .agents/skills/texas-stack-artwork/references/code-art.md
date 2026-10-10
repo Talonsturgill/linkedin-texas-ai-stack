@@ -12,8 +12,18 @@ Choose a story-fitting eligible direction with --preferred-family, --preferred-h
 --preferred-motif on the planning command; those options cannot override a cooldown. The volume
 family computes surface normals, rim light and reflected highlights instead of drawing a flat
 stained-glass pattern. Water decisions get a rounded drop; other records get a neutral volume.
-The written artifact is offset so the main object remains visible. These are declared editorial
-metaphors, not photographs or claims about actual equipment or an issued approval.
+The editorial_scene family instead authors a coherent physical interaction: a folded document
+arrests a broad channel, or an absent keystone leaves an incomplete evidence bridge. It does not
+append the generic paper and gate overlays. These are declared editorial metaphors, not
+photographs or claims about actual equipment or an issued approval. Its scene motif is bound to
+the verified treatment and cannot be relabelled. Prefer this family only when its interaction
+fits the dossier and its medium and motif are outside cooldown. Extend a real scene when the
+catalog does not express a story; do not repeat this scene for consecutive issues.
+
+Fraunces and JetBrains Mono are bundled under their Open Font Licenses with checked SHA-256
+hashes. Rendering does not download fonts or silently switch to a host-specific fallback. The
+same headline therefore measures identically on macOS and Claude Linux. A changed or missing
+bundled font fails with a precise error.
 
     python3 .agents/skills/texas-stack-artwork/scripts/procedural_art.py plan --dossier out/stack_anatomy.json --history .local/history.json --out .local/art-concepts.json
     python3 .agents/skills/texas-stack-artwork/scripts/prepare_art.py --headline "EXACT SHORT HEADLINE HERE" --out out/art_layout.json

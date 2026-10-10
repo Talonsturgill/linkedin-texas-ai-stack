@@ -52,6 +52,12 @@ def sha256(path: Path) -> str:
 def ensure_font(filename: str, fallbacks: list[str]) -> str:
     FONT_DIR.mkdir(parents=True, exist_ok=True)
     destination = FONT_DIR / filename
+    manifest_path=FONT_DIR / 'manifest.json'
+    if manifest_path.is_file():
+        expected=json.loads(manifest_path.read_text())[filename]['sha256']
+        if not destination.is_file() or sha256(destination)!=expected:
+            raise RuntimeError('Bundled font is missing or changed: '+filename)
+        return str(destination)
     if destination.is_file() and destination.stat().st_size > 1000:
         return str(destination)
     try:

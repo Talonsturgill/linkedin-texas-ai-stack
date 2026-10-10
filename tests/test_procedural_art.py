@@ -19,6 +19,26 @@ def prior(spec, image):
 
 
 class ProceduralTests(unittest.TestCase):
+    def test_scene_motif_is_bound_and_cannot_evade_cooldown(self):
+        value=dossier();value['selected_mechanism']['chokepoint']['binary_decision']='Grant or withhold written approval for potable water'
+        spec=plans(value,{},preferred_family='editorial_scene')[0]
+        self.assertEqual(spec['motifs'],['folded document dam'])
+        with self.assertRaises(ValueError):
+            plans(value,{'artwork_cooldowns':{'primary_motifs_last_10':['folded document dam']}},preferred_family='editorial_scene')
+        spec['motifs']=['missing keystone']
+        with tempfile.TemporaryDirectory() as temp:
+            with self.assertRaises(ValueError):render(spec,{'subject_zone':[64,196,1016,700]},Path(temp)/'x.png')
+
+    def test_evidence_gap_and_permission_have_different_real_geometry(self):
+        target=dossier();target['selected_mechanism']['chokepoint']['binary_decision']='Grant or withhold written approval for potable water'
+        one=plans(target,{},preferred_family='editorial_scene')[0]
+        two=plans(dossier(no_target=True),{},preferred_family='editorial_scene')[0]
+        two['palette']=one['palette'];two['hue_family']=one['hue_family'];two['composition']=one['composition'];two['seed']=one['seed']
+        with tempfile.TemporaryDirectory() as temp:
+            a=Path(temp)/'a.png';b=Path(temp)/'b.png';layout={'subject_zone':[64,196,1016,700]}
+            render(one,layout,a);render(two,layout,b)
+            self.assertGreaterEqual(distances(fingerprint(a),fingerprint(b))['structure_distance'],.18)
+
     def test_story_direction_preferences_cannot_override_cooldowns(self):
         candidates=plans(dossier(),{},preferred_family='volume',preferred_hue='glacier_tangerine',preferred_motif='sliding pin')
         self.assertEqual(candidates[0]['render_family'],'volume')

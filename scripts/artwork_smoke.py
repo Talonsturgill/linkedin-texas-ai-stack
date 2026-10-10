@@ -35,7 +35,9 @@ def generate(fixture, history, work, headline, date, selected_candidate=None, fa
         plan+=f"\n\nThe primary motif is {spec['motifs'][0]}. Palette {spec['hue_family']}; composition {spec['composition']}. "
         plan+='The dossier supplies each layer and the binary decision. Code must preserve those bindings. '
         plan+=f"The verified treatment is {spec['story_treatment']}. "
-        if spec['story_treatment']=='written_authorization':
+        if spec['render_family']=='editorial_scene':
+            plan+='The scene itself owns the control interaction; no generic document or motif overlay is appended. '
+        elif spec['story_treatment']=='written_authorization':
             plan+='A blank folded sheet intersects the controlling gate to make the written condition visible; it does not claim approval was issued. '
         plan+='Eye path: primary gate, surrounding connected layers, headline. At full size inspect edges and the gate interaction; at 300 pixels require the primary silhouette and headline to survive. '
         plan+='Measured glyph clearance and the rendered alpha mask protect typography. No maps, seals, labels or claimed engineering geometry. '

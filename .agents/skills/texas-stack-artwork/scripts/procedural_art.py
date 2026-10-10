@@ -9,10 +9,10 @@ import math
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, ImageChops
 
 SIZE = 1080
-VERSION = 2
+VERSION = 3
 STYLES = {
     'paper_relief': ('cut-paper relief', ['folded_fan', 'diagonal_traverse', 'vertical_cascade']),
     'engraving': ('copperplate engraving', ['frame_window', 'diagonal_traverse', 'horizon_clamp']),
@@ -27,6 +27,7 @@ STYLES = {
     'tiles': ('glazed ceramic tilework', ['orthogonal_weave', 'fractured_quilt', 'ascending_terraces']),
     'charcoal': ('charcoal chiaroscuro', ['horizon_clamp', 'frame_window', 'split_field']),
     'volume': ('illuminated volume study', ['diagonal_traverse', 'off_axis_orbit', 'ascending_terraces']),
+    'editorial_scene': ('sculptural editorial still life', ['sweeping_channel', 'opposed_banks', 'rising_channel']),
 }
 PALETTES = {
     'cobalt_amber': ['#10182A','#07101F','#E8E5DA','#356EF1','#F3AD34'],
@@ -46,6 +47,9 @@ MOTIFS = ('split key', 'wedge stop', 'iris shutter', 'pivot lever', 'ratchet too
           'sliding pin', 'bridge gap', 'folded clasp', 'perforated sieve', 'forked conduit',
           'counterweight', 'locking collar', 'ribbon knot', 'hinged door', 'lens mask',
           'release buckle')
+MOTIFS += ('folded document dam', 'missing keystone', 'suspended threshold')
+SCENE_MOTIFS = {'written_authorization':'folded document dam',
+                'incomplete_evidence':'missing keystone','binary_gate':'suspended threshold'}
 
 
 def digest(path):
@@ -97,12 +101,14 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
     banned_hues = set(cooldown.get('hue_families_last_4', []))
     banned_comp = set(cooldown.get('compositions_last_2', []))
     banned_motifs = set(cooldown.get('primary_motifs_last_10', []))
+    if preferred_family=='editorial_scene' and SCENE_MOTIFS[story_treatment(binding)] in banned_motifs:
+        raise ValueError('The editorial scene interaction is in motif cooldown; choose a different scene')
     seed = int(hashlib.sha256((dossier['run_date'] + binding['name'] + salt).encode()).hexdigest()[:16], 16)
     rng = np.random.default_rng(seed)
     available = [(k, v) for k, v in STYLES.items() if v[0] not in banned_styles]
     rng.shuffle(available)
     hues = [k for k in PALETTES if k not in banned_hues]
-    motifs = [k for k in MOTIFS if k not in banned_motifs]
+    motifs = [k for k in MOTIFS if k not in banned_motifs and k not in SCENE_MOTIFS.values()]
     rng.shuffle(hues); rng.shuffle(motifs)
     if preferred_family is not None:
         if preferred_family not in {key for key,_ in available}:
@@ -110,6 +116,10 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
         available.sort(key=lambda item:item[0]!=preferred_family)
     for values,preferred in ((hues,preferred_hue),(motifs,preferred_motif)):
         if preferred is not None:
+            if values is motifs and preferred in SCENE_MOTIFS.values():
+                if preferred_family!='editorial_scene' or preferred!=SCENE_MOTIFS[story_treatment(binding)]:
+                    raise ValueError('Requested scene motif does not match the story treatment and renderer')
+                continue
             if preferred not in values:raise ValueError('Preferred hue or motif is unavailable or in cooldown')
             values.remove(preferred);values.insert(0,preferred)
     result = []
@@ -125,6 +135,15 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
                        'story_binding': binding, 'metaphor_limit': 'Editorial metaphor, not an engineering drawing',
                        'story_treatment': story_treatment(binding),
                        'concept': label + ' showing ' + binding['controller'] + ' controlling ' + binding['decision']})
+        if key == 'editorial_scene':
+            treatment=story_treatment(binding)
+            required=SCENE_MOTIFS[treatment]
+            if required in banned_motifs:
+                result.pop();continue
+            result[-1]['motifs']=[required]
+            result[-1]['concept']={'written_authorization':'A folded document physically arrests a luminous channel; the dry continuation makes written permission the visible condition.',
+                'incomplete_evidence':'An incomplete sculptural bridge leaves a clear break between two banks; publication cannot cross an unsupported source chain.',
+                'binary_gate':'A suspended threshold interrupts a sculptural channel; the highlighted stage controls whether the route continues.'}[treatment]
         if len(result) == count: break
     if len(result) < count:
         raise ValueError('Variety catalog exhausted; extend a drawing family instead of relaxing cooldowns')
@@ -383,7 +402,79 @@ def volume(p):
         p.ellipse((x-.008,.93,x+.008,.95),p.accent if i==p.gate else p.light)
 
 
-RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume)))
+def editorial_scene(p):
+    """One coherent physical interaction; no generic overlay or invented site equipment."""
+    # Geometry is authored in scene space. These variants change the eye path rather than
+    # rotating paper out of its physical relationship with the route.
+    original=p.xy
+    if p.spec['composition']=='opposed_banks':
+        p.xy=lambda point:original((1-point[0],point[1]))
+    elif p.spec['composition']=='rising_channel':
+        p.xy=lambda point:original((point[0],point[1]-.12*(point[0]-.5)))
+    treatment=story_treatment(p.spec['story_binding'])
+
+    def shaded(points, color, depth=.02):
+        # A broad, soft cast shadow anchors each solid to the same studio surface.
+        mask=Image.new('L',p.layer.size);ImageDraw.Draw(mask).polygon([p.xy(v) for v in points],fill=115)
+        shadow=Image.new('RGBA',p.layer.size);shadow.putalpha(mask.filter(ImageFilter.GaussianBlur(12)))
+        p.layer.alpha_composite(shadow,(10,16))
+        p.poly([(x,y+depth) for x,y in points],p.dark)
+        p.poly(points,color)
+
+    if treatment=='incomplete_evidence':
+        # The actual condition is absence of a complete chain, not an approved gate.
+        for i in range(5):
+            if i==2:continue
+            x=.08+i*.17;y=.62-.16*math.sin(i*math.pi/4)
+            top=[(x,y),(x+.13,y-.055),(x+.16,y+.08),(x+.025,y+.135)]
+            shaded(top,p.light if i<2 else p.main,.045)
+            p.poly([(x+.025,y+.135),(x+.16,y+.08),(x+.16,y+.23),(x+.025,y+.285)],p.main if i<2 else p.dark)
+            p.line([(x,y),(x+.13,y-.055)],p.accent,3)
+        # The absent central span stays empty. Two exposed edges visibly face the gap.
+        p.line([(.36,.46),(.38,.66)],p.accent,5)
+        p.line([(.59,.46),(.61,.66)],p.accent,5)
+        p.xy=original;return
+
+    # Wide channel, its bends visible at thumbnail scale. The flow terminates exactly
+    # at the document's bottom edge. The outline beyond the sheet remains empty.
+    stream=[(.04,.72),(.20,.25),(.40,.87),(.59,.55)]
+    p.curve([(x+.006,y+.035) for x,y in stream],p.dark,108)
+    p.curve(stream,p.main,98)
+    # Surface marks are clipped to the wet body; no loose threads project from its end.
+    wet=Image.new('RGBA',p.layer.size);old_layer,old_draw=p.layer,p.draw
+    p.layer=wet;p.draw=ImageDraw.Draw(wet);p.curve(stream,p.main,98)
+    wet_mask=wet.getchannel('A');wet=Image.new('RGBA',p.layer.size)
+    p.layer=wet;p.draw=ImageDraw.Draw(wet)
+    for offset in (-.055,-.018,.018,.055):
+        p.curve([(x,y+offset) for x,y in stream],p.light if offset==-.055 else p.accent,2)
+    wet.putalpha(ImageChops.multiply(wet.getchannel('A'),wet_mask))
+    old_layer.alpha_composite(wet);p.layer,p.draw=old_layer,old_draw
+    # A shallow dry continuation has two edges and a visible dark interior, never
+    # an opaque plug or an arrow suggesting permission has already been granted.
+    tail=[(.67,.55),(.77,.40),(.89,.60),(.96,.40)]
+    p.curve(tail,p.dark,88)
+    p.curve([(x,y-.08) for x,y in tail],p.main,3)
+    p.curve([(x,y+.08) for x,y in tail],p.main,3)
+
+    if treatment=='written_authorization':
+        # The paper IS the barrier. Its hinge rests on the channel, with no floating
+        # control pin, unrelated droplet, diagram dots, signature or seal.
+        face=[(.53,.16),(.67,.10),(.70,.54),(.59,.62)]
+        shaded(face,p.light)
+        p.poly([(.67,.10),(.735,.18),(.76,.60),(.70,.54)],p.accent)
+        p.poly([(.70,.54),(.76,.60),(.65,.70),(.59,.62)],p.main)
+        p.line([(.67,.10),(.70,.54)],p.light,3)
+        # Restrained parallel strokes cue writing without claiming document wording.
+        for y,length in ((.34,.075),(.39,.081),(.44,.056)):
+            p.line([(.568,y),(.568+length,y-.032)],p.dark,3)
+        p.line([(.59,.62),(.70,.54)],p.accent,5)
+    else:
+        shaded([(.54,.16),(.67,.12),(.73,.55),(.59,.62)],p.accent)
+        p.line([(.54,.16),(.59,.62)],p.light,5)
+    p.xy=original
+
+
+RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume,editorial_scene)))
 
 
 def written_artifact(p):
@@ -475,7 +566,12 @@ def render(spec, layout, destination):
         raise ValueError('Unknown motif or altered palette')
     if spec.get('story_treatment') != story_treatment(spec['story_binding']):
         raise ValueError('Story treatment must follow the verified decision')
-    p=Painter(spec,layout['subject_zone']); RENDERERS[family](p);written_artifact(p);gate_mark(p)
+    if family=='editorial_scene' and spec['motifs'][0]!=SCENE_MOTIFS[spec['story_treatment']]:
+        raise ValueError('Editorial scene motif must match its visible story interaction')
+    if family!='editorial_scene' and spec['motifs'][0] in SCENE_MOTIFS.values():
+        raise ValueError('Scene motifs require the scene renderer')
+    p=Painter(spec,layout['subject_zone']); RENDERERS[family](p)
+    if family != 'editorial_scene':written_artifact(p);gate_mark(p)
     subject=p.layer.resize((SIZE,SIZE),Image.Resampling.LANCZOS)
     # Exact alpha-mask bounds are measured from drawn pixels, including anti-aliasing.
     bbox=subject.getchannel('A').getbbox()
