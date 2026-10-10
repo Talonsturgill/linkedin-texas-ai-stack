@@ -27,7 +27,7 @@ pattern with a document pasted onto it is insufficient when the decision needs a
 physical interaction. Use the blueprint to design that interaction, extending actual geometry
 or adding a genuinely distinct renderer when the toolkit cannot express it.
 
-The engine has fifteen different drawing methods with different geometry. Exclude
+The engine has seventeen different drawing methods with different geometry. Exclude
 styles used in the last eight covers, hue families in four, compositions in two and primary
 motifs in ten. Do not rename a used style. The immediately preceding cover must differ on all
 four axes. Run variety_check.py against actual recent raster fingerprints. It rejects similar
@@ -60,8 +60,15 @@ The 8.5 weighted floor and minimum dimension of seven are hard gates for procedu
 9+ through concrete corrections. Stray labels, false geography, illegible type, clipping, subject
 collision or a misleading mechanism are blockers even above the floor. Never let code calculate
 or pre-fill aesthetic scores. At most six actual rendering attempts, retaining every rejected
-review. Select the strongest observed candidate. If none passes, report needs_attention with
+review. Count every complete story-scene image, including an unscored debug preview or failed
+variety attempt. Do not build complete scenes outside the pipeline to evade this limit. Synthetic
+unit fixtures and isolated component swatches are development checks; they cannot become a cover.
+Select the strongest observed candidate. If none passes, report needs_attention with
 honest evidence; do not ship a below-floor generic fallback.
+The v5 production CLI reserves a persistent slot before drawing and writes art_budget.json.
+Failures, interrupted calls and changed concepts or source hashes consume the same six slots.
+Never reset or replace that ledger. Never use --fixture or a direct drawing call for a production
+story. Fixture receipts fail production QA. Preserve the ledger with the public art provenance.
 
 A no-target cover represents incomplete evidence, uses category WATCH and an honest headline;
 it does not depict a fictional project. Code-art is recorded as source procedural throughout
@@ -70,7 +77,7 @@ the evaluation, metadata and email. It is a normal supported path, not a failure
 ## Handoff
 
 Run scripts/run_checks.py once on the final package. Commit the routine's allowed public art
-files, including art_spec.json, art_render.json and art_variety.json for procedural output.
+files, including art_spec.json, art_render.json, art_variety.json and the v5 art_budget.json for procedural output.
 When a story required a renderer extension, include the changed renderer source and its relevant
 test in the issue commit so the recorded renderer hash can be reproduced from that exact SHA.
 Keep quality thresholds and validation code unchanged during a production art repair.

@@ -116,8 +116,11 @@ identify a single controller of the chosen decision, that mechanism fails chokep
 
 Re-fetch each unique selected primary URL once for final verification; a document supporting
 several layers needs one fetch, with separate evidence pointers per layer. Inspect the controlling
-text, not just an abstract or title. Keep fetch timestamp, URL and source-body hash in the dossier;
-retain full bodies locally. Seek independent trigger corroboration and disclose its absence.
+text, not just an abstract or title. An HTTP 200 portal shell without the controlling passage
+does not qualify. Obtain the actual official document or inspect the rendered document; record
+raw_response, rendered_text or pdf_extracted_text honestly, with its own hash and byte count.
+Keep fetch timestamp, URL and source-body hash in the dossier; retain full bodies locally.
+Seek independent trigger corroboration and disclose its absence.
 
 Write out/stack_anatomy.json to references/anatomy_schema.md. Set all eight gates separately:
 news_tie, anatomizable_depth, primary_source_each_layer, texas_consequence, chokepoint_asymmetry,
@@ -166,6 +169,9 @@ the verified meaning, then retry layout. This routine authorizes ordinary headli
 do not ask for approval or count a layout-only failure as a rendering.
 Use targeted repairs up to six actual renderings;
 do not create extra passes just to exhaust a budget. Known visual blockers cannot pass on score.
+Count complete story-scene debug previews and failed variety attempts in that total, even before
+typography is added. Isolated component swatches and synthetic unit fixtures cannot be promoted
+into a cover. Do not hide render work behind an unscored development label.
 Procedural artwork has no below-floor exception. Repair or report needs_attention if six attempts
 cannot pass. A changed seed, palette label or grain layer cannot substitute for a new visual
 treatment. Do not use the generic emergency fallback as production artwork.
@@ -190,7 +196,7 @@ repeat its passing component checks unless an input or implementation changed.
 Review diff, prose/privacy scan and status. Explicitly force-add only these ignored run artifacts:
 stack_anatomy.json, art_plan.md, art_layout.json, image_prompt.txt, art_base.png, art_eval.json,
 post_image.png and post_image.png.meta.json under out/. Procedural runs also include art_spec.json,
-art_render.json and art_variety.json. Target runs also include final_post.md,
+art_render.json, art_variety.json and art_budget.json for engine v5. Target runs also include final_post.md,
 post_check.json and score_report.json. Keep rejected renders, review sheets and private receipts
 in .local. If a story required an actual renderer extension, also commit only that renderer
 source and its relevant test, after the complete package checks pass. This preserves the exact

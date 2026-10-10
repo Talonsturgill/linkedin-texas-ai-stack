@@ -43,6 +43,8 @@ def replay(ref, work, verify_image=False):
     evaluation = json.loads(git('show', commit + ':out/art_eval.json'))
     if evaluation.get('source') == 'procedural':
         names += ('art_spec.json', 'art_render.json', 'art_variety.json')
+        if json.loads(git('show',commit+':out/art_render.json')).get('generator_version',0)>=5:
+            names += ('art_budget.json',)
     # Read the complete allowlist first so missing artifacts cannot leave a partial fixture.
     files = {name: git('show', commit + ':out/' + name) for name in names}
     out = work / 'out'

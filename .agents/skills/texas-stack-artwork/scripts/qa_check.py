@@ -145,6 +145,24 @@ def validate(
             variety=json.loads((root/'art_variety.json').read_text())
             receipt=json.loads((root/'art_render.json').read_text())
             dossier=json.loads((root/'stack_anatomy.json').read_text())
+            if receipt.get('generator_version',0)>=5:
+                if receipt.get('render_kind')!='production':
+                    errors.append('development fixtures cannot become production covers')
+                else:
+                    budget=json.loads((root/'art_budget.json').read_text())
+                    attempts=budget.get('attempts') or []
+                    number=receipt.get('attempt_number',0)
+                    if (budget.get('limit')!=6 or not 1<=len(attempts)<=6
+                            or not isinstance(number,int) or not 1<=number<=len(attempts)
+                            or budget.get('branch')!=receipt.get('budget_branch')):
+                        errors.append('production artwork has an invalid persistent render budget')
+                    else:
+                        row=attempts[number-1]
+                        if (row.get('number')!=number or row.get('status')!='saved'
+                                or row.get('base_sha256')!=sha256(base_path)
+                                or row.get('spec_sha256')!=sha256(root/'art_spec.json')
+                                or row.get('renderer_sha256')!=receipt.get('renderer_sha256')):
+                            errors.append('render budget does not bind to the selected production pixels')
             if spec.get('dossier_sha256') != sha256(root/'stack_anatomy.json') or spec.get('story_binding') != story(dossier):
                 errors.append('procedural scene is not bound to the exact dossier')
             if spec.get('story_treatment') != story_treatment(story(dossier)):

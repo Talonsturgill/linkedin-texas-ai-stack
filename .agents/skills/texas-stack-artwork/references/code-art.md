@@ -27,6 +27,13 @@ mechanical joins, pivot and taut link are part of the interaction. This is a dec
 metaphor, not a cash-only requirement, numerical payment, release fraction or completed admission.
 Its escrow counterweight motif is exclusive to that renderer and follows the same cooldowns.
 
+The points_switch and bay_wall families draw complete alternatives for a binary decision: a
+petition sheaf routed to a buffer-stopped siding, or a sheaf facing a closed bay beside an empty
+open passage. Their thrown points and closed bay motifs are reserved and cannot be relabelled.
+Use the closed route only when the primary record verifies a denial; the blueprint must identify
+that passage. These are declared editorial metaphors, not actual tracks, sites or equipment.
+The two families use different geometry and pass the raster structure test even in one palette.
+
 Fraunces and JetBrains Mono are bundled under their Open Font Licenses with checked SHA-256
 hashes. Rendering does not download fonts or silently switch to a host-specific fallback. The
 same headline therefore measures identically on macOS and Claude Linux. A changed or missing
@@ -74,6 +81,15 @@ concept or insufficient variety, select another unused family/motif/composition,
 blueprint and spec, rerender, recheck variety and inspect the new pixels. For a code defect,
 fix the renderer and preserve the old render's hash and review. At most six real attempts.
 Changing typography uses --replace-pass on the same base. No automatic score inflation.
+Complete debug scenes consume the same six-render budget; use the normal pipeline for them.
+The v5 CLI persists reservations by Git branch under .local, and exports art_budget.json beside
+the base. Keep that proof in the issue commit. Failed calls consume reservations; changing a spec,
+concept or renderer does not reset the counter. --fixture is only for development and cannot pass
+production QA. Existing v4 issues retain their original provenance during read-only replays.
+For a late evidence correction that leaves the image unchanged, use the render command with
+--rebind. It verifies unchanged base bytes, layout, renderer and every visual spec field, records
+the prior/new spec hash, and draws no pixels. Then refresh variety/evaluation/compositor metadata.
+An altered scene, layout or renderer cannot use that path.
 
 For a read-only migration or renderer test, scripts/artwork_smoke.py renders three candidates
 in a fresh ignored directory and creates review sheets. It deliberately does not score or

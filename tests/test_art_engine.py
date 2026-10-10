@@ -91,6 +91,20 @@ class ArtEngineTests(unittest.TestCase):
             review['blockers']=[];review['scores']['concept']=float('nan');rev.write_text(json.dumps(review))
             with self.assertRaisesRegex(ValueError,'finite'):review_art.record(ev,rev,base,cover,True)
 
+    def test_development_fixture_cannot_be_promoted_by_high_scores(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp);base=p/'art_base.png';cover=p/'post_image.png'
+            Image.new('RGB',(1080,1080),'#534764').save(base);base_bytes=base.read_bytes();cover.write_bytes(base_bytes)
+            prompt=p/'image_prompt.txt';plan=p/'art_plan.md';ev=p/'art_eval.json'
+            prompt.write_text('Synthetic fixture');plan.write_text('Development only')
+            evaluation=art_eval();evaluation['source']='procedural';ev.write_text(json.dumps(evaluation))
+            Path(str(cover)+'.meta.json').write_text('{}')
+            for name,value in (('art_spec.json',{}),('art_variety.json',{}),('stack_anatomy.json',dossier()),
+                               ('art_render.json',{'generator_version':5,'render_kind':'fixture'})):
+                (p/name).write_text(json.dumps(value))
+            errors=qa_check.validate(cover,base,prompt,plan,ev,'September 25th, 2026','THE TEXAS STACK')
+            self.assertIn('development fixtures cannot become production covers',errors)
+
     def test_email_sections_follow_delivery_contract(self):
         html=build_email.render_html(post=valid_post(),image_url='https://example.com/image.png',dossier=dossier(),score={'criteria':[{'name':'Hook','score':9,'weight':1,'notes':'Clear'}]},art_eval=art_eval(),date='date',branch='branch',commit='commit',editor_note='Review this.')
         order=['Copy this for LinkedIn','class="image"','<h2>Sources','Editorial report card','<h2>Artwork evaluation','<b>Editor note','class="foot"']
