@@ -5,7 +5,7 @@
 - Render family: editorial_scene. Style family: sculptural editorial still life.
 - Story treatment: incomplete_evidence. Motif: missing keystone.
 - Composition: opposed_banks. Hue family: moss_magenta.
-- Seed 962876846. Dossier SHA-256 59d131fab63133b7ef7c8fcd3fe495f246e66c14867c40a270c7a721764e18e1.
+- Seed 962876846. Dossier SHA-256 caecece6a6a0080c1a013ef026ceed1c8735ff00d36689d646c02332e43564e0.
 
 ## Selection rationale
 

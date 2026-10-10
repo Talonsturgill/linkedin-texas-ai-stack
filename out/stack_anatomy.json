@@ -4,7 +4,7 @@
   "run_kind": "automation_test",
   "window_days": 21,
   "no_target_this_cycle": true,
-  "_validation_note": "Fourteen-day window (2026-09-26 to 2026-10-10) searched across facilities, vehicles, capital_sovereignty and regulatory lanes; no candidate survived. Broadened once to 21 days (2026-09-19 to 2026-10-10) and re-screened. In-window candidates were a same-chain repeat of the 2026-09-25 TCEQ permit pause or the 2026-10-09 Taylor cooling-water framework, a withdrawn PUCT large-load target without new primary evidence, outside AI or Texas data-center scope, or unreadable at the primary source. Gate results are not scored for a no-target run.",
+  "_validation_note": "Fourteen-day window (2026-09-26 to 2026-10-10) searched across facilities, vehicles, capital_sovereignty and regulatory lanes; no candidate survived. Broadened once to 21 days (2026-09-19 to 2026-10-10) and re-screened. In-window candidates were a same-chain repeat of the 2026-09-25 TCEQ permit pause or the 2026-10-09 Taylor cooling-water framework, a withdrawn PUCT large-load target without new primary evidence, outside AI or Texas data-center scope, or actor-led with no statutory authority or binary decision in the primary text (the 2026-09-24 Attorney General release, fetched and audited this run). Gate results are not scored for a no-target run.",
   "selected_mechanism": null,
   "required_post_phrases": [],
   "verified_facts": [
@@ -142,15 +142,16 @@
       "name": "Attorney General data-center water-survey investigation",
       "category": "regulatory",
       "news_trigger": "Attorney General investigation of data-center developments that did not answer the TWDB water-use survey, reported in late September 2026.",
-      "drop_reason": "The primary press-release host was not reachable (egress policy denied the connection), so the actor's authority and the exact passage could not be audited. It is also a same-chain follow-on to the excluded TCEQ permit pause, and secondary coverage ties it to a campaign, a neutrality risk.",
+      "drop_reason": "The fetched primary release (dated September 24, 2026) names the actor and an investigation of developments that have not answered the TWDB water-use survey, but it cites no statutory investigative authority, no civil investigative demand, and no binary decision that the office controls. The actor-action-authority passage therefore fails the chokepoint and mechanism-not-actor gates. The release is also actor-led and contains political statements, and it overlaps the excluded TCEQ permit pause chain.",
       "sources": [
         {
           "url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-paxton-launches-landmark-investigation-hundreds-data-center-developments-texas",
-          "title": "Attorney General Paxton Launches Landmark Investigation Into Hundreds of Data Center Developments in Texas",
+          "title": "Attorney General Paxton Launches Landmark Investigation into Hundreds of Data Center Developments in Texas to Ensure Compliance with Water Use Reporting Requirements",
           "publisher": "Office of the Texas Attorney General",
-          "source_type": "attempted",
-          "fetched_at_utc": "2026-10-10T01:27:00Z",
-          "fetch_status": "blocked_by_egress_policy"
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-10T01:43:44Z",
+          "body_sha256": "d65bfd8c24e75d9a29579875056c2c61ec3c5018c2c061a87101efe8b7a26adb",
+          "fetch_status": "fetched_200"
         }
       ]
     },

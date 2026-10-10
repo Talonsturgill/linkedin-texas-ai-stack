@@ -53,8 +53,8 @@
   ],
   "seed": 962876846,
   "renderer_sha256": "b04bbe92b62babe215bc1a24f4deeb8869ce442bda668f11cac7beef79e98195",
-  "spec_sha256": "9ca35665d5b36f101ac4c43b03164e083d2ee91ac4274aa8cd97e7b11889c632",
-  "variety_sha256": "c59de598c3fad334cca3625180bfe3ab773d54b602888f01de2fd32d7eabfb4b",
+  "spec_sha256": "22615649919debc226269f1dff72a7484ae15912f630d63610b601b2b4ea8126",
+  "variety_sha256": "541cbf490b1242daa0f50c6472fbfb592963ccf518b9d9476ab852f5c31f2251",
   "eval_history": [
     {
       "pass_number": 1,
