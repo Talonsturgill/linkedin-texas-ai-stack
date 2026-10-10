@@ -19,6 +19,34 @@ def prior(spec, image):
 
 
 class ProceduralTests(unittest.TestCase):
+    def test_collateral_scene_requires_its_verified_condition_and_cooldowns(self):
+        value=dossier();value['selected_mechanism']['chokepoint']['binary_decision']='Accept or reject financial security before study inclusion'
+        spec=plans(value,{},preferred_family='collateral_balance')[0]
+        self.assertEqual(spec['story_treatment'],'financial_security')
+        self.assertEqual(spec['motifs'],['escrow counterweight'])
+        for history in ({'artwork_cooldowns':{'primary_motifs_last_10':['escrow counterweight']}},
+                        {'artwork_cooldowns':{'style_families_last_8':['machined collateral balance']}}):
+            with self.assertRaises(ValueError):plans(value,history,preferred_family='collateral_balance')
+        with self.assertRaises(ValueError):plans(dossier(no_target=True),{},preferred_family='collateral_balance')
+        with self.assertRaises(ValueError):plans(dossier(),{},preferred_family='collateral_balance')
+        spec['motifs']=['pivot lever']
+        with tempfile.TemporaryDirectory() as temp:
+            with self.assertRaises(ValueError):render(spec,{'subject_zone':[64,196,1016,700]},Path(temp)/'x.png')
+
+    def test_collateral_scene_has_reproducible_connected_geometry(self):
+        value=dossier();value['selected_mechanism']['chokepoint']['binary_decision']='Accept or reject financial security before study inclusion'
+        spec=plans(value,{},preferred_family='collateral_balance')[0]
+        with tempfile.TemporaryDirectory() as temp:
+            a=Path(temp)/'a.png';b=Path(temp)/'b.png';layout={'subject_zone':[64,196,1016,700]}
+            receipt=render(spec,layout,a);render(spec,layout,b)
+            self.assertEqual(digest(a),digest(b))
+            l,t,r,bounds_bottom=receipt['subject_box']
+            self.assertTrue(l>=64 and t>=196 and r<=1016 and bounds_bottom<=700)
+            other=plans(dossier(no_target=True),{},preferred_family='editorial_scene')[0]
+            other['palette']=spec['palette'];other['hue_family']=spec['hue_family'];other['seed']=spec['seed']
+            render(other,layout,b)
+            self.assertGreaterEqual(distances(fingerprint(a),fingerprint(b))['structure_distance'],.18)
+
     def test_scene_motif_is_bound_and_cannot_evade_cooldown(self):
         value=dossier();value['selected_mechanism']['chokepoint']['binary_decision']='Grant or withhold written approval for potable water'
         spec=plans(value,{},preferred_family='editorial_scene')[0]

@@ -119,7 +119,10 @@ def summarize(records: list[dict], sibling_art: list[dict], today: dt.date) -> d
     for record in records:
         dossier = record.get("dossier") or {}
         selected = dossier.get("selected_mechanism") or {}
-        if dossier.get("no_target_this_cycle") or not selected.get("name"):
+        # A rejected or explicitly labelled test package is not a completed weekly focus.
+        # Accepted test artwork still participates in all visual cooldowns below.
+        if (not record.get('art') or dossier.get('run_kind')=='automation_test'
+                or dossier.get("no_target_this_cycle") or not selected.get("name")):
             continue
         mechanisms.append({
             "name": selected["name"],

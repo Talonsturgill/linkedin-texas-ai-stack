@@ -318,6 +318,16 @@ class ScoreTests(unittest.TestCase):
 
 
 class HistoryTests(unittest.TestCase):
+    def test_failed_and_test_dossiers_do_not_suppress_next_production_focus(self) -> None:
+        failed={'branch':'failed','date':'2026-09-02','dossier':dossier(),'art':None}
+        test={'branch':'test','date':'2026-09-01','dossier':dict(dossier(),run_kind='automation_test'),
+              'art':{'style_family':'machined collateral balance','hue_family':'coral_ink',
+                     'composition':'counterweight_profile','motifs':['escrow counterweight']}}
+        result=history_scan.summarize([failed,test],[],dt.date(2026,9,2))
+        self.assertEqual(result['recent_mechanisms'],[])
+        self.assertEqual(result['artwork_cooldowns']['style_families_last_8'],['machined collateral balance'])
+        self.assertEqual(result['recent_artwork'][0]['branch'],'test')
+
     def test_history_builds_mechanism_and_art_cooldowns(self) -> None:
         records = [
             {

@@ -12,7 +12,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageChops
 
 SIZE = 1080
-VERSION = 3
+VERSION = 4
 STYLES = {
     'paper_relief': ('cut-paper relief', ['folded_fan', 'diagonal_traverse', 'vertical_cascade']),
     'engraving': ('copperplate engraving', ['frame_window', 'diagonal_traverse', 'horizon_clamp']),
@@ -28,6 +28,7 @@ STYLES = {
     'charcoal': ('charcoal chiaroscuro', ['horizon_clamp', 'frame_window', 'split_field']),
     'volume': ('illuminated volume study', ['diagonal_traverse', 'off_axis_orbit', 'ascending_terraces']),
     'editorial_scene': ('sculptural editorial still life', ['sweeping_channel', 'opposed_banks', 'rising_channel']),
+    'collateral_balance': ('machined collateral balance', ['counterweight_profile', 'banked_escrow', 'vertical_drop']),
 }
 PALETTES = {
     'cobalt_amber': ['#10182A','#07101F','#E8E5DA','#356EF1','#F3AD34'],
@@ -48,6 +49,7 @@ MOTIFS = ('split key', 'wedge stop', 'iris shutter', 'pivot lever', 'ratchet too
           'counterweight', 'locking collar', 'ribbon knot', 'hinged door', 'lens mask',
           'release buckle')
 MOTIFS += ('folded document dam', 'missing keystone', 'suspended threshold')
+MOTIFS += ('escrow counterweight',)
 SCENE_MOTIFS = {'written_authorization':'folded document dam',
                 'incomplete_evidence':'missing keystone','binary_gate':'suspended threshold'}
 
@@ -89,6 +91,8 @@ def canonical_style(value):
 
 def story_treatment(binding):
     decision = binding['decision'].lower()
+    if not binding['no_target'] and any(term in decision for term in ('financial security', 'collateral', 'security deposit')):
+        return 'financial_security'
     if not binding['no_target'] and 'written' in decision and any(word in decision for word in ('approval', 'permission', 'authorization')):
         return 'written_authorization'
     return 'incomplete_evidence' if binding['no_target'] else 'binary_gate'
@@ -101,14 +105,17 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
     banned_hues = set(cooldown.get('hue_families_last_4', []))
     banned_comp = set(cooldown.get('compositions_last_2', []))
     banned_motifs = set(cooldown.get('primary_motifs_last_10', []))
-    if preferred_family=='editorial_scene' and SCENE_MOTIFS[story_treatment(binding)] in banned_motifs:
+    treatment=story_treatment(binding)
+    if preferred_family=='editorial_scene' and (treatment not in SCENE_MOTIFS or SCENE_MOTIFS[treatment] in banned_motifs):
         raise ValueError('The editorial scene interaction is in motif cooldown; choose a different scene')
+    if preferred_family=='collateral_balance' and (treatment!='financial_security' or 'escrow counterweight' in banned_motifs):
+        raise ValueError('The collateral balance requires a verified financial-security decision and eligible motif')
     seed = int(hashlib.sha256((dossier['run_date'] + binding['name'] + salt).encode()).hexdigest()[:16], 16)
     rng = np.random.default_rng(seed)
     available = [(k, v) for k, v in STYLES.items() if v[0] not in banned_styles]
     rng.shuffle(available)
     hues = [k for k in PALETTES if k not in banned_hues]
-    motifs = [k for k in MOTIFS if k not in banned_motifs and k not in SCENE_MOTIFS.values()]
+    motifs = [k for k in MOTIFS if k not in banned_motifs and k not in (*SCENE_MOTIFS.values(),'escrow counterweight')]
     rng.shuffle(hues); rng.shuffle(motifs)
     if preferred_family is not None:
         if preferred_family not in {key for key,_ in available}:
@@ -116,6 +123,10 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
         available.sort(key=lambda item:item[0]!=preferred_family)
     for values,preferred in ((hues,preferred_hue),(motifs,preferred_motif)):
         if preferred is not None:
+            if values is motifs and preferred=='escrow counterweight':
+                if preferred_family!='collateral_balance' or treatment!='financial_security':
+                    raise ValueError('The counterweight motif requires its financial-security scene')
+                continue
             if values is motifs and preferred in SCENE_MOTIFS.values():
                 if preferred_family!='editorial_scene' or preferred!=SCENE_MOTIFS[story_treatment(binding)]:
                     raise ValueError('Requested scene motif does not match the story treatment and renderer')
@@ -124,6 +135,8 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
             values.remove(preferred);values.insert(0,preferred)
     result = []
     for key, (label, comps) in available:
+        if key=='editorial_scene' and treatment not in SCENE_MOTIFS:continue
+        if key=='collateral_balance' and (treatment!='financial_security' or 'escrow counterweight' in banned_motifs):continue
         chosen_compositions = {s['composition'] for s in result}
         choices = [c for c in comps if c not in banned_comp and c not in chosen_compositions]
         if not choices or not hues or not motifs: continue
@@ -144,6 +157,9 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
             result[-1]['concept']={'written_authorization':'A folded document physically arrests a luminous channel; the dry continuation makes written permission the visible condition.',
                 'incomplete_evidence':'An incomplete sculptural bridge leaves a clear break between two banks; publication cannot cross an unsupported source chain.',
                 'binary_gate':'A suspended threshold interrupts a sculptural channel; the highlighted stage controls whether the route continues.'}[treatment]
+        elif key=='collateral_balance':
+            result[-1]['motifs']=['escrow counterweight']
+            result[-1]['concept']='A deposited collateral weight lowers a balance pan and lifts the connected study-entry shutter; financial security is the physical condition for admission, not an amount already paid.'
         if len(result) == count: break
     if len(result) < count:
         raise ValueError('Variety catalog exhausted; extend a drawing family instead of relaxing cooldowns')
@@ -482,7 +498,76 @@ def editorial_scene(p):
     p.xy=original
 
 
-RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume,editorial_scene)))
+def collateral_balance(p):
+    """A connected collateral pan operates a study-entry shutter, as an editorial metaphor."""
+    original=p.xy
+    if p.spec['composition']=='banked_escrow':
+        p.xy=lambda point:original((1-point[0],point[1]))
+    elif p.spec['composition']=='vertical_drop':
+        p.xy=lambda point:original((point[0],point[1]-.12*(point[0]-.5)))
+
+    def metal(points, color, shine=.20):
+        # Every facet has its own clipped brushed surface, not a global texture overlay.
+        coords=[p.xy(v) for v in points]
+        mask=Image.new('L',p.layer.size);ImageDraw.Draw(mask).polygon(coords,fill=255)
+        bounds=mask.getbbox();l,t,r,b=bounds
+        rgb=np.array(tuple(int(color[i:i+2],16) for i in (1,3,5)),float)
+        ys=np.linspace(0,1,b-t)[:,None,None]
+        lighting=1+shine*np.cos(ys*math.pi*1.3)-shine*.32
+        field=np.broadcast_to(rgb*lighting,(b-t,r-l,3)).copy()
+        # The horizontal machining grain remains confined to the actual metal face.
+        field+=p.rng.normal(0,.9,(b-t,1,1))
+        face=Image.fromarray(np.clip(field,0,255).astype('uint8'),'RGB').convert('RGBA')
+        face.putalpha(mask.crop(bounds));p.layer.alpha_composite(face,(l,t))
+
+    def block(points,color,dx=.025,dy=.04):
+        p.poly([(x+dx,y+dy) for x,y in points],p.dark)
+        metal(points,color)
+        p.line(points[:2],p.light,2)
+
+    # One grounded platform ties the entire mechanism into a single studio object.
+    block([(.09,.84),(.79,.71),(.93,.81),(.23,.95)],p.main)
+    p.poly([(.23,.95),(.93,.81),(.93,.85),(.23,.985)],p.dark)
+    p.line([(.23,.95),(.93,.81)],p.accent,3)
+    # Study entry: a substantial frame, a lifted shutter, and a blank card in its rail.
+    metal([(.63,.21),(.69,.20),(.69,.75),(.63,.76)],p.light)
+    metal([(.84,.17),(.90,.16),(.90,.71),(.84,.72)],p.light)
+    metal([(.63,.21),(.84,.17),(.90,.20),(.69,.24)],p.main)
+    metal([(.69,.24),(.90,.20),(.90,.27),(.69,.31)],p.accent)
+    metal([(.70,.30),(.83,.275),(.83,.48),(.70,.51)],p.main)
+    p.line([(.715,.315),(.815,.295)],p.light,2)
+    for y in (.35,.40,.45):p.line([(.715,y),(.815,y-.02)],p.dark,2)
+    # The study card sits ON the rail under the connected shutter; no loose tokens.
+    block([(.66,.64),(.84,.606),(.875,.64),(.695,.675)],p.light,.008,.015)
+    p.poly([(.805,.613),(.84,.606),(.852,.62),(.818,.628)],p.accent)
+    p.line([(.70,.651),(.815,.629)],p.dark,2)
+    p.line([(.70,.664),(.785,.647)],p.main,1)
+    p.line([(.59,.74),(.89,.68)],p.accent,5)
+    p.line([(.62,.78),(.92,.72)],p.light,3)
+    # Actual lever and pivot. The taut linkage connects the weighted pan to the shutter.
+    block([(.41,.78),(.47,.46),(.57,.75)],p.accent,.022,.028)
+    metal([(.15,.49),(.77,.33),(.79,.39),(.17,.55)],p.light)
+    p.poly([(.17,.55),(.79,.39),(.79,.415),(.17,.575)],p.main)
+    p.ellipse((.447,.475,.50,.55),p.main,p.light,2)
+    p.ellipse((.465,.498,.485,.53),p.dark)
+    p.line([(.765,.385),(.765,.475)],p.accent,5)
+    p.line([(.17,.56),(.14,.75)],p.light,3)
+    p.line([(.17,.56),(.35,.72)],p.light,3)
+    # Collateral is a single substantial coin-shaped weight in a recessed escrow pan.
+    # Its size, form and number imply no payment instrument, dollar amount or release step.
+    block([(.10,.735),(.30,.69),(.38,.735),(.18,.78)],p.accent,.012,.022)
+    p.ellipse((.16,.575,.31,.735),p.main,p.light,4)
+    p.ellipse((.172,.588,.295,.72),p.accent,p.dark,2)
+    p.ellipse((.184,.60,.282,.707),None,p.light,2)
+    p.ellipse((.218,.638,.25,.679),p.main,p.light,2)
+    p.line([(.175,.713),(.297,.688)],p.dark,3)
+    # Bolts and machined joints reward a full-size view without diagram-like stage dots.
+    for x,y in ((.655,.30),(.866,.25),(.655,.71),(.866,.665),(.46,.76),(.53,.745)):
+        p.ellipse((x-.009,y-.011,x+.009,y+.011),p.dark,p.light,1)
+    p.xy=original
+
+
+RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume,editorial_scene,collateral_balance)))
 
 
 def written_artifact(p):
@@ -574,12 +659,16 @@ def render(spec, layout, destination):
         raise ValueError('Unknown motif or altered palette')
     if spec.get('story_treatment') != story_treatment(spec['story_binding']):
         raise ValueError('Story treatment must follow the verified decision')
-    if family=='editorial_scene' and spec['motifs'][0]!=SCENE_MOTIFS[spec['story_treatment']]:
+    if family=='editorial_scene' and spec['motifs'][0]!=SCENE_MOTIFS.get(spec['story_treatment']):
         raise ValueError('Editorial scene motif must match its visible story interaction')
     if family!='editorial_scene' and spec['motifs'][0] in SCENE_MOTIFS.values():
         raise ValueError('Scene motifs require the scene renderer')
+    if family=='collateral_balance' and (spec['story_treatment']!='financial_security' or spec['motifs'][0]!='escrow counterweight'):
+        raise ValueError('The collateral balance must bind to financial security and its actual counterweight motif')
+    if family!='collateral_balance' and spec['motifs'][0]=='escrow counterweight':
+        raise ValueError('The counterweight motif requires its connected scene renderer')
     p=Painter(spec,layout['subject_zone']); RENDERERS[family](p)
-    if family != 'editorial_scene':written_artifact(p);gate_mark(p)
+    if family not in ('editorial_scene','collateral_balance'):written_artifact(p);gate_mark(p)
     subject=p.layer.resize((SIZE,SIZE),Image.Resampling.LANCZOS)
     # Exact alpha-mask bounds are measured from drawn pixels, including anti-aliasing.
     bbox=subject.getchannel('A').getbbox()

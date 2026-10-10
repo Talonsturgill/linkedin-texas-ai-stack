@@ -35,8 +35,10 @@ def generate(fixture, history, work, headline, date, selected_candidate=None, fa
         plan+=f"\n\nThe primary motif is {spec['motifs'][0]}. Palette {spec['hue_family']}; composition {spec['composition']}. "
         plan+='The dossier supplies each layer and the binary decision. Code must preserve those bindings. '
         plan+=f"The verified treatment is {spec['story_treatment']}. "
-        if spec['render_family']=='editorial_scene':
+        if spec['render_family'] in ('editorial_scene','collateral_balance'):
             plan+='The scene itself owns the control interaction; no generic document or motif overlay is appended. '
+            if spec['render_family']=='collateral_balance':
+                plan+='The coin-shaped collateral weight, linked lever, shutter and blank study card are a declared admission metaphor, not an actual payment instrument, paid amount, release fraction or completed customer admission. '
         elif spec['story_treatment']=='written_authorization':
             plan+='A blank folded sheet intersects the controlling gate to make the written condition visible; it does not claim approval was issued. '
         plan+='Eye path: primary gate, surrounding connected layers, headline. At full size inspect edges and the gate interaction; at 300 pixels require the primary silhouette and headline to survive. '

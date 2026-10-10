@@ -20,6 +20,13 @@ the verified treatment and cannot be relabelled. Prefer this family only when it
 fits the dossier and its medium and motif are outside cooldown. Extend a real scene when the
 catalog does not express a story; do not repeat this scene for consecutive issues.
 
+The collateral_balance family is reserved for a verified financial-security decision. A
+substantial collateral weight depresses a linked balance pan and raises a study-entry shutter;
+one blank study card rests in its rail. Brushed metal is clipped to each actual facet, and the
+mechanical joins, pivot and taut link are part of the interaction. This is a declared admission
+metaphor, not a cash-only requirement, numerical payment, release fraction or completed admission.
+Its escrow counterweight motif is exclusive to that renderer and follows the same cooldowns.
+
 Fraunces and JetBrains Mono are bundled under their Open Font Licenses with checked SHA-256
 hashes. Rendering does not download fonts or silently switch to a host-specific fallback. The
 same headline therefore measures identically on macOS and Claude Linux. A changed or missing

@@ -104,6 +104,10 @@ a finalist qualified, fetch primary evidence for every claimed layer. Capture it
 trigger date and verbatim span, three to five connected layers, functions/controllers/authority,
 source URLs, chokepoint, consequence, history comparison and neutrality screen. Never fill a
 missing link by inference. Scope and exceptions belong beside the claim, not in an omitted appendix.
+The named chokepoint actor must directly control the stated binary decision, with a controlling
+primary passage. Setting a rule, posting security and verifying admission are different actions;
+do not assign an operational admission decision to the rulemaking body. If the record does not
+identify a single controller of the chosen decision, that mechanism fails chokepoint_asymmetry.
 
 ## 2. Accuracy gate and dossier
 
@@ -219,7 +223,9 @@ address or draft identifier. State that nothing was sent, posted or merged.
 
 When the user explicitly authorizes a fresh end-to-end test, execute every routine phase on a
 new dated review branch and use build_email.py --test-mode. That draft has an [Automation Test]
-subject prefix. Preserve existing production drafts. Keep all research, quality, immutable URL
+subject prefix. Mark the dossier run_kind automation_test so a test does not suppress a later
+production mechanism; accepted test artwork still enters every visual cooldown. Preserve existing
+production drafts. Keep all research, quality, immutable URL
 and full HTML/DRAFT/no-SENT gates. This explicit test authorization is distinct from the
 read-only replay below and does not authorize sends, posts, merges or main pushes.
 
