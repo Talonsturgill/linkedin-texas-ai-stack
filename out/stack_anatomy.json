@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-10-09",
+  "window_days": 21,
+  "no_target_this_cycle": true,
+  "_validation_note": "No candidate cleared the gates in this run. Discovery ran across all four lanes over the 14-day window (2026-09-25 to 2026-10-09) and the broadened 21-day window (2026-09-18 onward). Every primary Texas agency host tried (www.puc.texas.gov, capitol.texas.gov, interchange.puc.texas.gov) was refused by the egress gateway with 403 policy denial or failed DNS, so no primary source body could be fetched. Search snippets were used only as discovery leads and are not evidence. Because primary_source_each_layer cannot be established for any candidate, no mechanism was selected. The 'fetched_at_utc' fields record the attempt time; fetch_status states the actual outcome. Gates not evaluated are recorded as false.",
+  "selected_mechanism": null,
+  "required_post_phrases": [],
+  "verified_facts": [],
+  "gate_results": {
+    "news_tie": false,
+    "anatomizable_depth": false,
+    "primary_source_each_layer": false,
+    "texas_consequence": false,
+    "chokepoint_asymmetry": false,
+    "mechanism_not_actor": false,
+    "not_recent_repeat": false,
+    "political_neutrality": true
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "PUCT SB 6 large-load interconnection final rule (Project 58481)",
+      "category": "regulatory",
+      "news_trigger": "Secondary reporting of a PUCT final large-load rule under 16 TAC 25.194; adoption date reported inconsistently (Sept 18 vs Sept 20, 2026)",
+      "drop_reason": "primary_source_each_layer failed: PUCT Interchange unreachable (DNS failure) and the adopted terms appear only in one secondary article with a flagged date error; the $50,000/MW figure conflicts across sources",
+      "sources": [
+        {
+          "url": "https://interchange.puc.texas.gov/Search/Filings?ControlNumber=58481",
+          "title": "PUCT Interchange, Project 58481 (attempted)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "blocked_dns_failure",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        },
+        {
+          "url": "https://www.whitecase.com/insight-alert/puct-sets-financial-commitments-data-center-interconnection-governor-pauses-permit",
+          "title": "PUCT sets financial commitments for data center interconnection",
+          "publisher": "White & Case",
+          "source_type": "independent_reporting",
+          "fetch_status": "search_snippet_only",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        },
+        {
+          "url": "https://www.texaspowercost.com/news/puct-large-load-interconnection-rules-adopted-2026.php",
+          "title": "Texas PUC Softens Its Data-Center Grid Rules",
+          "publisher": "Texas Power Cost",
+          "source_type": "independent_reporting",
+          "fetch_status": "search_snippet_only",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        }
+      ]
+    },
+    {
+      "name": "Governor's Sept 21 directive pausing data-center permits at TCEQ",
+      "category": "regulatory",
+      "news_trigger": "Sept 21, 2026 gubernatorial letter to TCEQ reported by Texas Tribune and law-firm alerts; compliance update due Oct 19, 2026",
+      "drop_reason": "not_recent_repeat failed: matches history ledger entry 'TCEQ data-center permit pause' (run 2026-09-25, chokepoint 'Permit decision'); trigger also falls before the 14-day window start",
+      "sources": [
+        {
+          "url": "https://www.texastribune.org/2026/09/21/texas-data-center-moratorium-water-energy/",
+          "title": "Texas data center moratorium water energy",
+          "publisher": "The Texas Tribune",
+          "source_type": "independent_reporting",
+          "fetch_status": "search_snippet_only",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        },
+        {
+          "url": "https://www.bdlaw.com/publications/texas-pauses-all-environmental-permitting-for-data-centers/",
+          "title": "Texas Pauses All Environmental Permitting for Data Centers",
+          "publisher": "Barnes & Thornburg (law-firm alert)",
+          "source_type": "independent_reporting",
+          "fetch_status": "search_snippet_only",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        }
+      ]
+    },
+    {
+      "name": "ERCOT Batch Zero large-load study process",
+      "category": "regulatory",
+      "news_trigger": "PUCT approval of ERCOT Batch Zero framework (June 18, 2026) and ERCOT classification timing reported in later coverage",
+      "drop_reason": "not_recent_repeat failed: matches history ledger entry 'Batch Zero Verification RFI process' (run 2026-09-11, chokepoint 'Eligibility determination layer'); no in-window trigger found",
+      "sources": [
+        {
+          "url": "https://www.mondaq.com/unitedstates/oil-gas-electricity/1807826/puct-approves-batch-zero-framework-that-will-provide-a-pathway-for-large-load-to-connect-to-the-grid-and-receive-electricity",
+          "title": "PUCT approves Batch Zero framework",
+          "publisher": "Mondaq (law-firm alert)",
+          "source_type": "independent_reporting",
+          "fetch_status": "search_snippet_only",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        }
+      ]
+    },
+    {
+      "name": "Texas Energy Fund Rayburn 570 MW gas plant loan",
+      "category": "capital_sovereignty",
+      "news_trigger": "Governor's announcement of a $411M Texas Energy Fund loan to Rayburn Electric Cooperative, dated June 4, 2026",
+      "drop_reason": "news_tie failed: the trigger date falls well outside both the 14-day and 21-day windows; no in-window milestone was verified",
+      "sources": [
+        {
+          "url": "https://gov.texas.gov/news/post/governor-abbott-announces-texas-energy-fund-loan-for-570-mw-north-texas-natural-gas-power-plant",
+          "title": "Governor Abbott Announces Texas Energy Fund Loan For 570 MW North Texas Natural Gas Power Plant",
+          "publisher": "Office of the Governor of Texas",
+          "source_type": "primary",
+          "fetch_status": "search_snippet_only",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        }
+      ]
+    },
+    {
+      "name": "DIR Carahsoft AI bulk purchase agreement BP2026-0015",
+      "category": "vehicles",
+      "news_trigger": "DIR bulk purchase agreement PDF for AI software under DIR-CPO-5687, with purchase orders permitted through Oct 31, 2026",
+      "drop_reason": "texas_consequence and chokepoint_asymmetry not established: the agreement terms are known only from a search snippet of the PDF, and the primary PDF could not be fetched (dir.texas.gov refused by gateway); the decision controller and its binary choice were not verified",
+      "sources": [
+        {
+          "url": "https://dir.texas.gov/sites/default/files/2026-09/Carahsoft%20Bulk%20Purchase%20Agreement%20BP2026-0015..%20%282%29.pdf",
+          "title": "Carahsoft Bulk Purchase Agreement BP2026-0015",
+          "publisher": "Texas Department of Information Resources",
+          "source_type": "primary",
+          "fetch_status": "blocked_403_policy_denial",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        }
+      ]
+    },
+    {
+      "name": "Governor's proposed repeal of data-center sales-tax exemption",
+      "category": "vehicles",
+      "news_trigger": "Abbott's June 2026 legislative recommendations including repeal of the data-center sales tax exemption, for the 2027 session",
+      "drop_reason": "news_tie failed: the proposal dates to June 2026 and no bill had been filed as of the reviewed September coverage; the decision belongs to the 2027 Legislature, so no in-window controlling decision exists",
+      "sources": [
+        {
+          "url": "https://www.click2houston.com/news/texas/2026/06/10/abbott-recommends-sweeping-data-center-regulation-including-eliminating-sales-tax-exemption/",
+          "title": "Abbott recommends sweeping data center regulation including eliminating sales tax exemption",
+          "publisher": "KHOU/Click2Houston",
+          "source_type": "independent_reporting",
+          "fetch_status": "search_snippet_only",
+          "fetched_at_utc": "2026-10-10T00:29:31Z"
+        }
+      ]
+    }
+  ]
+}
