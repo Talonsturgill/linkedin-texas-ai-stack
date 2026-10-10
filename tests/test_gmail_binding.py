@@ -1,3 +1,4 @@
+import base64
 import sys
 import unittest
 from pathlib import Path
@@ -23,6 +24,24 @@ class BindingTests(unittest.TestCase):
     def test_sender_or_recipient_cannot_verify_identity(self):
         self.assertFalse(verify(self.binding,{'to':'owner@example.invalid','from':'owner@example.invalid','label_ids':['DRAFT']}))
         self.assertFalse(verify(self.binding,{**self.readback,'body_html':'different marker'}))
+
+    def test_native_gmail_multipart_body_and_labels_stay_on_same_message(self):
+        encoded=base64.urlsafe_b64encode(('<p>'+self.binding['marker']+'</p>').encode()).decode().rstrip('=')
+        row={'labelIds':['DRAFT'],'payload':{
+            'mimeType':'multipart/alternative','headers':[{'name':'Subject','value':'Mailbox proof'}],
+            'parts':[{'mimeType':'text/html','body':{'data':encoded}}]}}
+        self.assertTrue(verify(self.binding,{'message':row}))
+        self.assertFalse(verify(self.binding,{'messages':[
+            {**row,'labelIds':[]},{'subject':'Other','labelIds':['DRAFT']}]}))
+        row['payload']['parts'][0]['body']['data']='%%%invalid%%%'
+        self.assertFalse(verify(self.binding,row))
+
+    def test_marker_in_snippet_header_or_another_message_is_not_full_body_proof(self):
+        for key in ('snippet','from','to'):
+            self.assertFalse(verify(self.binding,{'subject':'Mailbox proof','label_ids':['DRAFT'],
+                                                 key:self.binding['marker']}))
+        self.assertFalse(verify(self.binding,{'subject':'Mailbox proof','label_ids':['DRAFT'],
+                                             'messages':[{**self.readback,'label_ids':[]}]}))
 
     def test_no_environment_binding_and_public_output_fail(self):
         with self.assertRaises(ValueError):load_binding({})

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Load a private profile binding and verify its unsent mailbox challenge without logging identity."""
 import argparse
+import base64
+import binascii
 import datetime as dt
 import json
 import os
@@ -39,6 +41,19 @@ def strings(value):
         for child in value:yield from strings(child)
 
 
+def mime_body_text(part):
+    """Read inline Gmail API text parts without decoding unrelated response fields."""
+    if not isinstance(part,dict):return
+    body=part.get('body') or {}
+    data=body.get('data') if isinstance(body,dict) else None
+    if (isinstance(data,str) and not part.get('filename')
+            and str(part.get('mimeType','text/plain')).startswith('text/')):
+        try:
+            yield base64.b64decode(data+'='*(-len(data)%4),altchars=b'-_',validate=True).decode('utf-8')
+        except (ValueError,binascii.Error,UnicodeDecodeError):pass
+    for child in part.get('parts',[]):yield from mime_body_text(child)
+
+
 def verify(binding,readback):
     # A random challenge issued only as a draft in the authenticated mailbox proves
     # cross-connector access. No sender or recipient field is used as identity evidence.
@@ -49,7 +64,9 @@ def verify(binding,readback):
             for header in payload.get('headers',[]):
                 if header.get('name','').lower()=='subject':subject=header.get('value')
         if subject!=binding['marker_subject']:continue
-        text=list(strings(candidate));labels=[]
+        body_keys=('body','body_html','body_text','bodyHtml','bodyText','html','text')
+        text=[s for key in body_keys for s in strings(candidate.get(key))]
+        text+=list(mime_body_text(payload));labels=[]
         for key,value in candidate.items():
             if key.lower().replace('_','') in ('labels','labelids') and isinstance(value,list):
                 labels.extend(strings(value))
