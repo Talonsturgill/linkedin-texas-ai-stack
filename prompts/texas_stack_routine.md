@@ -183,6 +183,8 @@ retries only. This must succeed before the Gmail draft references the image.
 
 Use scripts/build_email.py with --dossier, --art-eval, --image-url, --date, --branch, --commit,
 --to, --editor-note, --out .local/gmail_payload.json; target runs also supply --post-md and --score.
+Use --recipient-binding .local/gmail_binding.json instead of --to when the private mailbox
+challenge supplied the verified recipient. The builder reads it without displaying the address.
 Use the connected profile address in memory, never a placeholder or printed shell argument.
 The builder owns section order: header, post/no-target, image and visible URL, sources, editorial
 score if present, artwork score, editor note, branch/commit footer. Note every evidence gap,
@@ -198,6 +200,12 @@ procedural/ImageGen/legacy-fallback source, art score, verified URL, validation 
 address or draft identifier. State that nothing was sent, posted or merged.
 
 ## Maintenance replay
+
+When the user explicitly authorizes a fresh end-to-end test, execute every routine phase on a
+new dated review branch and use build_email.py --test-mode. That draft has an [Automation Test]
+subject prefix. Preserve existing production drafts. Keep all research, quality, immutable URL
+and full HTML/DRAFT/no-SENT gates. This explicit test authorization is distinct from the
+read-only replay below and does not authorize sends, posts, merges or main pushes.
 
 A migration test is not a new weekly issue. Fetch the requested existing issue ref and use:
 

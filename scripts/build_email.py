@@ -176,7 +176,10 @@ def main() -> int:
     parser.add_argument("--date", required=True)
     parser.add_argument("--branch", required=True)
     parser.add_argument("--commit", required=True)
-    parser.add_argument("--to", required=True)
+    recipient=parser.add_mutually_exclusive_group(required=True)
+    recipient.add_argument("--to")
+    recipient.add_argument("--recipient-binding",help="Verified private .local binding; avoids an address in shell arguments")
+    parser.add_argument("--test-mode",action="store_true",help="Mark an end-to-end test draft and preserve the production subject")
     parser.add_argument("--editor-note", default="No unresolved issues.")
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
@@ -204,6 +207,7 @@ def main() -> int:
         if no_target
         else f"Texas AI Docket — The Texas Stack Draft — {args.date}"
     )
+    if args.test_mode:subject='[Automation Test] '+subject
     body = render_html(
         post=post,
         image_url=args.image_url,
@@ -215,7 +219,11 @@ def main() -> int:
         commit=args.commit,
         editor_note=args.editor_note,
     )
-    payload = build_payload(to=args.to, subject=subject, html_body=body)
+    if args.recipient_binding:
+        from gmail_binding import recipient_from_binding
+        to=recipient_from_binding(args.recipient_binding)
+    else:to=args.to
+    payload = build_payload(to=to, subject=subject, html_body=body)
     destination = Path(args.out)
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(

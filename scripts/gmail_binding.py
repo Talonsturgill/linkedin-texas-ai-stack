@@ -66,6 +66,15 @@ def private_path(value):
     return path
 
 
+def recipient_from_binding(path):
+    value=json.loads(private_path(path).read_text())
+    if value.get('schema_version')!=1 or value.get('verified') is not True:
+        raise ValueError('Mailbox binding has not passed the challenge readback')
+    if not re.fullmatch(r'[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+',value.get('recipient','')):
+        raise ValueError('Verified private binding contains an invalid recipient')
+    return value['recipient']
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out',required=True)
