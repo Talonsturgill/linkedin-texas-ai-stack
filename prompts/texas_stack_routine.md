@@ -128,6 +128,9 @@ required and completed actions. Every published fact and numeral must trace to t
 Political neutrality is a hard gate: no candidate, party, campaign or ballot advocacy and no
 preferred political outcome. Assess authority, procedure, implementation, disclosure and measurable
 effects. Explain competing sourced effects without scoring the policy or actor.
+Political rhetoric on a source page does not disqualify an otherwise verified mechanism; judge
+the proposed coverage and omit advocacy. A missing controller, authority or binary decision is a
+separate factual failure and must be recorded as such.
 
 If no candidate qualifies, broaden once to twenty-one days and repeat the gate. If none survives,
 write the honest no-target shape with nonempty dropped_mechanisms, sources and reasons. Continue
