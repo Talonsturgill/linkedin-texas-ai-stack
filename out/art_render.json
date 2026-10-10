@@ -1,0 +1,16 @@
+{
+  "generator_version": 4,
+  "source": "procedural",
+  "base_sha256": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
+  "renderer_sha256": "03e9563813839d5fa7994c4e915da86a3a620730c2bd1c13de2d4d7fb621c239",
+  "subject_box": [
+    69,
+    201,
+    1013,
+    683
+  ],
+  "seed": 2028699251,
+  "layer_count": 5,
+  "gate_order": 5,
+  "spec_sha256": "147e8010d6d503f160b8fd1e23d823eb8623d02b7d28b56f5fd11c44f9c6f706"
+}

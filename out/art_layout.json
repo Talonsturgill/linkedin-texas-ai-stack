@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "headline": "PUCT DENIES DATA CENTER METERING PETITION",
+  "font_size": 80,
+  "lines": [
+    "PUCT DENIES",
+    "DATA CENTER",
+    "METERING PETITION"
+  ],
+  "positions": [
+    [
+      64,
+      726
+    ],
+    [
+      64,
+      802
+    ],
+    [
+      64,
+      878
+    ]
+  ],
+  "text_boxes": [
+    [
+      64,
+      726,
+      649,
+      786
+    ],
+    [
+      64,
+      802,
+      684,
+      862
+    ],
+    [
+      64,
+      878,
+      994,
+      938
+    ]
+  ],
+  "headline_top": 726,
+  "subject_zone": [
+    64,
+    196,
+    1016,
+    686
+  ],
+  "canvas": [
+    1080,
+    1080
+  ]
+}

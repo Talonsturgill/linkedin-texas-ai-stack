@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "errors": [],
+  "metrics": {
+    "body_words": 475,
+    "total_chars": 2973,
+    "hook_chars": 166,
+    "layer_bullets": 5,
+    "hashtags": [
+      "#PUCT",
+      "#TexasGrid",
+      "#TexasDataCenters"
+    ],
+    "tag_line": "#PUCT #TexasGrid #TexasDataCenters"
+  }
+}

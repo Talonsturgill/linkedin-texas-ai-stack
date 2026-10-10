@@ -52,6 +52,12 @@ def sha256(path: Path) -> str:
 def ensure_font(filename: str, fallbacks: list[str]) -> str:
     FONT_DIR.mkdir(parents=True, exist_ok=True)
     destination = FONT_DIR / filename
+    manifest_path=FONT_DIR / 'manifest.json'
+    if manifest_path.is_file():
+        expected=json.loads(manifest_path.read_text())[filename]['sha256']
+        if not destination.is_file() or sha256(destination)!=expected:
+            raise RuntimeError('Bundled font is missing or changed: '+filename)
+        return str(destination)
     if destination.is_file() and destination.stat().st_size > 1000:
         return str(destination)
     try:
@@ -156,8 +162,8 @@ def compose(
         raise ValueError(f"category must be one of {sorted(CATEGORIES)}")
     art_eval = json.loads(eval_file.read_text(encoding="utf-8"))
     source = art_eval.get("source")
-    if source not in {"imagegen", "fallback"}:
-        raise ValueError("art evaluation source must be imagegen or fallback")
+    if source not in {"imagegen", "procedural", "fallback"}:
+        raise ValueError("art evaluation source must be imagegen, procedural or fallback")
 
     serif_path, mono_path = font_pair()
     layout = headline_layout(headline, serif_path)
@@ -242,11 +248,12 @@ def compose(
         "composition": art_eval.get("composition"),
         "motifs": art_eval.get("motifs"),
         "technique_stack": [
-            "built-in imagegen" if source == "imagegen" else "deterministic fallback",
+            {"imagegen": "built-in imagegen", "procedural": "story-bound procedural illustration",
+             "fallback": "deterministic fallback"}[source],
             "deterministic typography overlay",
         ],
         "source": source,
-        "seed": "imagegen-managed" if source == "imagegen" else 1845,
+        "seed": "imagegen-managed" if source == "imagegen" else art_eval.get('seed', 1845),
         "base_sha256": sha256(base_path),
         "prompt_sha256": sha256(prompt_file),
         "plan_sha256": sha256(plan_file),
@@ -258,6 +265,11 @@ def compose(
         "rendered_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "canvas": [SIZE, SIZE],
     }
+    if source == 'procedural':
+        from variety_check import fingerprint
+        meta.update({key: art_eval.get(key) for key in
+                     ('render_family', 'renderer_sha256', 'spec_sha256', 'variety_sha256')})
+        meta['visual_fingerprint'] = fingerprint(base_path)
     Path(str(out_path) + ".meta.json").write_text(
         json.dumps(meta, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
@@ -297,4 +309,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

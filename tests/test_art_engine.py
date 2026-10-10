@@ -20,6 +20,15 @@ from test_pipeline import dossier,valid_post,art_eval
 
 
 class ArtEngineTests(unittest.TestCase):
+    def test_bundled_fonts_are_verified_without_network_or_host_fallback(self):
+        with patch('urllib.request.urlopen',side_effect=AssertionError('Network should not be needed')):
+            pair=compose_cover.font_pair()
+        self.assertTrue(all(Path(x).parent==compose_cover.FONT_DIR for x in pair))
+        with tempfile.TemporaryDirectory() as temp:
+            folder=Path(temp);(folder/'manifest.json').write_text((compose_cover.FONT_DIR/'manifest.json').read_text())
+            with patch.object(compose_cover,'FONT_DIR',folder):
+                with self.assertRaises(RuntimeError):compose_cover.font_pair()
+
     @classmethod
     def setUpClass(cls):
         # Use the runtime's local fonts; tests never download fonts.

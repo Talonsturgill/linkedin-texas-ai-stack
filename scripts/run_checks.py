@@ -16,7 +16,7 @@ def main():
     a=p.parse_args();out=Path(a.out_dir).resolve();logs=Path(a.log_dir).resolve();logs.mkdir(parents=True,exist_ok=True)
     py=sys.executable
     checks=[('config',[py,'scripts/check_config.py']),('tests',[py,'-m','unittest','discover','-s','tests','-v']),
-            ('skill',[py,str(Path.home()/'.codex/skills/.system/skill-creator/scripts/quick_validate.py'),'.agents/skills/texas-stack-artwork']),
+            ('skill',[py,'scripts/check_skill.py','.agents/skills/texas-stack-artwork']),
             ('run',[py,'scripts/validate_run.py','--out-dir',str(out),'--report',str(logs/'run.json')])]
     dossier=json.loads((out/'stack_anatomy.json').read_text())
     if not dossier.get('no_target_this_cycle'):

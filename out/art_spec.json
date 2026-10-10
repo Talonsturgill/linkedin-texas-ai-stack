@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "generator_version": 4,
+  "source": "procedural",
+  "render_family": "bay_wall",
+  "style_family": "paired bay wall study",
+  "hue_family": "glacier_tangerine",
+  "palette": [
+    "#10292B",
+    "#061718",
+    "#E7EEE3",
+    "#8ED5D0",
+    "#F59453"
+  ],
+  "composition": "low_threshold",
+  "motifs": [
+    "closed bay"
+  ],
+  "seed": 2028699251,
+  "story_binding": {
+    "name": "PUCT rulemaking petition gate",
+    "no_target": false,
+    "layers": [
+      {
+        "order": 1,
+        "name": "Statutory petition right",
+        "controller": "Texas Legislature",
+        "function": "Lets an interested person ask a state agency to adopt a rule and starts a 60 day clock on the agency.",
+        "source_url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.2001.htm"
+      },
+      {
+        "order": 2,
+        "name": "Petition form rule",
+        "controller": "Public Utility Commission of Texas rule 16 TAC 22.281",
+        "function": "Sets what a petition must contain, including complete proposed rule text, before it counts as a rulemaking petition.",
+        "source_url": "https://www.sos.texas.gov/texreg/archive/March272026/Adopted%20Rules/16.ECONOMIC%20REGULATION.html"
+      },
+      {
+        "order": 3,
+        "name": "Staff intake and comment window",
+        "controller": "Commission Rules and Projects Division staff",
+        "function": "Opens a project number for the petition and sets the public comment deadline.",
+        "source_url": "https://interchange.puc.texas.gov/Documents/60084_22_1673154.PDF"
+      },
+      {
+        "order": 4,
+        "name": "Staff recommendation",
+        "controller": "Rules and Projects Division Director",
+        "function": "Screens the petition and comments against form, authority and workload, then recommends deny or initiate.",
+        "source_url": "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF"
+      },
+      {
+        "order": 5,
+        "name": "Commission order",
+        "controller": "Public Utility Commission of Texas",
+        "function": "Records the deny or initiate decision in a signed written order.",
+        "source_url": "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF"
+      }
+    ],
+    "decision": "deny the petition in writing or initiate a rulemaking proceeding",
+    "controller": "Public Utility Commission of Texas",
+    "gate_order": 5
+  },
+  "metaphor_limit": "Editorial metaphor, not an engineering drawing",
+  "story_treatment": "binary_gate",
+  "concept": "A bound sheaf of pages stands at a heavy slab that closes one bay of a wall, while the neighbouring bay stands open onto an empty lit passage. One wall, two bays, and the written answer decides which one the sheaf meets.",
+  "dossier_sha256": "e9efeec23d35ba458f6a8729c46177530e86b4c85e541c75d4565b0e672ddfb0"
+}

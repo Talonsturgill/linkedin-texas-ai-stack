@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "source": "procedural",
+  "render_family": "bay_wall",
+  "style_family": "paired bay wall study",
+  "hue_family": "glacier_tangerine",
+  "palette": [
+    "#10292B",
+    "#061718",
+    "#E7EEE3",
+    "#8ED5D0",
+    "#F59453"
+  ],
+  "composition": "low_threshold",
+  "motifs": [
+    "closed bay"
+  ],
+  "seed": 2028699251,
+  "concepts": [
+    {
+      "name": "railway points study",
+      "metaphor": "A bound sheaf of pages stands on a track at a hand-thrown set of points; the blades are set for a short buffer-stopped siding while the through line runs on, empty and lit. One lever, two lawful routes, the route taken is the decision."
+    },
+    {
+      "name": "paired bay wall study",
+      "metaphor": "A bound sheaf of pages stands at a heavy slab that closes one bay of a wall, while the neighbouring bay stands open onto an empty lit passage. One wall, two bays, and the written answer decides which one the sheaf meets."
+    },
+    {
+      "name": "stained-glass facets",
+      "metaphor": "stained-glass facets showing Public Utility Commission of Texas controlling deny the petition in writing or initiate a rulemaking proceeding"
+    }
+  ],
+  "selected_concept": "A bound sheaf of pages stands at a heavy slab that closes one bay of a wall, while the neighbouring bay stands open onto an empty lit passage. One wall, two bays, and the written answer decides which one the sheaf meets.",
+  "eval_history": [
+    {
+      "pass_number": 1,
+      "scores": {
+        "concept": 7.5,
+        "focal_hierarchy": 8,
+        "composition": 7,
+        "color_value": 7,
+        "detail_richness": 7,
+        "craft_finish": 6,
+        "typography": 8.5,
+        "originality": 8.5,
+        "story_fidelity": 8
+      },
+      "notes": {
+        "concept": "Strapped sheaf, thrown blade, lever and buffer-stopped siding read as a petition sent down one of two routes; weaker because the through line looks like a plain second track and the buffer reads as a plank.",
+        "focal_hierarchy": "The sheaf is the unmistakable focal mass at 300 pixels; the next eye step to the pink blade and lever is clear, but the lever is small and the rod is a hairline.",
+        "composition": "Scene crowds the upper-left two thirds of the subject zone and leaves a large empty lower-left wedge; the right edge is cut by a flat box of light.",
+        "color_value": "Chalk sheaf separates well from the moss ground, but the magenta accent is candy-bright against the green and the right-hand glow is a flat pink slab.",
+        "detail_richness": "Page-edge hairlines, rail spikes and sleeper rhythm reward full size; the buffer stop and lever stand have almost no material detail.",
+        "craft_finish": "Hard rectangular edge on the upper-right glow, an L-shaped notch in the ballast bed, a stray thin rod crossing the siding rails and a floating lever stand with no grounded shadow on the ballast.",
+        "typography": "Headline is large, three lines, clear of the subject at 300 pixels with comfortable spacing.",
+        "originality": "Distinct from the prior clay, woodcut and resin covers in treatment and structure; variety distances are well above thresholds.",
+        "story_fidelity": "No text, numerals or seals; the siding being closed is a declared metaphor but the through line is not visibly empty enough to say no rulemaking was opened."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "Hard-edged pink glow rectangle at upper right",
+        "Stray hairline rod crossing the siding rails"
+      ],
+      "base_sha256": "d35d9a413a3b2e5fb6b578dab6bdcd181f9d08672d8e7434b5488196781e5ac6",
+      "cover_sha256": "8e8b50c5fdbbb276646bc4a95b0dd57ba5699d52e7a60036bbdf5573cad0b582",
+      "weighted": 7.415,
+      "passed": false,
+      "observations": "Render 1 of the railway points concept. Story is legible but the picture is not publishable: boxed glow, notched ballast bed, stray rod, unbalanced use of the subject zone.",
+      "edit_prompt": "Repair the glow so it has no rectangle edge, replace the ballast bed with one clean feathered shape, remove the stray rod, enlarge and ground the lever and buffer, and rebalance the scene into the lower-left."
+    },
+    {
+      "pass_number": 2,
+      "scores": {
+        "concept": 7.5,
+        "focal_hierarchy": 8,
+        "composition": 7.5,
+        "color_value": 7,
+        "detail_richness": 7,
+        "craft_finish": 6.5,
+        "typography": 8.5,
+        "originality": 8.5,
+        "story_fidelity": 7.5
+      },
+      "notes": {
+        "concept": "Sheaf, fork, lever and buffer still read as a petition routed down a closed siding, but the lever is now a bare pole with a ball and the buffer posts blur into one block, so the decision object is weaker than in render 1.",
+        "focal_hierarchy": "Strapped sheaf remains the clear first read at 300 pixels; the pink lever is a strong vertical second read that pulls the eye to the fork.",
+        "composition": "Scene now fills the subject zone and runs off the lower left, a real improvement; the right edge still ends at the buffer and the siding rails are cut by the zone's lower feather.",
+        "color_value": "Chalk sheaf and rails separate cleanly from moss; the magenta is used on three objects but is heavy and sweet, and the through line has no lit end so the open route is not visible.",
+        "detail_richness": "Page-edge hairlines and rail spikes hold up at full size; lever stand and buffer posts are flat boxes with little material detail.",
+        "craft_finish": "Curved ballast edges near the junction look like stray shapes, the lever stand sits on the ballast with a soft shadow that does not match the hard shadows elsewhere, and the buffer posts overlap awkwardly.",
+        "typography": "Headline spacing and size are unchanged and clear of the subject at 300 pixels.",
+        "originality": "Still distinct from recent covers by structure and colour; variety distances are well above thresholds.",
+        "story_fidelity": "No text, numerals or seals, but the missing glow on the through line removes the visible empty alternative route that the story needs."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "Lever reads as a plain pole and lollipop rather than a hand-thrown switch lever",
+        "Curved ballast shapes near the junction look like stray artifacts"
+      ],
+      "base_sha256": "ff38a21689554a62c7c5df25f5a760e7395f385616b67b621bbf21ccc6b8035e",
+      "cover_sha256": "bc47bbb3d513474d881528f0515928b557639881b7f87c3333a34175ceea87b8",
+      "weighted": 7.51,
+      "passed": false,
+      "observations": "Render 2 of the railway points concept after targeted repair. Composition and glow rectangle are fixed but the decision objects are weak and ballast artifacts remain. Two rejected renders of one concept: the next render must change the visible interaction.",
+      "edit_prompt": "Stop polishing the points scene. Replace the visible interaction with a different story-bound scene in which a drawer or door physically closes on the petition sheaf, with an empty open route visible beside it."
+    },
+    {
+      "pass_number": 3,
+      "scores": {
+        "concept": 8.5,
+        "focal_hierarchy": 8.5,
+        "composition": 7.5,
+        "color_value": 8,
+        "detail_richness": 7.5,
+        "craft_finish": 7.5,
+        "typography": 8.5,
+        "originality": 8.5,
+        "story_fidelity": 8.5
+      },
+      "notes": {
+        "concept": "A strapped sheaf stopped at a slab with one bar while the next bay stands open onto an empty lit passage reads immediately as one route closed and one unused; swapping the headline would weaken it.",
+        "focal_hierarchy": "The orange strapped sheaf against the pale slab is the first read at 300 pixels, and the white light at the open bay is the clear second read.",
+        "composition": "The wall is a floating rectangle in the middle of the subject zone with empty teal above it and a hard panel edge on all four sides; the sheaf crowds the slab's left half.",
+        "color_value": "Teal wall, chalk pages and tangerine strap and bar separate well at thumbnail; the pale slab and the lit bay compete slightly for the top value.",
+        "detail_richness": "Page edges, stone joints and bolts hold up at full size; the stone courses are uniform and the open passage has no floor or ceiling detail.",
+        "craft_finish": "The open passage ceiling reads as an inverted funnel, the bright cap along the wall top looks like a ledge, and the soft light spill is cropped by the panel edge.",
+        "typography": "Headline unchanged and clear of the subject at both scales.",
+        "originality": "A frontal wall with paired bays is structurally and tonally unlike the recent clay, woodcut and resin covers and unlike renders 1 and 2.",
+        "story_fidelity": "No text, numerals, seals or people; the closed slab and empty lit bay are a declared metaphor for deny versus initiate without claiming a vote or count."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "de3b747acb65b078eacfef6068e74c998e358962153084e27aad8a972e168efb",
+      "cover_sha256": "147939ab944270d98b41a47a4ef378cf1471f55b598ddacabe1b5d0075783d77",
+      "weighted": 8.085,
+      "passed": false,
+      "observations": "Render 3, first render of the paired bay wall. Weighted 8.085 is below the 8.5 floor, so no selection. The idea works; the repair is composition, craft and detail, not a new concept.",
+      "edit_prompt": "Fill the subject zone with the wall, drop the bright cap, give the open passage a real ceiling, floor and receding lines, vary the stone tone and add reveal depth around both bays."
+    },
+    {
+      "pass_number": 4,
+      "scores": {
+        "concept": 9,
+        "focal_hierarchy": 8.5,
+        "composition": 8,
+        "color_value": 8.5,
+        "detail_richness": 8,
+        "craft_finish": 8,
+        "typography": 8.5,
+        "originality": 8.5,
+        "story_fidelity": 9
+      },
+      "notes": {
+        "concept": "A strapped sheaf stopped at a barred slab while the neighbouring bay opens onto an empty lit passage reads at once as one route closed and one unused; the headline could not be swapped without losing the fit.",
+        "focal_hierarchy": "The orange strapped sheaf is the first read and the white light at the end of the passage is the immediate second; the bar across the slab ties the two.",
+        "composition": "Wall, slab and passage now fill the zone with a balanced left-to-right rhythm; the feathered crop is still a soft rectangle and the sheaf sits slightly off the wall course lines.",
+        "color_value": "Teal wall, chalk pages and tangerine strap and bar separate clearly at thumbnail; the lit passage is the highest value without crushing the slab.",
+        "detail_richness": "Page edges, bolts, stiffeners, receding floor joints and varied stone read well at full size; the lintel and the bar ends are plain.",
+        "craft_finish": "The feather halo smears the stone courses at the left and right, the lintel reads as a hovering plank, and the bar has no brackets so it floats on the slab.",
+        "typography": "Headline unchanged and comfortably clear of the subject and the quiet space at both scales.",
+        "originality": "Frontal paired-bay elevation with a receding lit passage is unlike every recent cover and unlike the earlier rail renders.",
+        "story_fidelity": "No text, numerals, seals or people; closed slab versus empty open bay is a declared metaphor and does not claim a vote, count or deadline."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "2fe0878e1d0f42939485de343fae9a305b5f7e659eb39df3952bc9f6d20fc21c",
+      "cover_sha256": "618bf121245fd1a139de3a2ea0cf269adfcd547bbb241ed0216038fa890cde27",
+      "weighted": 8.435,
+      "passed": false,
+      "observations": "Render 4, first repair of the paired bay wall. Weighted 8.435, just under the 8.5 floor, so no selection. Defects are specific and fixable without changing the concept.",
+      "edit_prompt": "Tighten the feather, give the lintel real depth and shadow, add brackets where the bar meets the slab, add a contact shadow and floor bounce under the sheaf."
+    },
+    {
+      "pass_number": 5,
+      "scores": {
+        "concept": 9,
+        "focal_hierarchy": 8.5,
+        "composition": 8,
+        "color_value": 8.5,
+        "detail_richness": 8.5,
+        "craft_finish": 8,
+        "typography": 8.5,
+        "originality": 8.5,
+        "story_fidelity": 9
+      },
+      "notes": {
+        "concept": "Sheaf stopped at the barred slab with the neighbouring bay open onto an empty lit passage still reads at once as one route closed and one unused.",
+        "focal_hierarchy": "Orange strapped sheaf first, white light at the end of the passage second, the bar tying them together; stable at 300 pixels.",
+        "composition": "Balanced left to right and fills the subject zone; the soft crop is still a visible rectangle with a smeared left and right edge, and the lintel starts abruptly over bare wall.",
+        "color_value": "Teal, chalk and tangerine separate cleanly at thumbnail; the new warm bounce under the sheaf is a small useful accent.",
+        "detail_richness": "Brackets, stiffeners, bolts, page edges, receding floor joints and varied stone all reward full size; the open passage ceiling is still plain.",
+        "craft_finish": "The lintel's left end hangs over the wall with no support, the right bar bracket pokes past the slab edge into the reveal, and the feather still smears the stone courses at the sides.",
+        "typography": "Unchanged, clear of the subject and quiet space at both scales.",
+        "originality": "Unlike every recent cover and unlike the rail renders.",
+        "story_fidelity": "No text, numerals, seals or people; the metaphor makes no claim about a vote, count or deadline."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "c07025fe24109fa812edbbfada752145da73ac02b91695239ec4dc90b1088826",
+      "cover_sha256": "b589afa31ffad4b61022e31f815daa3a013c4f375baa37a33380bf6f9f659f9c",
+      "weighted": 8.495,
+      "passed": false,
+      "observations": "Render 5, second repair of the paired bay wall. Weighted 8.495, just under the 8.5 floor, so no selection and no rounding up. One render remains in the six-render budget.",
+      "edit_prompt": "Support the lintel on a pier, keep the bar bracket inside the slab, narrow the feather, and keep the concept unchanged."
+    },
+    {
+      "pass_number": 6,
+      "scores": {
+        "concept": 9,
+        "focal_hierarchy": 8.5,
+        "composition": 8,
+        "color_value": 8.5,
+        "detail_richness": 8.5,
+        "craft_finish": 8.5,
+        "typography": 8.5,
+        "originality": 8.5,
+        "story_fidelity": 9
+      },
+      "notes": {
+        "concept": "A strapped sheaf stopped at a barred slab while the neighbouring bay opens onto an empty lit passage tells the deny versus initiate choice at a glance; the headline could not be swapped without losing the fit.",
+        "focal_hierarchy": "Orange strapped sheaf first, then the white end of the passage, with the tangerine bar linking them; holds at 300 pixels.",
+        "composition": "Balanced rhythm of sheaf, slab and passage that fills the subject zone with a clear eye path; the soft rectangular crop and slightly low horizon keep it from a 9.",
+        "color_value": "Teal, chalk and tangerine separate cleanly at thumbnail, the lit passage is the top value and the slab keeps its panel detail.",
+        "detail_richness": "Page edges, bolts, stiffeners, bar brackets, stone courses with varied tone, a supporting pier and receding floor joints all hold at full size; the passage ceiling is plain.",
+        "craft_finish": "Lintel now rests on a pier, the bar bracket sits inside the slab and the sheaf has a contact shadow; remaining flaws are a faint smear of the stone courses at the soft crop edges and a stray shadow line at the far right of the lintel.",
+        "typography": "Headline unchanged, clear of the subject and the quiet space at both scales.",
+        "originality": "Frontal paired-bay elevation with a receding lit passage is unlike every recent cover and the rail renders.",
+        "story_fidelity": "No text, numerals, seals or people; closed slab versus empty open bay is a declared metaphor with no vote, count or deadline claimed."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
+      "cover_sha256": "bdaf4648e32f70edde7a8dd135a397f5cf75530b55bcd88e006e8034d301cc4a",
+      "weighted": 8.545,
+      "passed": true,
+      "observations": "Render 6 of six, third repair of the paired bay wall after concept change. Pier, bracket and crop defects from render 5 are fixed; limits are the soft crop smear and the stray lintel shadow line.",
+      "edit_prompt": "If a further pass existed: round the crop into a deliberate plate and trim the right lintel shadow. Budget of six renders is spent."
+    }
+  ],
+  "eval_final": {
+    "pass_number": 6,
+    "scores": {
+      "concept": 9,
+      "focal_hierarchy": 8.5,
+      "composition": 8,
+      "color_value": 8.5,
+      "detail_richness": 8.5,
+      "craft_finish": 8.5,
+      "typography": 8.5,
+      "originality": 8.5,
+      "story_fidelity": 9
+    },
+    "notes": {
+      "concept": "A strapped sheaf stopped at a barred slab while the neighbouring bay opens onto an empty lit passage tells the deny versus initiate choice at a glance; the headline could not be swapped without losing the fit.",
+      "focal_hierarchy": "Orange strapped sheaf first, then the white end of the passage, with the tangerine bar linking them; holds at 300 pixels.",
+      "composition": "Balanced rhythm of sheaf, slab and passage that fills the subject zone with a clear eye path; the soft rectangular crop and slightly low horizon keep it from a 9.",
+      "color_value": "Teal, chalk and tangerine separate cleanly at thumbnail, the lit passage is the top value and the slab keeps its panel detail.",
+      "detail_richness": "Page edges, bolts, stiffeners, bar brackets, stone courses with varied tone, a supporting pier and receding floor joints all hold at full size; the passage ceiling is plain.",
+      "craft_finish": "Lintel now rests on a pier, the bar bracket sits inside the slab and the sheaf has a contact shadow; remaining flaws are a faint smear of the stone courses at the soft crop edges and a stray shadow line at the far right of the lintel.",
+      "typography": "Headline unchanged, clear of the subject and the quiet space at both scales.",
+      "originality": "Frontal paired-bay elevation with a receding lit passage is unlike every recent cover and the rail renders.",
+      "story_fidelity": "No text, numerals, seals or people; closed slab versus empty open bay is a declared metaphor with no vote, count or deadline claimed."
+    },
+    "inspected_scales": [
+      "full",
+      "300"
+    ],
+    "blockers": [],
+    "base_sha256": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
+    "cover_sha256": "bdaf4648e32f70edde7a8dd135a397f5cf75530b55bcd88e006e8034d301cc4a",
+    "weighted": 8.545,
+    "passed": true,
+    "observations": "Render 6 of six, third repair of the paired bay wall after concept change. Pier, bracket and crop defects from render 5 are fixed; limits are the soft crop smear and the stray lintel shadow line.",
+    "edit_prompt": "If a further pass existed: round the crop into a deliberate plate and trim the right lintel shadow. Budget of six renders is spent."
+  },
+  "renderer_sha256": "03e9563813839d5fa7994c4e915da86a3a620730c2bd1c13de2d4d7fb621c239",
+  "spec_sha256": "147e8010d6d503f160b8fd1e23d823eb8623d02b7d28b56f5fd11c44f9c6f706",
+  "variety_sha256": "709dbcd9322fba0b4fb4a535f7519ded71b935d3593d21d42df6e6a255f2810d",
+  "evaluation_protocol": 2,
+  "selected_base_sha256": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
+  "dossier_rebinds": [
+    {
+      "old_dossier_sha256": "e4e8df42e4c9fe912f43f7ef35fac7cf496f875a135bed47ed288f76f8fa3e32",
+      "new_dossier_sha256": "5e254f4cd8cc521f8fab1c1ec4e7b7e4f3a41c51f79dbf6949daef779dc73232",
+      "reason": "Copy correction, see art_plan.md",
+      "base_sha256_unchanged": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
+      "visual_candidate": false
+    },
+    {
+      "old_dossier_sha256": "5e254f4cd8cc521f8fab1c1ec4e7b7e4f3a41c51f79dbf6949daef779dc73232",
+      "new_dossier_sha256": "e9efeec23d35ba458f6a8729c46177530e86b4c85e541c75d4565b0e672ddfb0",
+      "reason": "Section 2001.021 source provenance repair, see art_plan.md",
+      "base_sha256_unchanged": "e0b779d99766011c73082b2852b1ddc4372ecf087d85760e1b1c2c7c2ce23c1c",
+      "visual_candidate": false
+    }
+  ]
+}
