@@ -47,6 +47,35 @@ class ProceduralTests(unittest.TestCase):
             render(other,layout,b)
             self.assertGreaterEqual(distances(fingerprint(a),fingerprint(b))['structure_distance'],.18)
 
+    def test_paired_bay_and_points_scenes_bind_to_a_binary_decision_and_cooldowns(self):
+        for family,style,motif in (('bay_wall','paired bay wall study','closed bay'),
+                                   ('points_switch','railway points study','thrown points')):
+            spec=plans(dossier(),{},preferred_family=family)[0]
+            self.assertEqual(spec['render_family'],family);self.assertEqual(spec['motifs'],[motif])
+            self.assertEqual(spec['story_treatment'],'binary_gate')
+            for history in ({'artwork_cooldowns':{'primary_motifs_last_10':[motif]}},
+                            {'artwork_cooldowns':{'style_families_last_8':[style]}}):
+                with self.assertRaises(ValueError):plans(dossier(),history,preferred_family=family)
+            with self.assertRaises(ValueError):plans(dossier(no_target=True),{},preferred_family=family)
+            written=dossier();written['selected_mechanism']['chokepoint']['binary_decision']='Grant or withhold written approval for potable water'
+            with self.assertRaises(ValueError):plans(written,{},preferred_family=family)
+            spec['motifs']=['pivot lever']
+            with tempfile.TemporaryDirectory() as temp:
+                with self.assertRaises(ValueError):render(spec,{'subject_zone':[64,196,1016,686]},Path(temp)/'x.png')
+
+    def test_paired_bay_scene_is_reproducible_clear_of_type_and_distinct_from_points(self):
+        layout={'subject_zone':[64,196,1016,686]}
+        bay=plans(dossier(),{},preferred_family='bay_wall')[0]
+        points=plans(dossier(),{},preferred_family='points_switch')[0]
+        points['palette']=bay['palette'];points['hue_family']=bay['hue_family'];points['seed']=bay['seed']
+        with tempfile.TemporaryDirectory() as temp:
+            a=Path(temp)/'a.png';b=Path(temp)/'b.png';c=Path(temp)/'c.png'
+            receipt=render(bay,layout,a);render(bay,layout,b);render(points,layout,c)
+            self.assertEqual(digest(a),digest(b))
+            l,t,r,bottom=receipt['subject_box']
+            self.assertTrue(l>=64 and t>=196 and r<=1016 and bottom<=686)
+            self.assertGreaterEqual(distances(fingerprint(a),fingerprint(c))['structure_distance'],.18)
+
     def test_scene_motif_is_bound_and_cannot_evade_cooldown(self):
         value=dossier();value['selected_mechanism']['chokepoint']['binary_decision']='Grant or withhold written approval for potable water'
         spec=plans(value,{},preferred_family='editorial_scene')[0]

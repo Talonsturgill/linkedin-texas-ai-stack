@@ -1,0 +1,399 @@
+{
+ "schema_version": 1,
+ "run_date": "2026-10-09",
+ "run_kind": "automation_test",
+ "window_days": 14,
+ "no_target_this_cycle": false,
+ "selected_mechanism": {
+  "name": "PUCT rulemaking petition gate",
+  "category": "regulatory",
+  "category_label": "REGULATORY",
+  "definition": "A rulemaking petition gate is the step where a state agency must answer a public request for a new rule by denying it in writing or opening a formal rulemaking within 60 days.",
+  "texas_scope": "Public Utility Commission of Texas, Project No. 60084, a petition about metering large data center computational loads on the Texas electric grid",
+  "news_trigger": {
+   "date": "2026-10-01",
+   "verbatim_span": "Therefore, the petition, the revised petition, and any other requested relief is denied.",
+   "post_anchor": "October 1st, 2026",
+   "source": {
+    "url": "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF",
+    "title": "Order Denying Petition for Rulemaking, Project No. 60084, Item 85",
+    "publisher": "Public Utility Commission of Texas",
+    "source_type": "primary",
+    "published_at": "2026-10-01",
+    "fetched_at_utc": "2026-10-10T01:57:13Z"
+   }
+  },
+  "layers": [
+   {
+    "order": 1,
+    "name": "Statutory petition right",
+    "function": "Lets an interested person ask a state agency to adopt a rule and starts a 60 day clock on the agency.",
+    "controlling_actor": "Texas Legislature",
+    "actor_authority": "Government Code Section 2001.021 gives interested persons the petition right and binds the agency to deny in writing or initiate rulemaking within 60 days.",
+    "post_phrase": "Texas Legislature",
+    "primary_source": {
+     "url": "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm",
+     "title": "Texas Government Code Section 2001.021, Petition for Adoption of Rules",
+     "publisher": "Texas Legislature (Texas Constitution and Statutes)",
+     "source_type": "primary",
+     "fetched_at_utc": "2026-10-10T01:57:11Z",
+     "body_sha256": "cd0e4142da491d1571a6f45439c314363c3fcee8f8dd9d028e1c2a7786c85a50"
+    }
+   },
+   {
+    "order": 2,
+    "name": "Petition form rule",
+    "function": "Sets what a petition must contain, including complete proposed rule text, before it counts as a rulemaking petition.",
+    "controlling_actor": "Public Utility Commission of Texas rule 16 TAC 22.281",
+    "actor_authority": "The Commission adopted Section 22.281 under the statutory direction that an agency prescribe petition form and procedure.",
+    "post_phrase": "Commission rule 22.281",
+    "primary_source": {
+     "url": "https://www.sos.texas.gov/texreg/archive/March272026/Adopted%20Rules/16.ECONOMIC%20REGULATION.html",
+     "title": "Texas Register March 27, 2026 adopted rules, 16 TAC Chapter 22 preamble (Section 22.281, Initiation of Rulemaking)",
+     "publisher": "Texas Secretary of State, Texas Register",
+     "source_type": "primary",
+     "fetched_at_utc": "2026-10-10T01:57:12Z",
+     "body_sha256": "2e2093cec067641d56d3bdbfe0c8f5e0901e3fe36e2fd96dfeb844b29379c554"
+    }
+   },
+   {
+    "order": 3,
+    "name": "Staff intake and comment window",
+    "function": "Opens a project number for the petition and sets the public comment deadline.",
+    "controlling_actor": "Commission Rules and Projects Division staff",
+    "actor_authority": "Staff memo assigned the petition to Project No. 60084 and set a comment deadline of September 11th, 2026.",
+    "post_phrase": "Rules and Projects Division staff",
+    "primary_source": {
+     "url": "https://interchange.puc.texas.gov/Documents/60084_22_1673154.PDF",
+     "title": "Staff Memorandum Establishing a Deadline and Filing Instructions, Project No. 60084, Item 22",
+     "publisher": "Public Utility Commission of Texas",
+     "source_type": "primary",
+     "fetched_at_utc": "2026-10-10T01:57:12Z",
+     "body_sha256": "77610634fe3ef39be9e15840d87823f26057cf6f972e64fd66b5a751392370c2"
+    }
+   },
+   {
+    "order": 4,
+    "name": "Staff recommendation",
+    "function": "Screens the petition and comments against form, authority and workload, then recommends deny or initiate.",
+    "controlling_actor": "Rules and Projects Division Director",
+    "actor_authority": "The Division Director memo to the commissioners dated September 25th, 2026 recommended denial.",
+    "post_phrase": "Division Director memo",
+    "primary_source": {
+     "url": "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF",
+     "title": "Memorandum and Order Denying Petition for Rulemaking, Project No. 60084, Item 83",
+     "publisher": "Public Utility Commission of Texas",
+     "source_type": "primary",
+     "fetched_at_utc": "2026-10-10T01:57:13Z",
+     "body_sha256": "f85972880655ca6eabfc18611557321ed896ea750d0dbd831f1d6356aeb8afd0"
+    }
+   },
+   {
+    "order": 5,
+    "name": "Commission order",
+    "function": "Records the deny or initiate decision in a signed written order.",
+    "controlling_actor": "Public Utility Commission of Texas",
+    "actor_authority": "Government Code Section 2001.021(c) requires the agency to deny in writing or initiate rulemaking, and the Commission issued the signed order on October 1st, 2026.",
+    "post_phrase": "Commission order",
+    "primary_source": {
+     "url": "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF",
+     "title": "Order Denying Petition for Rulemaking, Project No. 60084, Item 85",
+     "publisher": "Public Utility Commission of Texas",
+     "source_type": "primary",
+     "fetched_at_utc": "2026-10-10T01:57:13Z",
+     "body_sha256": "60919918f7b3f14a5e4757803e3e261b6e6f84d5e411b35257298627f616a9d4"
+    }
+   }
+  ],
+  "chokepoint": {
+   "layer_order": 5,
+   "layer_name": "Commission order",
+   "controlling_actor": "Public Utility Commission of Texas",
+   "post_actor_phrase": "Public Utility Commission of Texas",
+   "binary_decision": "deny the petition in writing or initiate a rulemaking proceeding",
+   "post_decision_phrase": "deny the petition in writing or initiate a rulemaking proceeding",
+   "why_asymmetric": "The statute makes the agency answer within 60 days with only two lawful outcomes, and the Commission order is the signed act that picks one. Staff recommend, petitioners and commenters argue, but neither controls the decision.",
+   "primary_source_url": "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF"
+  },
+  "texas_consequence": "A petition asking the Commission to meter computing inside large data centers, described in the staff memo as particularly those running high-intensity AI workloads, did not become a rulemaking. Metering and cost allocation for large loads continue under the Commission's Senate Bill 6 implementation projects in Project No. 58317.",
+  "structural_read": "The gate converts an open ended public request into a dated binary answer with written reasons. Here the written reasons were procedural and about capacity. The order cited the Commission's existing Senate Bill 6 rulemaking slate and staff resources, and the staff memo added that the petition lacked usable rule text under Section 22.281. The record shows the gate worked as a legible deadline and left the underlying metering question to other Commission projects.",
+  "forward_implication": "A narrower petition with complete proposed rule text, or a topic placed on the Commission rulemaking calendar, would be the observable route back to a rulemaking.",
+  "next_check": {
+   "what": "Project No. 59212 CY 2026 Rulemaking Calendar, item 33 on the open meeting agenda, for which large load projects hold staff capacity",
+   "actor": "Public Utility Commission of Texas",
+   "date_or_window": "October 15th, 2026 open meeting"
+  },
+  "public_policy_context": {
+   "is_public_policy": true,
+   "editorial_mode": "neutral_accountability",
+   "assessment": "not_applicable"
+  },
+  "sources": [
+   {
+    "url": "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm",
+    "title": "Texas Government Code Section 2001.021, Petition for Adoption of Rules",
+    "publisher": "Texas Legislature (Texas Constitution and Statutes)",
+    "source_type": "primary",
+    "fetched_at_utc": "2026-10-10T01:57:11Z",
+    "body_sha256": "cd0e4142da491d1571a6f45439c314363c3fcee8f8dd9d028e1c2a7786c85a50",
+    "independent_of_subject": true,
+    "claims_supported": [
+     "Petition right",
+     "60 day deny or initiate duty"
+    ]
+   },
+   {
+    "url": "https://www.sos.texas.gov/texreg/archive/March272026/Adopted%20Rules/16.ECONOMIC%20REGULATION.html",
+    "title": "Texas Register March 27, 2026 adopted rules, 16 TAC Chapter 22 preamble (Section 22.281, Initiation of Rulemaking)",
+    "publisher": "Texas Secretary of State, Texas Register",
+    "source_type": "primary",
+    "fetched_at_utc": "2026-10-10T01:57:12Z",
+    "body_sha256": "2e2093cec067641d56d3bdbfe0c8f5e0901e3fe36e2fd96dfeb844b29379c554",
+    "independent_of_subject": true,
+    "claims_supported": [
+     "Petition must include complete proposed rule text",
+     "Noncompliant suggestions are treated as policy recommendations"
+    ]
+   },
+   {
+    "url": "https://interchange.puc.texas.gov/Documents/60084_22_1673154.PDF",
+    "title": "Staff Memorandum Establishing a Deadline and Filing Instructions, Project No. 60084, Item 22",
+    "publisher": "Public Utility Commission of Texas",
+    "source_type": "primary",
+    "fetched_at_utc": "2026-10-10T01:57:12Z",
+    "body_sha256": "77610634fe3ef39be9e15840d87823f26057cf6f972e64fd66b5a751392370c2",
+    "independent_of_subject": true,
+    "claims_supported": [
+     "Project 60084 intake and September 11th, 2026 comment deadline"
+    ]
+   },
+   {
+    "url": "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF",
+    "title": "Memorandum and Order Denying Petition for Rulemaking, Project No. 60084, Item 83",
+    "publisher": "Public Utility Commission of Texas",
+    "source_type": "primary",
+    "fetched_at_utc": "2026-10-10T01:57:13Z",
+    "body_sha256": "f85972880655ca6eabfc18611557321ed896ea750d0dbd831f1d6356aeb8afd0",
+    "independent_of_subject": true,
+    "claims_supported": [
+     "Staff recommended denial",
+     "74 supportive comments",
+     "Oncor comments",
+     "Reasons for recommending denial",
+     "AI workload description"
+    ]
+   },
+   {
+    "url": "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF",
+    "title": "Order Denying Petition for Rulemaking, Project No. 60084, Item 85",
+    "publisher": "Public Utility Commission of Texas",
+    "source_type": "primary",
+    "fetched_at_utc": "2026-10-10T01:57:13Z",
+    "body_sha256": "60919918f7b3f14a5e4757803e3e261b6e6f84d5e411b35257298627f616a9d4",
+    "independent_of_subject": true,
+    "claims_supported": [
+     "Order denying petition",
+     "Statutory deadline of October 2nd, 2026",
+     "Reasons for denial"
+    ]
+   },
+   {
+    "url": "https://interchange.puc.texas.gov/Documents/60084_79_1682128.PDF",
+    "title": "Oncor Electric Delivery Company's Comments, Project No. 60084, Item 79",
+    "publisher": "Oncor Electric Delivery Company LLC (filed with the Public Utility Commission of Texas)",
+    "source_type": "primary",
+    "fetched_at_utc": "2026-10-10T01:57:13Z",
+    "body_sha256": "964cc3bf9151c9dd1e8f8f1e7b7c4ef51dac70a2dd765cf31dd9fecdd39150aa",
+    "independent_of_subject": true,
+    "claims_supported": [
+     "Oncor took no position on legality, merits or need for the relief"
+    ]
+   },
+   {
+    "url": "https://ftp.puc.texas.gov/public/puct-info/agency/om/101526Final.pdf",
+    "title": "Open Meeting Agenda, October 15, 2026",
+    "publisher": "Public Utility Commission of Texas",
+    "source_type": "primary",
+    "fetched_at_utc": "2026-10-10T01:57:13Z",
+    "body_sha256": "e0e3681d7b9842cf80413040c1507a0f148d95aacd211aff565d75d86af780f4",
+    "independent_of_subject": true,
+    "claims_supported": [
+     "October 15th, 2026 agenda lists Project No. 59212 CY 2026 Rulemaking Calendar"
+    ]
+   }
+  ],
+  "evidence_gaps": [
+   "No independent news corroboration of the October 1st order was found in two searches, so the trigger rests on the Commission's own filing.",
+   "Section 22.281 text was verified through the Texas Register adoption preamble, not the codified rule page, which was not reachable.",
+   "Staff memos give different dates for the project reassignment, so the post omits that date.",
+   "Signature block legibility limits confirming how many commissioners signed, so the post says the Commission without a vote count."
+  ],
+  "history_comparison": "Not one of the prior six mechanisms (Taylor cooling-water exception framework, TCDC power-to-equity framework, TCEQ data-center permit pause, PGRR144 as-built model review, Batch Zero Verification RFI process, NSF Science and Technology Center cooperative agreement). It is an agency procedure gate, not a grid study or permit.",
+  "neutrality_screen": "Covers authority, deadline, procedure and stated reasons only. The petition and supportive comments contain advocacy language, which is not adopted. No position is taken on metering, data centers or the petitioner."
+ },
+ "required_post_phrases": [
+  "PUCT rulemaking petition gate",
+  "October 1st, 2026",
+  "Public Utility Commission of Texas",
+  "deny the petition in writing or initiate a rulemaking proceeding"
+ ],
+ "verified_facts": [
+  {
+   "claim": "Government Code Section 2001.021(c) requires a state agency, not later than the 60th day after submission of a petition, to deny the petition in writing stating its reasons or initiate a rulemaking proceeding.",
+   "source_urls": [
+    "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm"
+   ]
+  },
+  {
+   "claim": "Section 2001.021(a) lets an interested person petition a state agency to request adoption of a rule.",
+   "source_urls": [
+    "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm"
+   ]
+  },
+  {
+   "claim": "Under Section 22.281, a rulemaking petition must include a brief explanation, each reason, the statutory authority and complete proposed text, and a noncompliant suggestion is construed as a policy recommendation.",
+   "source_urls": [
+    "https://www.sos.texas.gov/texreg/archive/March272026/Adopted%20Rules/16.ECONOMIC%20REGULATION.html"
+   ]
+  },
+  {
+   "claim": "Green Recursive Utility Service LLC filed a petition for rulemaking on August 3rd, 2026 asking for a measurement standard for large computational loads.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF",
+    "https://interchange.puc.texas.gov/Documents/60084_22_1673154.PDF"
+   ]
+  },
+  {
+   "claim": "Commission staff set a comment deadline of September 11th, 2026 in Project No. 60084.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_22_1673154.PDF",
+    "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF"
+   ]
+  },
+  {
+   "claim": "The Commission received 74 comments in support of the petition.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF"
+   ]
+  },
+  {
+   "claim": "Oncor Electric Delivery Company filed comments taking no position on the legality, merits or need for the relief requested.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_79_1682128.PDF"
+   ]
+  },
+  {
+   "claim": "The staff memo dated September 25th, 2026 recommended denial and described the petition as seeking metering of large data centers, particularly those running high-intensity AI workloads.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF"
+   ]
+  },
+  {
+   "claim": "The staff memo said the petition did not include complete rule text as required by Section 22.281(a)(1) and that nothing in Senate Bill 6 requires the Commission to meter or regulate the internal computational activities of individual data centers.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF"
+   ]
+  },
+  {
+   "claim": "The order states the Commission must deny the petition in writing or initiate a rulemaking proceeding by October 2nd, 2026.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF"
+   ]
+  },
+  {
+   "claim": "The order dated October 1st, 2026 denied the petition, the revised petition and any other requested relief, citing the Commission's full slate of Senate Bill 6 rulemaking projects in Project No. 58317 and the need not to redirect staff resources.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_85_1688961.PDF"
+   ]
+  },
+  {
+   "claim": "The Commission open meeting agenda for October 15th, 2026 lists item 33, Project No. 59212, CY 2026 Rulemaking Calendar, for discussion and possible action.",
+   "source_urls": [
+    "https://ftp.puc.texas.gov/public/puct-info/agency/om/101526Final.pdf"
+   ]
+  },
+  {
+   "claim": "The petition and supporting comments were filed in Project No. 60084 and the staff memo is addressed to the Commission chairman and commissioners from the Rules and Projects Division Director.",
+   "source_urls": [
+    "https://interchange.puc.texas.gov/Documents/60084_83_1687435.PDF"
+   ]
+  }
+ ],
+ "gate_results": {
+  "news_tie": true,
+  "anatomizable_depth": true,
+  "primary_source_each_layer": true,
+  "texas_consequence": true,
+  "chokepoint_asymmetry": true,
+  "mechanism_not_actor": true,
+  "not_recent_repeat": true,
+  "political_neutrality": true
+ },
+ "dropped_mechanisms": [
+  {
+   "name": "PUCT large-load interconnection rule 16 TAC 25.194",
+   "category": "regulatory",
+   "news_trigger": "Adopted September 18th, 2026, effective October 8th, 2026 per secondary legal summaries",
+   "drop_reason": "chokepoint_asymmetry and news_tie. Prior routine work withdrew this candidate for controller and AI-scope gaps and it is not treated as cleared. Adoption date falls outside the 14 day window and no single decision-maker was fetched.",
+   "sources": [
+    {
+     "url": "https://www.bwenergylaw.com/blog/2026/09/texas-expands-data-center-scrutiny-permit-hold-final-large-load-rules-and-new-ercot-audit-requirements/",
+     "title": "Texas Expands Data Center Scrutiny",
+     "publisher": "Law firm summary, discovery lead only"
+    }
+   ]
+  },
+  {
+   "name": "Governor audit directive and ERCOT Batch Zero pause",
+   "category": "capital_sovereignty",
+   "news_trigger": "August 3rd, 2026 directive and Batch Zero delay",
+   "drop_reason": "not_recent_repeat. Overlaps the Batch Zero Verification RFI process and TCEQ permit pause already in the six issue history, and the trigger is older than the window.",
+   "sources": [
+    {
+     "url": "https://www.utilitydive.com/news/ercot-texas-puc-data-center-audit/828472/",
+     "title": "ERCOT aims to complete Texas governor's data center audit by December",
+     "publisher": "Utility Dive"
+    }
+   ]
+  },
+  {
+   "name": "DIR AI governance bulk purchase agreement",
+   "category": "vehicles",
+   "news_trigger": "Award reported for August 17th, 2026",
+   "drop_reason": "news_tie. Award date is outside the window and the primary award record was not fetched.",
+   "sources": [
+    {
+     "url": "https://dir.texas.gov/news/ai-texas-dir-implementation-laws-89th-legislature",
+     "title": "AI in Texas: DIR Implementation of Laws from the 89th Legislature",
+     "publisher": "Texas Department of Information Resources"
+    }
+   ]
+  },
+  {
+   "name": "Texas Semiconductor Innovation Fund grants",
+   "category": "vehicles",
+   "news_trigger": "Latest located award June 4th, 2026",
+   "drop_reason": "news_tie. No award inside the window was found and the located award is older than the window.",
+   "sources": [
+    {
+     "url": "https://gov.texas.gov/uploads/files/business/Announced_TSIF_Public_Listing.pdf",
+     "title": "Announced TSIF Public Listing",
+     "publisher": "Office of the Texas Governor"
+    }
+   ]
+  },
+  {
+   "name": "Local data center siting fights (Red Oak, Somervell, Brownsville, Angelina)",
+   "category": "facilities",
+   "news_trigger": "Undated or unverified local reporting",
+   "drop_reason": "news_tie and primary_source_each_layer. Search snippets only, with no dated primary county or city record fetched.",
+   "sources": [
+    {
+     "url": "https://www.keranews.org/tags/ai",
+     "title": "KERA AI tag page",
+     "publisher": "KERA"
+    }
+   ]
+  }
+ ]
+}

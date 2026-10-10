@@ -29,6 +29,8 @@ STYLES = {
     'volume': ('illuminated volume study', ['diagonal_traverse', 'off_axis_orbit', 'ascending_terraces']),
     'editorial_scene': ('sculptural editorial still life', ['sweeping_channel', 'opposed_banks', 'rising_channel']),
     'collateral_balance': ('machined collateral balance', ['counterweight_profile', 'banked_escrow', 'vertical_drop']),
+    'points_switch': ('railway points study', ['converging_fork', 'receding_siding', 'long_approach']),
+    'bay_wall': ('paired bay wall study', ['paired_bays', 'raking_wall', 'low_threshold']),
 }
 PALETTES = {
     'cobalt_amber': ['#10182A','#07101F','#E8E5DA','#356EF1','#F3AD34'],
@@ -50,6 +52,7 @@ MOTIFS = ('split key', 'wedge stop', 'iris shutter', 'pivot lever', 'ratchet too
           'release buckle')
 MOTIFS += ('folded document dam', 'missing keystone', 'suspended threshold')
 MOTIFS += ('escrow counterweight',)
+MOTIFS += ('thrown points','closed bay')
 SCENE_MOTIFS = {'written_authorization':'folded document dam',
                 'incomplete_evidence':'missing keystone','binary_gate':'suspended threshold'}
 
@@ -110,12 +113,16 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
         raise ValueError('The editorial scene interaction is in motif cooldown; choose a different scene')
     if preferred_family=='collateral_balance' and (treatment!='financial_security' or 'escrow counterweight' in banned_motifs):
         raise ValueError('The collateral balance requires a verified financial-security decision and eligible motif')
+    if preferred_family=='points_switch' and (treatment!='binary_gate' or 'thrown points' in banned_motifs):
+        raise ValueError('The railway points scene requires a verified binary deny-or-initiate decision and an eligible motif')
+    if preferred_family=='bay_wall' and (treatment!='binary_gate' or 'closed bay' in banned_motifs):
+        raise ValueError('The paired bay wall requires a verified binary deny-or-initiate decision and an eligible motif')
     seed = int(hashlib.sha256((dossier['run_date'] + binding['name'] + salt).encode()).hexdigest()[:16], 16)
     rng = np.random.default_rng(seed)
     available = [(k, v) for k, v in STYLES.items() if v[0] not in banned_styles]
     rng.shuffle(available)
     hues = [k for k in PALETTES if k not in banned_hues]
-    motifs = [k for k in MOTIFS if k not in banned_motifs and k not in (*SCENE_MOTIFS.values(),'escrow counterweight')]
+    motifs = [k for k in MOTIFS if k not in banned_motifs and k not in (*SCENE_MOTIFS.values(),'escrow counterweight','thrown points','closed bay')]
     rng.shuffle(hues); rng.shuffle(motifs)
     if preferred_family is not None:
         if preferred_family not in {key for key,_ in available}:
@@ -123,6 +130,14 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
         available.sort(key=lambda item:item[0]!=preferred_family)
     for values,preferred in ((hues,preferred_hue),(motifs,preferred_motif)):
         if preferred is not None:
+            if values is motifs and preferred=='closed bay':
+                if preferred_family!='bay_wall' or treatment!='binary_gate':
+                    raise ValueError('The closed bay motif requires its wall scene')
+                continue
+            if values is motifs and preferred=='thrown points':
+                if preferred_family!='points_switch' or treatment!='binary_gate':
+                    raise ValueError('The thrown points motif requires its railway scene')
+                continue
             if values is motifs and preferred=='escrow counterweight':
                 if preferred_family!='collateral_balance' or treatment!='financial_security':
                     raise ValueError('The counterweight motif requires its financial-security scene')
@@ -137,6 +152,8 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
     for key, (label, comps) in available:
         if key=='editorial_scene' and treatment not in SCENE_MOTIFS:continue
         if key=='collateral_balance' and (treatment!='financial_security' or 'escrow counterweight' in banned_motifs):continue
+        if key=='points_switch' and (treatment!='binary_gate' or 'thrown points' in banned_motifs):continue
+        if key=='bay_wall' and (treatment!='binary_gate' or 'closed bay' in banned_motifs):continue
         chosen_compositions = {s['composition'] for s in result}
         choices = [c for c in comps if c not in banned_comp and c not in chosen_compositions]
         if not choices or not hues or not motifs: continue
@@ -157,6 +174,12 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
             result[-1]['concept']={'written_authorization':'A folded document physically arrests a luminous channel; the dry continuation makes written permission the visible condition.',
                 'incomplete_evidence':'An incomplete sculptural bridge leaves a clear break between two banks; publication cannot cross an unsupported source chain.',
                 'binary_gate':'A suspended threshold interrupts a sculptural channel; the highlighted stage controls whether the route continues.'}[treatment]
+        elif key=='points_switch':
+            result[-1]['motifs']=['thrown points']
+            result[-1]['concept']='A bound sheaf of pages stands on a track at a hand-thrown set of points; the blades are set for a short buffer-stopped siding while the through line runs on, empty and lit. One lever, two lawful routes, the route taken is the decision.'
+        elif key=='bay_wall':
+            result[-1]['motifs']=['closed bay']
+            result[-1]['concept']='A bound sheaf of pages stands at a heavy slab that closes one bay of a wall, while the neighbouring bay stands open onto an empty lit passage. One wall, two bays, and the written answer decides which one the sheaf meets.'
         elif key=='collateral_balance':
             result[-1]['motifs']=['escrow counterweight']
             result[-1]['concept']='A deposited collateral weight lowers a balance pan and lifts the connected study-entry shutter; financial security is the physical condition for admission, not an amount already paid.'
@@ -567,7 +590,245 @@ def collateral_balance(p):
     p.xy=original
 
 
-RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume,editorial_scene,collateral_balance)))
+def _mix(a,b,t):
+    ca=[int(a[i:i+2],16) for i in (1,3,5)];cb=[int(b[i:i+2],16) for i in (1,3,5)]
+    return '#%02x%02x%02x'%tuple(round(x*(1-t)+y*t) for x,y in zip(ca,cb))
+
+
+def points_switch(p):
+    """A bound sheaf at hand-thrown points: one lever chooses a buffer-stopped siding or the open line."""
+    ASPECT=1.94;X0=.05;Y0=.58;AZ=(.52,-.12);AU=(.22,.46);HT=.55
+    smooth=lambda t:0 if t<=0 else 1 if t>=1 else t*t*(3-2*t)
+    def P(u,z,h=0.0):
+        return ((X0+z*AZ[0]+u*AU[0])/ASPECT,Y0+z*AZ[1]+u*AU[1]-h*HT)
+    SZ=1.25;SW=1.30
+    def side(z):return SW*smooth((z-SZ)/1.05)
+    through=lambda z:0.0
+    branch=lambda z:side(z)
+    gauge=.24
+    def glow(center,radius,color,alpha):
+        g=Image.new('RGBA',p.layer.size);d=ImageDraw.Draw(g)
+        cx,cy=p.xy(center);rx=int(radius*p.layer.size[0]*.50);ry=int(rx*.62)
+        rgb=tuple(int(color[i:i+2],16) for i in (1,3,5))
+        for k in range(24,0,-1):
+            f=k/24;d.ellipse((cx-rx*f,cy-ry*f,cx+rx*f,cy+ry*f),fill=rgb+(int(alpha*(1-f)**1.5+1),))
+        p.layer.alpha_composite(g)
+    def shadow(points,alpha=120,off=(.0,.0),blur=16):
+        m=Image.new('L',p.layer.size);ImageDraw.Draw(m).polygon([p.xy((x+off[0],y+off[1])) for x,y in points],fill=alpha)
+        sh=Image.new('RGBA',p.layer.size,(4,8,4,0));sh.putalpha(m.filter(ImageFilter.GaussianBlur(blur)));p.layer.alpha_composite(sh)
+    def quad(a,b,c,d,fill,stroke=None,w=1):p.poly([a,b,c,d],fill,stroke,w)
+    def bed(lat,z0,z1,half=.72):
+        zs=np.linspace(z0,z1,max(3,int((z1-z0)*10)+1));tmp=Image.new('RGBA',p.layer.size,(0,0,0,0));d=ImageDraw.Draw(tmp)
+        fill=tuple(int(_mix(p.bg,p.main,.16)[i:i+2],16) for i in (1,3,5))+(255,)
+        for a,b in zip(zs[:-1],zs[1:]):
+            d.polygon([p.xy(P(lat(a)-half,a)),p.xy(P(lat(a)+half,a)),p.xy(P(lat(b)+half,b)),p.xy(P(lat(b)-half,b))],fill=fill)
+        a=tmp.getchannel('A').filter(ImageFilter.GaussianBlur(14));tmp.putalpha(a);p.layer.alpha_composite(tmp)
+    def rail(lat,z0,z1,off):
+        zs=np.linspace(z0,z1,max(3,int((z1-z0)*14)+1));w=.032
+        for a,b in zip(zs[:-1],zs[1:]):
+            ua,ub=lat(a)+off,lat(b)+off
+            quad(P(ua-w,a),P(ua+w,a),P(ub+w,b),P(ub-w,b),_mix(p.dark,p.light,.30))
+            quad(P(ua-w,a,.03),P(ua+w,a,.03),P(ub+w,b,.03),P(ub-w,b,.03),p.light)
+    def sleeper(lat,z,half=.50):
+        c=lat(z);dz=.075
+        quad(P(c-half,z),P(c+half,z),P(c+half,z+dz),P(c-half,z+dz),_mix(p.dark,p.main,.20))
+        quad(P(c-half,z,.035),P(c+half,z,.035),P(c+half,z+dz,.035),P(c-half,z+dz,.035),_mix(p.main,p.dark,.50))
+        p.line([P(c-half,z,.035),P(c+half,z,.035)],_mix(p.main,p.light,.10),1)
+    glow((P(0,3.0)[0],P(0,3.0)[1]),.30,p.accent,110)
+    # Ballast and sleepers: through line first, then the siding peeling away at the points.
+    bed(through,-1.2,3.40,.80);bed(branch,SZ-.2,2.62,.80)
+    z=3.30
+    while z>-1.15:
+        sleeper(through,z);z-=.17
+    z=2.40
+    while z>SZ:
+        sleeper(branch,z);z-=.17
+    for off in (-gauge,gauge):rail(through,-1.2,3.40,off)
+    for off in (-gauge,gauge):rail(branch,SZ-.02,2.52,off)
+    # Lever stand behind the track. The blade nearest the siding is accented; the open gap beside the through line is dark.
+    quad(P(-gauge-.05,SZ+.02,.04),P(-gauge+.05,SZ+.02,.04),P(-gauge+.05,SZ+.55,.04),P(-gauge-.05,SZ+.55,.04),p.accent)
+    bx,bz=.84,SZ+.04
+    shadow([P(bx-.18,bz),P(bx+.18,bz),P(bx+.18,bz+.26),P(bx-.18,bz+.26)],130,(.014,.016),9)
+    steel=_mix(p.dark,p.main,.34)
+    quad(P(bx-.18,bz),P(bx+.18,bz),P(bx+.18,bz,.20),P(bx-.18,bz,.20),_mix(steel,p.dark,.35),p.dark,1)
+    quad(P(bx+.18,bz),P(bx+.18,bz+.26),P(bx+.18,bz+.26,.20),P(bx+.18,bz,.20),_mix(steel,p.dark,.15),p.dark,1)
+    quad(P(bx-.18,bz,.20),P(bx+.18,bz,.20),P(bx+.18,bz+.26,.20),P(bx-.18,bz+.26,.20),_mix(steel,p.light,.30),p.light,1)
+    hand=P(bx-.02,bz+.13,.78)
+    p.line([P(bx,bz+.13,.20),hand],_mix(p.accent,p.dark,.40),20)
+    p.line([P(bx,bz+.13,.20),hand],p.accent,13)
+    p.ellipse((hand[0]-.016,hand[1]-.040,hand[0]+.016,hand[1]+.040),p.accent,p.light,2)
+    # Bound sheaf approaching the points: edge-on pages on the near flank, ruled cover on top, strap.
+    z0,z1,uL,uR,hh=.30,1.00,-.40,.40,.36
+    shadow([P(uL,z0),P(uR,z0),P(uR,z1),P(uL,z1)],140,(.012,.018),14)
+    right=[P(uR,z0),P(uR,z1),P(uR,z1,hh),P(uR,z0,hh)]
+    front=[P(uL,z0),P(uR,z0),P(uR,z0,hh),P(uL,z0,hh)]
+    top=[P(uL,z0,hh),P(uR,z0,hh),P(uR,z1,hh),P(uL,z1,hh)]
+    quad(*front,_mix(p.main,p.dark,.34),p.dark,1)
+    for k in range(1,28):
+        h=hh*k/28;p.line([P(uL,z0,h),P(uR,z0,h)],_mix(p.main,p.dark,.52 if k%2 else .22),1)
+    quad(*right,_mix(p.light,p.dark,.30),p.dark,1)
+    for k in range(1,28):
+        h=hh*k/28;p.line([P(uR,z0,h),P(uR,z1,h)],_mix(p.light,p.dark,.64 if k%2 else .46),1)
+    quad(*top,p.light,p.dark,1)
+    for t in (.16,.26,.74,.84):
+        zz=z0+(z1-z0)*t;p.line([P(uL+.09,zz,hh),P(uR-.09,zz,hh)],_mix(p.light,p.dark,.55),2)
+    b0,b1=z0+(z1-z0)*.40,z0+(z1-z0)*.58
+    quad(P(uL,b0,hh),P(uR,b0,hh),P(uR,b1,hh),P(uL,b1,hh),p.accent)
+    quad(P(uR,b0),P(uR,b1),P(uR,b1,hh),P(uR,b0,hh),_mix(p.accent,p.dark,.30))
+    p.line([P(uL,z0,hh),P(uR,z0,hh),P(uR,z1,hh)],p.light,2)
+    # Buffer stop that closes the siding, drawn last because it stands nearest the viewer.
+    ez=2.55;eu=branch(ez)
+    shadow([P(eu-.46,ez),P(eu+.46,ez),P(eu+.46,ez+.3),P(eu-.46,ez+.3)],140,(.014,.018),10)
+    steel=_mix(p.dark,p.main,.34)
+    for off in (-.30,.30):
+        quad(P(eu+off-.12,ez),P(eu+off+.12,ez),P(eu+off+.12,ez,.34),P(eu+off-.12,ez,.34),_mix(steel,p.dark,.30),p.dark,1)
+        quad(P(eu+off+.12,ez),P(eu+off+.12,ez+.26),P(eu+off+.12,ez+.26,.34),P(eu+off+.12,ez,.34),_mix(steel,p.dark,.10),p.dark,1)
+        quad(P(eu+off-.12,ez,.34),P(eu+off+.12,ez,.34),P(eu+off+.12,ez+.26,.34),P(eu+off-.12,ez+.26,.34),_mix(steel,p.light,.30),p.light,1)
+    quad(P(eu-.44,ez,.30),P(eu+.44,ez,.30),P(eu+.44,ez,.52),P(eu-.44,ez,.52),p.accent,p.dark,1)
+    quad(P(eu+.44,ez,.30),P(eu+.44,ez+.2,.30),P(eu+.44,ez+.2,.52),P(eu+.44,ez,.52),_mix(p.accent,p.dark,.38),p.dark,1)
+    quad(P(eu-.44,ez,.52),P(eu+.44,ez,.52),P(eu+.44,ez+.2,.52),P(eu-.44,ez+.2,.52),p.light,p.dark,1)
+    # Feathered crop: the track dissolves into the studio ground rather than ending at a panel edge.
+    mask=Image.new('L',p.layer.size,0);l,t,r,b=p.zone;f=40
+    ImageDraw.Draw(mask).rectangle((l*2+f,t*2+f,r*2-f,b*2-f),fill=255)
+    mask=mask.filter(ImageFilter.GaussianBlur(f*.5))
+    hard=Image.new('L',p.layer.size,0);ImageDraw.Draw(hard).rectangle((l*2+12,t*2+12,r*2-12,b*2-12),fill=255)
+    p.layer.putalpha(ImageChops.multiply(ImageChops.multiply(p.layer.getchannel('A'),mask),hard))
+
+
+def bay_wall(p):
+    """A strapped sheaf stands at a closed bay in a wall while the neighbouring bay stands open and lit."""
+    A=1.94
+    def Q(u,y):return (u/A,y)
+    def quad(a,b,c,d,fill,stroke=None,w=1):p.poly([Q(*a),Q(*b),Q(*c),Q(*d)],fill,stroke,w)
+    def rect(u0,y0,u1,y1,fill,stroke=None,w=1):quad((u0,y0),(u1,y0),(u1,y1),(u0,y1),fill,stroke,w)
+    def line(a,b,color,w=1):p.line([Q(*a),Q(*b)],color,w)
+    def glow(center,radius,color,alpha,flat=.55):
+        g=Image.new('RGBA',p.layer.size);d=ImageDraw.Draw(g)
+        cx,cy=p.xy(Q(*center));rx=int(radius*p.layer.size[0]*.5);ry=int(rx*flat)
+        rgb=tuple(int(color[i:i+2],16) for i in (1,3,5))
+        for k in range(24,0,-1):
+            f=k/24;d.ellipse((cx-rx*f,cy-ry*f,cx+rx*f,cy+ry*f),fill=rgb+(int(alpha*(1-f)**1.5+1),))
+        p.layer.alpha_composite(g)
+    def shadow(points,alpha=130,off=(.02,.02),blur=14):
+        m=Image.new('L',p.layer.size);ImageDraw.Draw(m).polygon([p.xy(Q(u+off[0],y+off[1])) for u,y in points],fill=alpha)
+        sh=Image.new('RGBA',p.layer.size,(2,8,8,0));sh.putalpha(m.filter(ImageFilter.GaussianBlur(blur)));p.layer.alpha_composite(sh)
+    rng=np.random.default_rng(p.spec['seed'])
+    wall=_mix(p.bg,p.main,.30);stone_line=_mix(wall,p.dark,.50);floor=_mix(p.bg,p.dark,.50)
+    GY=.80;L,R=-.25,A+.25
+    # Wall: staggered courses, each block with its own tone and a faint top highlight.
+    rect(L,-.10,R,GY,wall)
+    y=-.10;row=0
+    while y<GY:
+        off=.0 if row%2==0 else .14
+        u=L+off-.28
+        while u<R:
+            tone=float(rng.uniform(-.10,.12))
+            if u+.28>L and u<R:
+                rect(max(u,L),max(y,-.10),min(u+.28,R),min(y+.095,GY),_mix(wall,p.light if tone>0 else p.dark,abs(tone)))
+                line((max(u,L)+.01,y+.006),(min(u+.28,R)-.01,y+.006),_mix(wall,p.light,.22),1)
+            u+=.28
+        y+=.095;row+=1
+    y=-.10;row=0
+    while y<GY:
+        line((L,y),(R,y),stone_line,1)
+        off=.0 if row%2==0 else .14
+        u=L+off-.28
+        while u<R:
+            if L<u<R:line((u,y),(u,min(y+.095,GY)),stone_line,1)
+            u+=.28
+        y+=.095;row+=1
+    # Floor: darker slab with receding joints toward the open bay's light.
+    rect(L,GY,R,1.12,floor)
+    line((L,GY),(R,GY),_mix(wall,p.light,.30),2)
+    for fu in np.linspace(-.2,2.2,13):
+        line((1.53+(fu-1.53)*.35,GY),(fu,1.12),_mix(floor,p.main,.16),1)
+    for fy in (.86,.94,1.04):line((L,fy),(R,fy),_mix(floor,p.main,.10),1)
+    # Lintel across both bays, then each bay with real reveal depth.
+    # A stone pier carries the lintel on the left; the lintel runs on past the open bay into the crop.
+    shadow([(.58,.17),(R,.17),(R,.19),(.58,.19)],150,(.0,.035),9)
+    rect(.58,.05,R,.17,_mix(wall,p.light,.10),p.dark,1)
+    rect(.58,.05,R,.075,_mix(wall,p.light,.34))
+    rect(.58,.145,R,.17,_mix(wall,p.dark,.35))
+    for ju in (.90,1.22,1.54,1.86,2.10):line((ju,.05),(ju,.17),_mix(wall,p.dark,.5),1)
+    shadow([(.58,.17),(.72,.17),(.72,GY),(.58,GY)],140,(.025,.0),8)
+    rect(.58,.17,.72,GY,_mix(wall,p.light,.08),p.dark,1)
+    line((.585,.17),(.585,GY),_mix(wall,p.light,.30),1)
+    for py in np.linspace(.27,.72,5):line((.58,py),(.72,py),_mix(wall,p.dark,.5),1)
+    # Open bay: ceiling, floor and side walls step toward a light that stays empty.
+    ou0,ou1,oy0,oy1=1.30,1.78,.17,GY
+    cu,cy_=(ou0+ou1)/2,.47
+    iu0,iu1=cu-.07,cu+.07;iy0,iy1=cy_-.10,.66
+    rect(ou0-.06,oy0-.06,ou1+.06,oy1,_mix(wall,p.dark,.40),p.dark,1)
+    S=10
+    def lerp(a,b,t):return a+(b-a)*t
+    for i in range(S):
+        t0,t1=i/S,(i+1)/S;glowt=(t0**1.6)
+        # Ceiling, floor, left and right surfaces as depth strips with rising brightness.
+        quad((lerp(ou0,iu0,t0),lerp(oy0,iy0,t0)),(lerp(ou1,iu1,t0),lerp(oy0,iy0,t0)),(lerp(ou1,iu1,t1),lerp(oy0,iy0,t1)),(lerp(ou0,iu0,t1),lerp(oy0,iy0,t1)),_mix(_mix(p.dark,p.main,.28),p.light,glowt*.75))
+        quad((lerp(ou0,iu0,t0),lerp(oy1,iy1,t0)),(lerp(ou1,iu1,t0),lerp(oy1,iy1,t0)),(lerp(ou1,iu1,t1),lerp(oy1,iy1,t1)),(lerp(ou0,iu0,t1),lerp(oy1,iy1,t1)),_mix(_mix(p.main,p.dark,.45),p.light,glowt*.90))
+        quad((lerp(ou0,iu0,t0),lerp(oy0,iy0,t0)),(lerp(ou0,iu0,t1),lerp(oy0,iy0,t1)),(lerp(ou0,iu0,t1),lerp(oy1,iy1,t1)),(lerp(ou0,iu0,t0),lerp(oy1,iy1,t0)),_mix(_mix(p.dark,p.main,.20),p.light,glowt*.70))
+        quad((lerp(ou1,iu1,t0),lerp(oy0,iy0,t0)),(lerp(ou1,iu1,t1),lerp(oy0,iy0,t1)),(lerp(ou1,iu1,t1),lerp(oy1,iy1,t1)),(lerp(ou1,iu1,t0),lerp(oy1,iy1,t0)),_mix(_mix(p.dark,p.main,.36),p.light,glowt*.80))
+    for t in (.25,.45,.62,.76,.87):
+        line((lerp(ou0,iu0,t),lerp(oy0,iy0,t)),(lerp(ou0,iu0,t),lerp(oy1,iy1,t)),_mix(p.dark,p.main,.32),1)
+        line((lerp(ou1,iu1,t),lerp(oy0,iy0,t)),(lerp(ou1,iu1,t),lerp(oy1,iy1,t)),_mix(p.dark,p.main,.38),1)
+    rect(iu0,iy0,iu1,iy1,p.light)
+    glow((cu,.72),.70,p.light,130,.45)
+    # Closed bay: slab with stiffeners, bolts, hinge blocks and a bar across it.
+    cu0,cu1,cy0,cy1=.78,1.22,.17,GY
+    rect(cu0-.06,cy0-.06,cu1+.06,cy1,_mix(wall,p.dark,.45),p.dark,1)
+    slab=_mix(p.light,p.main,.34)
+    shadow([(cu0,cy0),(cu1,cy0),(cu1,cy1),(cu0,cy1)],160,(.035,.02),10)
+    rect(cu0,cy0,cu1,cy1,slab,p.dark,2)
+    for k in range(0,7):
+        shade=_mix(slab,p.dark,.05+.015*k)
+        rect(cu0+.03+k*.0,cy0+.045+k*.0,cu1-.03,cy1-.045,None)
+    rect(cu0+.035,cy0+.05,cu1-.035,cy1-.05,_mix(slab,p.dark,.10),_mix(slab,p.dark,.50),2)
+    for su in (cu0+.15,cu1-.15):
+        line((su,cy0+.06),(su,cy1-.06),_mix(slab,p.dark,.38),2)
+        line((su+.008,cy0+.06),(su+.008,cy1-.06),_mix(slab,p.light,.4),1)
+    line((cu0+.035,cy0+.05),(cu1-.035,cy0+.05),p.light,2)
+    line((cu0+.035,cy0+.05),(cu0+.035,cy1-.05),p.light,2)
+    for ry_ in np.linspace(cy0+.10,cy1-.10,7):
+        for bu in (cu0+.065,cu1-.065):
+            p.ellipse(Q(bu-.009,ry_-.016)+Q(bu+.009,ry_+.016),_mix(slab,p.dark,.45),_mix(slab,p.light,.5),1)
+    rect(cu0,.44,cu1-.04,.52,p.accent,p.dark,1)
+    line((cu0,.44),(cu1-.04,.44),_mix(p.accent,p.light,.5),2)
+    line((cu0,.52),(cu1-.04,.52),_mix(p.accent,p.dark,.4),2)
+    for bu in (cu0-.035,cu1-.04):
+        rect(bu,.415,bu+.04,.545,_mix(p.dark,p.main,.30),p.dark,1)
+        line((bu+.004,.42),(bu+.036,.42),_mix(p.main,p.light,.4),1)
+    for hy in (.27,.66):
+        rect(cu0-.05,hy,cu0+.02,hy+.08,_mix(p.dark,p.main,.30),p.dark,1)
+    # Sheaf: the nearest object, standing before the closed slab on the floor.
+    fu0,fu1,fy0,fy1=.24,.68,.52,GY+.07
+    dx,dy=.15,-.12
+    shadow([(fu0,fy1),(fu1+dx,fy1),(fu1+dx,fy1+.06),(fu0,fy1+.06)],165,(.04,.02),12)
+    shadow([(fu0-.02,fy1-.015),(fu1+dx,fy1-.015),(fu1+dx+.05,fy1+.03),(fu0+.02,fy1+.03)],205,(.0,.0),6)
+    glow(((fu0+fu1)/2+dx/2,fy1+.03),.42,p.accent,55,.28)
+    top=[(fu0,fy0),(fu1,fy0),(fu1+dx,fy0+dy),(fu0+dx,fy0+dy)]
+    right=[(fu1,fy0),(fu1+dx,fy0+dy),(fu1+dx,fy1+dy),(fu1,fy1)]
+    quad((fu0,fy0),(fu1,fy0),(fu1,fy1),(fu0,fy1),_mix(p.main,p.dark,.30),p.dark,1)
+    for k in range(1,34):
+        yy=fy0+(fy1-fy0)*k/34;line((fu0,yy),(fu1,yy),_mix(p.main,p.dark,.52 if k%2 else .18),1)
+    quad(*right,_mix(p.light,p.dark,.34),p.dark,1)
+    for k in range(1,34):
+        yy=(fy1-fy0)*k/34;line((fu1,fy0+yy),(fu1+dx,fy0+yy+dy),_mix(p.light,p.dark,.64 if k%2 else .46),1)
+    quad(*top,p.light,p.dark,1)
+    for t in (.16,.28,.72,.84):
+        a=fu0+(fu1-fu0)*t;line((a+dx*.12,fy0+dy*.12),(a+dx*.88,fy0+dy*.88),_mix(p.light,p.dark,.55),1)
+    s0,s1=fu0+(fu1-fu0)*.40,fu0+(fu1-fu0)*.60
+    quad((s0,fy0),(s1,fy0),(s1,fy1),(s0,fy1),p.accent)
+    quad((s0,fy0),(s1,fy0),(s1+dx,fy0+dy),(s0+dx,fy0+dy),_mix(p.accent,p.light,.25))
+    line((fu0,fy0),(fu1,fy0),p.light,2)
+    # Feathered crop so the wall dissolves into the studio ground rather than ending at a panel edge.
+    mask=Image.new('L',p.layer.size,0);l,t,r,b=p.zone;f=24
+    ImageDraw.Draw(mask).rectangle((l*2+f,t*2+f,r*2-f,b*2-f),fill=255)
+    mask=mask.filter(ImageFilter.GaussianBlur(f*.55))
+    hard=Image.new('L',p.layer.size,0);ImageDraw.Draw(hard).rectangle((l*2+12,t*2+12,r*2-12,b*2-12),fill=255)
+    p.layer.putalpha(ImageChops.multiply(ImageChops.multiply(p.layer.getchannel('A'),mask),hard))
+
+
+RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume,editorial_scene,collateral_balance,points_switch,bay_wall)))
 
 
 def written_artifact(p):
@@ -665,10 +926,18 @@ def render(spec, layout, destination):
         raise ValueError('Scene motifs require the scene renderer')
     if family=='collateral_balance' and (spec['story_treatment']!='financial_security' or spec['motifs'][0]!='escrow counterweight'):
         raise ValueError('The collateral balance must bind to financial security and its actual counterweight motif')
+    if family=='points_switch' and (spec['story_treatment']!='binary_gate' or spec['motifs'][0]!='thrown points'):
+        raise ValueError('The railway points scene must bind to a verified binary decision and its thrown points motif')
+    if family=='bay_wall' and (spec['story_treatment']!='binary_gate' or spec['motifs'][0]!='closed bay'):
+        raise ValueError('The paired bay wall must bind to a verified binary decision and its closed bay motif')
+    if family!='bay_wall' and spec['motifs'][0]=='closed bay':
+        raise ValueError('The closed bay motif requires its wall scene')
+    if family!='points_switch' and spec['motifs'][0]=='thrown points':
+        raise ValueError('The thrown points motif requires its railway scene')
     if family!='collateral_balance' and spec['motifs'][0]=='escrow counterweight':
         raise ValueError('The counterweight motif requires its connected scene renderer')
     p=Painter(spec,layout['subject_zone']); RENDERERS[family](p)
-    if family not in ('editorial_scene','collateral_balance'):written_artifact(p);gate_mark(p)
+    if family not in ('editorial_scene','collateral_balance','points_switch','bay_wall'):written_artifact(p);gate_mark(p)
     subject=p.layer.resize((SIZE,SIZE),Image.Resampling.LANCZOS)
     # Exact alpha-mask bounds are measured from drawn pixels, including anti-aliasing.
     bbox=subject.getchannel('A').getbbox()
