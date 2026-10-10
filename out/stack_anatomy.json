@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-10-09",
+  "window_days": 21,
+  "no_target_this_cycle": true,
+  "research_capabilities": {
+    "primary_source_fetch": true,
+    "primary_source_fetch_evidence": "preflight bodies from capitol.texas.gov and www.puc.texas.gov, see .local/primary_fetch_preflight.json"
+  },
+  "_validation_note": "Audit of the v1 target (withdrawn). The PUCT-controls-posting chokepoint did not survive the controlling text: posting is a customer obligation to the interconnecting DSP or TSP under an intermediate agreement, study initiation is a DSP or TSP action directed by ERCOT protocols, and the commission's named roles are audit and enforcement. The AI or data-center scope was not established by primary text. No candidate survives all eight gates in this 21-day window, so this is an honest no-target. Earlier v1 target evidence is retained privately under .local/superseded.",
+  "selected_mechanism": null,
+  "required_post_phrases": [],
+  "verified_facts": [],
+  "gate_results": {
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": false,
+    "chokepoint_asymmetry": false,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
+    "political_neutrality": true
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "Large-load financial security before study inclusion (v1 target, withdrawn on audit)",
+      "category": "regulatory",
+      "news_trigger": "PUCT order adopting 16 TAC §25.194, Project 58481, Item 218, filed 9/18/2026",
+      "drop_reason": "Audit failed two gates. (1) chokepoint_asymmetry: the v1 chokepoint named the Public Utility Commission of Texas as controlling whether a customer posts security. The adopted text does not support that. §25.194(d) makes the customer's execution and funding of an intermediate agreement with the interconnecting DSP or TSP a precondition to study inclusion, and that agreement names which entity accepts the security. §25.194(e)(1) makes the interconnecting DSP or TSP contact ERCOT within 60 days, as prescribed by ERCOT protocols. The commission's named roles in (d) and (e) are audit, staff verification and enforcement, and publishing adjusted values. No single institution holds the yes/no admission decision. (2) texas_consequence (AI/data-center scope): §25.194(b) applies to any large load of 75 MW or more at a single site and does not mention artificial intelligence or data centers. The only 'AI' term in the order is a commenter's company name. The data-center link comes from commenters and independent reporting, not from primary text. No fetched independent source corroborates the rule's adoption terms.",
+      "sources": [
+        {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+          "title": "Order Adopting New 16 TAC §25.194, Project 58481, pages 1 to 99 of 270",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "65f81513cb1a8506a3bd42ccdcc73f2f7523863f4e6f1dfe434102dddbe14063",
+          "body_bytes": 2784834,
+          "fetched_at_utc": "2026-10-10T00:51:51Z"
+        },
+        {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684655.PDF",
+          "title": "Order Adopting New 16 TAC §25.194, pages 100 to 199 of 270",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "3113c8cd75f7306910eb70b663c6db713cf241101b5a77c3fc283df6ab31df37",
+          "body_bytes": 2691699,
+          "fetched_at_utc": "2026-10-10T01:16:43Z"
+        },
+        {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684656.PDF",
+          "title": "Order Adopting New 16 TAC §25.194, pages 200 to 270 of 270 (rule text §25.194 at page 229 onward)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "268cc4b68ca9cf7db9302533b7f76c96d7866a8007b54e0cc3bf7379233469c3",
+          "body_bytes": 1679891,
+          "fetched_at_utc": "2026-10-10T01:16:46Z"
+        },
+        {
+          "url": "https://interchange.puc.texas.gov/search/documents/?controlNumber=58481&itemNumber=218",
+          "title": "Interchange filing detail, Case 58481-218",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "13288b9559df73326185ea4d6d625bbe7e47aa5a2768b240f71d8650011d6371",
+          "body_bytes": 12948,
+          "fetched_at_utc": "2026-10-10T00:51:45Z"
+        },
+        {
+          "url": "https://www.texastribune.org/2026/09/21/texas-data-center-moratorium-water-energy/",
+          "title": "Gov. Greg Abbott broadens moratorium on data center approvals to include environmental permits",
+          "publisher": "The Texas Tribune",
+          "source_type": "independent_reporting",
+          "fetch_status": "fetched_200",
+          "body_sha256": "ae87a191d3d3628efd3866f13fb12f2ab500ca6311129b0eaf88f01f5481d55a",
+          "fetched_at_utc": "2026-10-10T00:51:22Z",
+          "note": "Mentions data center approvals and ERCOT; does not mention 16 TAC §25.194, Project 58481 or the $50,000 per MW posting"
+        }
+      ]
+    },
+    {
+      "name": "Governor's Sept 21 directive extending the data-center permit pause to TCEQ",
+      "category": "regulatory",
+      "news_trigger": "Texas Tribune, Sept. 21, 2026, reports the governor broadens the moratorium on data center approvals to include environmental permits",
+      "drop_reason": "not_recent_repeat failed: matches history ledger entry 'TCEQ data-center permit pause' (run 2026-09-25, chokepoint 'Permit decision')",
+      "sources": [
+        {
+          "url": "https://www.texastribune.org/2026/09/21/texas-data-center-moratorium-water-energy/",
+          "title": "Gov. Greg Abbott broadens moratorium on data center approvals to include environmental permits",
+          "publisher": "The Texas Tribune",
+          "source_type": "independent_reporting",
+          "fetch_status": "fetched_200",
+          "body_sha256": "ae87a191d3d3628efd3866f13fb12f2ab500ca6311129b0eaf88f01f5481d55a",
+          "fetched_at_utc": "2026-10-10T00:51:22Z"
+        }
+      ]
+    },
+    {
+      "name": "ERCOT Batch Zero large-load study process",
+      "category": "regulatory",
+      "news_trigger": "PUCT approval of ERCOT Batch Zero framework on June 18, 2026",
+      "drop_reason": "not_recent_repeat failed: matches history ledger entry 'Batch Zero Verification RFI process' (run 2026-09-11, chokepoint 'Eligibility determination layer'); the cited ERCOT release was refused by the gateway (403), so the primary order is the source used",
+      "sources": [
+        {
+          "url": "https://www.ercot.com/news/release/06182026-puct-approves-ercots",
+          "title": "PUCT approves ERCOT batch zero release",
+          "publisher": "ERCOT",
+          "source_type": "primary",
+          "fetch_status": "blocked_403",
+          "fetched_at_utc": "2026-10-10T00:51:21Z"
+        },
+        {
+          "url": "https://interchange.puc.texas.gov/Documents/58481_218_1684654.PDF",
+          "title": "Order Adopting New 16 TAC §25.194 (Project No. 58481, Item 218)",
+          "publisher": "Public Utility Commission of Texas",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "65f81513cb1a8506a3bd42ccdcc73f2f7523863f4e6f1dfe434102dddbe14063",
+          "fetched_at_utc": "2026-10-10T00:51:51Z"
+        }
+      ]
+    },
+    {
+      "name": "Texas Energy Fund Rayburn 570 MW gas plant loan",
+      "category": "capital_sovereignty",
+      "news_trigger": "Governor's press release dated June 4, 2026 announcing a TxEF loan of up to $411 million to Rayburn Electric Cooperative",
+      "drop_reason": "news_tie failed: trigger date June 4, 2026 is outside the 21-day window (starts 2026-09-18)",
+      "sources": [
+        {
+          "url": "https://gov.texas.gov/news/post/governor-abbott-announces-texas-energy-fund-loan-for-570-mw-north-texas-natural-gas-power-plant",
+          "title": "Governor Abbott Announces Texas Energy Fund Loan For 570 MW North Texas Natural Gas Power Plant",
+          "publisher": "Office of the Texas Governor",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "ea4ec8adcbf71642e7606680e3aedc16ec5420f66916a8485886f6d9cfa31494",
+          "fetched_at_utc": "2026-10-10T00:51:21Z"
+        }
+      ]
+    },
+    {
+      "name": "DIR Carahsoft AI bulk purchase agreement BP2026-0015",
+      "category": "vehicles",
+      "news_trigger": "DIR bulk purchase agreement for FY 2026 AI software; agencies may issue purchase orders through Oct 31, 2026",
+      "drop_reason": "chokepoint_asymmetry failed: each customer agency decides whether to issue its purchase order, and DIR sets only the contract terms; no single office holds the yes/no decision. Consequence is limited to supplemental discounts.",
+      "sources": [
+        {
+          "url": "https://dir.texas.gov/sites/default/files/2026-09/Carahsoft%20Bulk%20Purchase%20Agreement%20BP2026-0015..%20%282%29.pdf",
+          "title": "Bulk Purchase Agreement, FY 2026 AI Software, BP2026-0015",
+          "publisher": "Texas Department of Information Resources",
+          "source_type": "primary",
+          "fetch_status": "fetched_200",
+          "body_sha256": "e760ef0ef1cb4dd8c2dc1c180c3f2a4a387fce3c3c16a879423deb579b1ce550",
+          "fetched_at_utc": "2026-10-10T00:51:18Z"
+        }
+      ]
+    },
+    {
+      "name": "Governor's proposed repeal of data-center sales-tax exemption",
+      "category": "vehicles",
+      "news_trigger": "Abbott's June 2026 legislative recommendations, including repeal of the data-center sales tax exemption, for the 2027 session",
+      "drop_reason": "news_tie failed: the recommendation is dated June 2026, outside the 21-day window; the controlling decision belongs to the 2027 Legislature. The news outlet was refused at CONNECT (403) and no primary page was fetched.",
+      "sources": [
+        {
+          "url": "https://www.click2houston.com/news/texas/2026/06/10/abbott-recommends-sweeping-data-center-regulation-including-eliminating-sales-tax-exemption/",
+          "title": "Abbott recommends sweeping data center regulation including eliminating sales tax exemption",
+          "publisher": "KHOU/Click2Houston",
+          "source_type": "independent_reporting",
+          "fetch_status": "blocked_403_connect",
+          "fetched_at_utc": "2026-10-10T00:51:22Z"
+        }
+      ]
+    }
+  ]
+}

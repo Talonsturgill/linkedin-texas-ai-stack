@@ -1,83 +1,79 @@
 ---
 name: texas-stack-artwork
-description: Create and visually verify original ImageGen covers for the final Texas Stack dossier, with measured typography and image-bound evaluation. Not for research, post writing or other publications.
+description: Draw and visually verify original Texas Stack covers in code, with story-bound geometry, measured typography and history-aware variety. Use after the mechanism dossier is final.
 ---
 
 # Texas Stack artwork
 
-Read the final dossier, post if present, brand and current history once. Read
-[art direction](references/art-direction.md) for concept selection and score anchors. Use
-[visual system](references/visual-system.md) only when choosing a medium or palette.
-Commands below are relative to the repository; helper scripts live in this skill's scripts/.
+Use procedural code art as the primary path. Python, Pillow and NumPy are sufficient; no image
+API or ImageGen lookup is needed. Read the final dossier, post if present, brand and current
+history once. Read [code art](references/code-art.md) for production commands and the specification.
+Read [art direction](references/art-direction.md) once before scoring; its anchors are required.
+Judge composition on the finished cover. The text-free base intentionally reserves quiet space
+for measured headline/footer furniture; do not penalize that required space as a missing scene.
+ImageGen is optional only
+when explicitly requested; then read [ImageGen mode](references/imagegen-mode.md).
 
-## Blueprint before pixels
+## Blueprint and variety
 
-Develop three genuinely different concepts, not three colors of one object. Record their
-half-second read and supporting dossier fact. Pick the concept that makes this specific decision
-legible without a caption. Reject attractive generic technology and invented infrastructure.
-Write out/art_plan.md with selection rationale, register, medium, two to six hex colors/roles,
-focal point, eye path, detail at three scales and visual risks. Explicitly check style, hue,
-composition and primary motif against .local/history.json. Do not rename a repeated look.
-None may appear in its corresponding forbidden list.
+Propose three concepts using procedural_art.py plan. They must use different drawing families,
+compositions and primary motifs. Choose the concept that explains this specific controller's
+binary decision without inventing an engineering design. Write out/art_plan.md before rendering:
+selection rationale, literal dossier bindings, metaphor limits, medium, palette roles, focal point,
+eye path, detail at three scales and visual risks. Record the three concepts in art_eval.json.
 
-Choose the exact four-to-nine-word headline before generating. Measure its real typography:
+The engine supplies drawing methods; it does not choose the story's visual idea. A catalog
+pattern with a document pasted onto it is insufficient when the decision needs a different
+physical interaction. Use the blueprint to design that interaction, extending actual geometry
+or adding a genuinely distinct renderer when the toolkit cannot express it.
 
-    python3 .agents/skills/texas-stack-artwork/scripts/prepare_art.py --headline "EXACT SHORT HEADLINE HERE" --out out/art_layout.json
+The engine has fourteen different drawing methods with different geometry. Exclude
+styles used in the last eight covers, hue families in four, compositions in two and primary
+motifs in ten. Do not rename a used style. The immediately preceding cover must differ on all
+four axes. Run variety_check.py against actual recent raster fingerprints. It rejects similar
+low-frequency structure and insufficient color change; grain or a new seed cannot clear it.
+A failed variety check requires a different treatment, not a lower threshold. If the catalog is
+exhausted or poorly suited to a story, extend a genuinely different renderer and test it.
 
-Use that file's subject_zone in the ImageGen brief. It reserves actual glyph space, not an
-approximate lower band. Write the exact no-text brief to out/image_prompt.txt: use case,
-metaphor and evidence limits, medium/materials, composition and subject bounds, light, palette,
-macro/meso/micro detail, then exclusions. Usually 180–300 words is enough. Full opaque square;
-no text, numbers, seals, logos, portraits, invented maps or technical relationships.
+Choose an exact four-to-nine-word headline. prepare_art.py reserves actual glyph space. If it
+cannot fit, shorten the cover headline while preserving the verified meaning and rerun layout.
+Routine headline fitting is authorized editorial work; do not pause for approval. A layout-only
+failure is not a render attempt. Save
+the selected art_spec.json with its exact dossier hash and story_binding, and the precise brief
+in image_prompt.txt. Keep the base opaque and text-free; the compositor supplies all publication
+furniture. Never add invented maps, identities, labels, seals or technical relationships.
 
-## Generate, compose, inspect
+## Render, inspect and repair
 
-Use the built-in ImageGen tool only. Copy its raster to out/art_base.png. Save rejected passes
-in .local. Inspect the full base for story fidelity and actual object bounds. Convert those
-bounds to 1080-canvas coordinates and pass the observed subject box below; do not copy planned
-coordinates as if they were measured. Include every story-bearing object, not its shadows.
-Create provisional out/art_eval.json with schema_version 1, source imagegen, three concepts,
-selected_concept, style_family, palette, hue_family, composition, motifs, empty eval_history and
-provisional eval_final. Do not fabricate scores before inspection.
+Render only the chosen concept initially. The renderer measures subject bounds from its actual
+alpha mask and records seed, specification hash, renderer hash and base hash in art_render.json.
+Run the variety gate, compose using those measured bounds, then inspect both originals at full
+size and on the 300-pixel review sheet. Do not assign aesthetic scores before seeing the pixels.
 
-    python3 .agents/skills/texas-stack-artwork/scripts/compose_cover.py --base out/art_base.png --headline "EXACT SHORT HEADLINE HERE" --category REGULATORY --date "September 25th, 2026" --place TEXAS --layout out/art_layout.json --subject-box LEFT TOP RIGHT BOTTOM --prompt-file out/image_prompt.txt --plan-file out/art_plan.md --eval-file out/art_eval.json --out out/post_image.png
+Record all nine observed scores with dimension-specific notes, inspected_scales ["full","300"],
+observations, blockers and one concrete edit in .local/art-review.json. review_art.py binds the
+review to the actual base and cover bytes. Use --select only with no blockers and a real passing
+review. Recompose identically afterward to refresh metadata. A metadata refresh is not a new
+render or review. Use --replace-pass for a typography-only re-review of the same base.
 
-Use actual category/date/place. The compositor rejects transparency, silent cropping and subject
-collision. It balances headline lines and darkens only the type regions. Repair text with a
-shorter accurate headline and re-plan before asking ImageGen to repair art. Never render type
-inside ImageGen. Exact publication furniture remains TEXAS AI DOCKET, THE TEXAS STACK, category,
-Chicago date, headline and TEXASAIDOCKET.COM, on a 1080-square PNG.
+The 8.5 weighted floor and minimum dimension of seven are hard gates for procedural art. Seek
+9+ through concrete corrections. Stray labels, false geography, illegible type, clipping, subject
+collision or a misleading mechanism are blockers even above the floor. Never let code calculate
+or pre-fill aesthetic scores. At most six actual rendering attempts, retaining every rejected
+review. Select the strongest observed candidate. If none passes, report needs_attention with
+honest evidence; do not ship a below-floor generic fallback.
 
-    python3 .agents/skills/texas-stack-artwork/scripts/review_art.py --base out/art_base.png --cover out/post_image.png --sheet .local/art-review.png
+A no-target cover represents incomplete evidence, uses category WATCH and an honest headline;
+it does not depict a fictional project. Code-art is recorded as source procedural throughout
+the evaluation, metadata and email. It is a normal supported path, not a failure disclosure.
 
-Inspect the sheet for thumbnail comparison and each original at full size. Inspect once per
-changed image; do not emit the same full-size image repeatedly. Score what is visible using the
-reference anchors. Write .local/art-review.json with all nine scores and dimension-specific notes,
-inspected_scales ["full","300"], observations, blockers (empty only if none), and the exact
-edit_prompt for a follow-up pass. Record the actual generation:
+## Handoff
 
-    python3 .agents/skills/texas-stack-artwork/scripts/review_art.py --base out/art_base.png --cover out/post_image.png --eval out/art_eval.json --review .local/art-review.json --select
-
-Omit --select for rejected passes. The helper computes the score and binds the review to image
-hashes; it does not judge art. Recompose with identical arguments afterward to refresh metadata;
-pixels must remain identical. Re-run QA through scripts/run_checks.py. A changed image needs a
-new inspection; a metadata refresh does not. For a typography-only revision, use --replace-pass N after inspecting it; this preserves the
-previous review without counting a fictitious ImageGen pass. To restore an earlier candidate,
-restore its base and cover, inspect again, then use --replace-pass N --select.
-
-## Repair and stop
-
-8.5 weighted and every dimension at least 7 are floors, not quality targets. Seek 9+ with specific
-visual evidence, never score inflation. At most six real ImageGen passes. Select the best observed
-pass, not automatically the last. Name one weakest defect per edit; preserve working composition,
-materials and source invariants. Regenerate only for a failed concept. Stop when there are no
-concrete high-value defects left. Stray labels, false geography, illegible type, subject collision
-or a broken mechanism depiction are blockers even above the floor. Preserve all actual scores.
-Only a six-pass aesthetic miss without those blockers may use the routine's disclosed-shortfall
-exception. No fallback to cosmetically pass a failed image.
-
-No-target still receives original art about incomplete evidence, category WATCH, and an honest
-headline. Do not depict a fictional project. The only fallback conditions are unavailable built-in
-ImageGen or two consecutive unusable tool calls. Then use scripts/render_fallback.py --help,
-record the failure and disclose it in the editor note. Never call an external image API or ask
-for credentials.
+Run scripts/run_checks.py once on the final package. Commit the routine's allowed public art
+files, including art_spec.json, art_render.json and art_variety.json for procedural output.
+When a story required a renderer extension, include the changed renderer source and its relevant
+test in the issue commit so the recorded renderer hash can be reproduced from that exact SHA.
+Keep quality thresholds and validation code unchanged during a production art repair.
+Keep rejected images, review sheets and private receipts ignored. Preserve the immutable URL
+and draft-only delivery contract. A successful rendering alone does not prove publication or
+Gmail delivery.
