@@ -422,17 +422,25 @@ def editorial_scene(p):
         p.poly(points,color)
 
     if treatment=='incomplete_evidence':
-        # The actual condition is absence of a complete chain, not an approved gate.
-        for i in range(5):
-            if i==2:continue
-            x=.08+i*.17;y=.62-.16*math.sin(i*math.pi/4)
-            top=[(x,y),(x+.13,y-.055),(x+.16,y+.08),(x+.025,y+.135)]
-            shaded(top,p.light if i<2 else p.main,.045)
-            p.poly([(x+.025,y+.135),(x+.16,y+.08),(x+.16,y+.23),(x+.025,y+.285)],p.main if i<2 else p.dark)
-            p.line([(x,y),(x+.13,y-.055)],p.accent,3)
-        # The absent central span stays empty. Two exposed edges visibly face the gap.
-        p.line([(.36,.46),(.38,.66)],p.accent,5)
-        p.line([(.59,.46),(.61,.66)],p.accent,5)
+        # Two grounded arch halves expose a missing keystone. This is a sculptural
+        # evidence metaphor, not a fictional project or a count of factual layers.
+        for left in (True,False):
+            angles=np.linspace(math.pi,math.pi/2+.25,90) if left else np.linspace(math.pi/2-.25,0,90)
+            outer=[(.5+.38*math.cos(a),.90-.65*math.sin(a)) for a in angles]
+            inner=[(.5+.245*math.cos(a),.90-.43*math.sin(a)) for a in angles]
+            shape=outer+inner[::-1]
+            shaded([(x+.022,y+.035) for x,y in shape],p.dark)
+            shaded(shape,p.light if left else p.main)
+            p.poly([outer[-1 if left else 0],inner[-1 if left else 0],
+                    (inner[-1 if left else 0][0]+.022,inner[-1 if left else 0][1]+.035),
+                    (outer[-1 if left else 0][0]+.022,outer[-1 if left else 0][1]+.035)],p.accent)
+            p.line(outer,p.light,3)
+            for a in ((2.72,2.35,1.97) if left else (1.17,.79,.42)):
+                p.line([(.5+.38*math.cos(a),.90-.65*math.sin(a)),
+                        (.5+.245*math.cos(a),.90-.43*math.sin(a))],p.dark,2)
+        # Solid plinths meet the arch feet, grounding the image in one physical space.
+        for x in (.08,.74):
+            shaded([(x,.90),(x+.18,.90),(x+.20,.945),(x+.02,.945)],p.accent,.015)
         p.xy=original;return
 
     # Wide channel, its bends visible at thumbnail scale. The flow terminates exactly
