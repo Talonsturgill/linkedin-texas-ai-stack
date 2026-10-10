@@ -32,12 +32,14 @@
     "actor_authority": "Government Code Section 2001.021 gives interested persons the petition right and binds the agency to deny in writing or initiate rulemaking within 60 days.",
     "post_phrase": "Texas Legislature",
     "primary_source": {
-     "url": "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm",
-     "title": "Texas Government Code Section 2001.021, Petition for Adoption of Rules",
-     "publisher": "Texas Legislature (Texas Constitution and Statutes)",
+     "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.2001.htm",
+     "title": "Texas Government Code Chapter 2001, Administrative Procedure (Section 2001.021, Petition for Adoption of Rules)",
+     "publisher": "Texas Legislature, Texas Constitution and Statutes portal data service",
      "source_type": "primary",
-     "fetched_at_utc": "2026-10-10T01:57:11Z",
-     "body_sha256": "cd0e4142da491d1571a6f45439c314363c3fcee8f8dd9d028e1c2a7786c85a50"
+     "fetched_at_utc": "2026-10-10T02:39:43Z",
+     "body_sha256": "e20c74c092b3e0022ec20ac4d88cb2fe307e5271be2be734c143c86e921cb4fc",
+     "body_bytes": 176648,
+     "provenance_note": "Official statute document served to the Texas Constitution and Statutes portal. The portal page https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm returns an Angular application shell of 250874 bytes (sha256 dbfba8a96dc3cd584157ca66aaafdf67e0ed15dd5a0c8a58f3d4bd0f109fc646) that contains neither Section 2001.021 nor its text, so it is not evidence. The earlier dossier archive hash cd0e4142da491d15 described headless Chromium rendered visible text of that portal page, not the raw HTTP body, and was mislabelled as a fetched body. It is replaced by this directly fetched official document, 176648 bytes, which contains the controlling text of Section 2001.021(a) to (d)."
     }
    },
    {
@@ -130,17 +132,19 @@
   },
   "sources": [
    {
-    "url": "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm",
-    "title": "Texas Government Code Section 2001.021, Petition for Adoption of Rules",
-    "publisher": "Texas Legislature (Texas Constitution and Statutes)",
+    "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.2001.htm",
+    "title": "Texas Government Code Chapter 2001, Administrative Procedure (Section 2001.021, Petition for Adoption of Rules)",
+    "publisher": "Texas Legislature, Texas Constitution and Statutes portal data service",
     "source_type": "primary",
-    "fetched_at_utc": "2026-10-10T01:57:11Z",
-    "body_sha256": "cd0e4142da491d1571a6f45439c314363c3fcee8f8dd9d028e1c2a7786c85a50",
+    "fetched_at_utc": "2026-10-10T02:39:43Z",
+    "body_sha256": "e20c74c092b3e0022ec20ac4d88cb2fe307e5271be2be734c143c86e921cb4fc",
     "independent_of_subject": true,
     "claims_supported": [
      "Petition right",
      "60 day deny or initiate duty"
-    ]
+    ],
+    "body_bytes": 176648,
+    "provenance_note": "Official statute document served to the Texas Constitution and Statutes portal. The portal page https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm returns an Angular application shell of 250874 bytes (sha256 dbfba8a96dc3cd584157ca66aaafdf67e0ed15dd5a0c8a58f3d4bd0f109fc646) that contains neither Section 2001.021 nor its text, so it is not evidence. The earlier dossier archive hash cd0e4142da491d15 described headless Chromium rendered visible text of that portal page, not the raw HTTP body, and was mislabelled as a fetched body. It is replaced by this directly fetched official document, 176648 bytes, which contains the controlling text of Section 2001.021(a) to (d)."
    },
    {
     "url": "https://www.sos.texas.gov/texreg/archive/March272026/Adopted%20Rules/16.ECONOMIC%20REGULATION.html",
@@ -229,7 +233,8 @@
    "Section 22.281 text was verified through the Texas Register adoption preamble, not the codified rule page, which was not reachable.",
    "Staff memos give different dates for the project reassignment, so the post omits that date.",
    "Signature block legibility limits confirming how many commissioners signed, so the post says the Commission without a vote count.",
-   "The record does not show the internal metering proposal proceeding in any other Commission project. An earlier draft inferred that Project No. 58317 now carries it. The order says the opposite, that the slate contains no requirement to meter transport-layer consumption or computational efficiency, so that inference was removed."
+   "The record does not show the internal metering proposal proceeding in any other Commission project. An earlier draft inferred that Project No. 58317 now carries it. The order says the opposite, that the slate contains no requirement to meter transport-layer consumption or computational efficiency, so that inference was removed.",
+   "Section 2001.021 provenance repaired. The portal URL first recorded (https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm) returns a script shell with no statute text, and the earlier archive was a Chromium rendering of that page, not a raw fetched body. The statute is now cited from the official document served to the portal, and its text was read directly. No claim changed."
   ],
   "history_comparison": "Not one of the prior six mechanisms (Taylor cooling-water exception framework, TCDC power-to-equity framework, TCEQ data-center permit pause, PGRR144 as-built model review, Batch Zero Verification RFI process, NSF Science and Technology Center cooperative agreement). It is an agency procedure gate, not a grid study or permit.",
   "neutrality_screen": "Covers authority, deadline, procedure and stated reasons only. The petition and supportive comments contain advocacy language, which is not adopted. No position is taken on metering, data centers or the petitioner."
@@ -244,13 +249,13 @@
   {
    "claim": "Government Code Section 2001.021(c) requires a state agency, not later than the 60th day after submission of a petition, to deny the petition in writing stating its reasons or initiate a rulemaking proceeding.",
    "source_urls": [
-    "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm"
+    "https://tcss.legis.texas.gov/resources/GV/htm/GV.2001.htm"
    ]
   },
   {
    "claim": "Section 2001.021(a) lets an interested person petition a state agency to request adoption of a rule.",
    "source_urls": [
-    "https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2001.htm"
+    "https://tcss.legis.texas.gov/resources/GV/htm/GV.2001.htm"
    ]
   },
   {
