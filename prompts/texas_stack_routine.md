@@ -54,6 +54,17 @@ If the connector has no profile endpoint, use only an independently verified con
 binding supplied privately by the environment; never infer identity from a draft recipient or
 message sender. Without that binding, record gmail_recipient_unverified and do not write a draft.
 
+For Claude's connector without a profile tool, TEXAS_STACK_GMAIL_BINDING supplies the privately
+verified profile binding and an unsent mailbox challenge. Run scripts/gmail_binding.py --out
+.local/gmail_binding.json without displaying the file or environment value. Read the exact
+marker_subject draft with full HTML and labels once, preserve the connector result privately
+as .local/gmail_binding_readback.json, then run scripts/gmail_binding.py --out
+.local/gmail_binding.json --readback .local/gmail_binding_readback.json. Continue only when
+mailbox_challenge_verified is true. The marker was issued through the authenticated profile
+connector into that mailbox's draft store; it verifies the cross-connector binding without
+using a sender or recipient field. A missing or changed marker fails closed. Keep these
+fields and readbacks under ignored .local; never include them in a public run receipt.
+
 Record capabilities before research: fetched web evidence, GitHub access, procedural rendering,
 verified self-recipient, Gmail draft create/update and full HTML/label readback. If the active
 request explicitly requires built-in ImageGen and the tool is absent, report that boundary.
