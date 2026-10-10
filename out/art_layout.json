@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "headline": "NO TEXAS MECHANISM CLEARED THE EVIDENCE GATE",
+  "font_size": 74,
+  "lines": [
+    "NO TEXAS MECHANISM",
+    "CLEARED THE",
+    "EVIDENCE GATE"
+  ],
+  "positions": [
+    [
+      64,
+      740
+    ],
+    [
+      64,
+      811
+    ],
+    [
+      64,
+      883
+    ]
+  ],
+  "text_boxes": [
+    [
+      64,
+      740,
+      995,
+      795
+    ],
+    [
+      64,
+      811,
+      639,
+      867
+    ],
+    [
+      64,
+      883,
+      716,
+      938
+    ]
+  ],
+  "headline_top": 740,
+  "subject_zone": [
+    64,
+    196,
+    1016,
+    700
+  ],
+  "canvas": [
+    1080,
+    1080
+  ]
+}

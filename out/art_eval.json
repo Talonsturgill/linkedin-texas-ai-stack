@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "source": "procedural",
+  "concepts": [
+    {
+      "render_family": "editorial_scene",
+      "style_family": "sculptural editorial still life",
+      "hue_family": "moss_magenta",
+      "composition": "opposed_banks",
+      "motifs": [
+        "missing keystone"
+      ],
+      "seed": 962876846,
+      "story_treatment": "incomplete_evidence"
+    },
+    {
+      "render_family": "charcoal",
+      "style_family": "charcoal chiaroscuro",
+      "hue_family": "ivory_charcoal",
+      "composition": "split_field",
+      "motifs": [
+        "sliding pin"
+      ],
+      "seed": 517182541,
+      "story_treatment": "incomplete_evidence"
+    },
+    {
+      "render_family": "volume",
+      "style_family": "illuminated volume study",
+      "hue_family": "ochre_cyan",
+      "composition": "ascending_terraces",
+      "motifs": [
+        "locking collar"
+      ],
+      "seed": 700157731,
+      "story_treatment": "incomplete_evidence"
+    }
+  ],
+  "selected_concept": "editorial_scene / missing keystone (incomplete_evidence)",
+  "render_family": "editorial_scene",
+  "style_family": "sculptural editorial still life",
+  "hue_family": "moss_magenta",
+  "composition": "opposed_banks",
+  "motifs": [
+    "missing keystone"
+  ],
+  "palette": [
+    "#192515",
+    "#0B1309",
+    "#E5E8C9",
+    "#87A655",
+    "#DD6396"
+  ],
+  "seed": 962876846,
+  "renderer_sha256": "b04bbe92b62babe215bc1a24f4deeb8869ce442bda668f11cac7beef79e98195",
+  "spec_sha256": "22615649919debc226269f1dff72a7484ae15912f630d63610b601b2b4ea8126",
+  "variety_sha256": "541cbf490b1242daa0f50c6472fbfb592963ccf518b9d9476ab852f5c31f2251",
+  "eval_history": [
+    {
+      "pass_number": 1,
+      "scores": {
+        "concept": 6,
+        "focal_hierarchy": 8,
+        "composition": 8,
+        "color_value": 8,
+        "detail_richness": 6,
+        "craft_finish": 8,
+        "typography": 8.5,
+        "originality": 6.5,
+        "story_fidelity": 7
+      },
+      "notes": {
+        "concept": "Two arch halves with a central gap read at once, but the silhouette is a gauge or dial, not a masonry arch; the fit depends on the headline, not the image.",
+        "focal_hierarchy": "The central gap is the clear focal point and the eye moves from the two arms to the gap.",
+        "composition": "Subject is centered and high with generous negative space above the headline band; balanced.",
+        "color_value": "Moss and cream arms separate clearly from the dark green ground at thumbnail, with a restrained magenta accent.",
+        "detail_richness": "Only three radial lines per arm; there is no stone block structure or keystone socket, so the close view has little to reward.",
+        "craft_finish": "Clean edges, believable plinth shadows and no stray marks; the joins are simple but correct.",
+        "typography": "Headline is three lines, readable at 300 px, with footer furniture clear of the subject.",
+        "originality": "Distinct from recent covers in family, hue and motif, but the dial-like form is a familiar graphic.",
+        "story_fidelity": "The gap is a declared evidence metaphor, but a dial reading could imply a measurement that the dossier does not contain."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "The silhouette reads as a gauge or dial rather than an arch missing its keystone, which misstates the meaning of an incomplete evidence chain."
+      ],
+      "base_sha256": "99f2dad2bf2ec2325b209f0ff9c8d371dc39002a73959439bd6c1c58b1f49873",
+      "cover_sha256": "d5d4eeeb5bf3bf248f0cdf916a8697eb3ff5e05ab9b05786b06528d0907abd12",
+      "weighted": 7.285,
+      "passed": false,
+      "observations": "Pass 1 composed cover and 300-pixel sheet inspected. Weighted score is below the 8.5 floor; concept and story fidelity are below 8, so the next repair must change the visible relationship.",
+      "edit_prompt": "Replace the two shallow arcs with masonry arches: voussoir blocks with radial joints, a clear crown void where the keystone would sit, and cut keystone faces at each arch end."
+    },
+    {
+      "pass_number": 2,
+      "scores": {
+        "concept": 7,
+        "focal_hierarchy": 8,
+        "composition": 8,
+        "color_value": 8,
+        "detail_richness": 6.5,
+        "craft_finish": 7,
+        "typography": 8.5,
+        "originality": 6.5,
+        "story_fidelity": 7.5
+      },
+      "notes": {
+        "concept": "The dashed keystone outline makes the missing stone legible, but the arms still read as a gauge or dial rather than a stone arch.",
+        "focal_hierarchy": "The dashed crown gap is the focal point and the eye moves from the arms to the gap and then to the headline.",
+        "composition": "Centered, elevated subject with clear space above the headline band; balanced and uncropped.",
+        "color_value": "Moss and cream arms separate from the dark ground at thumbnail; magenta accent is restrained.",
+        "detail_richness": "Each arm has only three joint lines; the close view shows few stone details and the dashed outline is thin.",
+        "craft_finish": "The magenta cut faces at the arm ends have ragged, frayed edges at full size, a synthetic defect.",
+        "typography": "Headline is three lines, legible at 300 px, with footer furniture clear of the subject.",
+        "originality": "Distinct from recent covers in family, hue and motif, but the arc silhouette is a familiar gauge graphic.",
+        "story_fidelity": "The dashed outline is a declared missing-piece metaphor; it implies no measured value or actual equipment."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "The arms still read as a gauge or dial rather than a stone arch.",
+        "The magenta cut faces at the arm ends have ragged edges at full size."
+      ],
+      "base_sha256": "1ec241df72c0f3d16a1aa06d8f826074408fd298c458f6071baacb45d77ac8dd",
+      "cover_sha256": "0749ce3b4a01eee91c274795ac4dfc2b42c423b73c911c56e8c8efa9a708f10c",
+      "weighted": 7.445,
+      "passed": false,
+      "observations": "Pass 2 added a dashed keystone outline in the crown gap. The missing-keystone signal is clearer, but the silhouette still reads as a dial and the cut faces are ragged, so the weighted score remains below the floor.",
+      "edit_prompt": "Replace the solid arms with separate voussoir blocks separated by mortar gaps, drop the magenta cut-face polygons, and keep the dashed keystone outline."
+    },
+    {
+      "pass_number": 3,
+      "scores": {
+        "concept": 8,
+        "focal_hierarchy": 8,
+        "composition": 8,
+        "color_value": 8,
+        "detail_richness": 7.5,
+        "craft_finish": 7.5,
+        "typography": 8.5,
+        "originality": 7.5,
+        "story_fidelity": 8
+      },
+      "notes": {
+        "concept": "The arms now read as a voussoir arch with a crown void, so the missing keystone is the visible idea; it fits this no-target decision.",
+        "focal_hierarchy": "The crown gap is the focal point, and the eye moves from the blocks to the gap, then to the headline.",
+        "composition": "Centered, elevated arch with clear space above the headline band; balanced and uncropped.",
+        "color_value": "Moss and cream blocks separate from the dark ground at thumbnail; the magenta is limited to the plinths.",
+        "detail_richness": "Five blocks per arm with mortar joints and shading give stone detail, but the dashed keystone outline is thin at 300 px.",
+        "craft_finish": "Block edges are clean; the heavy dark cast shadows under each block make the joints look slightly stacked.",
+        "typography": "Headline is three lines, legible at 300 px, with footer furniture clear of the subject.",
+        "originality": "Distinct from recent covers in family, hue and motif, but an arch of stones is a familiar editorial image.",
+        "story_fidelity": "The dashed crown outline is a declared missing-piece metaphor; it implies no measured value, approval or actual equipment."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "f47661f744dbba817cb463795406494956961c96bf7a07c89d4e216072261613",
+      "cover_sha256": "5417cc2bcd49c9ad2949f8e7863e94e3c2474d9467b7131cde684a7d3d81865d",
+      "weighted": 7.895,
+      "passed": false,
+      "observations": "Pass 3 reads as stone masonry with a missing keystone. Weighted estimate is below the 8.5 floor, mainly on detail, craft and originality.",
+      "edit_prompt": "Strengthen the dashed keystone outline and reduce the block cast shadow so joints read as mortar, not stacked slabs."
+    },
+    {
+      "pass_number": 4,
+      "scores": {
+        "concept": 8,
+        "focal_hierarchy": 8,
+        "composition": 8,
+        "color_value": 8,
+        "detail_richness": 7.5,
+        "craft_finish": 8,
+        "typography": 8.5,
+        "originality": 7.5,
+        "story_fidelity": 8
+      },
+      "notes": {
+        "concept": "Stone voussoirs around a dashed crown gap read as a missing keystone, and the headline matches the no-target evidence gap.",
+        "focal_hierarchy": "The dashed crown gap is the focal point, and the eye moves from the blocks to the gap to the headline.",
+        "composition": "Centered arch with clear space above the headline band; balanced and uncropped.",
+        "color_value": "Moss and cream blocks separate from the dark ground at thumbnail; magenta is limited to the plinths.",
+        "detail_richness": "Five blocks per arm with mortar joints give stone detail, but the arms have no further surface detail.",
+        "craft_finish": "Block edges are clean and the cast shadows are crisper than pass 3; no ragged edges remain.",
+        "typography": "Headline is three lines, legible at 300 px, with footer furniture clear of the subject.",
+        "originality": "Distinct from recent covers in family, hue and motif, but an arch of stones is a familiar editorial image.",
+        "story_fidelity": "The dashed crown outline is a declared missing-piece metaphor; it implies no measured value, approval or actual equipment."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "0b8b1510977f88282ce1f056c7b3c5ecf5433a0d3f5f92eb4eddc97de2d44a0e",
+      "cover_sha256": "4994b27573d89f4ba1a62e069acb6c9fcb9a9d4c4ae680e193279e8a5b317a75",
+      "weighted": 7.945,
+      "passed": false,
+      "observations": "Pass 4 strengthens the dashed keystone outline and sharpens the block joints. Weighted estimate is about 7.95, below the 8.5 floor; no selection.",
+      "edit_prompt": "None. Further gains would require a new concept rather than surface polish, so this candidate is held as needs_attention."
+    }
+  ],
+  "eval_final": null,
+  "evaluation_protocol": 2
+}

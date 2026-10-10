@@ -33,14 +33,14 @@ def record(eval_path: Path, review_path: Path, base: Path, cover: Path, select: 
     if not isinstance(review.get('blockers'),list) or any(not isinstance(v,str) or not v.strip() for v in review['blockers']):
         raise ValueError('record blockers as a list, including an empty list when none remain')
     history=ledger.setdefault('eval_history',[])
-    if replace_pass is None and len(history)>=6:raise ValueError('six ImageGen passes already recorded')
+    if replace_pass is None and len(history)>=6:raise ValueError('six rendering passes already recorded')
     if replace_pass is not None and not 1<=replace_pass<=len(history):
         raise ValueError('replacement must identify an existing generation')
     base_hash=sha256(base)
     if replace_pass is not None and history[replace_pass-1].get('base_sha256')!=base_hash:
         raise ValueError('a typography re-review must retain the same generated base')
     if replace_pass is None and any(row.get('base_sha256')==base_hash for row in history):
-        raise ValueError('this ImageGen base is already recorded; typography repair is not a new generation')
+        raise ValueError('this base is already recorded; typography repair is not a new rendering')
     weighted=round(sum(scores[k]*w for k,w in WEIGHTS.items()),3)
     row=dict(pass_number=replace_pass or len(history)+1,scores=scores,notes=notes,
              inspected_scales=review['inspected_scales'],blockers=review['blockers'],
