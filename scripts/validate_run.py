@@ -228,6 +228,8 @@ def validate_dossier(dossier: dict, errors: list[str]) -> tuple[bool, dict]:
     no_target = dossier.get("no_target_this_cycle") is True
     mechanism = dossier.get("selected_mechanism") or {}
     if no_target:
+        if (dossier.get('research_capabilities') or {}).get('primary_source_fetch') is False:
+            errors.append('Missing primary network capability cannot be classified as completed no-target research')
         if dossier.get("selected_mechanism"):
             errors.append("no-target dossier cannot contain a selected mechanism")
         if not dossier.get("_validation_note"):

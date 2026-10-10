@@ -254,6 +254,13 @@ class PostTests(unittest.TestCase):
 
 
 class DossierTests(unittest.TestCase):
+    def test_missing_primary_network_is_not_completed_no_target_research(self) -> None:
+        value=dossier(no_target=True)
+        value['research_capabilities']={'primary_source_fetch':False}
+        errors=[]
+        validate_run.validate_dossier(value,errors)
+        self.assertTrue(any('network capability' in e for e in errors))
+
     def test_target_dossier_passes_structural_validation(self) -> None:
         errors: list[str] = []
         no_target, mechanism = validate_run.validate_dossier(dossier(), errors)
