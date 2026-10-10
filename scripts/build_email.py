@@ -80,6 +80,17 @@ def art_summary(art_eval: dict) -> str:
     )
 
 
+def art_table(art_eval: dict) -> str:
+    final=art_eval.get('eval_final') or {}
+    notes=final.get('notes') or {}
+    rows=[]
+    for name,value in (final.get('scores') or {}).items():
+        rows.append(f'<tr><td>{safe(name.replace("_"," "))}</td><td>{safe(value)}</td>'
+                    f'<td>{safe(notes.get(name) or "No evidence note recorded in this legacy evaluation.")}</td></tr>')
+    if not rows:return ''
+    return '<table><tr><th>Criterion</th><th>Score</th><th>Notes</th></tr>'+''.join(rows)+'</table>'
+
+
 def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
                 art_eval: dict, date: str, branch: str, commit: str,
                 editor_note: str) -> str:
@@ -103,9 +114,12 @@ def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
 
     score_rows = []
     for row in score.get("criteria", []):
+        note=row.get('notes') or row.get('note')
+        if not isinstance(note,str) or not note.strip():
+            raise ValueError('Each editorial score requires its recorded evidence note')
         score_rows.append(
             f"<tr><td>{safe(row.get('name'))}</td><td>{safe(row.get('score'))}</td>"
-            f"<td>{safe(row.get('weight'))}</td><td>{safe(row.get('notes'))}</td></tr>"
+            f"<td>{safe(row.get('weight'))}</td><td>{safe(note)}</td></tr>"
         )
     score_table = ""
     if score_rows:
@@ -146,6 +160,7 @@ def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
 <h2>Sources</h2><ul>{''.join(source_items)}</ul>
 {score_table}
 <h2>Artwork evaluation</h2><p>{art_summary(art_eval)}</p>
+{art_table(art_eval)}
 <div class="{note_class}"><b>Editor note</b><br>{safe(editor_note).replace(chr(10), '<br>')}</div>
 <div class="foot">Generated {safe(dt.datetime.now(dt.timezone.utc).isoformat())} ·
 commit {safe(commit)} · draft only, never sent.</div>

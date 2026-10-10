@@ -111,4 +111,15 @@ class ArtEngineTests(unittest.TestCase):
         positions=[html.index(x) for x in order];self.assertEqual(positions,sorted(positions))
         self.assertEqual(html.count('<img '),1)
 
+    def test_email_preserves_native_editorial_notes_and_every_art_dimension(self):
+        art=art_eval();art['eval_final']['notes']={k:f'Observed {k} <detail>' for k in art['eval_final']['scores']}
+        rows=[{'name':'Hook','score':9,'weight':.5,'note':'Native singular evidence'},
+              {'name':'Clarity','score':8,'weight':.5,'notes':'Canonical plural evidence'}]
+        args=dict(post=valid_post(),image_url='https://example.com/image.png',dossier=dossier(),score={'criteria':rows},art_eval=art,date='date',branch='branch',commit='commit',editor_note='Review this.')
+        body=build_email.render_html(**args)
+        for text in ('Native singular evidence','Canonical plural evidence',*[f'Observed {k} &lt;detail&gt;' for k in art['eval_final']['scores']]):
+            self.assertIn(text,body)
+        rows[0].pop('note')
+        with self.assertRaisesRegex(ValueError,'recorded evidence note'):build_email.render_html(**args)
+
 if __name__=='__main__':unittest.main()
