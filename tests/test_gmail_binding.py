@@ -71,5 +71,30 @@ class BindingTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'Private challenge message identifier is invalid'):
                 load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps({**binding,'marker_message_id':message_id})})
 
+    def test_google_mcp_thread_keeps_full_body_id_and_labels_on_the_same_message(self):
+        binding={**self.binding,'marker_message_id':'bound-message','marker_thread_id':'bound-thread'}
+        for key in ('htmlBody','plaintextBody'):
+            message={'id':'bound-message','subject':'Mailbox proof',
+                     key:'<p>'+binding['marker']+'</p>','labelIds':['DRAFT']}
+            self.assertTrue(verify(binding,{'id':'bound-thread','messages':[message]}))
+            self.assertFalse(verify(binding,{'id':'bound-thread','messages':[
+                {**message,'id':'another-message'},
+                {'id':'bound-message','subject':'Mailbox proof','labelIds':['DRAFT']}]}))
+            self.assertFalse(verify(binding,{**message,'labelIds':['DRAFT','SENT']}))
+            metadata={k:v for k,v in message.items() if k!=key}
+            self.assertFalse(verify(binding,{**metadata,'snippet':binding['marker']}))
+
+    def test_thread_reference_requires_an_explicit_valid_message_reference(self):
+        binding={**self.binding,'schema_version':1,
+                 'profile_provider':'authenticated_gmail_profile','recipient':'owner@example.invalid',
+                 'profile_verified_at_utc':'2026-10-11T00:00:00Z','marker_thread_id':'bound-thread'}
+        with self.assertRaisesRegex(ValueError,'requires the bound message identifier'):
+            load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps(binding)})
+        binding['marker_message_id']='bound-message'
+        self.assertEqual(load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps(binding)}),binding)
+        for thread_id in ('',' ',False,3,[], 'https://example.invalid/thread','a'*513):
+            with self.assertRaisesRegex(ValueError,'Private challenge thread identifier is invalid'):
+                load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps({**binding,'marker_thread_id':thread_id})})
+
 
 if __name__=='__main__':unittest.main()

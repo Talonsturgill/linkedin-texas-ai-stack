@@ -36,6 +36,10 @@ strongest fully verified candidate is selected.
 
 Use America/Chicago dates. Check clean repository, origin, GitHub authentication without printing
 credentials, web, Gmail draft and Python/Pillow/NumPy rendering capability. No image API is needed.
+Before installing dependencies, check for an existing .venv in the repository root or user home.
+Reuse one with Python 3.11 or newer and passing Pillow, PyYAML and NumPy imports. Cloud setup can
+run from the home directory. Record the selected interpreter in .local/run_state.json and use
+it for every Python check and renderer command.
 Run scripts/run_date.py once for the ISO run_date and exact cover_date; use its output for the
 branch, dossier, history window and cover. The cloud host's date, UTC day and conversation date
 are not the editorial date. Preserve that checked instant in .local/run_state.json.
@@ -66,8 +70,11 @@ message sender. Without that binding, record gmail_recipient_unverified and do n
 For Claude's connector without a profile tool, TEXAS_STACK_GMAIL_BINDING supplies the privately
 verified profile binding and an unsent mailbox challenge. Run scripts/gmail_binding.py --out
 .local/gmail_binding.json without displaying the file or environment value. When the private
-binding supplies marker_message_id, read that exact message directly with full MIME and labels
-once; its ID, subject, body marker and draft labels must all match. Otherwise find the exact
+binding supplies marker_thread_id and marker_message_id, read that exact thread with full
+content once and verify only the bound message inside it. Google Gmail MCP returns full bodies
+as htmlBody or plaintextBody; the verifier also supports raw Gmail API MIME parts. When only
+marker_message_id is supplied, read that exact message with full content once. Its message ID,
+subject, full body marker and draft labels must all match on the same message. Otherwise find the exact
 marker_subject draft and read its full HTML and labels once. Do not dump a mailbox listing or
 retry a missing challenge with broader searches. Preserve the connector result privately
 as .local/gmail_binding_readback.json, then run scripts/gmail_binding.py --out

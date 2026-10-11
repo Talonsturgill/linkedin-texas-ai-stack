@@ -21,10 +21,13 @@ def load_binding(environ):
         raise ValueError('Private recipient binding is invalid')
     if not re.fullmatch(r'[a-f0-9]{32}',value.get('marker','')) or not value.get('marker_subject'):
         raise ValueError('Private mailbox challenge is missing')
-    message_id=value.get('marker_message_id')
-    if message_id is not None and (not isinstance(message_id,str)
-            or not re.fullmatch(r'[A-Za-z0-9_-]{1,512}',message_id)):
-        raise ValueError('Private challenge message identifier is invalid')
+    for kind in ('message','thread'):
+        identifier=value.get('marker_'+kind+'_id')
+        if identifier is not None and (not isinstance(identifier,str)
+                or not re.fullmatch(r'[A-Za-z0-9_-]{1,512}',identifier)):
+            raise ValueError('Private challenge '+kind+' identifier is invalid')
+    if value.get('marker_thread_id') and not value.get('marker_message_id'):
+        raise ValueError('Private thread challenge requires the bound message identifier')
     dt.datetime.fromisoformat(value['profile_verified_at_utc'].replace('Z','+00:00'))
     return value
 
@@ -72,7 +75,8 @@ def verify(binding,readback):
             for header in payload.get('headers',[]):
                 if header.get('name','').lower()=='subject':subject=header.get('value')
         if subject!=binding['marker_subject']:continue
-        body_keys=('body','body_html','body_text','bodyHtml','bodyText','html','text')
+        body_keys=('body','body_html','body_text','bodyHtml','bodyText',
+                   'htmlBody','plaintextBody','html','text')
         text=[s for key in body_keys for s in strings(candidate.get(key))]
         text+=list(mime_body_text(payload));labels=[]
         for key,value in candidate.items():
