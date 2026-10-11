@@ -140,5 +140,15 @@ class BindingTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'Private challenge draft identifier is invalid'):
                 load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps({**binding,'marker_draft_id':draft_id})})
 
+    def test_raw_routing_value_must_match_independently_verified_recipient(self):
+        binding={**self.binding,'marker_draft_id':'draft','marker_message_id':'message',
+                 'recipient':'owner@example.invalid'}
+        for to,expected in (('owner@example.invalid',True),('other@example.invalid',False),
+                            ('owner@example.invalid, other@example.invalid',False),('',False)):
+            mime=('Subject: Mailbox proof\r\nTo: '+to+'\r\nContent-Type: text/plain\r\n\r\n'+binding['marker'])
+            raw=base64.urlsafe_b64encode(mime.encode()).decode()
+            row={'id':'draft','messageId':'message','labelIds':['DRAFT'],'raw':raw}
+            self.assertEqual(verify(binding,row),expected)
+
 
 if __name__=='__main__':unittest.main()

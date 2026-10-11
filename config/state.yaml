@@ -12,6 +12,7 @@ repository: "Talonsturgill/linkedin-texas-ai-stack"
 draft_subject: "Texas AI Docket — The Texas Stack Draft — {date}"
 no_target_subject: "Texas AI Docket — The Texas Stack — No Target — {date}"
 recipient_source: "gmail_profile"
+mailbox_challenge_subject: "The Texas Stack — Connected Account Proof"
 artifact_size: [1080, 1080]
 artwork_source: "procedural"
 schedule:

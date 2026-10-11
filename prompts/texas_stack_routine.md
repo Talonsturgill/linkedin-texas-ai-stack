@@ -69,27 +69,28 @@ message sender. Without that binding, record gmail_recipient_unverified and do n
 
 For Claude's connector without a profile tool, TEXAS_STACK_GMAIL_BINDING supplies the privately
 verified profile binding and an unsent mailbox challenge. Run scripts/gmail_binding.py --out
-.local/gmail_binding.json without displaying the file or environment value. Prefer the actual
-connected Gmail draft API used by the working routine, not a similarly named directory server.
-When marker_draft_id is supplied, call Get draft email with that draftId and messageFormat RAW.
+.local/gmail_binding.json without displaying the file or environment value. Use the connected
+Gmail draft API. List draft emails with the exact public mailbox_challenge_subject from
+config/state.yaml and pageSize 5. Require one exact match and pass the draft ID returned by
+Gmail directly to Get draft email with messageFormat RAW. Do not print private environment
+identifiers to obtain tool arguments. The verifier checks the independently bound identifiers
+privately; the public subject alone cannot verify access. Require marker_draft_id and marker_message_id.
 Its draft ID, message ID, decoded MIME subject and full body marker, and DRAFT/no-SENT labels
-must match together. A draft ID is never a message or thread ID. When no draft ID is supplied but
-the binding supplies marker_thread_id and marker_message_id, read that exact thread with full
-content once and verify only the bound message inside it. Google Gmail MCP returns full bodies
-as htmlBody or plaintextBody; the verifier also supports raw Gmail API MIME parts. When only
-marker_message_id is supplied, read that exact message with full content once. Its message ID,
-subject, full body marker and draft labels must all match on the same message. Otherwise find the exact
-marker_subject draft and read its full HTML and labels once. Do not dump a mailbox listing or
+must match together, including the privately bound routing recipient. A draft ID is never a
+message or thread ID. Do not dump a mailbox listing or
 retry a missing challenge with broader searches. Preserve the connector result privately
 as .local/gmail_binding_readback.json, then run scripts/gmail_binding.py --out
 .local/gmail_binding.json --readback .local/gmail_binding_readback.json. Continue only when
 mailbox_challenge_verified is true. The marker was issued through the authenticated profile
 connector into that mailbox's draft store; it verifies the cross-connector binding without
 using a sender or recipient field. A missing or changed marker fails closed. Keep these
-fields and readbacks under ignored .local; never include them in a public run receipt. Extract
-actual tool results from the current session transcript programmatically; never transcribe or
-rebuild a RAW/base64 result from model context. Reuse the Get draft email RAW path for final
-delivery readback when the connected tool supplies it.
+fields and readbacks under ignored .local; never include them in a public run receipt. Run
+scripts/gmail_delivery.py extract --binding .local/gmail_binding.json --out
+.local/gmail_binding_readback.json to extract the actual matching RAW tool result from this
+repository's current session transcript. Never transcribe or rebuild RAW/base64 from context.
+After successful verification, a recipient returned by Gmail's challenge metadata may be used
+only as a routing value after it matches the independently verified private binding; it is
+never the source of identity. Reuse the Get draft email RAW path for final delivery readback.
 
 Record capabilities before research: fetched web evidence, GitHub access, procedural rendering,
 verified self-recipient, Gmail draft create/update and full HTML/label readback. If the active
@@ -246,7 +247,21 @@ Never call send. Use the returned draft ID with Get draft email and messageForma
 the actual full MIME from the current tool result, not a reconstructed email. On a connector
 without this tool, use its full-body draft readback. Read back subject, connected recipient privately, full HTML/post, inline image,
 visible clickable immutable URL, all sources, scores, note, branch/commit, DRAFT and absence of
-SENT. Inspect the rendered email if markup/layout changed or loading is uncertain. Store private
+SENT. Claude's connected draft writer can strip external image tags, styles and other markup.
+For that connector, run scripts/gmail_delivery.py prepare --payload .local/gmail_payload.json
+--image out/post_image.png --out .local/gmail_native_packet.json. It creates a compact JPEG
+preview attachment from the accepted cover, plus the complete HTML and immutable image link.
+Copy the packet's actual public body/attachment values unchanged to the connected create/update
+tool; do not rebuild or retype encoded bytes. Keep the verified self-recipient; omission preserves
+it when updating a draft. Read the stored draft as RAW and extract it with
+scripts/gmail_delivery.py extract --subject "<exact issue subject>" --out .local/gmail_raw.json.
+Then run scripts/gmail_delivery.py verify --payload .local/gmail_payload.json --binding
+.local/gmail_binding.json --readback .local/gmail_raw.json --preview .local/gmail_native_packet.preview.json
+--out .local/gmail_verified.json. Require complete decoded body text, every source/image link,
+subject, bound recipient, DRAFT/no-SENT and the exact preview attachment bytes. Report markup
+sanitization honestly; an attached preview plus the verified full-cover link replaces a stripped
+inline image on this connector. A screenshot or successful write alone is insufficient.
+Inspect the rendered email if markup/layout changed or loading is uncertain. Store private
 receipts under .local. Report mechanism/no-target, category, branch, exact commit, draft PR,
 procedural/ImageGen/legacy-fallback source, art score, verified URL, validation and draft state. Do not expose the
 address or draft identifier. State that nothing was sent, posted or merged.

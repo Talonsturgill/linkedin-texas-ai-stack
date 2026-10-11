@@ -53,6 +53,7 @@ def validate() -> list[str]:
         "repository": "Talonsturgill/linkedin-texas-ai-stack",
         "artifact_size": [1080, 1080],
         "artwork_source": "procedural",
+        "mailbox_challenge_subject": "The Texas Stack — Connected Account Proof",
     }
     for key, expected in expected_state.items():
         if state.get(key) != expected:

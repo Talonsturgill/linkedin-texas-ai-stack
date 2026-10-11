@@ -6,6 +6,7 @@ import binascii
 import datetime as dt
 from email import policy
 from email.parser import BytesParser
+from email.utils import getaddresses
 import json
 import os
 import re
@@ -77,19 +78,20 @@ def challenge_candidates(readback,draft_id):
 
 def raw_message_content(raw):
     """Decode a real draft RAW result, excluding attachment and header-only markers."""
-    if not isinstance(raw,str):return None,[]
+    if not isinstance(raw,str):return None,[],[]
     try:
         data=base64.b64decode(raw+'='*(-len(raw)%4),altchars=b'-_',validate=True)
         message=BytesParser(policy=policy.default).parsebytes(data)
-        if message.defects:return None,[]
+        if message.defects:return None,[],[]
         text=[]
         for part in message.walk():
             if (part.get_content_maintype()=='text' and not part.get_filename()
                     and part.get_content_disposition()!='attachment'):
                 content=part.get_content()
                 if isinstance(content,str):text.append(content)
-        return str(message['Subject']) if message['Subject'] is not None else None,text
-    except (ValueError,binascii.Error,UnicodeError,LookupError):return None,[]
+        recipients=[address.casefold() for _,address in getaddresses(message.get_all('To',[]))]
+        return str(message['Subject']) if message['Subject'] is not None else None,text,recipients
+    except (ValueError,binascii.Error,UnicodeError,LookupError):return None,[],[]
 
 
 def verify(binding,readback):
@@ -109,7 +111,12 @@ def verify(binding,readback):
                    'htmlBody','plaintextBody','html','text')
         text=[s for key in body_keys for s in strings(candidate.get(key))]
         text+=list(mime_body_text(payload))
-        if 'raw' in candidate:subject,text=raw_message_content(candidate['raw'])
+        if 'raw' in candidate:
+            subject,text,recipients=raw_message_content(candidate['raw'])
+            # Identity still comes from the authenticated profile plus challenge.
+            # This equality permits the already-verified address to be reused as
+            # a routing value from Gmail's own metadata, without printing the env.
+            if binding.get('recipient') and recipients!=[binding['recipient'].casefold()]:continue
         if subject!=binding['marker_subject']:continue
         labels=[]
         for key,value in candidate.items():
