@@ -108,8 +108,20 @@ def extract_result(records,*,draft_id=None,subject=None):
     return matches[-1]
 
 
+def native_body_html(document):
+    """Keep the complete copy readable after the connector removes document CSS."""
+    match=re.search(r'<body\b[^>]*>(.*)</body>',document,re.I|re.S)
+    fragment=match.group(1) if match else document
+    fragment=re.sub(r'<pre\b[^>]*>(.*?)</pre>',
+                    lambda m:'<p>'+m.group(1).replace('\n','<br>')+'</p>',fragment,flags=re.I|re.S)
+    # Break opportunities do not alter visible URL text or the href target.
+    fragment=re.sub(r'(<a\b[^>]*>)(https?://[^<]+)(</a>)',
+                    lambda m:m.group(1)+m.group(2).replace('/','/<wbr>')+m.group(3),fragment,flags=re.I)
+    return fragment
+
+
 def prepare(payload,image_path=None):
-    packet={'subject':payload['subject'],'bodyHtml':payload['payload']['body']['content']}
+    packet={'subject':payload['subject'],'bodyHtml':native_body_html(payload['payload']['body']['content'])}
     if image_path is None:return packet,None
     from PIL import Image
     image=Image.open(image_path).convert('RGB');image.thumbnail((160,160))
@@ -120,8 +132,7 @@ def prepare(payload,image_path=None):
     if len(data)>4096:raise ValueError('Preview exceeds the small attachment budget')
     attachment={'filename':'texas-stack-preview.jpg','mimeType':'image/jpeg',
                 'content':base64.b64encode(data).decode()}
-    packet={'subject':payload['subject'],'bodyHtml':payload['payload']['body']['content'],
-            'attachments':[attachment]}
+    packet['attachments']=[attachment]
     proof={'filename':attachment['filename'],'mime_type':'image/jpeg','bytes':len(data),
            'sha256':hashlib.sha256(data).hexdigest(),'width':image.width,'height':image.height,
            'quality':quality}

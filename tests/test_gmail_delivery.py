@@ -84,12 +84,13 @@ class GmailDeliveryTests(unittest.TestCase):
         self.assertEqual(len(data),proof['bytes']);self.assertLessEqual(len(data),4096)
         self.assertEqual(hashlib.sha256(data).hexdigest(),proof['sha256'])
         self.assertNotIn('to',packet);self.assertNotIn('toRecipients',packet)
-        self.assertEqual(packet['bodyHtml'],self.body)
+        self.assertEqual(VisibleHTML(packet['bodyHtml']).visible(),VisibleHTML(self.body).visible())
 
     def test_normal_daily_connector_path_has_no_encoded_attachment_and_requires_cover_link(self):
         packet,proof=prepare(self.payload)
         self.assertIsNone(proof);self.assertNotIn('attachments',packet)
-        self.assertEqual(packet,{'subject':'Test draft','bodyHtml':self.body})
+        self.assertEqual(packet['subject'],'Test draft')
+        self.assertEqual(VisibleHTML(packet['bodyHtml']).visible(),VisibleHTML(self.body).visible())
         sanitized='<h2>Post</h2><p>Verified full copy.</p><a href="'+self.url+'">Full cover</a>'
         report=verify_delivery(self.payload,self.binding,self.raw(sanitized,attachment=None))
         self.assertTrue(report['ok']);self.assertEqual(report['delivery_image_mode'],'immutable_full_cover_link')
@@ -112,6 +113,16 @@ class GmailDeliveryTests(unittest.TestCase):
                      'https://www.google.com/url?url='+quote(self.url,safe=''),
                      'https://www.google.com/url?q=javascript:alert(1)'):
             self.assertEqual(delivered_link_target(href),href)
+
+    def test_native_packet_wraps_post_without_css_and_preserves_all_visible_copy_and_links(self):
+        document='<html><head><style>pre{white-space:pre-wrap}</style></head><body><pre class="post">First line.\n\nA very long paragraph with spaces.</pre><a href="'+self.url+'">'+self.url+'</a></body></html>'
+        payload=copy.deepcopy(self.payload);payload['payload']['body']['content']=document
+        packet,_=prepare(payload)
+        self.assertNotIn('<head',packet['bodyHtml']);self.assertNotIn('<style',packet['bodyHtml'])
+        self.assertNotIn('<pre',packet['bodyHtml']);self.assertIn('<br>',packet['bodyHtml'])
+        self.assertIn('<wbr>',packet['bodyHtml'])
+        original=VisibleHTML(document);native=VisibleHTML(packet['bodyHtml'])
+        self.assertEqual(native.visible(),original.visible());self.assertEqual(native.links,original.links)
 
 
 if __name__=='__main__':unittest.main()

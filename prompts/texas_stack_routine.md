@@ -250,8 +250,11 @@ visible clickable immutable URL, all sources, scores, note, branch/commit, DRAFT
 SENT. Claude's connected draft writer can strip external image tags, styles and other markup.
 Use the same connected draft API as the daily routines. Run scripts/gmail_delivery.py prepare
 --payload .local/gmail_payload.json --out .local/gmail_native_packet.json. Copy its actual subject
-and public bodyHtml unchanged to the connected create/update tool. The full accepted artwork is
-available at the visible, clickable immutable URL even when an inline image is sanitized. The
+and public bodyHtml unchanged to the connected create/update tool. The packet omits unsupported
+document CSS and uses wrapping paragraphs with line breaks for
+the complete post; URL break opportunities preserve both visible text and href targets.
+The full accepted artwork is available at the visible, clickable immutable URL even when an
+inline image is sanitized. The
 normal Claude path uses this full-cover link and does not relay attachments or Base64 through
 the model. Keep the verified self-recipient; omission preserves
 it when updating a draft. Read the stored draft as RAW and extract it with
