@@ -21,6 +21,10 @@ def load_binding(environ):
         raise ValueError('Private recipient binding is invalid')
     if not re.fullmatch(r'[a-f0-9]{32}',value.get('marker','')) or not value.get('marker_subject'):
         raise ValueError('Private mailbox challenge is missing')
+    message_id=value.get('marker_message_id')
+    if message_id is not None and (not isinstance(message_id,str)
+            or not re.fullmatch(r'[A-Za-z0-9_-]{1,512}',message_id)):
+        raise ValueError('Private challenge message identifier is invalid')
     dt.datetime.fromisoformat(value['profile_verified_at_utc'].replace('Z','+00:00'))
     return value
 
@@ -58,6 +62,10 @@ def verify(binding,readback):
     # A random challenge issued only as a draft in the authenticated mailbox proves
     # cross-connector access. No sender or recipient field is used as identity evidence.
     for candidate in dictionaries(readback):
+        expected_id=binding.get('marker_message_id')
+        if expected_id and not any(candidate.get(key)==expected_id
+                for key in ('id','message_id','messageId')):
+            continue
         subject=candidate.get('subject')
         payload=candidate.get('payload') or {}
         if isinstance(payload,dict):

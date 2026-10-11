@@ -65,8 +65,11 @@ message sender. Without that binding, record gmail_recipient_unverified and do n
 
 For Claude's connector without a profile tool, TEXAS_STACK_GMAIL_BINDING supplies the privately
 verified profile binding and an unsent mailbox challenge. Run scripts/gmail_binding.py --out
-.local/gmail_binding.json without displaying the file or environment value. Read the exact
-marker_subject draft with full HTML and labels once, preserve the connector result privately
+.local/gmail_binding.json without displaying the file or environment value. When the private
+binding supplies marker_message_id, read that exact message directly with full MIME and labels
+once; its ID, subject, body marker and draft labels must all match. Otherwise find the exact
+marker_subject draft and read its full HTML and labels once. Do not dump a mailbox listing or
+retry a missing challenge with broader searches. Preserve the connector result privately
 as .local/gmail_binding_readback.json, then run scripts/gmail_binding.py --out
 .local/gmail_binding.json --readback .local/gmail_binding_readback.json. Continue only when
 mailbox_challenge_verified is true. The marker was issued through the authenticated profile
