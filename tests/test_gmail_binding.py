@@ -96,5 +96,49 @@ class BindingTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'Private challenge thread identifier is invalid'):
                 load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps({**binding,'marker_thread_id':thread_id})})
 
+    def test_actual_claude_raw_draft_binds_both_resource_identifiers(self):
+        binding={**self.binding,'marker_draft_id':'r-bound-draft','marker_message_id':'bound-message'}
+        mime=('Subject: Mailbox proof\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n'
+              '<p>'+binding['marker']+'</p>')
+        raw=base64.urlsafe_b64encode(mime.encode()).decode().rstrip('=')
+        row={'id':'r-bound-draft','messageId':'bound-message','labelIds':['DRAFT'],'raw':raw}
+        self.assertTrue(verify(binding,row))
+        self.assertTrue(verify(binding,{'id':'r-bound-draft','message':{
+            'id':'bound-message','labelIds':['DRAFT'],'raw':raw}}))
+        for change in ({'id':'other-draft'},{'messageId':'other-message'},
+                       {'labelIds':['DRAFT','SENT']},{'raw':'%%%invalid%%%'}):
+            self.assertFalse(verify(binding,{**row,**change}))
+        self.assertFalse(verify(binding,{'drafts':[
+            {**row,'id':'other-draft'}, {'id':'r-bound-draft','labelIds':['DRAFT']}]}))
+        self.assertFalse(verify(binding,{'id':'r-bound-draft','message':{
+            'id':'bound-message','labelIds':[],'raw':raw},'labelIds':['DRAFT']}))
+
+    def test_raw_challenge_rejects_header_attachment_and_metadata_only_proof(self):
+        binding={**self.binding,'marker_draft_id':'draft','marker_message_id':'message'}
+        row={'id':'draft','messageId':'message','labelIds':['DRAFT']}
+        bodies=[
+            'Subject: Mailbox proof\r\nX-Marker: '+binding['marker']+'\r\n\r\nOther body',
+            'Subject: Mailbox proof\r\nContent-Type: text/plain\r\n'
+            'Content-Disposition: attachment; filename="proof.txt"\r\n\r\n'+binding['marker'],
+            'Subject: Other subject\r\n\r\n'+binding['marker'],
+        ]
+        for mime in bodies:
+            raw=base64.urlsafe_b64encode(mime.encode()).decode()
+            self.assertFalse(verify(binding,{**row,'raw':raw,'subject':'Mailbox proof',
+                                            'body_html':binding['marker']}))
+        self.assertFalse(verify(binding,{**row,'subject':'Mailbox proof','snippet':binding['marker']}))
+
+    def test_draft_reference_is_validated_and_requires_bound_message(self):
+        binding={**self.binding,'schema_version':1,'profile_provider':'authenticated_gmail_profile',
+                 'recipient':'owner@example.invalid','profile_verified_at_utc':'2026-10-11T00:00:00Z',
+                 'marker_draft_id':'r-draft'}
+        with self.assertRaisesRegex(ValueError,'requires the bound message identifier'):
+            load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps(binding)})
+        binding['marker_message_id']='message'
+        self.assertEqual(load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps(binding)}),binding)
+        for draft_id in ('',' ',False,3,[], 'https://example.invalid/draft','a'*513):
+            with self.assertRaisesRegex(ValueError,'Private challenge draft identifier is invalid'):
+                load_binding({'TEXAS_STACK_GMAIL_BINDING':json.dumps({**binding,'marker_draft_id':draft_id})})
+
 
 if __name__=='__main__':unittest.main()

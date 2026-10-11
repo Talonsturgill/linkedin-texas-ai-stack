@@ -4,6 +4,8 @@ import argparse
 import base64
 import binascii
 import datetime as dt
+from email import policy
+from email.parser import BytesParser
 import json
 import os
 import re
@@ -21,13 +23,15 @@ def load_binding(environ):
         raise ValueError('Private recipient binding is invalid')
     if not re.fullmatch(r'[a-f0-9]{32}',value.get('marker','')) or not value.get('marker_subject'):
         raise ValueError('Private mailbox challenge is missing')
-    for kind in ('message','thread'):
+    for kind in ('message','thread','draft'):
         identifier=value.get('marker_'+kind+'_id')
         if identifier is not None and (not isinstance(identifier,str)
                 or not re.fullmatch(r'[A-Za-z0-9_-]{1,512}',identifier)):
             raise ValueError('Private challenge '+kind+' identifier is invalid')
     if value.get('marker_thread_id') and not value.get('marker_message_id'):
         raise ValueError('Private thread challenge requires the bound message identifier')
+    if value.get('marker_draft_id') and not value.get('marker_message_id'):
+        raise ValueError('Private draft challenge requires the bound message identifier')
     dt.datetime.fromisoformat(value['profile_verified_at_utc'].replace('Z','+00:00'))
     return value
 
@@ -61,10 +65,37 @@ def mime_body_text(part):
     for child in part.get('parts',[]):yield from mime_body_text(child)
 
 
+def challenge_candidates(readback,draft_id):
+    for candidate in dictionaries(readback):
+        if not draft_id:
+            yield candidate
+        elif any(candidate.get(key)==draft_id for key in ('id','draft_id','draftId')):
+            yield candidate
+            # Gmail REST nests the message; Claude's connector returns a flat draft.
+            if isinstance(candidate.get('message'),dict):yield candidate['message']
+
+
+def raw_message_content(raw):
+    """Decode a real draft RAW result, excluding attachment and header-only markers."""
+    if not isinstance(raw,str):return None,[]
+    try:
+        data=base64.b64decode(raw+'='*(-len(raw)%4),altchars=b'-_',validate=True)
+        message=BytesParser(policy=policy.default).parsebytes(data)
+        if message.defects:return None,[]
+        text=[]
+        for part in message.walk():
+            if (part.get_content_maintype()=='text' and not part.get_filename()
+                    and part.get_content_disposition()!='attachment'):
+                content=part.get_content()
+                if isinstance(content,str):text.append(content)
+        return str(message['Subject']) if message['Subject'] is not None else None,text
+    except (ValueError,binascii.Error,UnicodeError,LookupError):return None,[]
+
+
 def verify(binding,readback):
     # A random challenge issued only as a draft in the authenticated mailbox proves
     # cross-connector access. No sender or recipient field is used as identity evidence.
-    for candidate in dictionaries(readback):
+    for candidate in challenge_candidates(readback,binding.get('marker_draft_id')):
         expected_id=binding.get('marker_message_id')
         if expected_id and not any(candidate.get(key)==expected_id
                 for key in ('id','message_id','messageId')):
@@ -74,11 +105,13 @@ def verify(binding,readback):
         if isinstance(payload,dict):
             for header in payload.get('headers',[]):
                 if header.get('name','').lower()=='subject':subject=header.get('value')
-        if subject!=binding['marker_subject']:continue
         body_keys=('body','body_html','body_text','bodyHtml','bodyText',
                    'htmlBody','plaintextBody','html','text')
         text=[s for key in body_keys for s in strings(candidate.get(key))]
-        text+=list(mime_body_text(payload));labels=[]
+        text+=list(mime_body_text(payload))
+        if 'raw' in candidate:subject,text=raw_message_content(candidate['raw'])
+        if subject!=binding['marker_subject']:continue
+        labels=[]
         for key,value in candidate.items():
             if key.lower().replace('_','') in ('labels','labelids') and isinstance(value,list):
                 labels.extend(strings(value))

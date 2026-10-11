@@ -69,8 +69,12 @@ message sender. Without that binding, record gmail_recipient_unverified and do n
 
 For Claude's connector without a profile tool, TEXAS_STACK_GMAIL_BINDING supplies the privately
 verified profile binding and an unsent mailbox challenge. Run scripts/gmail_binding.py --out
-.local/gmail_binding.json without displaying the file or environment value. When the private
-binding supplies marker_thread_id and marker_message_id, read that exact thread with full
+.local/gmail_binding.json without displaying the file or environment value. Prefer the actual
+connected Gmail draft API used by the working routine, not a similarly named directory server.
+When marker_draft_id is supplied, call Get draft email with that draftId and messageFormat RAW.
+Its draft ID, message ID, decoded MIME subject and full body marker, and DRAFT/no-SENT labels
+must match together. A draft ID is never a message or thread ID. When no draft ID is supplied but
+the binding supplies marker_thread_id and marker_message_id, read that exact thread with full
 content once and verify only the bound message inside it. Google Gmail MCP returns full bodies
 as htmlBody or plaintextBody; the verifier also supports raw Gmail API MIME parts. When only
 marker_message_id is supplied, read that exact message with full content once. Its message ID,
@@ -82,7 +86,10 @@ as .local/gmail_binding_readback.json, then run scripts/gmail_binding.py --out
 mailbox_challenge_verified is true. The marker was issued through the authenticated profile
 connector into that mailbox's draft store; it verifies the cross-connector binding without
 using a sender or recipient field. A missing or changed marker fails closed. Keep these
-fields and readbacks under ignored .local; never include them in a public run receipt.
+fields and readbacks under ignored .local; never include them in a public run receipt. Extract
+actual tool results from the current session transcript programmatically; never transcribe or
+rebuild a RAW/base64 result from model context. Reuse the Get draft email RAW path for final
+delivery readback when the connected tool supplies it.
 
 Record capabilities before research: fetched web evidence, GitHub access, procedural rendering,
 verified self-recipient, Gmail draft create/update and full HTML/label readback. If the active
@@ -235,7 +242,9 @@ recovery, broadened window, missing lane, fallback or aesthetic shortfall concis
 
 List drafts, then exact-subject search for this date rather than dumping the whole mailbox.
 Update the newest exact match or create if absent; report duplicate count without deleting any.
-Never call send. Read back subject, connected recipient privately, full HTML/post, inline image,
+Never call send. Use the returned draft ID with Get draft email and messageFormat RAW; decode
+the actual full MIME from the current tool result, not a reconstructed email. On a connector
+without this tool, use its full-body draft readback. Read back subject, connected recipient privately, full HTML/post, inline image,
 visible clickable immutable URL, all sources, scores, note, branch/commit, DRAFT and absence of
 SENT. Inspect the rendered email if markup/layout changed or loading is uncertain. Store private
 receipts under .local. Report mechanism/no-target, category, branch, exact commit, draft PR,
