@@ -85,5 +85,15 @@ class GmailDeliveryTests(unittest.TestCase):
         self.assertNotIn('to',packet);self.assertNotIn('toRecipients',packet)
         self.assertEqual(packet['bodyHtml'],self.body)
 
+    def test_normal_daily_connector_path_has_no_encoded_attachment_and_requires_cover_link(self):
+        packet,proof=prepare(self.payload)
+        self.assertIsNone(proof);self.assertNotIn('attachments',packet)
+        self.assertEqual(packet,{'subject':'Test draft','bodyHtml':self.body})
+        sanitized='<h2>Post</h2><p>Verified full copy.</p><a href="'+self.url+'">Full cover</a>'
+        report=verify_delivery(self.payload,self.binding,self.raw(sanitized,attachment=None))
+        self.assertTrue(report['ok']);self.assertEqual(report['delivery_image_mode'],'immutable_full_cover_link')
+        missing=sanitized.replace(self.url,'https://example.invalid/missing')
+        self.assertFalse(verify_delivery(self.payload,self.binding,self.raw(missing,attachment=None))['ok'])
+
 
 if __name__=='__main__':unittest.main()

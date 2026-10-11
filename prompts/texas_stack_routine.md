@@ -245,22 +245,25 @@ List drafts, then exact-subject search for this date rather than dumping the who
 Update the newest exact match or create if absent; report duplicate count without deleting any.
 Never call send. Use the returned draft ID with Get draft email and messageFormat RAW; decode
 the actual full MIME from the current tool result, not a reconstructed email. On a connector
-without this tool, use its full-body draft readback. Read back subject, connected recipient privately, full HTML/post, inline image,
+without this tool, use its full-body draft readback. Read back subject, connected recipient privately, full HTML/post and cover link,
 visible clickable immutable URL, all sources, scores, note, branch/commit, DRAFT and absence of
 SENT. Claude's connected draft writer can strip external image tags, styles and other markup.
-For that connector, run scripts/gmail_delivery.py prepare --payload .local/gmail_payload.json
---image out/post_image.png --out .local/gmail_native_packet.json. It creates a compact JPEG
-preview attachment from the accepted cover, plus the complete HTML and immutable image link.
-Copy the packet's actual public body/attachment values unchanged to the connected create/update
-tool; do not rebuild or retype encoded bytes. Keep the verified self-recipient; omission preserves
+Use the same connected draft API as the daily routines. Run scripts/gmail_delivery.py prepare
+--payload .local/gmail_payload.json --out .local/gmail_native_packet.json. Copy its actual subject
+and public bodyHtml unchanged to the connected create/update tool. The full accepted artwork is
+available at the visible, clickable immutable URL even when an inline image is sanitized. The
+normal Claude path uses this full-cover link and does not relay attachments or Base64 through
+the model. Keep the verified self-recipient; omission preserves
 it when updating a draft. Read the stored draft as RAW and extract it with
 scripts/gmail_delivery.py extract --subject "<exact issue subject>" --out .local/gmail_raw.json.
 Then run scripts/gmail_delivery.py verify --payload .local/gmail_payload.json --binding
-.local/gmail_binding.json --readback .local/gmail_raw.json --preview .local/gmail_native_packet.preview.json
+.local/gmail_binding.json --readback .local/gmail_raw.json
 --out .local/gmail_verified.json. Require complete decoded body text, every source/image link,
-subject, bound recipient, DRAFT/no-SENT and the exact preview attachment bytes. Report markup
-sanitization honestly; an attached preview plus the verified full-cover link replaces a stripped
-inline image on this connector. A screenshot or successful write alone is insufficient.
+subject, bound recipient and DRAFT/no-SENT. Report link-based cover delivery and markup
+sanitization honestly. An explicit attachment request additionally uses prepare --image
+out/post_image.png and verify --preview .local/gmail_native_packet.preview.json to require exact
+preview bytes; do not retry corrupted encodings or claim an attachment exists without proof.
+A screenshot or successful write alone is insufficient.
 Inspect the rendered email if markup/layout changed or loading is uncertain. Store private
 receipts under .local. Report mechanism/no-target, category, branch, exact commit, draft PR,
 procedural/ImageGen/legacy-fallback source, art score, verified URL, validation and draft state. Do not expose the

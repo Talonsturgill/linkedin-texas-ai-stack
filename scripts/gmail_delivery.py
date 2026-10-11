@@ -94,7 +94,9 @@ def extract_result(records,*,draft_id=None,subject=None):
     return matches[-1]
 
 
-def prepare(payload,image_path):
+def prepare(payload,image_path=None):
+    packet={'subject':payload['subject'],'bodyHtml':payload['payload']['body']['content']}
+    if image_path is None:return packet,None
     from PIL import Image
     image=Image.open(image_path).convert('RGB');image.thumbnail((160,160))
     for quality in (55,45,35):
@@ -112,7 +114,7 @@ def prepare(payload,image_path):
     return packet,proof
 
 
-def verify_delivery(payload,binding,readback,preview):
+def verify_delivery(payload,binding,readback,preview=None):
     checks={}
     checks['binding_verified']=binding.get('verified') is True
     raw=raw_from_draft(readback)
@@ -138,37 +140,42 @@ def verify_delivery(payload,binding,readback,preview):
     checks['pinned_cover_link_present']=any(
         re.fullmatch(r'https://raw\.githubusercontent\.com/Talonsturgill/linkedin-texas-ai-stack/[0-9a-f]{40}/out/post_image\.png',url)
         for url in a.links)
-    found=[]
-    for part in message.walk():
-        if part.get_filename()==preview['filename']:
-            data=part.get_payload(decode=True) or b''
-            found.append(part.get_content_type()==preview['mime_type']
-                         and len(data)==preview['bytes']
-                         and hashlib.sha256(data).hexdigest()==preview['sha256'])
-    checks['preview_bytes_match']=found==[True]
+    if preview:
+        found=[]
+        for part in message.walk():
+            if part.get_filename()==preview['filename']:
+                data=part.get_payload(decode=True) or b''
+                found.append(part.get_content_type()==preview['mime_type']
+                             and len(data)==preview['bytes']
+                             and hashlib.sha256(data).hexdigest()==preview['sha256'])
+        checks['preview_bytes_match']=found==[True]
     checks['mime_well_formed']=not message.defects
     return {'ok':all(checks.values()),'checks':checks,
             'exact_html_bytes_match':actual.replace('\r\n','\n').rstrip('\n')==expected.replace('\r\n','\n').rstrip('\n'),
             'inline_cover_retained':any(url in a.images for url in e.images),
+            'delivery_image_mode':'attached_preview_and_full_cover_link' if preview else 'immutable_full_cover_link',
             'markup_sanitized':actual.replace('\r\n','\n').rstrip('\n')!=expected.replace('\r\n','\n').rstrip('\n')}
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);sub=parser.add_subparsers(dest='mode',required=True)
-    p=sub.add_parser('prepare');p.add_argument('--payload',required=True);p.add_argument('--image',required=True);p.add_argument('--out',required=True)
+    p=sub.add_parser('prepare');p.add_argument('--payload',required=True);p.add_argument('--image',help='Explicit optional preview attachment; default uses the immutable full-cover link');p.add_argument('--out',required=True)
     p=sub.add_parser('extract');p.add_argument('--transcript');selection=p.add_mutually_exclusive_group(required=True)
     selection.add_argument('--binding');selection.add_argument('--subject');p.add_argument('--out',required=True)
     p=sub.add_parser('verify')
-    for arg in ('payload','binding','readback','preview','out'):p.add_argument('--'+arg,required=True)
+    for arg in ('payload','binding','readback','out'):p.add_argument('--'+arg,required=True)
+    p.add_argument('--preview',help='Require exact attachment bytes only when an attachment was explicitly requested')
     args=parser.parse_args()
     try:
         if args.mode=='prepare':
             payload=json.loads(private_path(args.payload).read_text())
-            image=(ROOT/args.image).resolve()
-            if not image.is_relative_to(ROOT):raise ValueError('Accepted artwork must stay inside this repository')
+            image=(ROOT/args.image).resolve() if args.image else None
+            if image and not image.is_relative_to(ROOT):raise ValueError('Accepted artwork must stay inside this repository')
             packet,proof=prepare(payload,image);write_private(args.out,packet)
-            proof_path=str(Path(args.out).with_suffix('.preview.json'));write_private(proof_path,proof)
-            print(json.dumps({'prepared':True,'html_chars':len(packet['bodyHtml']),'preview_bytes':proof['bytes'],'preview_sha256':proof['sha256']}))
+            if proof:
+                proof_path=str(Path(args.out).with_suffix('.preview.json'));write_private(proof_path,proof)
+            print(json.dumps({'prepared':True,'html_chars':len(packet['bodyHtml']),
+                              'attachment_requested':proof is not None,'preview_bytes':proof['bytes'] if proof else 0}))
         elif args.mode=='extract':
             draft_id=None
             if args.binding:draft_id=json.loads(private_path(args.binding).read_text()).get('marker_draft_id')
@@ -186,7 +193,8 @@ def main():
             if result is None:raise ValueError('No matching actual RAW result; preserve the error and do not reconstruct it')
             write_private(args.out,result);print(json.dumps({'extracted':True,'actual_raw_tool_result':True,'private_output_written':True}))
         else:
-            values={name:json.loads(private_path(getattr(args,name)).read_text()) for name in ('payload','binding','readback','preview')}
+            values={name:json.loads(private_path(getattr(args,name)).read_text()) for name in ('payload','binding','readback')}
+            values['preview']=json.loads(private_path(args.preview).read_text()) if args.preview else None
             report=verify_delivery(**values);write_private(args.out,report);print(json.dumps(report))
             return 0 if report['ok'] else 1
     except (ValueError,KeyError,TypeError,OSError,UnicodeError):
