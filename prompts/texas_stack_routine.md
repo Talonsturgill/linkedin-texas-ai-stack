@@ -260,7 +260,10 @@ Then run scripts/gmail_delivery.py verify --payload .local/gmail_payload.json --
 .local/gmail_binding.json --readback .local/gmail_raw.json
 --out .local/gmail_verified.json. Require complete decoded body text, every source/image link,
 subject, bound recipient and DRAFT/no-SENT. Report link-based cover delivery and markup
-sanitization honestly. An explicit attachment request additionally uses prepare --image
+sanitization honestly. Gmail may wrap hrefs in HTTPS google.com/url?q= links; the verifier
+recognizes only that exact Google transport format and requires the decoded target to equal
+each original source/immutable cover URL. Other hosts, duplicate targets and changed SHAs fail.
+Do not resend unchanged HTML to remove provider wrappers. An explicit attachment request additionally uses prepare --image
 out/post_image.png and verify --preview .local/gmail_native_packet.preview.json to require exact
 preview bytes; do not retry corrupted encodings or claim an attachment exists without proof.
 A screenshot or successful write alone is insufficient.

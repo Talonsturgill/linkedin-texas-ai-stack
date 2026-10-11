@@ -11,10 +11,24 @@ from email.parser import BytesParser
 from email.utils import getaddresses
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import parse_qs,urlsplit
 
 from gmail_binding import private_path,raw_message_content
 
 ROOT=Path(__file__).resolve().parents[1]
+
+
+def delivered_link_target(href):
+    """Recognize Gmail's HTTPS Google wrapper, retaining an exact single target."""
+    try:
+        url=urlsplit(href)
+        if url.scheme=='https' and url.netloc.casefold() in ('google.com','www.google.com') and url.path=='/url':
+            targets=parse_qs(url.query,keep_blank_values=True).get('q',[])
+            if len(targets)==1:
+                target=urlsplit(targets[0])
+                if target.scheme in ('http','https') and target.netloc:return targets[0]
+    except ValueError:pass
+    return href
 
 
 def write_private(path,value):
@@ -135,11 +149,12 @@ def verify_delivery(payload,binding,readback,preview=None):
     actual=parts[0].get_content() if len(parts)==1 else ''
     expected=payload['payload']['body']['content']
     a=VisibleHTML(actual);e=VisibleHTML(expected)
+    actual_links=[delivered_link_target(href) for href in a.links]
     checks['full_body_text_matches']=a.visible()==e.visible()
-    checks['all_links_present']=all(url in a.links for url in e.links)
+    checks['all_links_present']=all(url in actual_links for url in e.links)
     checks['pinned_cover_link_present']=any(
         re.fullmatch(r'https://raw\.githubusercontent\.com/Talonsturgill/linkedin-texas-ai-stack/[0-9a-f]{40}/out/post_image\.png',url)
-        for url in a.links)
+        for url in actual_links)
     if preview:
         found=[]
         for part in message.walk():
@@ -154,6 +169,7 @@ def verify_delivery(payload,binding,readback,preview=None):
             'exact_html_bytes_match':actual.replace('\r\n','\n').rstrip('\n')==expected.replace('\r\n','\n').rstrip('\n'),
             'inline_cover_retained':any(url in a.images for url in e.images),
             'delivery_image_mode':'attached_preview_and_full_cover_link' if preview else 'immutable_full_cover_link',
+            'google_wrapped_link_count':sum(target!=href for href,target in zip(a.links,actual_links)),
             'markup_sanitized':actual.replace('\r\n','\n').rstrip('\n')!=expected.replace('\r\n','\n').rstrip('\n')}
 
 

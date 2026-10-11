@@ -6,9 +6,10 @@ import sys
 import unittest
 from email.message import EmailMessage
 from pathlib import Path
+from urllib.parse import quote
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from gmail_delivery import extract_result,verify_delivery,VisibleHTML,prepare
+from gmail_delivery import extract_result,verify_delivery,VisibleHTML,prepare,delivered_link_target
 
 
 class GmailDeliveryTests(unittest.TestCase):
@@ -94,6 +95,23 @@ class GmailDeliveryTests(unittest.TestCase):
         self.assertTrue(report['ok']);self.assertEqual(report['delivery_image_mode'],'immutable_full_cover_link')
         missing=sanitized.replace(self.url,'https://example.invalid/missing')
         self.assertFalse(verify_delivery(self.payload,self.binding,self.raw(missing,attachment=None))['ok'])
+
+    def test_gmail_google_wrapper_must_preserve_exact_original_target(self):
+        wrapped='https://www.google.com/url?q='+quote(self.url,safe='')+'&sa=D&source=editors'
+        body='<h2>Post</h2><p>Verified full copy.</p><a href="'+wrapped+'">Full cover</a>'
+        report=verify_delivery(self.payload,self.binding,self.raw(body,attachment=None))
+        self.assertTrue(report['ok']);self.assertEqual(report['google_wrapped_link_count'],1)
+        wrong=wrapped.replace(quote(self.url,safe=''),quote(self.url.replace('a'*40,'b'*40),safe=''))
+        self.assertFalse(verify_delivery(self.payload,self.binding,self.raw(body.replace(wrapped,wrong),attachment=None))['ok'])
+
+    def test_link_wrapper_cannot_accept_other_hosts_schemes_duplicate_targets_or_missing_q(self):
+        for href in ('http://www.google.com/url?q='+quote(self.url,safe=''),
+                     'https://google.com.evil.invalid/url?q='+quote(self.url,safe=''),
+                     'https://www.google.com@evil.invalid/url?q='+quote(self.url,safe=''),
+                     'https://www.google.com/url?q='+quote(self.url,safe='')+'&q=https://evil.invalid',
+                     'https://www.google.com/url?url='+quote(self.url,safe=''),
+                     'https://www.google.com/url?q=javascript:alert(1)'):
+            self.assertEqual(delivered_link_target(href),href)
 
 
 if __name__=='__main__':unittest.main()
