@@ -14,6 +14,7 @@ seed_sources:
     - {url: "https://texasaidocket.com/sources/", outlet: "Texas AI Docket source index", credibility: "curated-index"}
   state_and_local_primary:
     - {url: "https://capitol.texas.gov", outlet: "Texas Legislature Online", credibility: "primary"}
+    - {url: "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm", outlet: "Texas Legislature public-information statute text", credibility: "primary"}
     - {url: "https://www.sos.state.tx.us/texreg/", outlet: "Texas Register", credibility: "primary"}
     - {url: "https://www.puc.texas.gov", outlet: "Public Utility Commission of Texas", credibility: "primary"}
     - {url: "https://interchange.puc.texas.gov", outlet: "PUCT Interchange", credibility: "primary"}
@@ -21,6 +22,9 @@ seed_sources:
     - {url: "https://www.rrc.texas.gov", outlet: "Railroad Commission of Texas", credibility: "primary"}
     - {url: "https://www.tceq.texas.gov", outlet: "Texas Commission on Environmental Quality", credibility: "primary"}
     - {url: "https://www.twdb.texas.gov", outlet: "Texas Water Development Board", credibility: "primary"}
+    - {url: "https://www.texasattorneygeneral.gov/news/press_releases", outlet: "Office of the Texas Attorney General", credibility: "primary"}
+    - {url: "https://www.texasattorneygeneral.gov/open-government/governmental-bodies/previous-attorney-general-decisions-and-rulings/open-records-letter-ruling", outlet: "Attorney General official ruling index", credibility: "primary"}
+    - {url: "https://oag.my.site.com/piaPortal/s/texaspublicinformationactdatabase", outlet: "Attorney General current PIA decision database", credibility: "primary"}
     - {url: "https://comptroller.texas.gov", outlet: "Texas Comptroller", credibility: "primary"}
     - {url: "https://dir.texas.gov", outlet: "Texas Department of Information Resources", credibility: "primary"}
     - {url: "https://www.txsmartbuy.gov", outlet: "Texas SmartBuy", credibility: "primary"}
@@ -66,4 +70,3 @@ discovery:
     Search statewide. Distinguish ERCOT, SPP, WECC, and MISO territory. Include North Texas,
     Central Texas, Houston and the Gulf Coast, San Antonio, West Texas, the Panhandle, East Texas,
     the Rio Grande Valley, and rural regions when the mechanism actually reaches them.
-

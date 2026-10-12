@@ -133,8 +133,8 @@ def validate_art(out_dir: Path, errors: list[str]) -> dict:
         if art_eval.get("schema_version") != 1:
             errors.append("art evaluation schema_version must be 1")
         source = art_eval.get("source")
-        if source not in {"imagegen", "fallback"}:
-            errors.append("art evaluation source must be imagegen or fallback")
+        if source not in {"imagegen", "procedural", "fallback"}:
+            errors.append("art evaluation source must be imagegen, procedural or fallback")
         concepts = art_eval.get("concepts")
         if not isinstance(concepts, list) or len(concepts) != 3:
             errors.append("art evaluation must record exactly three concepts")
@@ -154,7 +154,7 @@ def validate_art(out_dir: Path, errors: list[str]) -> dict:
             errors.append("art evaluation history must be nonempty")
             history = []
         if len(history) > 6:
-            errors.append("art evaluation may record at most six ImageGen passes")
+            errors.append("art evaluation may record at most six rendering passes")
         final = art_eval.get("eval_final") or {}
         scores = final.get("scores") or {}
         if set(scores) != set(ART_WEIGHTS):
@@ -171,6 +171,8 @@ def validate_art(out_dir: Path, errors: list[str]) -> dict:
             passed = calculated >= 8.5 and min(float(value) for value in scores.values()) >= 7
             if final.get("passed") is not passed:
                 errors.append("art final passed flag does not match the score")
+            if source == 'procedural' and not passed:
+                errors.append('procedural art must pass the 8.5 weighted and minimum-seven floors')
             if source == "imagegen" and not passed:
                 if len(history) < 6 or not art_eval.get("shortfall_note"):
                     errors.append(
@@ -195,8 +197,8 @@ def validate_art(out_dir: Path, errors: list[str]) -> dict:
                 errors.append(f"artwork metadata missing {field}")
         if meta.get("kicker") != "THE TEXAS STACK":
             errors.append("artwork metadata kicker must be THE TEXAS STACK")
-        if meta.get("source") not in {"imagegen", "fallback"}:
-            errors.append("artwork metadata source must be imagegen or fallback")
+        if meta.get("source") not in {"imagegen", "procedural", "fallback"}:
+            errors.append("artwork metadata source must be imagegen, procedural or fallback")
         if art_eval and meta.get("eval_final") != art_eval.get("eval_final"):
             errors.append("artwork metadata eval_final must match art_eval.json")
     if meta.get("engine_version") == 2 or art_eval.get("evaluation_protocol") == 2:
@@ -226,6 +228,8 @@ def validate_dossier(dossier: dict, errors: list[str]) -> tuple[bool, dict]:
     no_target = dossier.get("no_target_this_cycle") is True
     mechanism = dossier.get("selected_mechanism") or {}
     if no_target:
+        if (dossier.get('research_capabilities') or {}).get('primary_source_fetch') is False:
+            errors.append('Missing primary network capability cannot be classified as completed no-target research')
         if dossier.get("selected_mechanism"):
             errors.append("no-target dossier cannot contain a selected mechanism")
         if not dossier.get("_validation_note"):
