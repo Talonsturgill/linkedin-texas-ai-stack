@@ -62,8 +62,21 @@ def source_rows(dossier: dict) -> list[dict]:
     return deduped
 
 
-def art_summary(art_eval: dict) -> str:
+def art_display_review(art_eval: dict) -> tuple[dict, str]:
+    """Show recorded rejected evidence without implying that a cover was selected."""
     final = art_eval.get("eval_final") or {}
+    if final.get("weighted") is not None:
+        return final, "Weighted" if final.get("passed") else "Unselected review"
+    reviewed = [row for row in art_eval.get("eval_history", [])
+                if isinstance(row, dict) and isinstance(row.get("weighted"), (int, float))
+                and not isinstance(row.get("weighted"), bool) and row.get("scores")]
+    if reviewed:
+        return max(reviewed, key=lambda row: row["weighted"]), "Best unselected review"
+    return {}, "Not reviewed"
+
+
+def art_summary(art_eval: dict) -> str:
+    final, label = art_display_review(art_eval)
     scores = final.get("scores") or {}
     weakest = ""
     if scores:
@@ -72,12 +85,27 @@ def art_summary(art_eval: dict) -> str:
             f'<span class="metric">Weakest {safe(weakest_name)} '
             f'{safe(scores[weakest_name])}</span>'
         )
+    score_label = (f'{safe(label)} {safe(final["weighted"])} / 10'
+                   if "weighted" in final else safe(label))
+    review_count = sum(1 + len(row.get("previous_reviews") or [])
+                       for row in art_eval.get("eval_history") or [] if isinstance(row, dict))
     return (
         f'<span class="metric">Source {safe(art_eval.get("source"))}</span>'
-        f'<span class="metric">Weighted {safe(final.get("weighted"))} / 10</span>'
-        f'<span class="metric">Passes {safe(len(art_eval.get("eval_history") or []))}</span>'
+        f'<span class="metric">{score_label}</span>'
+        f'<span class="metric">Reviews {safe(review_count)}</span>'
         f'{weakest}'
     )
+
+
+def art_table(art_eval: dict) -> str:
+    final,_=art_display_review(art_eval)
+    notes=final.get('notes') or {}
+    rows=[]
+    for name,value in (final.get('scores') or {}).items():
+        rows.append(f'<tr><td>{safe(name.replace("_"," "))}</td><td>{safe(value)}</td>'
+                    f'<td>{safe(notes.get(name) or "No evidence note recorded in this legacy evaluation.")}</td></tr>')
+    if not rows:return ''
+    return '<table><tr><th>Criterion</th><th>Score</th><th>Notes</th></tr>'+''.join(rows)+'</table>'
 
 
 def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
@@ -103,9 +131,12 @@ def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
 
     score_rows = []
     for row in score.get("criteria", []):
+        note=row.get('notes') or row.get('note')
+        if not isinstance(note,str) or not note.strip():
+            raise ValueError('Each editorial score requires its recorded evidence note')
         score_rows.append(
             f"<tr><td>{safe(row.get('name'))}</td><td>{safe(row.get('score'))}</td>"
-            f"<td>{safe(row.get('weight'))}</td><td>{safe(row.get('notes'))}</td></tr>"
+            f"<td>{safe(row.get('weight'))}</td><td>{safe(note)}</td></tr>"
         )
     score_table = ""
     if score_rows:
@@ -134,7 +165,7 @@ def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
         )
 
     warning = (
-        art_eval.get("source") != "imagegen"
+        art_eval.get("source") not in {"imagegen", "procedural"}
         or not (art_eval.get("eval_final") or {}).get("passed")
         or (not no_target and not score.get("ship"))
     )
@@ -146,6 +177,7 @@ def render_html(*, post: str, image_url: str, dossier: dict, score: dict,
 <h2>Sources</h2><ul>{''.join(source_items)}</ul>
 {score_table}
 <h2>Artwork evaluation</h2><p>{art_summary(art_eval)}</p>
+{art_table(art_eval)}
 <div class="{note_class}"><b>Editor note</b><br>{safe(editor_note).replace(chr(10), '<br>')}</div>
 <div class="foot">Generated {safe(dt.datetime.now(dt.timezone.utc).isoformat())} ·
 commit {safe(commit)} · draft only, never sent.</div>
@@ -176,7 +208,10 @@ def main() -> int:
     parser.add_argument("--date", required=True)
     parser.add_argument("--branch", required=True)
     parser.add_argument("--commit", required=True)
-    parser.add_argument("--to", required=True)
+    recipient=parser.add_mutually_exclusive_group(required=True)
+    recipient.add_argument("--to")
+    recipient.add_argument("--recipient-binding",help="Verified private .local binding; avoids an address in shell arguments")
+    parser.add_argument("--test-mode",action="store_true",help="Mark an end-to-end test draft and preserve the production subject")
     parser.add_argument("--editor-note", default="No unresolved issues.")
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
@@ -204,6 +239,7 @@ def main() -> int:
         if no_target
         else f"Texas AI Docket — The Texas Stack Draft — {args.date}"
     )
+    if args.test_mode:subject='[Automation Test] '+subject
     body = render_html(
         post=post,
         image_url=args.image_url,
@@ -215,7 +251,11 @@ def main() -> int:
         commit=args.commit,
         editor_note=args.editor_note,
     )
-    payload = build_payload(to=args.to, subject=subject, html_body=body)
+    if args.recipient_binding:
+        from gmail_binding import recipient_from_binding
+        to=recipient_from_binding(args.recipient_binding)
+    else:to=args.to
+    payload = build_payload(to=to, subject=subject, html_body=body)
     destination = Path(args.out)
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(
@@ -228,4 +268,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

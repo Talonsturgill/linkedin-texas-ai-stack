@@ -20,6 +20,15 @@ from test_pipeline import dossier,valid_post,art_eval
 
 
 class ArtEngineTests(unittest.TestCase):
+    def test_bundled_fonts_are_verified_without_network_or_host_fallback(self):
+        with patch('urllib.request.urlopen',side_effect=AssertionError('Network should not be needed')):
+            pair=compose_cover.font_pair()
+        self.assertTrue(all(Path(x).parent==compose_cover.FONT_DIR for x in pair))
+        with tempfile.TemporaryDirectory() as temp:
+            folder=Path(temp);(folder/'manifest.json').write_text((compose_cover.FONT_DIR/'manifest.json').read_text())
+            with patch.object(compose_cover,'FONT_DIR',folder):
+                with self.assertRaises(RuntimeError):compose_cover.font_pair()
+
     @classmethod
     def setUpClass(cls):
         # Use the runtime's local fonts; tests never download fonts.
@@ -82,10 +91,35 @@ class ArtEngineTests(unittest.TestCase):
             review['blockers']=[];review['scores']['concept']=float('nan');rev.write_text(json.dumps(review))
             with self.assertRaisesRegex(ValueError,'finite'):review_art.record(ev,rev,base,cover,True)
 
+    def test_development_fixture_cannot_be_promoted_by_high_scores(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp);base=p/'art_base.png';cover=p/'post_image.png'
+            Image.new('RGB',(1080,1080),'#534764').save(base);base_bytes=base.read_bytes();cover.write_bytes(base_bytes)
+            prompt=p/'image_prompt.txt';plan=p/'art_plan.md';ev=p/'art_eval.json'
+            prompt.write_text('Synthetic fixture');plan.write_text('Development only')
+            evaluation=art_eval();evaluation['source']='procedural';ev.write_text(json.dumps(evaluation))
+            Path(str(cover)+'.meta.json').write_text('{}')
+            for name,value in (('art_spec.json',{}),('art_variety.json',{}),('stack_anatomy.json',dossier()),
+                               ('art_render.json',{'generator_version':5,'render_kind':'fixture'})):
+                (p/name).write_text(json.dumps(value))
+            errors=qa_check.validate(cover,base,prompt,plan,ev,'September 25th, 2026','THE TEXAS STACK')
+            self.assertIn('development fixtures cannot become production covers',errors)
+
     def test_email_sections_follow_delivery_contract(self):
         html=build_email.render_html(post=valid_post(),image_url='https://example.com/image.png',dossier=dossier(),score={'criteria':[{'name':'Hook','score':9,'weight':1,'notes':'Clear'}]},art_eval=art_eval(),date='date',branch='branch',commit='commit',editor_note='Review this.')
         order=['Copy this for LinkedIn','class="image"','<h2>Sources','Editorial report card','<h2>Artwork evaluation','<b>Editor note','class="foot"']
         positions=[html.index(x) for x in order];self.assertEqual(positions,sorted(positions))
         self.assertEqual(html.count('<img '),1)
+
+    def test_email_preserves_native_editorial_notes_and_every_art_dimension(self):
+        art=art_eval();art['eval_final']['notes']={k:f'Observed {k} <detail>' for k in art['eval_final']['scores']}
+        rows=[{'name':'Hook','score':9,'weight':.5,'note':'Native singular evidence'},
+              {'name':'Clarity','score':8,'weight':.5,'notes':'Canonical plural evidence'}]
+        args=dict(post=valid_post(),image_url='https://example.com/image.png',dossier=dossier(),score={'criteria':rows},art_eval=art,date='date',branch='branch',commit='commit',editor_note='Review this.')
+        body=build_email.render_html(**args)
+        for text in ('Native singular evidence','Canonical plural evidence',*[f'Observed {k} &lt;detail&gt;' for k in art['eval_final']['scores']]):
+            self.assertIn(text,body)
+        rows[0].pop('note')
+        with self.assertRaisesRegex(ValueError,'recorded evidence note'):build_email.render_html(**args)
 
 if __name__=='__main__':unittest.main()

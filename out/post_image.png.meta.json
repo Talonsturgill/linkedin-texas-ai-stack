@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "engine_version": 2,
+  "layout": {
+    "schema_version": 1,
+    "headline": "TWO LOCATION FIELDS ENTER COURT",
+    "font_size": 78,
+    "lines": [
+      "TWO LOCATION",
+      "FIELDS ENTER COURT"
+    ],
+    "positions": [
+      [
+        64,
+        805
+      ],
+      [
+        64,
+        879
+      ]
+    ],
+    "text_boxes": [
+      [
+        64,
+        805,
+        735,
+        863
+      ],
+      [
+        64,
+        879,
+        998,
+        938
+      ]
+    ],
+    "headline_top": 805,
+    "subject_zone": [
+      64,
+      196,
+      1016,
+      765
+    ],
+    "canvas": [
+      1080,
+      1080
+    ]
+  },
+  "subject_box": [
+    197,
+    271,
+    978,
+    676
+  ],
+  "font_sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+  "image_sha256": "910fab3eba72313613f9f6ea0717ee763451aa7c6718dbeb2c4eb7f9cfd6ae9b",
+  "date": "OCTOBER 11TH, 2026",
+  "column": "The Texas Stack",
+  "kicker": "THE TEXAS STACK",
+  "category": "REGULATORY",
+  "headline": "TWO LOCATION FIELDS ENTER COURT",
+  "place": "TEXAS",
+  "style_family": "brushed-metal record masking study",
+  "palette": [
+    "#14291F",
+    "#071910",
+    "#EBE7D0",
+    "#93BE99",
+    "#EB594D"
+  ],
+  "hue_family": "celadon_red",
+  "composition": "oblique_folio",
+  "motifs": [
+    "paired location masks"
+  ],
+  "technique_stack": [
+    "story-bound procedural illustration",
+    "deterministic typography overlay"
+  ],
+  "source": "procedural",
+  "seed": 1357814352,
+  "base_sha256": "26737b063152012b4da2f9ccb4551aab47f22018a565a1ce0474880882df92e5",
+  "prompt_sha256": "5f691376047b16f3471d882d6b09ac11aa2b6a03f07b8baa6d2775daf3728221",
+  "plan_sha256": "22905b67f108e78793b612601071b8e453bd3a5e35c9b29237c52c61bf75269b",
+  "eval_sha256": "8247bd0756a208a0eebd83fd6fdb1ecd82c46431c887c1487d7fd83f5c0122c7",
+  "eval_history": [
+    {
+      "pass_number": 1,
+      "scores": {
+        "concept": 8.3,
+        "focal_hierarchy": 8.8,
+        "composition": 9.0,
+        "color_value": 9.0,
+        "detail_richness": 8.4,
+        "craft_finish": 8.8,
+        "typography": 9.0,
+        "originality": 8.7,
+        "story_fidelity": 8.1
+      },
+      "notes": {
+        "concept": "The two raised, coupled strips isolate two columns on a single record, matching the petition's narrow field scope. The headline supplies the court context, so this is strong field-level imagery rather than a complete depiction of the judicial process.",
+        "focal_hierarchy": "Warm paired masks dominate the cream record at full size and 300 pixels, followed by the ruled sheet and the headline. The two equal strips share the focal point rather than establishing a separate controlling actor.",
+        "composition": "The whole folio is inside the frame, with measured subject bounds [197,271,978,676] on a 1080-square canvas. The first review's left-edge crop claim is incorrect. The oblique sheet, balanced margins and reserved type band form a deliberate composed cover.",
+        "color_value": "Cream paper, warm metal and the deep green field stay distinct at 300 pixels, while the dark lower band preserves headline contrast. Shadows remain visible instead of crushing the foreground detail.",
+        "detail_richness": "Layered leaf edges, a folded corner, slotted fasteners, beveled mask edges, longitudinal brushing and raised cast shadows explain the materials and assembly at full size. The anonymous record marks remain restrained; the folio offers no further story-specific data.",
+        "craft_finish": "The shared carrier, mask attachments, fold and page edges join cleanly, with clear shadow gaps beneath the raised strips. The scene is a polished stylized study; the paper and metal shading do not aim for photographic complexity.",
+        "typography": "The exact two-line headline is immediately readable at 300 pixels, with comfortable side margins and no subject collision. The masthead, date, category and footer maintain a clear hierarchy on the composed cover.",
+        "originality": "An open record with two coupled movable field masks is distinct from the prior wall, valve and broken-span imagery, supported by a minimum actual structural distance of 0.3492. A paper-based disclosure metaphor is familiar, which keeps this below exceptional originality.",
+        "story_fidelity": "Exactly two raised masks correspond to the two geographic fields requested for confidentiality, and their gaps communicate an unresolved treatment. No real data, seal or approved ruling is depicted. Bookmark ambiguity and the separately protected fields remain limits expressly disclosed in the blueprint."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [],
+      "base_sha256": "26737b063152012b4da2f9ccb4551aab47f22018a565a1ce0474880882df92e5",
+      "cover_sha256": "910fab3eba72313613f9f6ea0717ee763451aa7c6718dbeb2c4eb7f9cfd6ae9b",
+      "weighted": 8.696,
+      "passed": true,
+      "observations": "Independent Codex review of the exact committed base and cover, both inspected at full resolution and on the 300-pixel review sheet. This is a documented new review of unchanged pixels. It corrects the first review's demonstrably inaccurate crop claim and credits visible assembly detail and composed typography under the existing scoring anchors. The first 8.095 review remains retained. Rendering stays at attempt 6 of 6.",
+      "edit_prompt": "Correct the evaluation's clipping assessment and retain these exact image bytes; no pixel edit or additional render is requested.",
+      "previous_reviews": [
+        {
+          "pass_number": 1,
+          "scores": {
+            "concept": 8,
+            "focal_hierarchy": 8.5,
+            "composition": 8,
+            "color_value": 8.5,
+            "detail_richness": 7.5,
+            "craft_finish": 8,
+            "typography": 8.5,
+            "originality": 8,
+            "story_fidelity": 7.5
+          },
+          "notes": {
+            "concept": "Two raised masks over one ruled record show two marked fields directly; it does not need the caption to make the dispute legible.",
+            "focal_hierarchy": "The two red masks are the first read at full size and at 300 px, and the eye path runs from them to the headline.",
+            "composition": "The oblique record fills the upper middle with the lower third clear for type; the left edge of the sheet is slightly cropped by the frame.",
+            "color_value": "Celadon ground, cream paper and warm red separate clearly at thumbnail scale; the dark lower band keeps the headline contrast high.",
+            "detail_richness": "Ruled lines, rivets, shadows and brushed grain are visible at full size, but the record has little further assembly detail.",
+            "craft_finish": "Mask edges, shadows and the folded corner join cleanly; no stray strokes or clipping were visible.",
+            "typography": "Two-line headline is legible at 300 px with clear margins and no overlap with the masks.",
+            "originality": "Distinct from the gauge, bridge and permit covers in the recent ledger, with a physical record rather than a machine.",
+            "story_fidelity": "Two masks over two columns map to the two fields the petition identifies. The masks could read as bookmarks or tabs rather than redactions, so the metaphor limit is only partly carried by the image."
+          },
+          "inspected_scales": [
+            "full",
+            "300"
+          ],
+          "blockers": [],
+          "base_sha256": "26737b063152012b4da2f9ccb4551aab47f22018a565a1ce0474880882df92e5",
+          "cover_sha256": "910fab3eba72313613f9f6ea0717ee763451aa7c6718dbeb2c4eb7f9cfd6ae9b",
+          "weighted": 8.095,
+          "passed": false,
+          "observations": "Attempt 6 of the reserved slots. Strong focal read and type; the mask metaphor is legible but could be read as tabs.",
+          "edit_prompt": "No further renders are available in this run."
+        }
+      ]
+    }
+  ],
+  "eval_final": {
+    "pass_number": 1,
+    "scores": {
+      "concept": 8.3,
+      "focal_hierarchy": 8.8,
+      "composition": 9.0,
+      "color_value": 9.0,
+      "detail_richness": 8.4,
+      "craft_finish": 8.8,
+      "typography": 9.0,
+      "originality": 8.7,
+      "story_fidelity": 8.1
+    },
+    "notes": {
+      "concept": "The two raised, coupled strips isolate two columns on a single record, matching the petition's narrow field scope. The headline supplies the court context, so this is strong field-level imagery rather than a complete depiction of the judicial process.",
+      "focal_hierarchy": "Warm paired masks dominate the cream record at full size and 300 pixels, followed by the ruled sheet and the headline. The two equal strips share the focal point rather than establishing a separate controlling actor.",
+      "composition": "The whole folio is inside the frame, with measured subject bounds [197,271,978,676] on a 1080-square canvas. The first review's left-edge crop claim is incorrect. The oblique sheet, balanced margins and reserved type band form a deliberate composed cover.",
+      "color_value": "Cream paper, warm metal and the deep green field stay distinct at 300 pixels, while the dark lower band preserves headline contrast. Shadows remain visible instead of crushing the foreground detail.",
+      "detail_richness": "Layered leaf edges, a folded corner, slotted fasteners, beveled mask edges, longitudinal brushing and raised cast shadows explain the materials and assembly at full size. The anonymous record marks remain restrained; the folio offers no further story-specific data.",
+      "craft_finish": "The shared carrier, mask attachments, fold and page edges join cleanly, with clear shadow gaps beneath the raised strips. The scene is a polished stylized study; the paper and metal shading do not aim for photographic complexity.",
+      "typography": "The exact two-line headline is immediately readable at 300 pixels, with comfortable side margins and no subject collision. The masthead, date, category and footer maintain a clear hierarchy on the composed cover.",
+      "originality": "An open record with two coupled movable field masks is distinct from the prior wall, valve and broken-span imagery, supported by a minimum actual structural distance of 0.3492. A paper-based disclosure metaphor is familiar, which keeps this below exceptional originality.",
+      "story_fidelity": "Exactly two raised masks correspond to the two geographic fields requested for confidentiality, and their gaps communicate an unresolved treatment. No real data, seal or approved ruling is depicted. Bookmark ambiguity and the separately protected fields remain limits expressly disclosed in the blueprint."
+    },
+    "inspected_scales": [
+      "full",
+      "300"
+    ],
+    "blockers": [],
+    "base_sha256": "26737b063152012b4da2f9ccb4551aab47f22018a565a1ce0474880882df92e5",
+    "cover_sha256": "910fab3eba72313613f9f6ea0717ee763451aa7c6718dbeb2c4eb7f9cfd6ae9b",
+    "weighted": 8.696,
+    "passed": true,
+    "observations": "Independent Codex review of the exact committed base and cover, both inspected at full resolution and on the 300-pixel review sheet. This is a documented new review of unchanged pixels. It corrects the first review's demonstrably inaccurate crop claim and credits visible assembly detail and composed typography under the existing scoring anchors. The first 8.095 review remains retained. Rendering stays at attempt 6 of 6.",
+    "edit_prompt": "Correct the evaluation's clipping assessment and retain these exact image bytes; no pixel edit or additional render is requested.",
+    "previous_reviews": [
+      {
+        "pass_number": 1,
+        "scores": {
+          "concept": 8,
+          "focal_hierarchy": 8.5,
+          "composition": 8,
+          "color_value": 8.5,
+          "detail_richness": 7.5,
+          "craft_finish": 8,
+          "typography": 8.5,
+          "originality": 8,
+          "story_fidelity": 7.5
+        },
+        "notes": {
+          "concept": "Two raised masks over one ruled record show two marked fields directly; it does not need the caption to make the dispute legible.",
+          "focal_hierarchy": "The two red masks are the first read at full size and at 300 px, and the eye path runs from them to the headline.",
+          "composition": "The oblique record fills the upper middle with the lower third clear for type; the left edge of the sheet is slightly cropped by the frame.",
+          "color_value": "Celadon ground, cream paper and warm red separate clearly at thumbnail scale; the dark lower band keeps the headline contrast high.",
+          "detail_richness": "Ruled lines, rivets, shadows and brushed grain are visible at full size, but the record has little further assembly detail.",
+          "craft_finish": "Mask edges, shadows and the folded corner join cleanly; no stray strokes or clipping were visible.",
+          "typography": "Two-line headline is legible at 300 px with clear margins and no overlap with the masks.",
+          "originality": "Distinct from the gauge, bridge and permit covers in the recent ledger, with a physical record rather than a machine.",
+          "story_fidelity": "Two masks over two columns map to the two fields the petition identifies. The masks could read as bookmarks or tabs rather than redactions, so the metaphor limit is only partly carried by the image."
+        },
+        "inspected_scales": [
+          "full",
+          "300"
+        ],
+        "blockers": [],
+        "base_sha256": "26737b063152012b4da2f9ccb4551aab47f22018a565a1ce0474880882df92e5",
+        "cover_sha256": "910fab3eba72313613f9f6ea0717ee763451aa7c6718dbeb2c4eb7f9cfd6ae9b",
+        "weighted": 8.095,
+        "passed": false,
+        "observations": "Attempt 6 of the reserved slots. Strong focal read and type; the mask metaphor is legible but could be read as tabs.",
+        "edit_prompt": "No further renders are available in this run."
+      }
+    ]
+  },
+  "shortfall_note": "",
+  "fallback_reason": "",
+  "rendered_at_utc": "2026-10-12T01:43:17.493819+00:00",
+  "canvas": [
+    1080,
+    1080
+  ],
+  "render_family": "record_masks",
+  "renderer_sha256": "f20dd325d95e688412b189ea9dc768e24b56bf313475ce2a6ff5cb3a5de19a5e",
+  "spec_sha256": "1ba6ba5915218fe3782c4bed08efc7c8c29aa78d414d2c3f3206f6d9771cc001",
+  "variety_sha256": "fbdb0f5759f4fdb35e3dcc933c674e4b550ebab821e5ed8849f54052c04ceda7",
+  "visual_fingerprint": {
+    "version": 2,
+    "phash": "2ca374f0cb4b34b4",
+    "color_histogram": [
+      0.0,
+      0.000488,
+      0.023926,
+      0.0,
+      0.0,
+      0.012451,
+      0.0,
+      0.000732,
+      0.120117,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.00708,
+      0.011963,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.009033,
+      0.000732,
+      0.0,
+      0.0,
+      0.0,
+      0.018066,
+      0.006836,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.788574,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

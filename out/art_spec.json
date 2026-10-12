@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "generator_version": 5,
+  "source": "procedural",
+  "render_family": "record_masks",
+  "style_family": "brushed-metal record masking study",
+  "hue_family": "celadon_red",
+  "palette": [
+    "#14291F",
+    "#071910",
+    "#EBE7D0",
+    "#93BE99",
+    "#EB594D"
+  ],
+  "composition": "oblique_folio",
+  "motifs": [
+    "paired location masks"
+  ],
+  "seed": 1357814352,
+  "story_binding": {
+    "name": "Data-center survey disclosure suit",
+    "no_target": false,
+    "layers": [
+      {
+        "order": 1,
+        "name": "Records held",
+        "controller": "Public Utility Commission of Texas",
+        "function": "The Commission holds facility responses to its survey, which are public information unless an exception applies",
+        "source_url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      },
+      {
+        "order": 2,
+        "name": "Attorney General decision",
+        "controller": "Open Records Division of the Attorney General",
+        "function": "Without a previous determination (Gov't Code Sec. 552.301(a)), a governmental body seeking to withhold requested information must ask for an Attorney General decision. Sec. 552.306(a) requires the decision not later than the 45th business day after receipt, and allows one extension of up to 10 additional business days if the requestor and governmental body are informed during the original period.",
+        "source_url": "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf"
+      },
+      {
+        "order": 3,
+        "name": "Homeland Security exception",
+        "controller": "Open Records Division of the Attorney General",
+        "function": "The Commission claimed Sec. 418.181 covers the survey information; the Open Records Division found the claim was not shown for the submitted information",
+        "source_url": "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026040171.pdf"
+      },
+      {
+        "order": 4,
+        "name": "Declaratory suit",
+        "controller": "200th District Court, Travis County",
+        "function": "A governmental body may sue only in Travis County against the Attorney General seeking declaratory relief within 30 calendar days of receiving a disclosure decision; the petition copy's caption names the 200th District Court.",
+        "source_url": "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf"
+      }
+    ],
+    "decision": "Whether Sec. 418.181 makes the facility county and state regional water planning area fields confidential",
+    "controller": "200th District Court, Travis County",
+    "gate_order": 4
+  },
+  "metaphor_limit": "Editorial metaphor, not an engineering drawing",
+  "story_treatment": "binary_gate",
+  "concept": "Two narrow metal masks hover over the county and regional water planning columns of an open record; the other columns remain visible. Raised masks show a disclosure dispute awaiting resolution, not an approved redaction.",
+  "dossier_sha256": "7c29ec76ce492e2719bacbaf9142fb43b7a31f2028bcc22cfac9ce3e5277e9d8"
+}

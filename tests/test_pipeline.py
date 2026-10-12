@@ -254,6 +254,13 @@ class PostTests(unittest.TestCase):
 
 
 class DossierTests(unittest.TestCase):
+    def test_missing_primary_network_is_not_completed_no_target_research(self) -> None:
+        value=dossier(no_target=True)
+        value['research_capabilities']={'primary_source_fetch':False}
+        errors=[]
+        validate_run.validate_dossier(value,errors)
+        self.assertTrue(any('network capability' in e for e in errors))
+
     def test_target_dossier_passes_structural_validation(self) -> None:
         errors: list[str] = []
         no_target, mechanism = validate_run.validate_dossier(dossier(), errors)
@@ -311,6 +318,16 @@ class ScoreTests(unittest.TestCase):
 
 
 class HistoryTests(unittest.TestCase):
+    def test_failed_and_test_dossiers_do_not_suppress_next_production_focus(self) -> None:
+        failed={'branch':'failed','date':'2026-09-02','dossier':dossier(),'art':None}
+        test={'branch':'test','date':'2026-09-01','dossier':dict(dossier(),run_kind='automation_test'),
+              'art':{'style_family':'machined collateral balance','hue_family':'coral_ink',
+                     'composition':'counterweight_profile','motifs':['escrow counterweight']}}
+        result=history_scan.summarize([failed,test],[],dt.date(2026,9,2))
+        self.assertEqual(result['recent_mechanisms'],[])
+        self.assertEqual(result['artwork_cooldowns']['style_families_last_8'],['machined collateral balance'])
+        self.assertEqual(result['recent_artwork'][0]['branch'],'test')
+
     def test_history_builds_mechanism_and_art_cooldowns(self) -> None:
         records = [
             {
@@ -376,6 +393,24 @@ class EmailTests(unittest.TestCase):
     def test_payload_rejects_non_address_recipient(self) -> None:
         with self.assertRaises(ValueError):
             build_email.build_payload(to="me", subject="Draft", html_body="<p>x</p>")
+
+    def test_unselected_art_email_keeps_the_actual_score_and_notes(self) -> None:
+        failed={"source":"procedural", "eval_final":{"provisional":True,"weighted":None,"passed":False},
+                "eval_history":[{"weighted":7.575,"passed":False,"scores":{"concept":7},
+                                 "notes":{"concept":"The ring reads as a gauge instead of an evidence chain."}}]}
+        self.assertIn("Best unselected review 7.575 / 10",build_email.art_summary(failed))
+        self.assertNotIn("Weighted  / 10",build_email.art_summary(failed))
+        self.assertIn("gauge instead of an evidence chain",build_email.art_table(failed))
+        self.assertFalse(failed['eval_final']['passed'])
+
+    def test_unreviewed_art_email_has_an_explicit_state(self) -> None:
+        self.assertIn("Not reviewed",build_email.art_summary({"source":"procedural"}))
+        self.assertNotIn(" / 10",build_email.art_summary({"source":"procedural"}))
+
+    def test_art_review_count_keeps_preserved_corrections(self) -> None:
+        value=art_eval()
+        value['eval_history'][0]['previous_reviews']=[{"weighted":8.095}]
+        self.assertIn("Reviews 2",build_email.art_summary(value))
 
 
 if __name__ == "__main__":

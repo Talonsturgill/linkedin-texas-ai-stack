@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "run_kind": "automation_test",
+  "run_date": "2026-10-11",
+  "window_days": 14,
+  "no_target_this_cycle": false,
+  "selected_mechanism": {
+    "name": "Data-center survey disclosure suit",
+    "category": "regulatory",
+    "category_label": "REGULATORY",
+    "definition": "A state agency that holds survey responses from data centers asks the Attorney General whether public records law requires release, and then may sue in Travis County to block that release.",
+    "texas_scope": "Texas, Travis County district court, responses to the Energy and Water Use Survey for data centers and virtual currency mining facilities",
+    "news_trigger": {
+      "date": "2026-10-05",
+      "verbatim_span": "files its Original Petition against Defendant Ken Paxton, in his official capacity as the Texas Attorney General",
+      "post_anchor": "sued the Attorney General",
+      "source": {
+        "url": "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf",
+        "title": "Plaintiff's Original Petition, cause D-1-GN-26-010018 (publisher mirror of Travis County filing; clerk-style stamp 10/5/2026 5:37 PM; not the District Clerk record)",
+        "publisher": "Texas Scorecard mirror",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-10-12T00:48:44Z",
+        "sha256": "af33d40d26cf4b0d2e84d84d8e1f8d3aa9e22c18bc845272f9e22a63409a05bc",
+        "independent_of_subject": true
+      },
+      "corroboration": {
+        "source": {
+          "url": "https://www.texastribune.org/2026/10/06/texas-data-center-lawsuit-paxton-water/",
+          "title": "PUC sues Paxton's office over release of data center records",
+          "publisher": "The Texas Tribune",
+          "source_type": "independent_reporting",
+          "fetched_at_utc": "2026-10-12T00:48:44Z",
+          "sha256": null,
+          "independent_of_subject": false
+        },
+        "note": "Independent reporting dated October 6th, 2026 corroborates the filing; it is not used as a primary source for any layer."
+      }
+    },
+    "layers": [
+      {
+        "order": 1,
+        "name": "Records held",
+        "function": "The Commission holds facility responses to its survey, which are public information unless an exception applies",
+        "controlling_actor": "Public Utility Commission of Texas",
+        "actor_authority": "Gov't Code Sec. 552.021 makes public information available; the petition states the survey responses are held by the Commission",
+        "post_phrase": "Public Utility Commission of Texas",
+        "primary_source": {
+          "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm",
+          "title": "Texas Government Code Chapter 552 (Secs. 552.021, 552.301, 552.306, 552.324, 552.325)",
+          "publisher": "Texas Legislature",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-12T00:48:44Z",
+          "sha256": "6a023c6d1f049926e4ccf81d533ecad135b3d3fad63b76aceab34bae5d249385",
+          "independent_of_subject": true
+        }
+      },
+      {
+        "order": 2,
+        "name": "Attorney General decision",
+        "function": "Without a previous determination (Gov't Code Sec. 552.301(a)), a governmental body seeking to withhold requested information must ask for an Attorney General decision. Sec. 552.306(a) requires the decision not later than the 45th business day after receipt, and allows one extension of up to 10 additional business days if the requestor and governmental body are informed during the original period.",
+        "controlling_actor": "Open Records Division of the Attorney General",
+        "actor_authority": "Gov't Code Sec. 552.301(a) requires the request; Sec. 552.306(a) requires a decision not later than the 45th business day",
+        "post_phrase": "Open Records Division",
+        "primary_source": {
+          "url": "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf",
+          "title": "Open Records Letter Ruling OR2026-038988, September 2nd, 2026",
+          "publisher": "Texas Attorney General",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-12T00:48:44Z",
+          "sha256": "574d512907ece1e8b11e5cfa07a716d69d27bd1b7857527e58bac26bc430e83a",
+          "independent_of_subject": true
+        }
+      },
+      {
+        "order": 3,
+        "name": "Homeland Security exception",
+        "function": "The Commission claimed Sec. 418.181 covers the survey information; the Open Records Division found the claim was not shown for the submitted information",
+        "controlling_actor": "Open Records Division of the Attorney General",
+        "actor_authority": "Sec. 418.181 covers technical details of particular vulnerabilities of critical infrastructure; the ruling found the Commission had not demonstrated that for the submitted information",
+        "post_phrase": "technical details of particular vulnerabilities",
+        "primary_source": {
+          "url": "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026040171.pdf",
+          "title": "Open Records Letter Ruling OR2026-040171, September 11th, 2026",
+          "publisher": "Texas Attorney General",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-12T00:48:44Z",
+          "sha256": "e06e98aa9e3f1dcbbdeee7f2c576b9551ef5fc5f0b00c5b1967a99835a247010",
+          "independent_of_subject": true
+        }
+      },
+      {
+        "order": 4,
+        "name": "Declaratory suit",
+        "function": "A governmental body may sue only in Travis County against the Attorney General seeking declaratory relief within 30 calendar days of receiving a disclosure decision; the petition copy's caption names the 200th District Court.",
+        "controlling_actor": "200th District Court, Travis County",
+        "actor_authority": "Gov't Code Sec. 552.324(a)-(b) and 552.325; the petition is captioned in the 200th District Court and states cause number D-1-GN-26-010018",
+        "post_phrase": "200th District Court",
+        "primary_source": {
+          "url": "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf",
+          "title": "Plaintiff's Original Petition, cause D-1-GN-26-010018 (publisher mirror of Travis County filing; clerk-style stamp 10/5/2026 5:37 PM; not the District Clerk record)",
+          "publisher": "Texas Scorecard mirror",
+          "source_type": "primary",
+          "fetched_at_utc": "2026-10-12T00:48:44Z",
+          "sha256": "af33d40d26cf4b0d2e84d84d8e1f8d3aa9e22c18bc845272f9e22a63409a05bc",
+          "independent_of_subject": true
+        }
+      }
+    ],
+    "chokepoint": {
+      "layer_order": 4,
+      "layer_name": "Declaratory suit",
+      "controlling_actor": "200th District Court, Travis County",
+      "post_actor_phrase": "200th District Court",
+      "binary_decision": "Whether Sec. 418.181 makes the facility county and state regional water planning area fields confidential",
+      "post_decision_phrase": "whether the two fields are exempt",
+      "why_asymmetric": "After the Attorney General ruling, the only route to block release is the Travis County declaratory suit under Sec. 552.324, so this court is where the disputed exemption is decided",
+      "primary_source_url": "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf"
+    },
+    "texas_consequence": "Public access to the county and regional water planning area of Texas data centers and virtual currency mining facilities that reported to the Commission survey",
+    "structural_read": "The machinery is legible. A records request reached the Commission, the Commission asked the Attorney General to decide, the Attorney General ruled on September 2nd, 2026 that the Commission had not shown the Homeland Security exception applies to the submitted information, and the Commission filed suit on October 5th, 2026. The ruling does not name the county or water planning area fields, so the petition is the only source for which fields are disputed. The petition's security argument is an allegation that the Attorney General has not yet tested in court.",
+    "forward_implication": "Until the 200th District Court rules, whether the disputed fields stay confidential is unresolved. The record here does not say whether release is paused during the suit.",
+    "next_check": {
+      "what": "Court ruling on the declaratory request in cause D-1-GN-26-010018",
+      "actor": "200th District Court, Travis County",
+      "date_or_window": "No hearing date appears in the record"
+    },
+    "public_policy_context": {
+      "is_public_policy": true,
+      "editorial_mode": "neutral_accountability",
+      "assessment": "not_applicable"
+    },
+    "sources": [
+      {
+        "url": "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf",
+        "title": "Open Records Letter Ruling OR2026-038988, September 2nd, 2026",
+        "publisher": "Texas Attorney General",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-10-12T00:48:44Z",
+        "sha256": "574d512907ece1e8b11e5cfa07a716d69d27bd1b7857527e58bac26bc430e83a",
+        "independent_of_subject": true
+      },
+      {
+        "url": "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026040171.pdf",
+        "title": "Open Records Letter Ruling OR2026-040171, September 11th, 2026",
+        "publisher": "Texas Attorney General",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-10-12T00:48:44Z",
+        "sha256": "e06e98aa9e3f1dcbbdeee7f2c576b9551ef5fc5f0b00c5b1967a99835a247010",
+        "independent_of_subject": true
+      },
+      {
+        "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm",
+        "title": "Texas Government Code Chapter 552 (Secs. 552.021, 552.301, 552.306, 552.324, 552.325)",
+        "publisher": "Texas Legislature",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-10-12T00:48:44Z",
+        "sha256": "6a023c6d1f049926e4ccf81d533ecad135b3d3fad63b76aceab34bae5d249385",
+        "independent_of_subject": true
+      },
+      {
+        "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.418.htm",
+        "title": "Texas Government Code Chapter 418 (Sec. 418.181)",
+        "publisher": "Texas Legislature",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-10-12T00:48:44Z",
+        "sha256": "84abfb477aef5a5171e9c0d02f52c5b76539193ea2bb920fd94cb2966971964f",
+        "independent_of_subject": true
+      },
+      {
+        "url": "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf",
+        "title": "Plaintiff's Original Petition, cause D-1-GN-26-010018 (publisher mirror of Travis County filing; clerk-style stamp 10/5/2026 5:37 PM; not the District Clerk record)",
+        "publisher": "Texas Scorecard mirror",
+        "source_type": "primary",
+        "fetched_at_utc": "2026-10-12T00:48:44Z",
+        "sha256": "af33d40d26cf4b0d2e84d84d8e1f8d3aa9e22c18bc845272f9e22a63409a05bc",
+        "independent_of_subject": true
+      },
+      {
+        "url": "https://www.texastribune.org/2026/10/06/texas-data-center-lawsuit-paxton-water/",
+        "title": "PUC sues Paxton's office over release of data center records",
+        "publisher": "The Texas Tribune",
+        "source_type": "independent_reporting",
+        "fetched_at_utc": "2026-10-12T00:48:44Z",
+        "sha256": null,
+        "independent_of_subject": false
+      }
+    ]
+  },
+  "required_post_phrases": [
+    "Data-center survey disclosure suit",
+    "sued the Attorney General",
+    "200th District Court",
+    "whether the two fields are exempt"
+  ],
+  "verified_facts": [
+    {
+      "claim": "The Commission filed its Original Petition against the Attorney General in the 200th District Court, cause D-1-GN-26-010018, stamped 10/5/2026 5:37 PM",
+      "source_urls": [
+        "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf"
+      ]
+    },
+    {
+      "claim": "Ruling OR2026-038988 issued September 2nd, 2026 and the Commission received it on September 3rd, 2026 (per the petition)",
+      "source_urls": [
+        "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf",
+        "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf"
+      ]
+    },
+    {
+      "claim": "Ruling OR2026-038988 found the Commission had not shown the information identifies technical details of particular vulnerabilities, so it may not withhold under Sec. 418.181",
+      "source_urls": [
+        "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf"
+      ]
+    },
+    {
+      "claim": "Ruling OR2026-038988 orders withholding of Sec. 552.110(c) information and Sec. 552.137 personal emails and release of the remaining information",
+      "source_urls": [
+        "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf"
+      ]
+    },
+    {
+      "claim": "Ruling OR2026-040171 issued September 11th, 2026 and applied OR2026-038988 as a previous determination to identical information",
+      "source_urls": [
+        "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026040171.pdf"
+      ]
+    },
+    {
+      "claim": "Sec. 418.181 covers documents identifying technical details of particular vulnerabilities of critical infrastructure to an act of terrorism or a hostile act by a foreign adversary",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.418.htm"
+      ]
+    },
+    {
+      "claim": "Sec. 552.306(a) requires the Attorney General to decide not later than the 45th business day after receiving the request",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      ]
+    },
+    {
+      "claim": "Sec. 552.324(b) requires the governmental body to sue within 30 calendar days after receiving a disclosure decision",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      ]
+    },
+    {
+      "claim": "The petition seeks a declaration that the facility county and state regional water planning area fields are confidential under the Public Information Act, and states this as relief sought, not as a proven fact",
+      "source_urls": [
+        "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf"
+      ]
+    },
+    {
+      "claim": "The petition lists the survey responses as including each facility's physical location, regional water planning area, contracted and actual electrical load, and water intake and sources, stated by the petitioner rather than verified",
+      "source_urls": [
+        "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf"
+      ]
+    },
+    {
+      "claim": "Sec. 552.325 entitles a requestor to intervene in a suit seeking to withhold information and requires notice to the requestor",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      ]
+    },
+    {
+      "claim": "Sec. 552.306(a) allows the Attorney General to extend the decision period by an additional 10 business days by informing the governmental body and requestor during the original 45-day period",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      ]
+    },
+    {
+      "claim": "Sec. 552.301(a) requires a request for decision only if there has not been a previous determination about whether the information falls within an exception",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      ]
+    },
+    {
+      "claim": "Sec. 552.324(a)(2) describes the suit as seeking declaratory relief from compliance with an Attorney General decision, so a court win would relieve compliance for the disputed records; the rulings do not state field coverage",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm",
+        "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf"
+      ]
+    }
+  ],
+  "gate_results": {
+    "news_tie": true,
+    "anatomizable_depth": true,
+    "primary_source_each_layer": true,
+    "texas_consequence": true,
+    "chokepoint_asymmetry": true,
+    "mechanism_not_actor": true,
+    "not_recent_repeat": true,
+    "political_neutrality": true
+  },
+  "dropped_mechanisms": [
+    {
+      "name": "TCEQ data-center permit freeze",
+      "category": "regulatory",
+      "news_trigger": "Governor's September 21, 2026 directive halting TCEQ data-center permits until the ERCOT audit ends",
+      "drop_reason": "not_recent_repeat failed: this chain and chokepoint appear in the recent ledger (branch 2026-09-25). The next checkpoint, a TCEQ compliance report due October 19, 2026, is not yet public.",
+      "sources": [
+        {
+          "url": "https://www.gtlaw.com/en/insights/2026/9/texas-governor-directs-a-halt-on-data-center-permitting-with-state-agency-audits",
+          "title": "Texas Governor Directs a Halt on Data Center Permitting With State Agency Audits",
+          "publisher": "Greenberg Traurig",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "PUCT large-load interconnection final rule",
+      "category": "regulatory",
+      "news_trigger": "White & Case reports PUCT adopted a standardized large-load interconnection rule on September 18, 2026",
+      "drop_reason": "news_tie failed for the 21-day window (trigger September 18 precedes September 20). Adopted order was not fetched, so primary_source_each_layer was not checked.",
+      "sources": [
+        {
+          "url": "https://www.whitecase.com/insight-alert/puct-sets-financial-commitments-data-center-interconnection-governor-pauses-permit",
+          "title": "PUCT sets financial commitments for data center interconnection as governor pauses permit approvals",
+          "publisher": "White & Case",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "TWDB water-use survey enforcement directive",
+      "category": "regulatory",
+      "news_trigger": "Governor's September 14, 2026 directive to TWDB on data-center water-use reporting",
+      "drop_reason": "news_tie failed: trigger September 14 precedes the 21-day window. The TWDB update due in October is not yet public, and the survey deadline was not found.",
+      "sources": [
+        {
+          "url": "https://route-fifty.com/infrastructure/2026/09/gov-greg-abbott-orders-texas-water-agency-penalize-data-centers-dont-report-their-water-usage/415989",
+          "title": "Gov. Greg Abbott orders Texas water agency to penalize data centers that don't report their water usage",
+          "publisher": "Route Fifty",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "ERCOT Batch Zero audit pause",
+      "category": "regulatory",
+      "news_trigger": "ERCOT market notice of August 3, 2026 pausing Batch Zero study",
+      "drop_reason": "news_tie failed: trigger August 3 is outside both the 14-day and 21-day windows.",
+      "sources": [
+        {
+          "url": "https://www.bakerbotts.com/thought-leadership/publications/2026/august/texas-large-load-interconnection-update---ercot-batch-zero-pause-and-verification-process",
+          "title": "Texas large load interconnection update: ERCOT Batch Zero pause and verification process",
+          "publisher": "Baker Botts",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "Texas Semiconductor Innovation Fund grants",
+      "category": "vehicles",
+      "news_trigger": "Latest TSIF grant found: Texas Instruments, July 9, 2026",
+      "drop_reason": "news_tie failed: no TSIF award in the window; latest found is July 9, 2026.",
+      "sources": [
+        {
+          "url": "https://gov.texas.gov/news/post/governor-abbott-announces-texas-semiconductor-innovation-fund-grant-to-texas-instruments",
+          "title": "Governor Abbott Announces Texas Semiconductor Innovation Fund Grant To Texas Instruments",
+          "publisher": "Office of the Texas Governor",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "DIR AI cooperative contract renewal or award",
+      "category": "vehicles",
+      "news_trigger": "Vendor pages list DIR AI cooperative contracts; one period of performance ended September 3, 2026",
+      "drop_reason": "news_tie failed: no DIR award or renewal notice dated in the window. Listings were vendor-hosted or navigation pages.",
+      "sources": [
+        {
+          "url": "https://dir.texas.gov/search-contracts-vendors?page=47",
+          "title": "DIR search contracts vendors",
+          "publisher": "Texas Department of Information Resources",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "headline": "TWO LOCATION FIELDS ENTER COURT",
+  "font_size": 78,
+  "lines": [
+    "TWO LOCATION",
+    "FIELDS ENTER COURT"
+  ],
+  "positions": [
+    [
+      64,
+      805
+    ],
+    [
+      64,
+      879
+    ]
+  ],
+  "text_boxes": [
+    [
+      64,
+      805,
+      735,
+      863
+    ],
+    [
+      64,
+      879,
+      998,
+      938
+    ]
+  ],
+  "headline_top": 805,
+  "subject_zone": [
+    64,
+    196,
+    1016,
+    765
+  ],
+  "canvas": [
+    1080,
+    1080
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "criteria": [
+    {
+      "name": "Hook strength",
+      "weight": 0.1,
+      "score": 8,
+      "notes": "Names the suit, the Commission, the date and the requested withholding in two lines of 210 characters, the checker's limit."
+    },
+    {
+      "name": "Mechanism significance for Texas",
+      "weight": 0.18,
+      "score": 7.5,
+      "notes": "Two fields in a state resource-use survey of Texas data centers, with the petition's listed record contents tied to Texas counties and planning areas. The record does not show response counts or broader effects, so the score stops short of 8."
+    },
+    {
+      "name": "Layer fidelity",
+      "weight": 0.14,
+      "score": 8.5,
+      "notes": "Four layers, each named with its controlling actor and a traced primary source; the layer-2 extension and previous-determination condition are now in the dossier."
+    },
+    {
+      "name": "Chokepoint clarity",
+      "weight": 0.13,
+      "score": 8.5,
+      "notes": "One court and one binary question: whether the two fields are exempt under Section 418.181."
+    },
+    {
+      "name": "Structural read",
+      "weight": 0.12,
+      "score": 8,
+      "notes": "Traces request, Attorney General ruling, Homeland Security claim and suit; states that no judicial finding exists yet. The read is precise but does not model what the court's answer would change."
+    },
+    {
+      "name": "Forward implication",
+      "weight": 0.08,
+      "score": 8,
+      "notes": "Names the next check, the court ruling and its field coverage, and states both outcomes under Section 552.324: a win relieves compliance for those fields, and a loss leaves them under rulings that do not state coverage. No hearing date is invented. The stay status is an unresolved gap."
+    },
+    {
+      "name": "Primary-source quality",
+      "weight": 0.1,
+      "score": 7.5,
+      "notes": "Statute and both rulings are primary and read in full; the petition is a publisher copy with a caption and cause number, not the District Clerk record."
+    },
+    {
+      "name": "Texas AI Docket voice",
+      "weight": 0.08,
+      "score": 8,
+      "notes": "Plain, specific and neutral; the Commission's security argument is labelled as argument, and the ruling findings are stated as findings."
+    },
+    {
+      "name": "LinkedIn readability",
+      "weight": 0.04,
+      "score": 8,
+      "notes": "396 body words within 350 to 475, short bullets and one closing question; dense but readable."
+    },
+    {
+      "name": "Chokepoint question",
+      "weight": 0.03,
+      "score": 8.5,
+      "notes": "Ends on a debatable question about what evidence could link the fields to a vulnerability."
+    }
+  ],
+  "hard_fail_checks": [
+    {
+      "name": "seven_point_gate",
+      "passed": true
+    },
+    {
+      "name": "mechanism_and_trigger",
+      "passed": true
+    },
+    {
+      "name": "layer_fidelity",
+      "passed": true
+    },
+    {
+      "name": "specific_chokepoint",
+      "passed": true
+    },
+    {
+      "name": "fact_trace",
+      "passed": true
+    },
+    {
+      "name": "political_neutrality",
+      "passed": true
+    },
+    {
+      "name": "linkedin_constraints",
+      "passed": true
+    },
+    {
+      "name": "house_style",
+      "passed": true
+    }
+  ],
+  "hard_failures": [],
+  "weighted_total": 8.01,
+  "threshold": 8.0,
+  "ship": true,
+  "note": "Revision 3 after the user's rewrite (revision 1) and one bounded forward-implication revision (revision 2, disclosed). Prior rejected score v1 (7.825) is archived in the local ignore area; the 7.97 pre-revision re-score is recorded in the commit history."
+}

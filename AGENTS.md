@@ -12,7 +12,8 @@ never sends mail.
 3. Use examples/voice_anchor.md for voice only.
 4. Load texas-stack-artwork only after the mechanism dossier is final.
 
-The versioned routine is authoritative. Keep the scheduler prompt thin.
+The versioned routine is authoritative. Keep the scheduler prompt thin. Work from the cloned
+repository root on any host; never assume a macOS path or a Codex installation.
 
 ## Boundaries
 
@@ -31,8 +32,9 @@ The versioned routine is authoritative. Keep the scheduler prompt thin.
   reporting about authority, procedure, implementation, disclosure, and measurable effects.
 - A no-target week is honest output. It still gets original artwork, a pushed branch, and a Gmail
   draft explaining what was checked.
-- Actual built-in ImageGen is the primary art path. A deterministic fallback is a disclosed fire
-  exit for tool failure, not an aesthetic shortcut.
+- Story-bound code-generated artwork is the primary path. Use the procedural renderer and variety
+  engine in texas-stack-artwork. ImageGen is optional only when explicitly requested; its absence
+  does not block a run. Never label procedural art ImageGen or use the old generic fallback.
 
 ## Verification
 
@@ -41,8 +43,7 @@ Use Python 3.11 or newer.
     python3 -m pip install -r requirements.txt
     python3 -m unittest discover -s tests -v
     python3 scripts/check_config.py
-    python3 /Users/t/.codex/skills/.system/skill-creator/scripts/quick_validate.py \
-      .agents/skills/texas-stack-artwork
+    python3 scripts/check_skill.py .agents/skills/texas-stack-artwork
 
 For a completed target run, also execute:
 
@@ -52,4 +53,3 @@ For a completed target run, also execute:
 
 Never describe a skipped check as passed. Inspect both art_base.png and post_image.png at full
 size and thumbnail size. The 8.5 artwork score is a floor, not a substitute for visual judgment.
-

@@ -1,0 +1,19 @@
+{
+  "generator_version": 5,
+  "source": "procedural",
+  "render_kind": "production",
+  "base_sha256": "26737b063152012b4da2f9ccb4551aab47f22018a565a1ce0474880882df92e5",
+  "renderer_sha256": "f20dd325d95e688412b189ea9dc768e24b56bf313475ce2a6ff5cb3a5de19a5e",
+  "subject_box": [
+    197,
+    271,
+    978,
+    676
+  ],
+  "seed": 1357814352,
+  "layer_count": 4,
+  "gate_order": 4,
+  "spec_sha256": "1ba6ba5915218fe3782c4bed08efc7c8c29aa78d414d2c3f3206f6d9771cc001",
+  "budget_branch": "codex/texas-stack-2026-10-11",
+  "attempt_number": 6
+}
