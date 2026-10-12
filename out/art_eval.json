@@ -4,96 +4,94 @@
   "generator_version": 5,
   "concepts": [
     {
-      "name": "cyanotype photogram",
-      "render_family": "cyanotype",
-      "composition": "frame_window",
+      "name": "brushed-metal record masking study",
+      "render_family": "record_masks",
+      "composition": "oblique_folio",
       "motifs": [
-        "folded clasp"
+        "paired location masks"
       ],
-      "concept": "cyanotype photogram showing Editorial verification controlling Withhold publication until the evidence chain is complete"
+      "concept": "Two narrow metal masks hover over the county and regional water planning columns of an open record; the other columns remain visible. Raised masks show a disclosure dispute awaiting resolution, not an approved redaction."
     },
     {
-      "name": "sculptural editorial still life",
-      "render_family": "editorial_scene",
-      "composition": "rising_channel",
+      "name": "cyanotype photogram",
+      "render_family": "cyanotype",
+      "composition": "crossing_branches",
       "motifs": [
-        "missing keystone"
+        "iris shutter"
       ],
-      "concept": "An incomplete sculptural bridge leaves a clear break between two banks; publication cannot cross an unsupported source chain."
+      "concept": "cyanotype photogram showing 200th District Court, Travis County controlling Whether Sec. 418.181 makes the facility county and state regional water planning area fields confidential"
     },
     {
       "name": "charcoal chiaroscuro",
       "render_family": "charcoal",
-      "composition": "horizon_clamp",
+      "composition": "frame_window",
       "motifs": [
-        "ratchet tooth"
+        "forked conduit"
       ],
-      "concept": "charcoal chiaroscuro showing Editorial verification controlling Withhold publication until the evidence chain is complete"
+      "concept": "charcoal chiaroscuro showing 200th District Court, Travis County controlling Whether Sec. 418.181 makes the facility county and state regional water planning area fields confidential"
     }
   ],
-  "selected_concept": "An incomplete sculptural bridge leaves a clear break between two banks; publication cannot cross an unsupported source chain.",
-  "render_family": "editorial_scene",
-  "style_family": "sculptural editorial still life",
-  "hue_family": "coral_ink",
+  "selected_concept": "Two narrow metal masks hover over the county and regional water planning columns of an open record; the other columns remain visible. Raised masks show a disclosure dispute awaiting resolution, not an approved redaction.",
+  "render_family": "record_masks",
+  "style_family": "brushed-metal record masking study",
+  "hue_family": "celadon_red",
   "palette": [
-    "#27132A",
-    "#16081D",
-    "#F9E9D5",
-    "#EE705C",
-    "#6FDBD0"
+    "#14291F",
+    "#071910",
+    "#EBE7D0",
+    "#93BE99",
+    "#EB594D"
   ],
-  "composition": "rising_channel",
+  "composition": "oblique_folio",
   "motifs": [
-    "missing keystone"
+    "paired location masks"
   ],
-  "seed": 154961001,
-  "renderer_sha256": "015dde621e2a59fc7d6d95446477a664f78a7ddde4694b352462f21c2294d26c",
-  "spec_sha256": "58a96050a9ed13d30864fba247fbd7519f4150809f08ed25ca78c3ca0a3264f6",
-  "variety_sha256": "a7d83ccf442c8f2e0cbeb0bb08bef1fba76e922d7624f896fa489dc835665b2c",
+  "seed": 1357814352,
+  "renderer_sha256": "f20dd325d95e688412b189ea9dc768e24b56bf313475ce2a6ff5cb3a5de19a5e",
+  "spec_sha256": "1ba6ba5915218fe3782c4bed08efc7c8c29aa78d414d2c3f3206f6d9771cc001",
+  "variety_sha256": "fbdb0f5759f4fdb35e3dcc933c674e4b550ebab821e5ed8849f54052c04ceda7",
   "subject_box": [
-    147,
-    357,
-    927,
-    757
+    197,
+    271,
+    978,
+    676
   ],
   "eval_history": [
     {
       "pass_number": 1,
       "scores": {
-        "concept": 7,
-        "focal_hierarchy": 8,
-        "composition": 7.5,
+        "concept": 8,
+        "focal_hierarchy": 8.5,
+        "composition": 8,
         "color_value": 8.5,
-        "detail_richness": 7,
-        "craft_finish": 7.5,
+        "detail_richness": 7.5,
+        "craft_finish": 8,
         "typography": 8.5,
-        "originality": 7,
-        "story_fidelity": 7
+        "originality": 8,
+        "story_fidelity": 7.5
       },
       "notes": {
-        "concept": "Two arch halves with a broken deck do show an incomplete span, but the segmented ring still reads as a dial.",
-        "focal_hierarchy": "The gap between the two halves is the clear focal point and reads first at 300 px.",
-        "composition": "Subject sits centered above the headline band with calm negative space; the deck offsets are slightly unbalanced.",
-        "color_value": "Cream, coral and teal separate clearly against the plum ground at thumbnail scale.",
-        "detail_richness": "Ring joints and deck edges are visible at full size, but the large forms carry little meaningful assembly detail.",
-        "craft_finish": "Shadows and plinths sit cleanly; the deck ends meet the plinths without loose strokes.",
-        "typography": "Two-line headline is legible at 300 px with clear margins and no overlap with the subject.",
-        "originality": "Broken-span treatment is distinct from recent covers but close to a generic gauge or dial motif.",
-        "story_fidelity": "The incomplete-evidence metaphor is declared, but the dial reading risks suggesting a measurement rather than an unfinished chain."
+        "concept": "Two raised masks over one ruled record show two marked fields directly; it does not need the caption to make the dispute legible.",
+        "focal_hierarchy": "The two red masks are the first read at full size and at 300 px, and the eye path runs from them to the headline.",
+        "composition": "The oblique record fills the upper middle with the lower third clear for type; the left edge of the sheet is slightly cropped by the frame.",
+        "color_value": "Celadon ground, cream paper and warm red separate clearly at thumbnail scale; the dark lower band keeps the headline contrast high.",
+        "detail_richness": "Ruled lines, rivets, shadows and brushed grain are visible at full size, but the record has little further assembly detail.",
+        "craft_finish": "Mask edges, shadows and the folded corner join cleanly; no stray strokes or clipping were visible.",
+        "typography": "Two-line headline is legible at 300 px with clear margins and no overlap with the masks.",
+        "originality": "Distinct from the gauge, bridge and permit covers in the recent ledger, with a physical record rather than a machine.",
+        "story_fidelity": "Two masks over two columns map to the two fields the petition identifies. The masks could read as bookmarks or tabs rather than redactions, so the metaphor limit is only partly carried by the image."
       },
       "inspected_scales": [
         "full",
         "300"
       ],
-      "blockers": [
-        "Reads as a gauge or dial rather than an unfinished evidence chain, a misleading mechanism read."
-      ],
-      "base_sha256": "2ca90cddfbd465c5a46c9f7fa72d922265d5ca69d1f59ae4cf875ae705a6853a",
-      "cover_sha256": "d96ae7f0b26e1bde872f593a11cd9dbbc087435e53879208d4a812342bbddafc",
-      "weighted": 7.575,
+      "blockers": [],
+      "base_sha256": "26737b063152012b4da2f9ccb4551aab47f22018a565a1ce0474880882df92e5",
+      "cover_sha256": "910fab3eba72313613f9f6ea0717ee763451aa7c6718dbeb2c4eb7f9cfd6ae9b",
+      "weighted": 8.095,
       "passed": false,
-      "observations": "Best observed pass (render 3, identical bytes on re-render). Stronger than earlier passes; still reads as a gauge.",
-      "edit_prompt": "Replace the segmented ring with masonry voussoirs and a level deck so the gap reads as a bridge, then re-render."
+      "observations": "Attempt 6 of the reserved slots. Strong focal read and type; the mask metaphor is legible but could be read as tabs.",
+      "edit_prompt": "No further renders are available in this run."
     }
   ],
   "eval_final": {

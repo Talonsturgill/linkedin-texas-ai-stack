@@ -1,41 +1,41 @@
 {
   "schema_version": 1,
-  "headline": "PRIMARY RECORDS STAYED OUT OF REACH",
-  "font_size": 74,
+  "headline": "TWO LOCATION FIELDS ENTER COURT",
+  "font_size": 78,
   "lines": [
-    "PRIMARY RECORDS",
-    "STAYED OUT OF REACH"
+    "TWO LOCATION",
+    "FIELDS ENTER COURT"
   ],
   "positions": [
     [
       64,
-      812
+      805
     ],
     [
       64,
-      883
+      879
     ]
   ],
   "text_boxes": [
     [
       64,
-      812,
-      872,
-      867
+      805,
+      735,
+      863
     ],
     [
       64,
-      883,
-      1003,
+      879,
+      998,
       938
     ]
   ],
-  "headline_top": 812,
+  "headline_top": 805,
   "subject_zone": [
     64,
     196,
     1016,
-    772
+    765
   ],
   "canvas": [
     1080,

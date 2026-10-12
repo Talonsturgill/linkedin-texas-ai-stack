@@ -57,7 +57,7 @@
       {
         "order": 2,
         "name": "Attorney General decision",
-        "function": "A governmental body that withholds records must ask the Attorney General for a decision, which issues within 45 business days",
+        "function": "Without a previous determination (Gov't Code Sec. 552.301(a)), a governmental body seeking to withhold requested information must ask for an Attorney General decision. Sec. 552.306(a) requires the decision not later than the 45th business day after receipt, and allows one extension of up to 10 additional business days if the requestor and governmental body are informed during the original period.",
         "controlling_actor": "Open Records Division of the Attorney General",
         "actor_authority": "Gov't Code Sec. 552.301(a) requires the request; Sec. 552.306(a) requires a decision not later than the 45th business day",
         "post_phrase": "Open Records Division",
@@ -91,7 +91,7 @@
       {
         "order": 4,
         "name": "Declaratory suit",
-        "function": "A governmental body may sue only in Travis County against the Attorney General to seek declaratory relief within 30 calendar days of receiving a disclosure decision",
+        "function": "A governmental body may sue only in Travis County against the Attorney General seeking declaratory relief within 30 calendar days of receiving a disclosure decision; the petition copy's caption names the 200th District Court.",
         "controlling_actor": "200th District Court, Travis County",
         "actor_authority": "Gov't Code Sec. 552.324(a)-(b) and 552.325; the petition is captioned in the 200th District Court and states cause number D-1-GN-26-010018",
         "post_phrase": "200th District Court",
@@ -258,6 +258,25 @@
       "claim": "Sec. 552.325 entitles a requestor to intervene in a suit seeking to withhold information and requires notice to the requestor",
       "source_urls": [
         "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      ]
+    },
+    {
+      "claim": "Sec. 552.306(a) allows the Attorney General to extend the decision period by an additional 10 business days by informing the governmental body and requestor during the original 45-day period",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      ]
+    },
+    {
+      "claim": "Sec. 552.301(a) requires a request for decision only if there has not been a previous determination about whether the information falls within an exception",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm"
+      ]
+    },
+    {
+      "claim": "Sec. 552.324(a)(2) describes the suit as seeking declaratory relief from compliance with an Attorney General decision, so a court win would relieve compliance for the disputed records; the rulings do not state field coverage",
+      "source_urls": [
+        "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm",
+        "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf"
       ]
     }
   ],

@@ -2,9 +2,9 @@
   "ok": true,
   "errors": [],
   "metrics": {
-    "body_words": 382,
-    "total_chars": 2468,
-    "hook_chars": 204,
+    "body_words": 427,
+    "total_chars": 2995,
+    "hook_chars": 210,
     "layer_bullets": 4,
     "hashtags": [
       "#TexasDataCenters",

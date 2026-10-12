@@ -1,23 +1,25 @@
 Data-center survey disclosure suit. The Commission sued the Attorney General on October 5th, 2026.
-The Public Utility Commission of Texas asks a Travis County court to keep two survey fields confidential.
+The Public Utility Commission of Texas asks a court to withhold county and regional water planning area fields.
 
-A state agency that holds survey responses asks the Attorney General whether public records law requires release, then may sue in Travis County to block it. The petition says those responses include each facility's physical location, regional water planning area, electrical load and water sources.
+The suit seeks a court declaration that two geographic fields in facility survey responses are confidential. The petition describes records containing location, electrical load, energy consumption, water intake, cooling technology and utilities. Its requested relief links the disclosure dispute to the geography of those resource-use records.
 
 The chain has four layers.
 
-- Records held. The Public Utility Commission of Texas holds facility responses to its survey, which are public information unless an exception applies.
-- Attorney General decision. A governmental body that withholds records must ask the Attorney General for a decision, and the Open Records Division must render it within 45 business days.
-- Homeland Security exception. Section 418.181 covers technical details of particular vulnerabilities, and the Open Records Division found that claim was not shown for the submitted information.
-- Declaratory suit. A governmental body may sue only in Travis County against the Attorney General, within 30 calendar days, and the petition is captioned for the 200th District Court.
+- Records held. The Public Utility Commission of Texas holds facility survey responses, which are public information unless an exception applies.
+- Attorney General decision. Without a previous determination, a governmental body seeking to withhold requested information must ask for a decision. The Open Records Division applies the claimed exceptions to the submitted records.
+- Homeland Security exception. Section 418.181 protects technical details of particular vulnerabilities of critical infrastructure to an act of terrorism. The Open Records Division found that the Commission had not demonstrated this exception for the submitted information.
+- Declaratory suit. A governmental body may sue only in Travis County against the Attorney General within 30 calendar days of receiving a disclosure decision. The petition copy's caption names the 200th District Court.
 
 The chokepoint is the 200th District Court, which decides whether the two fields are exempt under Section 418.181.
 
-The machinery is legible but unfinished. The September 2nd, 2026 ruling found the Commission had not shown the exception applies to the submitted information and ordered the remainder released. A second ruling on September 11th, 2026 applied the same result to identical information. The rulings do not name the county or water planning area fields, so the petition is the only source for which fields are disputed. The Commission argues that combining those fields with other survey data could expose vulnerabilities, and that is an allegation the court has not tested.
+The September 2nd, 2026 ruling required marked commercial or financial information and qualifying personal email addresses to be withheld, then ordered the remaining information released. The September 11th, 2026 ruling applied the same result to identical information. Neither ruling names the disputed geographic fields. The petition identifies them and argues that combining them with other survey data could expose vulnerabilities.
 
-Under Section 552.325, requesters are entitled to intervene in a suit like this one and to receive notice of it. Their access is therefore decided in a courtroom that they can join, not only in the agency's own records process.
+The structural test is specific. The Commission wants confidentiality for geographic identifiers under a law about technical vulnerabilities. The requested declaration turns on whether the claimed connection meets that standard. This filing establishes the relief requested, and the fetched record contains no judicial finding accepting the argument.
 
-The next observable decision is a ruling from the 200th District Court on the declaratory request, and the record sets no hearing date.
+Under Section 552.325, requesters are entitled to notice and may intervene. They can participate in the proceeding that will decide the disputed exemption.
 
-Should a court, rather than the Attorney General, be the last word on whether two survey fields stay confidential?
+The next check is a court ruling and its precise field coverage. No hearing date or court decision appears in the primary records reviewed here. Under Section 552.324, a court win would relieve the Commission of complying with the decision for those fields. A loss leaves them under rulings that do not state their coverage.
+
+What evidence could connect county and planning-area fields to a particular infrastructure vulnerability?
 
 #TexasDataCenters #TexasWater #TexasPolicy

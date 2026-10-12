@@ -1,16 +1,32 @@
-# Art plan: October 11, 2026 no-target cover
+# Art plan: Two location fields enter court
 
-Selection: concept 2, sculptural editorial still life, editorial_scene render family, missing keystone motif, rising_channel composition. It is the only candidate whose interaction fits the no-target binding, an incomplete evidence bridge: publication cannot cross an unsupported source chain.
+## Three concepts, each with a half-second read and dossier fact
 
-Dossier binding: no target this cycle. Story treatment incomplete_evidence, category WATCH, decision "Withhold publication until the evidence chain is complete". Dropped candidates are not depicted. No mechanism, actor, Texas place, layer or number is drawn.
+1. Brushed-metal record masking study. Half-second read: two narrow raised masks over one open record, with the rest of its columns visible. Dossier fact: the petition identifies two facility fields, county and state regional water planning area, as the disputed information. Family record_masks, composition oblique_folio, hue celadon_red.
+2. Cyanotype photogram with an iris shutter. Half-second read: a shutter closing on a blue print. Dossier fact: the court decides the exemption. This concept reads as a camera, not a record, so it does not show the disputed fields.
+3. Charcoal chiaroscuro with a forked conduit. Half-second read: an electrical conduit splitting. Dossier fact: none of the dossier layers is a conduit. It would invent infrastructure the record does not describe, so it is rejected.
 
-Concepts considered: (1) cyanotype frame window with a folded clasp, rejected for weaker bridge logic; (2) incomplete sculptural bridge, selected; (3) charcoal horizon clamp with a ratchet tooth, rejected because the ratchet implies mechanical enforcement not in the record.
+## Selection
 
-Register: editorial still life, medium-abstracted, not an engineering drawing. Metaphor limit: an editorial metaphor only.
+Concept 1. Its two raised masks are the only idea that makes the two disputed fields legible without a caption. Its composition keeps the masks inside the record, so the image shows a disputed subset, not the whole survey.
 
-Palette roles: deep plum ground #27132A and near-black #16081D for depth; warm paper #F9E9D5 for the two banks and the broken span; coral #EE705C as the single accent at the break; teal #6FDBD0 as a cool counterpoint on the far bank.
+## Literal bindings
 
-Focal point: the gap at the keystone position between the two banks.
-Eye path: left bank, then the break, then the far bank, then the headline band.
-Detail at three scales: macro, the sharp joint edges of the missing keystone; meso, the two stepped banks; micro, surface grain of the paper-like material.
-Visual risks: reading as a generic bridge diagram; accidental text-like marks; the headline band colliding with the bridge. Mitigation: no lettering in the base; the subject stays inside subject_zone; inspect at full size and at 300 pixels.
+- Two masks: the two fields the petition identifies, facility county and state regional water planning area.
+- Open record: the survey response form, shown only as an abstract ruled sheet.
+- Remaining columns: visible in the image, but the rulings do not state their release status, so they are not presented as verified released information.
+
+## Metaphor limits (required)
+
+- The masks are an editorial metaphor for a dispute awaiting a court ruling. They are not approved redactions, not a court order and not a depiction of any actual document.
+- Commercial/financial and personal email redactions ordered in the September 2nd, 2026 ruling are separate from these masks and are not drawn.
+- The court and stay status is unresolved. The image does not show a stay, a ruling or a release.
+- No text, numbers, seals, signatures, logos or maps appear in the base.
+
+## Medium, palette and composition
+
+Brushed-metal study with celadon ground and red accent. Palette roles: deep green ground, pale paper record, celadon as the mask field, and one warm red for the disputed raised edges. Focal point is the two masks. Eye path runs from the masks to the record and then to the headline band. Detail at three scales: macro, the mask edges; meso, the ruled record columns; micro, brushed grain on the metal.
+
+## Visual risks
+
+Reading as a generic redaction bar, or as a settled decision. Mitigation: raised, offset masks with visible gaps, and no solid black fill.
