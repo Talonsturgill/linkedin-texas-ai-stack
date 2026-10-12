@@ -54,7 +54,10 @@ Record all nine observed scores with dimension-specific notes, inspected_scales 
 observations, blockers and one concrete edit in .local/art-review.json. review_art.py binds the
 review to the actual base and cover bytes. Use --select only with no blockers and a real passing
 review. Recompose identically afterward to refresh metadata. A metadata refresh is not a new
-render or review. Use --replace-pass for a typography-only re-review of the same base.
+render or review. Use --replace-pass for a typography re-review or a documented correction
+of an observed defect on the same base. Preserve the earlier scores in previous_reviews,
+identify the reviewer and cite the counterevidence. A higher score needs actual observed
+evidence; intent, a changed label or the desire to reach the floor is insufficient.
 
 The 8.5 weighted floor and minimum dimension of seven are hard gates for procedural art. Seek
 9+ through concrete corrections. Stray labels, false geography, illegible type, clipping, subject

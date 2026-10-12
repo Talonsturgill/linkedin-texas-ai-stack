@@ -87,10 +87,12 @@ def art_summary(art_eval: dict) -> str:
         )
     score_label = (f'{safe(label)} {safe(final["weighted"])} / 10'
                    if "weighted" in final else safe(label))
+    review_count = sum(1 + len(row.get("previous_reviews") or [])
+                       for row in art_eval.get("eval_history") or [] if isinstance(row, dict))
     return (
         f'<span class="metric">Source {safe(art_eval.get("source"))}</span>'
         f'<span class="metric">{score_label}</span>'
-        f'<span class="metric">Reviews {safe(len(art_eval.get("eval_history") or []))}</span>'
+        f'<span class="metric">Reviews {safe(review_count)}</span>'
         f'{weakest}'
     )
 

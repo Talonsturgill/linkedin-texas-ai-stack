@@ -38,9 +38,9 @@ def record(eval_path: Path, review_path: Path, base: Path, cover: Path, select: 
         raise ValueError('replacement must identify an existing generation')
     base_hash=sha256(base)
     if replace_pass is not None and history[replace_pass-1].get('base_sha256')!=base_hash:
-        raise ValueError('a typography re-review must retain the same generated base')
+        raise ValueError('a review correction must retain the same generated base')
     if replace_pass is None and any(row.get('base_sha256')==base_hash for row in history):
-        raise ValueError('this base is already recorded; typography repair is not a new rendering')
+        raise ValueError('this base is already recorded; an existing-base review is not a new rendering')
     weighted=round(sum(scores[k]*w for k,w in WEIGHTS.items()),3)
     row=dict(pass_number=replace_pass or len(history)+1,scores=scores,notes=notes,
              inspected_scales=review['inspected_scales'],blockers=review['blockers'],
@@ -68,7 +68,7 @@ def main():
     p.add_argument('--sheet',type=Path)
     p.add_argument('--eval',type=Path);p.add_argument('--review',type=Path)
     p.add_argument('--select',action='store_true')
-    p.add_argument('--replace-pass',type=int,help='Re-review typography on the same generated base')
+    p.add_argument('--replace-pass',type=int,help='Re-review an existing base and preserve the prior review')
     a=p.parse_args()
     if a.sheet:contact_sheet(a.base,a.cover,a.sheet);print(json.dumps({'sheet':str(a.sheet)}))
     if a.review:

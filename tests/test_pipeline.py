@@ -407,6 +407,11 @@ class EmailTests(unittest.TestCase):
         self.assertIn("Not reviewed",build_email.art_summary({"source":"procedural"}))
         self.assertNotIn(" / 10",build_email.art_summary({"source":"procedural"}))
 
+    def test_art_review_count_keeps_preserved_corrections(self) -> None:
+        value=art_eval()
+        value['eval_history'][0]['previous_reviews']=[{"weighted":8.095}]
+        self.assertIn("Reviews 2",build_email.art_summary(value))
+
 
 if __name__ == "__main__":
     unittest.main()
