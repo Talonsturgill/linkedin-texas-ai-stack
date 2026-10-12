@@ -35,6 +35,9 @@ to inflate the detail score.
 Scores apply to the composed cover, after full-base and full-cover inspection. For every dimension,
 write one observed strength and, below 9, the visible limitation. The score is editorial judgment,
 not a measured multiplier or scientific benchmark.
+Check any clipping claim against the actual full-size image and measured subject bounds.
+Reserved text-free space on the base earns its role in the composed cover. Credit visible,
+meaningful material and assembly detail; extra decoration is not a requirement for a strong score.
 
 | Dimension | Weight | A score near 9 requires |
 |---|---:|---|
