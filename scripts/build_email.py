@@ -62,8 +62,21 @@ def source_rows(dossier: dict) -> list[dict]:
     return deduped
 
 
-def art_summary(art_eval: dict) -> str:
+def art_display_review(art_eval: dict) -> tuple[dict, str]:
+    """Show recorded rejected evidence without implying that a cover was selected."""
     final = art_eval.get("eval_final") or {}
+    if final.get("weighted") is not None:
+        return final, "Weighted" if final.get("passed") else "Unselected review"
+    reviewed = [row for row in art_eval.get("eval_history", [])
+                if isinstance(row, dict) and isinstance(row.get("weighted"), (int, float))
+                and not isinstance(row.get("weighted"), bool) and row.get("scores")]
+    if reviewed:
+        return max(reviewed, key=lambda row: row["weighted"]), "Best unselected review"
+    return {}, "Not reviewed"
+
+
+def art_summary(art_eval: dict) -> str:
+    final, label = art_display_review(art_eval)
     scores = final.get("scores") or {}
     weakest = ""
     if scores:
@@ -72,16 +85,18 @@ def art_summary(art_eval: dict) -> str:
             f'<span class="metric">Weakest {safe(weakest_name)} '
             f'{safe(scores[weakest_name])}</span>'
         )
+    score_label = (f'{safe(label)} {safe(final["weighted"])} / 10'
+                   if "weighted" in final else safe(label))
     return (
         f'<span class="metric">Source {safe(art_eval.get("source"))}</span>'
-        f'<span class="metric">Weighted {safe(final.get("weighted"))} / 10</span>'
-        f'<span class="metric">Passes {safe(len(art_eval.get("eval_history") or []))}</span>'
+        f'<span class="metric">{score_label}</span>'
+        f'<span class="metric">Reviews {safe(len(art_eval.get("eval_history") or []))}</span>'
         f'{weakest}'
     )
 
 
 def art_table(art_eval: dict) -> str:
-    final=art_eval.get('eval_final') or {}
+    final,_=art_display_review(art_eval)
     notes=final.get('notes') or {}
     rows=[]
     for name,value in (final.get('scores') or {}).items():

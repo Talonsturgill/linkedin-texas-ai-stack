@@ -27,7 +27,7 @@ pattern with a document pasted onto it is insufficient when the decision needs a
 physical interaction. Use the blueprint to design that interaction, extending actual geometry
 or adding a genuinely distinct renderer when the toolkit cannot express it.
 
-The engine has seventeen different drawing methods with different geometry. Exclude
+The engine has eighteen different drawing methods with different geometry. Exclude
 styles used in the last eight covers, hue families in four, compositions in two and primary
 motifs in ten. Do not rename a used style. The immediately preceding cover must differ on all
 four axes. Run variety_check.py against actual recent raster fingerprints. It rejects similar

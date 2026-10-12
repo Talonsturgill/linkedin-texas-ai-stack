@@ -30,6 +30,7 @@ news.rice.edu
 news.utexas.edu
 nsf.gov
 ntia.gov
+oag.my.site.com
 puc.texas.gov
 reuters.com
 rice.edu
@@ -46,6 +47,7 @@ tceq.texas.gov
 texas.gov
 texasaidocket.com
 texasattorneygeneral.gov
+texasscorecard.com
 texastribune.org
 today.tamu.edu
 ttu.edu
