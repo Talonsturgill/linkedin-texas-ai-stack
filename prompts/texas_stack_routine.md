@@ -69,8 +69,13 @@ message sender. Without that binding, record gmail_recipient_unverified and do n
 
 For Claude's connector without a profile tool, TEXAS_STACK_GMAIL_BINDING supplies the privately
 verified profile binding and an unsent mailbox challenge. Run scripts/gmail_binding.py --out
-.local/gmail_binding.json without displaying the file or environment value. Use the connected
-Gmail draft API. List draft emails with the exact public mailbox_challenge_subject from
+.local/gmail_binding.json without displaying the file or environment value. Use the selected
+interpreter to invoke that script directly; it checks the environment internally and emits only
+public booleans. Capture its stdout as .local/gmail_binding_receipt.json and check its exit code.
+Read mailbox_challenge_verified from that receipt after the RAW verification invocation;
+the private binding file stores the verified flag under verified. Never expand the binding
+environment variable in a shell command or print environment contents to test its presence.
+Use the connected Gmail draft API. List draft emails with the exact public mailbox_challenge_subject from
 config/state.yaml and pageSize 5. Require one exact match and pass the draft ID returned by
 Gmail directly to Get draft email with messageFormat RAW. Do not print private environment
 identifiers to obtain tool arguments. The verifier checks the independently bound identifiers
