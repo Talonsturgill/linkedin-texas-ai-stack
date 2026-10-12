@@ -1,0 +1,110 @@
+{
+  "criteria": [
+    {
+      "name": "Hook strength",
+      "weight": 0.1,
+      "score": 8,
+      "notes": "Mechanism name, date and suit are in the first two lines; the hook states the filing directly."
+    },
+    {
+      "name": "Mechanism significance for Texas",
+      "weight": 0.18,
+      "score": 7,
+      "notes": "Texas-specific, but the dispute concerns two survey fields; the post says so rather than inflating the stakes."
+    },
+    {
+      "name": "Layer fidelity",
+      "weight": 0.14,
+      "score": 8.5,
+      "notes": "Four layers, each bullet names its layer and actor; every actor and authority traces to a primary source in the dossier."
+    },
+    {
+      "name": "Chokepoint clarity",
+      "weight": 0.13,
+      "score": 8.5,
+      "notes": "One court and one binary question: whether the two fields are exempt under Section 418.181."
+    },
+    {
+      "name": "Structural read",
+      "weight": 0.12,
+      "score": 8,
+      "notes": "Machinery is traced from request to suit; the security argument is attributed as the Commission's allegation."
+    },
+    {
+      "name": "Forward implication",
+      "weight": 0.08,
+      "score": 7,
+      "notes": "The only next observable step is a ruling with no hearing date in the record, so the implication is thin."
+    },
+    {
+      "name": "Primary-source quality",
+      "weight": 0.1,
+      "score": 7.5,
+      "notes": "Statute and both rulings are primary; the petition is a publisher mirror with a filing stamp, not the District Clerk record."
+    },
+    {
+      "name": "Texas AI Docket voice",
+      "weight": 0.08,
+      "score": 8,
+      "notes": "Plain, specific, neutral; the Commission's position is labelled as argument."
+    },
+    {
+      "name": "LinkedIn readability",
+      "weight": 0.04,
+      "score": 8,
+      "notes": "Short hook, four bullets, one question; 382 body words within the 350 to 475 range."
+    },
+    {
+      "name": "Chokepoint question",
+      "weight": 0.03,
+      "score": 8,
+      "notes": "Ends on a debatable question about who decides confidentiality."
+    }
+  ],
+  "hard_fails": [
+    {
+      "name": "seven_point_gate",
+      "passed": true,
+      "note": "All eight gates true in dossier"
+    },
+    {
+      "name": "mechanism_and_trigger",
+      "passed": true,
+      "note": "Hook names mechanism and trigger anchor"
+    },
+    {
+      "name": "layer_fidelity",
+      "passed": true,
+      "note": "Four layers, actors in dossier"
+    },
+    {
+      "name": "specific_chokepoint",
+      "passed": true,
+      "note": "Court and binary decision named"
+    },
+    {
+      "name": "fact_trace",
+      "passed": true,
+      "note": "Numerals and phrases ground in dossier; check_post passed"
+    },
+    {
+      "name": "political_neutrality",
+      "passed": true,
+      "note": "Commission and AG positions attributed; no advocacy"
+    },
+    {
+      "name": "linkedin_constraints",
+      "passed": true,
+      "note": "382 body words; 2,468 characters; three approved hashtags"
+    },
+    {
+      "name": "house_style",
+      "passed": true,
+      "note": "No forbidden punctuation, quotes, first person or banned phrases"
+    }
+  ],
+  "weighted_total": 7.825,
+  "threshold": 8.0,
+  "ship": false,
+  "note": "Below the 8.0 floor. Not shipped. Two score revisions were considered; the only weak dimensions (significance and forward implication) cannot be raised without facts not in the record."
+}

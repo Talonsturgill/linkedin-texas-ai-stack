@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "errors": [],
+  "metrics": {
+    "body_words": 382,
+    "total_chars": 2468,
+    "hook_chars": 204,
+    "layer_bullets": 4,
+    "hashtags": [
+      "#TexasDataCenters",
+      "#TexasWater",
+      "#TexasPolicy"
+    ],
+    "tag_line": "#TexasDataCenters #TexasWater #TexasPolicy"
+  }
+}
