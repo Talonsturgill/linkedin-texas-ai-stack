@@ -4,7 +4,7 @@
   "run_date": "2026-10-11",
   "window_days": 21,
   "no_target_this_cycle": true,
-  "_validation_note": "Broadened once to 21 days. Discovery across facilities, vehicles, capital_sovereignty and regulatory found no candidate that clears all eight gates on retrievable primary text. The strongest in-window lead, a Texas Tribune report dated October 6, 2026 about the PUC's suit over survey fields, cannot be primary-verified here because the Attorney General ruling text and the petition were unreachable. Other leads were outside the window or already in the recent-mechanism ledger.",
+  "_validation_note": "Broadened to 21 days. The two Attorney General rulings (Sept 2 and Sept 11, 2026), Sec. 418.181 and Secs. 552.301, 552.306 and 552.324 are now verified from primary text. Still no-target: the survey layer has no primary, the Commission's petition is unread (proxy 403), and the court's pending disclosure decision has no primary passage. The rulings do not name the county or water-planning fields.",
   "selected_mechanism": null,
   "required_post_phrases": [],
   "verified_facts": [],
@@ -13,26 +13,82 @@
     {
       "name": "Texas data-center survey disclosure dispute (PUC suit against Attorney General rulings)",
       "category": "regulatory",
-      "news_trigger": "Texas Tribune, October 6, 2026: PUC sued the Attorney General's office over two open-records rulings on survey fields",
-      "drop_reason": "primary_source_each_layer failed. Actual route outcomes, checked once on the official routes: statute GV.418.htm reachable (HTTP 200) and Sec. 418.181 text verified; GV.552.htm reachable (HTTP 200) but not needed for the gate; OAG open-records letter ruling index reachable (HTTP 200) but lists no OR2026-038988 or OR2026-040171 entry; OAG PIA portal not reachable (no connection); OAG news release returned HTTP 402; Travis County petition host unreachable and not an official court record. The controlling ruling and petition text is missing, so the chain stays unverified.",
+      "news_trigger": "Texas Tribune, October 6, 2026 (independent reporting): PUC sued the Attorney General over two open-records rulings on survey fields. Court filing date October 5, 2026 is reported, not primary-verified.",
+      "drop_reason": "Two gates fail. (1) primary_source_each_layer: the survey layer has no primary source located (PUC site and search returned news only); the Commission suit layer has no primary petition, because the publisher mirror returned HTTP 403 at the proxy and was not read, so its filing stamp and appended rulings are unverified. (2) chokepoint_asymmetry: the court's pending decision on whether the county and water-planning fields are exempt has no primary passage. The Attorney General rulings are primary but do not name those fields; the link from the rulings to those two fields is an inference, not a verified fact. Primary gates recovered this run: the two rulings (HTTP 200 PDF, read in full), Sec. 418.181 text, and Sec. 552.301, 552.306 and 552.324. Commission filing authority under 552.324 is a statutory fact; the court's disclosure decision remains unresolved and pleading allegations are not treated as facts.",
       "sources": [
         {
-          "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.418.htm",
-          "title": "Texas Government Code Chapter 418 (Sec. 418.181 verified)",
-          "publisher": "Texas Legislature",
-          "fetched_at_utc": "2026-10-12T00:19:17Z"
+          "url": "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026038988.pdf",
+          "title": "Open Records Letter OR2026-038988 (Sept 2, 2026): HSA 418.181 claim not sustained for the Commission; remaining information released except 552.110(c) and 552.137; prior litigation carve-out D-1-GN-25-004622",
+          "publisher": "Texas Attorney General",
+          "source_type": "primary",
+          "independent_of_subject": true,
+          "fetched_at_utc": "2026-10-12T00:31:29Z",
+          "sha256": "574d512907ece1e8b11e5cfa07a716d69d27bd1b7857527e58bac26bc430e83a",
+          "claims_supported": [
+            "Commission may not withhold under 552.101 with 418.181 for the submitted information",
+            "Commission must withhold 552.110(c) marked information and 552.137 personal emails",
+            "Commission must release the remaining information"
+          ]
         },
         {
-          "url": "https://www.texasattorneygeneral.gov/open-government/governmental-bodies/previous-attorney-general-decisions-and-rulings/open-records-letter-ruling",
-          "title": "OAG open records letter ruling index (no matching 2026 entries)",
+          "url": "https://www2.texasattorneygeneral.gov/opinions/openrecords/PIA/51paxton/orl/2026/pdf/or2026040171.pdf",
+          "title": "Open Records Letter OR2026-040171 (Sept 11, 2026): previous determination applied to identical information from three requests",
           "publisher": "Texas Attorney General",
-          "fetched_at_utc": "2026-10-12T00:19:17Z"
+          "source_type": "primary",
+          "independent_of_subject": true,
+          "fetched_at_utc": "2026-10-12T00:31:29Z",
+          "sha256": "e06e98aa9e3f1dcbbdeee7f2c576b9551ef5fc5f0b00c5b1967a99835a247010",
+          "claims_supported": [
+            "Applies OR2026-038988 as a previous determination to identical information"
+          ]
+        },
+        {
+          "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.418.htm",
+          "title": "Texas Government Code Chapter 418, Sec. 418.181",
+          "publisher": "Texas Legislature",
+          "source_type": "primary",
+          "independent_of_subject": true,
+          "fetched_at_utc": "2026-10-12T00:31:29Z",
+          "sha256": "84abfb477aef5a5171e9c0d02f52c5b76539193ea2bb920fd94cb2966971964f",
+          "claims_supported": [
+            "Sec. 418.181 text: documents identifying technical details of particular vulnerabilities of critical infrastructure to an act of terrorism or a hostile act by a foreign adversary are confidential"
+          ]
+        },
+        {
+          "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.552.htm",
+          "title": "Texas Government Code Chapter 552, Secs. 552.301, 552.306, 552.324, 552.325",
+          "publisher": "Texas Legislature",
+          "source_type": "primary",
+          "independent_of_subject": true,
+          "fetched_at_utc": "2026-10-12T00:31:29Z",
+          "sha256": "6a023c6d1f049926e4ccf81d533ecad135b3d3fad63b76aceab34bae5d249385",
+          "claims_supported": [
+            "552.301(a): governmental body must ask the AG for a decision when withholding under an exception",
+            "552.306(a): AG renders decision not later than 45th business day after receipt",
+            "552.324(a)-(b): only suit is a Travis County declaratory suit against the AG, filed within 30 calendar days of receipt of a disclosure decision"
+          ]
+        },
+        {
+          "url": "https://texasscorecard.com/wp-content/uploads/2026/10/PLAINTIFFS-ORIGINAL-PETITION-2.pdf",
+          "title": "Plaintiffs' Original Petition (publisher mirror of Travis County filing, cause D-1-GN-26-010018)",
+          "publisher": "Texas Scorecard (mirror, not official court record)",
+          "source_type": "independent_reporting",
+          "independent_of_subject": false,
+          "fetched_at_utc": "2026-10-12T00:31:29Z",
+          "sha256": null,
+          "claims_supported": [],
+          "fetch_status": "HTTP 403 at proxy CONNECT tunnel; not read; not verified"
         },
         {
           "url": "https://www.texastribune.org/2026/10/06/texas-data-center-lawsuit-paxton-water/",
-          "title": "PUC sues Paxton's office over release of data center records (news only)",
+          "title": "PUC sues Paxton's office over release of data center records",
           "publisher": "The Texas Tribune",
-          "fetched_at_utc": "2026-10-12T00:19:17Z"
+          "source_type": "independent_reporting",
+          "independent_of_subject": true,
+          "fetched_at_utc": "2026-10-12T00:31:29Z",
+          "claims_supported": [
+            "Reported: PUC sued the Attorney General over two open-records rulings; not a primary source"
+          ]
         }
       ]
     },
