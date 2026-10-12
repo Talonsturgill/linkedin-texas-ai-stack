@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "generator_version": 5,
+  "source": "procedural",
+  "render_family": "editorial_scene",
+  "style_family": "sculptural editorial still life",
+  "hue_family": "coral_ink",
+  "palette": [
+    "#27132A",
+    "#16081D",
+    "#F9E9D5",
+    "#EE705C",
+    "#6FDBD0"
+  ],
+  "composition": "rising_channel",
+  "motifs": [
+    "missing keystone"
+  ],
+  "seed": 154961001,
+  "story_binding": {
+    "name": "Incomplete source chain",
+    "no_target": true,
+    "layers": [],
+    "decision": "Withhold publication until the evidence chain is complete",
+    "controller": "Editorial verification",
+    "gate_order": 1
+  },
+  "metaphor_limit": "Editorial metaphor, not an engineering drawing",
+  "story_treatment": "incomplete_evidence",
+  "concept": "An incomplete sculptural bridge leaves a clear break between two banks; publication cannot cross an unsupported source chain.",
+  "dossier_sha256": "177dc342887b82b5a4b947576c89a94bec077e133d4f455378b6ad0ddc9fac46"
+}

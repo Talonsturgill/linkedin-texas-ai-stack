@@ -486,6 +486,10 @@ def editorial_scene(p):
             for a in ((2.72,2.35,1.97) if left else (1.17,.79,.42)):
                 p.line([(.5+.38*math.cos(a),.90-.65*math.sin(a)),
                         (.5+.245*math.cos(a),.90-.43*math.sin(a))],p.dark,2)
+        # A broken deck runs from each bank and stops short of the keystone gap, so the
+        # two halves read as one unfinished span rather than a dial or gauge.
+        for x0,x1,color in ((.08,.42,p.light),(.58,.92,p.main)):
+            shaded([(x0,.90),(x1,.90),(x1,.945),(x0,.945)],color,.012)
         # Solid plinths meet the arch feet, grounding the image in one physical space.
         for x in (.08,.74):
             shaded([(x,.90),(x+.18,.90),(x+.20,.945),(x+.02,.945)],p.accent,.015)

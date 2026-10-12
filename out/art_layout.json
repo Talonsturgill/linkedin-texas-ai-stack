@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "headline": "PRIMARY RECORDS STAYED OUT OF REACH",
+  "font_size": 74,
+  "lines": [
+    "PRIMARY RECORDS",
+    "STAYED OUT OF REACH"
+  ],
+  "positions": [
+    [
+      64,
+      812
+    ],
+    [
+      64,
+      883
+    ]
+  ],
+  "text_boxes": [
+    [
+      64,
+      812,
+      872,
+      867
+    ],
+    [
+      64,
+      883,
+      1003,
+      938
+    ]
+  ],
+  "headline_top": 812,
+  "subject_zone": [
+    64,
+    196,
+    1016,
+    772
+  ],
+  "canvas": [
+    1080,
+    1080
+  ]
+}

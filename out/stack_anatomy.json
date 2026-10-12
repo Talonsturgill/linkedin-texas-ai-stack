@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "run_kind": "automation_test",
+  "run_date": "2026-10-11",
+  "window_days": 21,
+  "no_target_this_cycle": true,
+  "_validation_note": "Broadened once to 21 days. Discovery across facilities, vehicles, capital_sovereignty and regulatory found no candidate that clears all eight gates on retrievable primary text. The strongest in-window lead, a Texas Tribune report dated October 6, 2026 about the PUC's suit over survey fields, cannot be primary-verified here because the Attorney General ruling text and the petition were unreachable. Other leads were outside the window or already in the recent-mechanism ledger.",
+  "selected_mechanism": null,
+  "required_post_phrases": [],
+  "verified_facts": [],
+  "gate_results": {},
+  "dropped_mechanisms": [
+    {
+      "name": "Texas data-center survey disclosure dispute (PUC suit against Attorney General rulings)",
+      "category": "regulatory",
+      "news_trigger": "Texas Tribune, October 6, 2026: PUC sued the Attorney General's office over two open-records rulings on survey fields",
+      "drop_reason": "primary_source_each_layer failed. Actual route outcomes, checked once on the official routes: statute GV.418.htm reachable (HTTP 200) and Sec. 418.181 text verified; GV.552.htm reachable (HTTP 200) but not needed for the gate; OAG open-records letter ruling index reachable (HTTP 200) but lists no OR2026-038988 or OR2026-040171 entry; OAG PIA portal not reachable (no connection); OAG news release returned HTTP 402; Travis County petition host unreachable and not an official court record. The controlling ruling and petition text is missing, so the chain stays unverified.",
+      "sources": [
+        {
+          "url": "https://tcss.legis.texas.gov/resources/GV/htm/GV.418.htm",
+          "title": "Texas Government Code Chapter 418 (Sec. 418.181 verified)",
+          "publisher": "Texas Legislature",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        },
+        {
+          "url": "https://www.texasattorneygeneral.gov/open-government/governmental-bodies/previous-attorney-general-decisions-and-rulings/open-records-letter-ruling",
+          "title": "OAG open records letter ruling index (no matching 2026 entries)",
+          "publisher": "Texas Attorney General",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        },
+        {
+          "url": "https://www.texastribune.org/2026/10/06/texas-data-center-lawsuit-paxton-water/",
+          "title": "PUC sues Paxton's office over release of data center records (news only)",
+          "publisher": "The Texas Tribune",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "TCEQ data-center permit freeze",
+      "category": "regulatory",
+      "news_trigger": "Governor's September 21, 2026 directive halting TCEQ data-center permits until the ERCOT audit ends",
+      "drop_reason": "not_recent_repeat failed: this chain and chokepoint appear in the recent ledger (branch 2026-09-25). The next checkpoint, a TCEQ compliance report due October 19, 2026, is not yet public.",
+      "sources": [
+        {
+          "url": "https://www.gtlaw.com/en/insights/2026/9/texas-governor-directs-a-halt-on-data-center-permitting-with-state-agency-audits",
+          "title": "Texas Governor Directs a Halt on Data Center Permitting With State Agency Audits",
+          "publisher": "Greenberg Traurig",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "PUCT large-load interconnection final rule",
+      "category": "regulatory",
+      "news_trigger": "White & Case reports PUCT adopted a standardized large-load interconnection rule on September 18, 2026",
+      "drop_reason": "news_tie failed for the 21-day window (trigger September 18 precedes September 20). Adopted order was not fetched, so primary_source_each_layer was not checked.",
+      "sources": [
+        {
+          "url": "https://www.whitecase.com/insight-alert/puct-sets-financial-commitments-data-center-interconnection-governor-pauses-permit",
+          "title": "PUCT sets financial commitments for data center interconnection as governor pauses permit approvals",
+          "publisher": "White & Case",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "TWDB water-use survey enforcement directive",
+      "category": "regulatory",
+      "news_trigger": "Governor's September 14, 2026 directive to TWDB on data-center water-use reporting",
+      "drop_reason": "news_tie failed: trigger September 14 precedes the 21-day window. The TWDB update due in October is not yet public, and the survey deadline was not found.",
+      "sources": [
+        {
+          "url": "https://route-fifty.com/infrastructure/2026/09/gov-greg-abbott-orders-texas-water-agency-penalize-data-centers-dont-report-their-water-usage/415989",
+          "title": "Gov. Greg Abbott orders Texas water agency to penalize data centers that don't report their water usage",
+          "publisher": "Route Fifty",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "ERCOT Batch Zero audit pause",
+      "category": "regulatory",
+      "news_trigger": "ERCOT market notice of August 3, 2026 pausing Batch Zero study",
+      "drop_reason": "news_tie failed: trigger August 3 is outside both the 14-day and 21-day windows.",
+      "sources": [
+        {
+          "url": "https://www.bakerbotts.com/thought-leadership/publications/2026/august/texas-large-load-interconnection-update---ercot-batch-zero-pause-and-verification-process",
+          "title": "Texas large load interconnection update: ERCOT Batch Zero pause and verification process",
+          "publisher": "Baker Botts",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "Texas Semiconductor Innovation Fund grants",
+      "category": "vehicles",
+      "news_trigger": "Latest TSIF grant found: Texas Instruments, July 9, 2026",
+      "drop_reason": "news_tie failed: no TSIF award in the window; latest found is July 9, 2026.",
+      "sources": [
+        {
+          "url": "https://gov.texas.gov/news/post/governor-abbott-announces-texas-semiconductor-innovation-fund-grant-to-texas-instruments",
+          "title": "Governor Abbott Announces Texas Semiconductor Innovation Fund Grant To Texas Instruments",
+          "publisher": "Office of the Texas Governor",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    },
+    {
+      "name": "DIR AI cooperative contract renewal or award",
+      "category": "vehicles",
+      "news_trigger": "Vendor pages list DIR AI cooperative contracts; one period of performance ended September 3, 2026",
+      "drop_reason": "news_tie failed: no DIR award or renewal notice dated in the window. Listings were vendor-hosted or navigation pages.",
+      "sources": [
+        {
+          "url": "https://dir.texas.gov/search-contracts-vendors?page=47",
+          "title": "DIR search contracts vendors",
+          "publisher": "Texas Department of Information Resources",
+          "fetched_at_utc": "2026-10-12T00:19:17Z"
+        }
+      ]
+    }
+  ]
+}

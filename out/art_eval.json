@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "source": "procedural",
+  "generator_version": 5,
+  "concepts": [
+    {
+      "name": "cyanotype photogram",
+      "render_family": "cyanotype",
+      "composition": "frame_window",
+      "motifs": [
+        "folded clasp"
+      ],
+      "concept": "cyanotype photogram showing Editorial verification controlling Withhold publication until the evidence chain is complete"
+    },
+    {
+      "name": "sculptural editorial still life",
+      "render_family": "editorial_scene",
+      "composition": "rising_channel",
+      "motifs": [
+        "missing keystone"
+      ],
+      "concept": "An incomplete sculptural bridge leaves a clear break between two banks; publication cannot cross an unsupported source chain."
+    },
+    {
+      "name": "charcoal chiaroscuro",
+      "render_family": "charcoal",
+      "composition": "horizon_clamp",
+      "motifs": [
+        "ratchet tooth"
+      ],
+      "concept": "charcoal chiaroscuro showing Editorial verification controlling Withhold publication until the evidence chain is complete"
+    }
+  ],
+  "selected_concept": "An incomplete sculptural bridge leaves a clear break between two banks; publication cannot cross an unsupported source chain.",
+  "render_family": "editorial_scene",
+  "style_family": "sculptural editorial still life",
+  "hue_family": "coral_ink",
+  "palette": [
+    "#27132A",
+    "#16081D",
+    "#F9E9D5",
+    "#EE705C",
+    "#6FDBD0"
+  ],
+  "composition": "rising_channel",
+  "motifs": [
+    "missing keystone"
+  ],
+  "seed": 154961001,
+  "renderer_sha256": "015dde621e2a59fc7d6d95446477a664f78a7ddde4694b352462f21c2294d26c",
+  "spec_sha256": "58a96050a9ed13d30864fba247fbd7519f4150809f08ed25ca78c3ca0a3264f6",
+  "variety_sha256": "a7d83ccf442c8f2e0cbeb0bb08bef1fba76e922d7624f896fa489dc835665b2c",
+  "subject_box": [
+    147,
+    357,
+    927,
+    757
+  ],
+  "eval_history": [
+    {
+      "pass_number": 1,
+      "scores": {
+        "concept": 7,
+        "focal_hierarchy": 8,
+        "composition": 7.5,
+        "color_value": 8.5,
+        "detail_richness": 7,
+        "craft_finish": 7.5,
+        "typography": 8.5,
+        "originality": 7,
+        "story_fidelity": 7
+      },
+      "notes": {
+        "concept": "Two arch halves with a broken deck do show an incomplete span, but the segmented ring still reads as a dial.",
+        "focal_hierarchy": "The gap between the two halves is the clear focal point and reads first at 300 px.",
+        "composition": "Subject sits centered above the headline band with calm negative space; the deck offsets are slightly unbalanced.",
+        "color_value": "Cream, coral and teal separate clearly against the plum ground at thumbnail scale.",
+        "detail_richness": "Ring joints and deck edges are visible at full size, but the large forms carry little meaningful assembly detail.",
+        "craft_finish": "Shadows and plinths sit cleanly; the deck ends meet the plinths without loose strokes.",
+        "typography": "Two-line headline is legible at 300 px with clear margins and no overlap with the subject.",
+        "originality": "Broken-span treatment is distinct from recent covers but close to a generic gauge or dial motif.",
+        "story_fidelity": "The incomplete-evidence metaphor is declared, but the dial reading risks suggesting a measurement rather than an unfinished chain."
+      },
+      "inspected_scales": [
+        "full",
+        "300"
+      ],
+      "blockers": [
+        "Reads as a gauge or dial rather than an unfinished evidence chain, a misleading mechanism read."
+      ],
+      "base_sha256": "2ca90cddfbd465c5a46c9f7fa72d922265d5ca69d1f59ae4cf875ae705a6853a",
+      "cover_sha256": "d96ae7f0b26e1bde872f593a11cd9dbbc087435e53879208d4a812342bbddafc",
+      "weighted": 7.575,
+      "passed": false,
+      "observations": "Best observed pass (render 3, identical bytes on re-render). Stronger than earlier passes; still reads as a gauge.",
+      "edit_prompt": "Replace the segmented ring with masonry voussoirs and a level deck so the gap reads as a bridge, then re-render."
+    }
+  ],
+  "eval_final": {
+    "provisional": true,
+    "scores": {},
+    "weighted": null,
+    "passed": false
+  },
+  "evaluation_protocol": 2
+}
