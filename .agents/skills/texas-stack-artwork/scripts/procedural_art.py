@@ -925,7 +925,7 @@ def record_masks(p):
             p.line([plane(u+.018,v),plane(u+.105,v)],blend(p.light,p.dark,.32),2)
 
     # A shared carrier couples the two movable masks, which never cover other columns.
-    rail=quad(.30,.10,.71,.15,.115)
+    rail=quad(.30,.10,.71,.17,.070)
     shadow(rail,48,10,(7,16))
     p.poly([(x+.006,y+.014) for x,y in rail],blend(p.main,p.dark,.58))
     p.poly(rail,blend(p.main,p.light,.33))
