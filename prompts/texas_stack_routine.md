@@ -123,6 +123,12 @@ Search snippets only discover leads. Fetch each promising trigger before spendin
 Deduplicate by mechanism and decision. Drop stale, repeated, actor-only or non-Texas leads early;
 do not fetch a full layer chain for an already disqualified lead. Maintain short disposition rows
 with attempted sources and exact failed gate. Qualified alternatives are not failed candidates.
+For a promising missing primary, use the issuer's current index to locate its actual document;
+a guessed-path 404 does not establish that the issuer lacks the record. Treat a proxy CONNECT
+403 for a required public source host as missing network access and repair the narrow host list
+before deciding no-target. Preserve actual status and body evidence. An authentic primary filing
+served by a publisher mirror can support what that filing requests; disclose the mirror and
+check its filing identifiers and appended documents against independent official records.
 
 Compare the best candidates on primary-source completeness, specific Texas consequence and one
 controller's binary decision. Deepen the strongest first, then the next if it fails. Before calling
@@ -179,6 +185,10 @@ Repair failures. Write out/score_report.json with every exact configured criteri
 observed score and evidence note, every hard-fail result, correct weighted total and ship flag.
 The floor remains 8.0 with all hard gates passed. At most three editorial passes and two
 score-driven revisions; rerun the post check after edits. If factual support fails, use no-target.
+Use those revisions for concrete weaknesses before stopping below the floor. Judge significance
+by the specific Texas control and consequence; a narrow dispute is not automatically a weak one.
+Judge forward implication by the precise decision and next verifiable evidence. An absent
+hearing date remains a disclosed gap; it does not require inventing a date or cap that criterion.
 
 ## 4. Art
 
