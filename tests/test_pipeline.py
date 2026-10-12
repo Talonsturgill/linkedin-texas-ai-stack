@@ -394,6 +394,19 @@ class EmailTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build_email.build_payload(to="me", subject="Draft", html_body="<p>x</p>")
 
+    def test_unselected_art_email_keeps_the_actual_score_and_notes(self) -> None:
+        failed={"source":"procedural", "eval_final":{"provisional":True,"weighted":None,"passed":False},
+                "eval_history":[{"weighted":7.575,"passed":False,"scores":{"concept":7},
+                                 "notes":{"concept":"The ring reads as a gauge instead of an evidence chain."}}]}
+        self.assertIn("Best unselected review 7.575 / 10",build_email.art_summary(failed))
+        self.assertNotIn("Weighted  / 10",build_email.art_summary(failed))
+        self.assertIn("gauge instead of an evidence chain",build_email.art_table(failed))
+        self.assertFalse(failed['eval_final']['passed'])
+
+    def test_unreviewed_art_email_has_an_explicit_state(self) -> None:
+        self.assertIn("Not reviewed",build_email.art_summary({"source":"procedural"}))
+        self.assertNotIn(" / 10",build_email.art_summary({"source":"procedural"}))
+
 
 if __name__ == "__main__":
     unittest.main()

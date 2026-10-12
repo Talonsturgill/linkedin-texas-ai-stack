@@ -31,6 +31,7 @@ STYLES = {
     'collateral_balance': ('machined collateral balance', ['counterweight_profile', 'banked_escrow', 'vertical_drop']),
     'points_switch': ('railway points study', ['long_approach']),
     'bay_wall': ('paired bay wall study', ['low_threshold']),
+    'record_masks': ('brushed-metal record masking study', ['oblique_folio']),
 }
 PALETTES = {
     'cobalt_amber': ['#10182A','#07101F','#E8E5DA','#356EF1','#F3AD34'],
@@ -53,6 +54,7 @@ MOTIFS = ('split key', 'wedge stop', 'iris shutter', 'pivot lever', 'ratchet too
 MOTIFS += ('folded document dam', 'missing keystone', 'suspended threshold')
 MOTIFS += ('escrow counterweight',)
 MOTIFS += ('thrown points','closed bay')
+MOTIFS += ('paired location masks',)
 SCENE_MOTIFS = {'written_authorization':'folded document dam',
                 'incomplete_evidence':'missing keystone','binary_gate':'suspended threshold'}
 
@@ -110,6 +112,13 @@ def story_treatment(binding):
     return 'incomplete_evidence' if binding['no_target'] else 'binary_gate'
 
 
+def location_fields(binding):
+    """Require the two actual location fields before drawing a pair of record masks."""
+    text=' '.join([binding['name'],binding['decision'],
+                  *(row.get('function','') for row in binding.get('layers',[]))]).lower()
+    return not binding['no_target'] and 'county' in text and 'water planning' in text
+
+
 def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_hue=None, preferred_motif=None):
     binding = story(dossier)
     cooldown = history.get('artwork_cooldowns') or {}
@@ -126,19 +135,27 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
         raise ValueError('The railway points scene requires a verified binary deny-or-initiate decision and an eligible motif')
     if preferred_family=='bay_wall' and (treatment!='binary_gate' or 'closed bay' in banned_motifs):
         raise ValueError('The paired bay wall requires a verified binary deny-or-initiate decision and an eligible motif')
+    if preferred_family=='record_masks' and (not location_fields(binding) or 'paired location masks' in banned_motifs):
+        raise ValueError('The record masks require the verified county and water planning fields and an eligible motif')
     seed = int(hashlib.sha256((dossier['run_date'] + binding['name'] + salt).encode()).hexdigest()[:16], 16)
     rng = np.random.default_rng(seed)
     available = [(k, v) for k, v in STYLES.items() if v[0] not in banned_styles]
     rng.shuffle(available)
     hues = [k for k in PALETTES if k not in banned_hues]
-    motifs = [k for k in MOTIFS if k not in banned_motifs and k not in (*SCENE_MOTIFS.values(),'escrow counterweight','thrown points','closed bay')]
+    motifs = [k for k in MOTIFS if k not in banned_motifs and k not in (*SCENE_MOTIFS.values(),'escrow counterweight','thrown points','closed bay','paired location masks')]
     rng.shuffle(hues); rng.shuffle(motifs)
     if preferred_family is not None:
         if preferred_family not in {key for key,_ in available}:
             raise ValueError('Preferred drawing family is unavailable or in cooldown')
+        if not any(comp not in banned_comp for comp in STYLES[preferred_family][1]):
+            raise ValueError('Preferred drawing family has no composition outside cooldown')
         available.sort(key=lambda item:item[0]!=preferred_family)
     for values,preferred in ((hues,preferred_hue),(motifs,preferred_motif)):
         if preferred is not None:
+            if values is motifs and preferred=='paired location masks':
+                if preferred_family!='record_masks' or not location_fields(binding):
+                    raise ValueError('The paired location masks require the verified record-field scene')
+                continue
             if values is motifs and preferred=='closed bay':
                 if preferred_family!='bay_wall' or treatment!='binary_gate':
                     raise ValueError('The closed bay motif requires its wall scene')
@@ -163,6 +180,7 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
         if key=='collateral_balance' and (treatment!='financial_security' or 'escrow counterweight' in banned_motifs):continue
         if key=='points_switch' and (treatment!='binary_gate' or 'thrown points' in banned_motifs):continue
         if key=='bay_wall' and (treatment!='binary_gate' or 'closed bay' in banned_motifs):continue
+        if key=='record_masks' and (not location_fields(binding) or 'paired location masks' in banned_motifs):continue
         chosen_compositions = {s['composition'] for s in result}
         choices = [c for c in comps if c not in banned_comp and c not in chosen_compositions]
         if not choices or not hues or not motifs: continue
@@ -192,6 +210,9 @@ def plans(dossier, history, count=3, salt='', preferred_family=None, preferred_h
         elif key=='collateral_balance':
             result[-1]['motifs']=['escrow counterweight']
             result[-1]['concept']='A deposited collateral weight lowers a balance pan and lifts the connected study-entry shutter; financial security is the physical condition for admission, not an amount already paid.'
+        elif key=='record_masks':
+            result[-1]['motifs']=['paired location masks']
+            result[-1]['concept']='Two narrow metal masks hover over the county and regional water planning columns of an open record; the other columns remain visible. Raised masks show a disclosure dispute awaiting resolution, not an approved redaction.'
         if len(result) == count: break
     if len(result) < count:
         raise ValueError('Variety catalog exhausted; extend a drawing family instead of relaxing cooldowns')
@@ -841,7 +862,107 @@ def bay_wall(p):
     p.layer.putalpha(ImageChops.multiply(ImageChops.multiply(p.layer.getchannel('A'),mask),hard))
 
 
-RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume,editorial_scene,collateral_balance,points_switch,bay_wall)))
+def record_masks(p):
+    """An open folio with two raised column masks; no seal, map or decided redaction."""
+    def rgb(color):
+        return tuple(int(color[i:i+2],16) for i in (1,3,5))
+
+    def blend(one,two,fraction):
+        return tuple(round(a*(1-fraction)+b*fraction) for a,b in zip(rgb(one),rgb(two)))
+
+    # Oblique studio view. Both long masks share the page's perspective and lighting.
+    def plane(u,v,lift=0):
+        return (.12+.70*u+.15*v,.20-.11*u+.63*v-lift)
+
+    def quad(u0,v0,u1,v1,lift=0):
+        return [plane(u0,v0,lift),plane(u1,v0,lift),
+                plane(u1,v1,lift),plane(u0,v1,lift)]
+
+    def shadow(points,opacity=75,blur=10,offset=(9,14)):
+        mask=Image.new('L',p.layer.size)
+        ImageDraw.Draw(mask).polygon([p.xy(point) for point in points],fill=opacity)
+        layer=Image.new('RGBA',p.layer.size)
+        layer.putalpha(mask.filter(ImageFilter.GaussianBlur(blur)))
+        p.layer.alpha_composite(layer,offset)
+
+    page=[plane(0,0),plane(.88,0),plane(1,.13),plane(1,1),plane(0,1)]
+    shadow(page,110,18,(16,20))
+    # Separate leaf edges explain the folio's thickness without pretending to count pages.
+    for depth in range(10,0,-1):
+        points=[(x,y+depth*.0028) for x,y in page]
+        color=blend(p.light,p.dark,.21 if depth%2 else .11)
+        p.poly(points,color)
+    p.poly(page,p.light)
+    p.line([plane(0,1),plane(1,1)],blend(p.light,p.dark,.25),2)
+    p.line([plane(0,0),plane(0,1)],blend(p.light,p.main,.19),1)
+
+    # Paper fibers lie in the sheet's own plane and stay inside its edges.
+    fiber=blend(p.light,p.dark,.055)
+    for _ in range(130):
+        u,v=p.rng.uniform(.035,.94),p.rng.uniform(.055,.96)
+        p.line([plane(u,v),plane(min(u+.010,.96),v+.0015)],fiber,1)
+
+    # Anonymous ruled record, never a copied document, signature or invented data value.
+    ink=blend(p.light,p.dark,.34)
+    faint=blend(p.light,p.dark,.13)
+    p.line([plane(.065,.15),plane(.925,.15)],ink,2)
+    for v in np.linspace(.23,.86,9):
+        p.line([plane(.06,v),plane(.93,v)],faint,1)
+        for u,right in ((.07,.20),(.24,.30),(.72,.82),(.86,.92)):
+            length=right-u
+            end=u+length*(.72+.20*p.rng.random())
+            p.line([plane(u,v-.027),plane(end,v-.027)],ink,2)
+    for u in (.325,.48,.65):
+        p.line([plane(u,.18),plane(u,.90)],faint,1)
+
+    # A folded corner rewards close inspection while remaining outside the disputed fields.
+    fold=[plane(.88,0),plane(.88,.13),plane(1,.13)]
+    shadow(fold,45,3,(4,5))
+    p.poly(fold,blend(p.light,p.dark,.12))
+    p.line([plane(.88,0),plane(.88,.13),plane(1,.13)],blend(p.light,p.dark,.22),1)
+
+    # Two highlighted record strips remain visible beneath the raised masks. The gap
+    # makes their unresolved status explicit instead of depicting a completed blackout.
+    for u in (.35,.52):
+        p.poly(quad(u-.013,.20,u+.135,.89),blend(p.light,p.main,.17))
+        for v in np.linspace(.25,.84,8):
+            p.line([plane(u+.018,v),plane(u+.105,v)],blend(p.light,p.dark,.32),2)
+
+    # A shared carrier couples the two movable masks, which never cover other columns.
+    rail=quad(.30,.10,.71,.15,.115)
+    shadow(rail,48,10,(7,16))
+    p.poly([(x+.006,y+.014) for x,y in rail],blend(p.main,p.dark,.58))
+    p.poly(rail,blend(p.main,p.light,.33))
+    p.line(rail[:2],p.light,2)
+
+    for u in (.35,.52):
+        face=quad(u,.15,u+.12,.84,.070)
+        # Cast shadows land on the corresponding strips, not on the rest of the record.
+        shadow(quad(u,.15,u+.12,.84,.008),58,12,(9,13))
+        p.poly([(x+.006,y+.016) for x,y in face],blend(p.accent,p.dark,.49))
+        p.poly(face,p.accent)
+        # Brushed finish follows the long extrusion rather than a whole-image grain filter.
+        for stripe in range(46):
+            fraction=stripe/46
+            left=u+.12*fraction;right=u+.12*(stripe+1)/46
+            brightness=.14+.38*math.exp(-((fraction-.23)/.20)**2)
+            color=blend(p.accent,p.light,brightness)
+            p.poly(quad(left,.15,right,.84,.070),color)
+        for stripe in range(12):
+            offset=.007+stripe*.0088
+            p.line([plane(u+offset,.18,.070),plane(u+offset,.81,.070)],
+                   blend(p.accent,p.light,.25 if stripe%3 else .43),1)
+        p.line([plane(u,.15,.070),plane(u,.84,.070)],p.light,2)
+        p.line([plane(u+.12,.15,.070),plane(u+.12,.84,.070)],blend(p.accent,p.dark,.40),2)
+        # Two small slotted fasteners connect each mask to the shared carrier.
+        for v in (.16,.205):
+            x,y=plane(u+.06,v,.073)
+            p.ellipse((x-.008,y-.012,x+.008,y+.012),blend(p.main,p.dark,.58),p.light,1)
+            p.line([(x-.004,y),(x+.004,y)],p.light,1)
+        p.line([plane(u,.84,.070),plane(u+.12,.84,.070)],blend(p.accent,p.light,.45),2)
+
+
+RENDERERS = dict(zip(STYLES,(paper,engraving,isometric,risograph,contours,glass,wireframe,weave,cyanotype,ribbons,tiles,charcoal,volume,editorial_scene,collateral_balance,points_switch,bay_wall,record_masks)))
 
 
 def written_artifact(p):
@@ -945,6 +1066,10 @@ def render(spec, layout, destination):
         raise ValueError('The railway points scene must bind to a verified binary decision and its thrown points motif')
     if family=='bay_wall' and (spec['story_treatment']!='binary_gate' or spec['motifs'][0]!='closed bay'):
         raise ValueError('The paired bay wall must bind to a verified binary decision and its closed bay motif')
+    if family=='record_masks' and (not location_fields(spec['story_binding']) or spec['motifs'][0]!='paired location masks'):
+        raise ValueError('The record masks must bind to the county and water planning fields and its actual paired masks')
+    if family!='record_masks' and spec['motifs'][0]=='paired location masks':
+        raise ValueError('The paired location masks require their record scene')
     if family!='bay_wall' and spec['motifs'][0]=='closed bay':
         raise ValueError('The closed bay motif requires its wall scene')
     if family!='points_switch' and spec['motifs'][0]=='thrown points':
@@ -952,7 +1077,7 @@ def render(spec, layout, destination):
     if family!='collateral_balance' and spec['motifs'][0]=='escrow counterweight':
         raise ValueError('The counterweight motif requires its connected scene renderer')
     p=Painter(spec,layout['subject_zone']); RENDERERS[family](p)
-    if family not in ('editorial_scene','collateral_balance','points_switch','bay_wall'):written_artifact(p);gate_mark(p)
+    if family not in ('editorial_scene','collateral_balance','points_switch','bay_wall','record_masks'):written_artifact(p);gate_mark(p)
     subject=p.layer.resize((SIZE,SIZE),Image.Resampling.LANCZOS)
     # Exact alpha-mask bounds are measured from drawn pixels, including anti-aliasing.
     bbox=subject.getchannel('A').getbbox()
